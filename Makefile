@@ -1,7 +1,7 @@
 TEST?=$$(go list ./... | grep -v 'vendor')
 HOSTNAME=gitlab.com
 NAMESPACE=kopicloud
-NAME=kopicloud
+NAME=kopicloud-ad-tf-provider
 BINARY=terraform-provider-${NAME}
 VERSION=0.0.1
 OS=darwin
