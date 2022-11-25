@@ -15,7 +15,8 @@ build:
 	go build -o ${BINARY}
 
 clean:
-	rm ${BINARY}
+	rm -rf api
+	rm -f ${BINARY}
 
 release:
 	GOOS=darwin GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_darwin_amd64
