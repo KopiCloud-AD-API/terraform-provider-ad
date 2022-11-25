@@ -14,10 +14,20 @@ func Provider() *schema.Provider {
 		ResourcesMap:   map[string]*schema.Resource{},
 		DataSourcesMap: map[string]*schema.Resource{},
 		Schema: map[string]*schema.Schema{
-			"host": &schema.Schema{
+			"host": {
 				Type:        schema.TypeString,
 				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("KOPICLOUD_BACKEND_HOST_URL", "http://localhost:8000"),
+				DefaultFunc: schema.EnvDefaultFunc("SERVICE_HOST", ""),
+			},
+			"port": {
+				Type:        schema.TypeInt,
+				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("SERVICE_PORT", ""),
+			},
+			"token": {
+				Type:        schema.TypeString,
+				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("SERVICE_TOKEN", ""),
 			},
 		},
 		ConfigureContextFunc: providerConfigure,
