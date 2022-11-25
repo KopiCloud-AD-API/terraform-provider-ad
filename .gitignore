@@ -13,3 +13,7 @@
 
 # Terraform
 .terraform
+.terraform.*
+
+# Generated Code
+*.gen.go

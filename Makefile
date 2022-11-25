@@ -10,6 +10,8 @@ OS_ARCH=arm64
 default: install
 
 build:
+	mkdir -p api
+	go generate
 	go build -o ${BINARY}
 
 clean:
