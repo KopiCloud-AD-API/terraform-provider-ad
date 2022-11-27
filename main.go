@@ -7,7 +7,8 @@ import (
 	kcp "kopicloud/provider"
 )
 
-//go:generate oapi-codegen --package=client -generate=client,types -o api/kopicloud.client.gen.go https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json
+//go:generate oapi-codegen -package=api  -generate=types  -o api/kopicloud.types.gen.go https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json
+//go:generate oapi-codegen -package=api  -generate=client -o api/kopicloud.client.gen.go https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json
 
 func main() {
 	plugin.Serve(&plugin.ServeOpts{

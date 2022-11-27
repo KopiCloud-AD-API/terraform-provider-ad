@@ -1,33 +1,34 @@
-package kopicloud
+package provider
 
 import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
+	kcapi "kopicloud/api"
 )
 
 // Provider -
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		// First some scafolding
-		ResourcesMap:   map[string]*schema.Resource{},
-		DataSourcesMap: map[string]*schema.Resource{},
+		DataSourcesMap: map[string]*schema.Resource{
+			"kopicloud_all_computers": dataSourceComputers(),
+		},
+		ResourcesMap: map[string]*schema.Resource{},
 		Schema: map[string]*schema.Schema{
 			"host": {
 				Type:        schema.TypeString,
 				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("SERVICE_HOST", ""),
-			},
-			"port": {
-				Type:        schema.TypeInt,
-				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("SERVICE_PORT", ""),
+				Description: "Kopiclcoud Server URL",
+				DefaultFunc: schema.EnvDefaultFunc("API_HOST", ""),
 			},
 			"token": {
 				Type:        schema.TypeString,
 				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("SERVICE_TOKEN", ""),
+				Description: "Bearer (JWT) or Basic Authentication Token",
+				DefaultFunc: schema.EnvDefaultFunc("API_AUTHENTICATION_TOKEN", ""),
 			},
 		},
 		ConfigureContextFunc: providerConfigure,
@@ -40,16 +41,26 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 }
 
 type ApiClient struct {
-	data *schema.ResourceData
+	data   *schema.ResourceData
+	client *kcapi.ClientWithResponses
 }
 
 func NewApiClient(d *schema.ResourceData) (*ApiClient, diag.Diagnostics) {
 	c := &ApiClient{data: d}
-	//	client, err := c.NewKopicloudClient()
-	//	if err != nil {
-	//		return c, diag.FromErr(err)
-	//	}
-	//	c.kopicloudclient = client
+	client, err := c.NewKopiCloudClient()
+	if err != nil {
+		return c, diag.FromErr(err)
+	}
+	c.client = client
 	return c, nil
 
+}
+
+func (a *ApiClient) NewKopiCloudClient() (*kcapi.ClientWithResponses, error) {
+	host := a.data.Get("host").(string)
+	c, err := kcapi.NewClientWithResponses(host)
+	if err != nil {
+		return c, err
+	}
+	return c, nil
 }
