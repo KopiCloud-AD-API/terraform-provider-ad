@@ -16,6 +16,7 @@ build:
 
 clean:
 	rm -rf api
+	find . -iname "*.gen.go" -exec rm {} \;
 	rm -f ${BINARY}
 
 release:

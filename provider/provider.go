@@ -14,9 +14,12 @@ func Provider() *schema.Provider {
 	return &schema.Provider{
 		// First some scafolding
 		DataSourcesMap: map[string]*schema.Resource{
-			"kopicloud_all_computers": dataSourceComputers(),
+			"kopicloud_all_computers": dataSourceComputerList(),
+			"kopicloud_all_ous":       dataSourceOuList(),
 		},
-		ResourcesMap: map[string]*schema.Resource{},
+		// ResourcesMap: map[string]*schema.Resource{
+		// 	"kopicloud_computer": resourceComputer(),
+		// },
 		Schema: map[string]*schema.Schema{
 			"host": {
 				Type:        schema.TypeString,
