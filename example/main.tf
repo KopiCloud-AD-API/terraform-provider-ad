@@ -19,3 +19,10 @@ output "all_computers_list" {
   value = data.kopicloud_all_computers.test
 }
 
+data "kopicloud_all_ous" "test" {}
+
+# Returns all ous
+output "all_ous_list" {
+  description = "Existing OUs"
+  value = data.kopicloud_all_ous.test
+}
