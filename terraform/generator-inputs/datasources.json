@@ -1,0 +1,44 @@
+{
+    "api_alias": "kcapi",
+    "api_package": "kopicloud/api",
+    "package": "provider",
+    "data_sources" : [
+        {
+            "params_struct_name": "GetApiComputersAllParams",
+            "api_function": "GetApiComputersAllWithResponse",
+            "api_to_terraform": "FlattenComputerList",
+            "schema_function": "schemaOfComputerList",
+            "element_name": "Computer",
+            "result_field": "computer_list",
+            "result_id": "all_computers"
+        },
+        {
+            "params_struct_name": "GetApiOUAllParams",
+            "api_function": "GetApiOUAllWithResponse",
+            "api_to_terraform": "FlattenOUModelList",
+            "schema_function": "schemaOfOUModelList",
+            "element_name": "OUModel",
+            "result_field": "oumodel_list",
+            "result_id": "all_ou"
+        },
+        {
+            "params_struct_name": "GetApiDnsARecordAllParams",
+            "api_function": "GetApiDnsARecordAllWithResponse",
+            "api_to_terraform": "FlattenDnsRecordsList",
+            "schema_function": "schemaOfDnsRecordsList",
+            "element_name": "DnsARecord",
+            "result_field": "dns_records_list",
+            "result_id": "all_dns_a_records"
+        },
+        {
+            "params_struct_name": "GetApiDnsAAAARecordAllParams",
+            "api_function": "GetApiDnsAAAARecordAllWithResponse",
+            "api_to_terraform": "FlattenDnsRecordsList",
+            "schema_function": "schemaOfDnsRecordsList",
+            "element_name": "DnsAAAARecord",
+            "result_field": "dns_records_list",
+            "result_id": "all_dns_aaaa_records"
+        }        
+
+    ]
+}
