@@ -14,7 +14,10 @@
 # Terraform
 .terraform
 .terraform.*
-terraform.tfstate
+*.tfstate
+*.tfstate.*
 
 # Generated Code
 *.gen.go
+bin
+*.log
