@@ -4,7 +4,15 @@
     "package": "provider",
     "data_sources" : [
         {
-            "params_struct_name": "GetApiComputersAllParams",
+            "name": "AllComputers",
+            "terraform": {
+                "name": "kopicloud_all_computers",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiComputersAllParams",
+                "fields": []
+            },
             "api_function": "GetApiComputersAllWithResponse",
             "api_to_terraform": "FlattenComputerList",
             "schema_function": "schemaOfComputerList",
@@ -13,7 +21,54 @@
             "result_id": "all_computers"
         },
         {
-            "params_struct_name": "GetApiOUAllParams",
+            "name": "Computers",
+            "terraform": {
+                "name": "kopicloud_computers",
+                "arguments": [
+                    {
+                        "name": "oupath",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "recursive",
+                        "type": "schema.TypeBool",
+                        "optional": true
+                    }
+                ]
+            },
+            "params": {
+                "name": "GetApiComputersParams",
+                "fields": [
+                    {
+                        "api_name": "OUPath",
+                        "name": "oupath",
+                        "type": "string"
+                    },
+                    {
+                        "api_name": "Recursive",
+                        "name": "recursive",
+                        "type": "bool"
+                    }
+                ]
+            },
+            "api_function": "GetApiComputersWithResponse",
+            "api_to_terraform": "FlattenComputerList",
+            "schema_function": "schemaOfComputerList",
+            "element_name": "Computer",
+            "result_field": "computer_list",
+            "result_id": "all_computers"
+        },
+        {
+            "name": "AllOUModel",
+            "terraform": {
+                "name": "kopicloud_all_ous",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiOUAllParams",
+                "fields": []
+            },
             "api_function": "GetApiOUAllWithResponse",
             "api_to_terraform": "FlattenOUModelList",
             "schema_function": "schemaOfOUModelList",
@@ -22,7 +77,15 @@
             "result_id": "all_ou"
         },
         {
-            "params_struct_name": "GetApiDnsARecordAllParams",
+            "name": "AllDnsARecords",
+            "terraform": {
+                "name": "kopicloud_all_dns_a_records",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiDnsARecordAllParams",
+                "fields": []
+            },
             "api_function": "GetApiDnsARecordAllWithResponse",
             "api_to_terraform": "FlattenDnsRecordsList",
             "schema_function": "schemaOfDnsRecordsList",
@@ -31,7 +94,15 @@
             "result_id": "all_dns_a_records"
         },
         {
-            "params_struct_name": "GetApiDnsAAAARecordAllParams",
+            "name": "AllDnsAAAARecords",
+            "terraform": {
+                "name": "kopicloud_all_dns_aaaa_records",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiDnsAAAARecordAllParams",
+                "fields": []
+            },
             "api_function": "GetApiDnsAAAARecordAllWithResponse",
             "api_to_terraform": "FlattenDnsRecordsList",
             "schema_function": "schemaOfDnsRecordsList",

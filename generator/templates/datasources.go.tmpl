@@ -9,22 +9,52 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-{{range .DataSources }} 
-
-func dataSource{{ .ElementName }}List() *schema.Resource {
-	return &schema.Resource{
-		ReadContext: resource{{ .ElementName }}ListRead,
-		Schema:      {{ .SchemaFunction }}(),
+func dataSources() map[string]*schema.Resource {
+	return map[string]*schema.Resource {
+		{{range .DataSources }} 
+		"{{ .Terraform.Name }}": dataSource{{ .Name }}(), 
+		{{ end }}
 	}
 }
 
-func resource{{ .ElementName }}ListRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+{{range .DataSources }} 
+
+func dataSource{{ .Name }}() *schema.Resource {
+	terraformSchema := {{ .SchemaFunction }}()
+	{{ range .Terraform.Arguments }}
+	terraformSchema["{{ .Name }}"] = &schema.Schema{
+		Type:        {{ .Type }},
+		Computed:    {{ .Computed }},
+		Optional:    {{ .Optional }},
+		Required:    {{ .Required }},
+		Description: "{{ .Description }}",
+	}
+	{{ end}}
+	return &schema.Resource{
+		ReadContext: resource{{ .Name }}Read,
+		Schema:      terraformSchema,
+	}
+}
+
+func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, "Beginning resource{{ .ElementName }}ListRead")
+	tflog.Debug(ctx, "Beginning resource{{ .Name }}Read")
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
-	params := kcapi.{{ .ParamsStructName }}{
+	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
+					"client_data": c.data,
+					"schema_data": d,
+				})
+
+	{{range .ApiParams.Fields }} 
+	{{ .Name | ToLower }}:= d.Get("{{ .Name }}").({{ .Type }})
+	{{ end }}
+
+	params := kcapi.{{ .ApiParams.Name }}{
 		AuthToken: c.data.Get("token").(string),
+		{{range .ApiParams.Fields }} 
+		{{ .ApiName }}: &{{ .Name | ToLower }},
+		{{ end }}
 	}
 	res, err := c.client.{{ .ApiFunction }}(ctx, &params)
 	if err != nil {
@@ -47,7 +77,7 @@ func resource{{ .ElementName }}ListRead(ctx context.Context, d *schema.ResourceD
 	} else {
 		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
 	}
-	tflog.Debug(ctx, "resource{{ .ElementName }}ListRead finished successfully",
+	tflog.Debug(ctx, "resource{{ .Name }}Read finished successfully",
 		map[string]interface{}{
 			"result": d,
 		})
