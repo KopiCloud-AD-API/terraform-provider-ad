@@ -78,3 +78,11 @@ output "all_dns_cname_records" {
   description = "Existing DNS AAAA Records"
   value = data.kopicloud_all_dns_cname_records.test
 }
+
+data "kopicloud_all_dns_zones" "test" {}
+
+# Returns all DNS CNAME Records
+output "all_dns_zones" {
+  description = "Existing DNS Zones"
+  value = data.kopicloud_all_dns_zones.test
+}

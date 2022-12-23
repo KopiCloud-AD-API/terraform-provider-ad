@@ -162,6 +162,24 @@
             "element_name": "DnsCNameRecord",
             "result_field": "dns_records_list",
             "result_id": "all_dns_cname_records"
+        },
+        {
+            "name": "AllDnsZones",
+            "terraform": {
+                "name": "kopicloud_all_dns_zones",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiDnsZonesAllParams",
+                "fields": []
+            },
+            "api_function": "GetApiDnsZonesAllWithResponse",
+            "api_to_terraform": "flattenStringList",
+            "schema_function": "schemaOfStringList",
+            "schema_function_arguments": "(`dns_zones_list`, `name`, `Name of the DNS Zone`)",
+            "element_name": "DnsZones",
+            "result_field": "dns_zones_list",
+            "result_id": "all_dns_zones"
         }
 
     ]
