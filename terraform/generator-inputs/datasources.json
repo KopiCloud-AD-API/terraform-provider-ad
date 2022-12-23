@@ -78,6 +78,24 @@
             "result_id": "all_ad_groups"
         },
         {
+            "name": "AllADUsers",
+            "terraform": {
+                "name": "kopicloud_all_ad_users",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiADUserListUsersAllParams",
+                "fields": []
+            },
+            "api_function": "GetApiADUserListUsersAllWithResponse",
+            "api_to_terraform": "flattenStringList",
+            "schema_function": "schemaOfStringList",
+            "schema_function_arguments": "(`ad_user_list`, `name`, `Name of the AD User`)",
+            "element_name": "ADUsers",
+            "result_field": "ad_user_list",
+            "result_id": "all_ad_users"
+        },
+        {
             "name": "AllOUModel",
             "terraform": {
                 "name": "kopicloud_all_ous",

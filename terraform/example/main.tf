@@ -39,6 +39,13 @@ output "kopicloud_all_ad_groups" {
   value = data.kopicloud_all_ad_groups.test
 }
 
+data "kopicloud_all_ad_users" "test" {}
+
+# Returns all ADUsers
+output "kopicloud_all_ad_users" {
+  description = "Existing AD Users"
+  value = data.kopicloud_all_ad_users.test
+}
 
 data "kopicloud_all_ous" "test" {}
 
