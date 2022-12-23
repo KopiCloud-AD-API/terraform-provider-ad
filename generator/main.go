@@ -8,6 +8,7 @@ import (
 	"html/template"
 	"io/ioutil"
 	"os"
+	"strings"
 )
 
 var (
@@ -30,14 +31,41 @@ func init() {
 	generate = flag.String("generate", unset, "The type of code to generate datasources|converters")
 }
 
+type ParamsFieldsStruct struct {
+	Name    string `json:"name"`
+	ApiName string `json:"api_name"`
+	Type    string `json:"type"`
+}
+
+type ParamsStruct struct {
+	Name   string               `json:"name"`
+	Fields []ParamsFieldsStruct `json:"fields"`
+}
+
+type TerraformArguments struct {
+	Name        string `json:"name"`
+	Type        string `json:"type"`
+	Description string `json:"description,omitempty"`
+	Computed    bool   `json:"computed,omitempty"`
+	Optional    bool   `json:"optional,omitempty"`
+	Required    bool   `json:"required,omitempty"`
+}
+
+type Terraform struct {
+	Name      string               `json:"name"`
+	Arguments []TerraformArguments `json:"arguments,omitempty"`
+}
+
 type Datasource struct {
-	ParamsStructName       string `json:"params_struct_name"`
-	ApiFunction            string `json:"api_function"`
-	ApiToTerraformFunction string `json:"api_to_terraform"`
-	SchemaFunction         string `json:"schema_function"`
-	ElementName            string `json:"element_name"`
-	ResultField            string `json:"result_field"`
-	ResultId               string `json:"result_id"`
+	Name                   string       `json:"name"`
+	Terraform              Terraform    `json:"terraform"`
+	ApiFunction            string       `json:"api_function"`
+	ApiParams              ParamsStruct `json:"params"`
+	ApiToTerraformFunction string       `json:"api_to_terraform"`
+	SchemaFunction         string       `json:"schema_function"`
+	ElementName            string       `json:"element_name"`
+	ResultField            string       `json:"result_field"`
+	ResultId               string       `json:"result_id"`
 }
 
 type InputData struct {
@@ -79,6 +107,7 @@ func main() {
 	tmplName := fmt.Sprintf("%s.go.tmpl", *generate)
 	tmplFile := fmt.Sprintf("templates/%s", tmplName)
 	tmpl, err := template.New(tmplName).Funcs(template.FuncMap{
+		"ToLower": strings.ToLower,
 		"apiToTerraformType": func(t string) string {
 			switch t {
 			case "int":

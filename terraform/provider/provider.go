@@ -13,13 +13,7 @@ import (
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		// First some scafolding
-		DataSourcesMap: map[string]*schema.Resource{
-			"kopicloud_all_computers":        dataSourceComputerList(),
-			"kopicloud_all_ous":              dataSourceOUModelList(),
-			"kopicloud_all_dns_a_records":    dataSourceDnsARecordList(),
-			"kopicloud_all_dns_aaaa_records": dataSourceDnsAAAARecordList(),
-			// "kopicloud_all_groups":       dataSourceAdGroupList(),
-		},
+		DataSourcesMap: dataSources(),
 		// ResourcesMap: map[string]*schema.Resource{
 		// 	"kopicloud_computer": resourceComputer(),
 		// },
