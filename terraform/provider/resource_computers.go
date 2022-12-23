@@ -51,7 +51,7 @@ func resourceComputerRead(ctx context.Context, d *schema.ResourceData, m interfa
 
 	if res != nil {
 		//As the return item is a []Computers, lets Unmarshal it into "computers"
-		resItems := FlattenComputerList(res.JSON200)
+		resItems := flattenComputerList(res.JSON200)
 		for _, computer := range resItems {
 			tflog.Debug(ctx, fmt.Sprintf("converted computer: %v", computer))
 		}

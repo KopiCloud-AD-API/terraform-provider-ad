@@ -12,15 +12,15 @@ import (
 func dataSources() map[string]*schema.Resource {
 	return map[string]*schema.Resource {
 		{{range .DataSources }} 
-		"{{ .Terraform.Name }}": dataSource{{ .Name }}(), 
+		"{{ .Terraform.Name }}": dataSource{{ .Name }}Resource(), 
 		{{ end }}
 	}
 }
 
 {{range .DataSources }} 
 
-func dataSource{{ .Name }}() *schema.Resource {
-	terraformSchema := {{ .SchemaFunction }}()
+func dataSource{{ .Name }}Resource() *schema.Resource {
+	terraformSchema := {{ .SchemaFunction }}{{ default "()" .SchemaFunctionArguments }}
 	{{ range .Terraform.Arguments }}
 	terraformSchema["{{ .Name }}"] = &schema.Schema{
 		Type:        {{ .Type }},

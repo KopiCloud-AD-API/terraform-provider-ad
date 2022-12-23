@@ -57,15 +57,16 @@ type Terraform struct {
 }
 
 type Datasource struct {
-	Name                   string       `json:"name"`
-	Terraform              Terraform    `json:"terraform"`
-	ApiFunction            string       `json:"api_function"`
-	ApiParams              ParamsStruct `json:"params"`
-	ApiToTerraformFunction string       `json:"api_to_terraform"`
-	SchemaFunction         string       `json:"schema_function"`
-	ElementName            string       `json:"element_name"`
-	ResultField            string       `json:"result_field"`
-	ResultId               string       `json:"result_id"`
+	Name                    string       `json:"name"`
+	Terraform               Terraform    `json:"terraform"`
+	ApiFunction             string       `json:"api_function"`
+	ApiParams               ParamsStruct `json:"params"`
+	ApiToTerraformFunction  string       `json:"api_to_terraform"`
+	SchemaFunction          string       `json:"schema_function"`
+	SchemaFunctionArguments string       `json:"schema_function_arguments"`
+	ElementName             string       `json:"element_name"`
+	ResultField             string       `json:"result_field"`
+	ResultId                string       `json:"result_id"`
 }
 
 type InputData struct {
@@ -107,6 +108,13 @@ func main() {
 	tmplName := fmt.Sprintf("%s.go.tmpl", *generate)
 	tmplFile := fmt.Sprintf("templates/%s", tmplName)
 	tmpl, err := template.New(tmplName).Funcs(template.FuncMap{
+		"default": func(d string, v string) string {
+			if v != "" {
+				return v
+			} else {
+				return d
+			}
+		},
 		"ToLower": strings.ToLower,
 		"apiToTerraformType": func(t string) string {
 			switch t {
