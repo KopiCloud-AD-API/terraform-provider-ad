@@ -10,16 +10,14 @@ OS_ARCH=arm64
 default: install
 
 build:
-	mkdir -p bin
-	go generate
-	go build -o ../bin/${BINARY}
+	$(MAKE) -C generator build
+	$(MAKE) -C terraform build
 
 clean:
-	rm -rf ../bin
-	rm -f *.gen.go
-
+	$(MAKE) -C generator clean
+	$(MAKE) -C terraform clean
 
 install: build
-	mkdir -p ~/go/bin
-	cp ../bin/${BINARY} ~/go/bin
+	$(MAKE) -C generator install
+	$(MAKE) -C terraform install
 
