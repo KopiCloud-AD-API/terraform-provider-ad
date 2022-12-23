@@ -145,7 +145,24 @@
             "element_name": "DnsAAAARecord",
             "result_field": "dns_records_list",
             "result_id": "all_dns_aaaa_records"
-        }        
+        },        
+        {
+            "name": "AllDnsCNameRecords",
+            "terraform": {
+                "name": "kopicloud_all_dns_cname_records",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiDnsCNameRecordAllParams",
+                "fields": []
+            },
+            "api_function": "GetApiDnsCNameRecordAllWithResponse",
+            "api_to_terraform": "flattenDnsRecordsList",
+            "schema_function": "schemaOfDnsRecordsList",
+            "element_name": "DnsCNameRecord",
+            "result_field": "dns_records_list",
+            "result_id": "all_dns_cname_records"
+        }
 
     ]
 }
