@@ -14,7 +14,7 @@
                 "fields": []
             },
             "api_function": "GetApiComputersAllWithResponse",
-            "api_to_terraform": "FlattenComputerList",
+            "api_to_terraform": "flattenComputerList",
             "schema_function": "schemaOfComputerList",
             "element_name": "Computer",
             "result_field": "computer_list",
@@ -53,11 +53,29 @@
                 ]
             },
             "api_function": "GetApiComputersWithResponse",
-            "api_to_terraform": "FlattenComputerList",
+            "api_to_terraform": "flattenComputerList",
             "schema_function": "schemaOfComputerList",
             "element_name": "Computer",
             "result_field": "computer_list",
             "result_id": "all_computers"
+        },
+        {
+            "name": "AllADGroups",
+            "terraform": {
+                "name": "kopicloud_all_ad_groups",
+                "arguments": []
+            },
+            "params": {
+                "name": "GetApiADGroupsAllParams",
+                "fields": []
+            },
+            "api_function": "GetApiADGroupsAllWithResponse",
+            "api_to_terraform": "flattenStringList",
+            "schema_function": "schemaOfStringList",
+            "schema_function_arguments": "(`ad_group_list`, `name`, `Name of the AD Group`)",
+            "element_name": "ADGroups",
+            "result_field": "ad_group_list",
+            "result_id": "all_ad_groups"
         },
         {
             "name": "AllOUModel",
@@ -70,7 +88,7 @@
                 "fields": []
             },
             "api_function": "GetApiOUAllWithResponse",
-            "api_to_terraform": "FlattenOUModelList",
+            "api_to_terraform": "flattenOUModelList",
             "schema_function": "schemaOfOUModelList",
             "element_name": "OUModel",
             "result_field": "oumodel_list",
@@ -87,7 +105,7 @@
                 "fields": []
             },
             "api_function": "GetApiDnsARecordAllWithResponse",
-            "api_to_terraform": "FlattenDnsRecordsList",
+            "api_to_terraform": "flattenDnsRecordsList",
             "schema_function": "schemaOfDnsRecordsList",
             "element_name": "DnsARecord",
             "result_field": "dns_records_list",
@@ -104,7 +122,7 @@
                 "fields": []
             },
             "api_function": "GetApiDnsAAAARecordAllWithResponse",
-            "api_to_terraform": "FlattenDnsRecordsList",
+            "api_to_terraform": "flattenDnsRecordsList",
             "schema_function": "schemaOfDnsRecordsList",
             "element_name": "DnsAAAARecord",
             "result_field": "dns_records_list",
