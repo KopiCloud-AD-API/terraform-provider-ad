@@ -56,17 +56,28 @@ type Terraform struct {
 	Arguments []TerraformArguments `json:"arguments,omitempty"`
 }
 
+type ApiArguments struct {
+	Name        string `json:"name"`
+	Type        string `json:"type"`
+	Description string `json:"description,omitempty"`
+}
+
+type ApiFunction struct {
+	Name      string         `json:"name"`
+	Arguments []ApiArguments `json:"arguments"`
+	ApiParams ParamsStruct   `json:"params"`
+}
+
 type Datasource struct {
-	Name                    string       `json:"name"`
-	Terraform               Terraform    `json:"terraform"`
-	ApiFunction             string       `json:"api_function"`
-	ApiParams               ParamsStruct `json:"params"`
-	ApiToTerraformFunction  string       `json:"api_to_terraform"`
-	SchemaFunction          string       `json:"schema_function"`
-	SchemaFunctionArguments string       `json:"schema_function_arguments"`
-	ElementName             string       `json:"element_name"`
-	ResultField             string       `json:"result_field"`
-	ResultId                string       `json:"result_id"`
+	Name                    string      `json:"name"`
+	Terraform               Terraform   `json:"terraform"`
+	ApiFunction             ApiFunction `json:"api_function"`
+	ApiToTerraformFunction  string      `json:"api_to_terraform"`
+	SchemaFunction          string      `json:"schema_function"`
+	SchemaFunctionArguments string      `json:"schema_function_arguments"`
+	ElementName             string      `json:"element_name"`
+	ResultField             string      `json:"result_field"`
+	ResultId                string      `json:"result_id"`
 }
 
 type InputData struct {

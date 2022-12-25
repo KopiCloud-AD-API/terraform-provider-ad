@@ -46,17 +46,27 @@ func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m inte
 					"schema_data": d,
 				})
 
-	{{range .ApiParams.Fields }} 
+	{{range .ApiFunction.ApiParams.Fields }} 
 	{{ .Name | ToLower }}:= d.Get("{{ .Name }}").({{ .Type }})
 	{{ end }}
 
-	params := kcapi.{{ .ApiParams.Name }}{
+	params := kcapi.{{ .ApiFunction.ApiParams.Name }}{
 		AuthToken: c.data.Get("token").(string),
-		{{range .ApiParams.Fields }} 
+		{{range .ApiFunction.ApiParams.Fields }} 
 		{{ .ApiName }}: &{{ .Name | ToLower }},
 		{{ end }}
 	}
-	res, err := c.client.{{ .ApiFunction }}(ctx, &params)
+
+	{{range .ApiFunction.Arguments }} 
+	{{ .Name | ToLower }}:= d.Get("{{ .Name }}").({{ .Type }})
+	{{ end }}
+
+	res, err := c.client.{{ .ApiFunction.Name }}(
+		ctx, 
+		{{range .ApiFunction.Arguments }} 
+		{{ .Name | ToLower }},
+		{{ end }}		
+		&params)
 	if err != nil {
 		return diag.FromErr(err)
 	}
