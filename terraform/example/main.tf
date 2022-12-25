@@ -39,6 +39,17 @@ output "kopicloud_all_ad_groups" {
   value = data.kopicloud_all_ad_groups.test
 }
 
+data "kopicloud_ad_group_membership" "test" {
+  username = "guillermo"
+}
+
+# Returns all ADGroups for a User
+output "kopicloud_ad_group_membership" {
+  description = "AD Groups for user"
+  value = data.kopicloud_ad_group_membership.test
+}
+
+
 data "kopicloud_all_ad_users" "test" {}
 
 # Returns all ADUsers
