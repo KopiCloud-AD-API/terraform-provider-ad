@@ -10,17 +10,17 @@ OS_ARCH=arm64
 default: install
 
 build:
-	export PATH=$GOPATH/bin:$PATH
+	export PATH=$(GOPATH)/bin:$(PATH)
 	$(MAKE) -C generator build
 	$(MAKE) -C terraform build
 
 clean:
-	export PATH=$GOPATH/bin:$PATH
+	export PATH=$(GOPATH)/bin:$(PATH)
 	$(MAKE) -C generator clean
 	$(MAKE) -C terraform clean
 
 install: build
-	export PATH=$GOPATH/bin:$PATH
+	export PATH=$(GOPATH)/bin:$(PATH)
 	$(MAKE) -C generator install
 	$(MAKE) -C terraform install
 
