@@ -21,7 +21,7 @@ compile:
     - go install gitlab.com/terraform-utilities/openapi-terraform-provider-generator@latest
     - pwd
     - go env
-    - find / -iname "openapi-terraform-generator"
+    - ls -al /usr/local/go
   artifacts:
     paths:
       - mybinaries
