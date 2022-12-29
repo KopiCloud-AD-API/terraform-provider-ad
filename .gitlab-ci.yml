@@ -22,8 +22,7 @@ compile:
     - pwd
     - echo $GOPATH 
     - echo $GOROOT
-    - find /
-    - make clean install
+    - find / -iname "openapi-terraform-generator"
   artifacts:
     paths:
       - mybinaries
