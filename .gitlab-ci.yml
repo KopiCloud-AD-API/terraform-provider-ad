@@ -20,7 +20,8 @@ compile:
     - go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
     - go install gitlab.com/terraform-utilities/openapi-terraform-provider-generator@latest
     - export PATH=/go/bin:$PATH
-    - make clean install
+    - go env
+    - ls -al /usr/local/go/bin
   artifacts:
     paths:
       - mybinaries
