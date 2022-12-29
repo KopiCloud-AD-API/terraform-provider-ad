@@ -20,7 +20,6 @@ compile:
     - go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
     - go install gitlab.com/terraform-utilities/openapi-terraform-provider-generator@latest
     - pwd
-    - echo $GOPATH 
     - echo $GOROOT
     - find / -iname "openapi-terraform-generator"
   artifacts:
