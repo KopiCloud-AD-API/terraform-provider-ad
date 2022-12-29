@@ -14,9 +14,7 @@ func Provider() *schema.Provider {
 	return &schema.Provider{
 		// First some scafolding
 		DataSourcesMap: dataSources(),
-		// ResourcesMap: map[string]*schema.Resource{
-		// 	"kopicloud_computer": resourceComputer(),
-		// },
+		ResourcesMap:   resources(),
 		Schema: map[string]*schema.Schema{
 			"host": {
 				Type:        schema.TypeString,
@@ -59,6 +57,12 @@ func stringToTerraform(field_name string, obj string) map[string]interface{} {
 	return result
 }
 
+func fromSingleReturnValue(v interface{}) []interface{} {
+	result := make([]interface{}, 1)
+	result[0] = v
+	return result
+}
+
 func flattenStringList(list *[]string) []interface{} {
 	if list != nil {
 		results := make([]interface{}, len(*list))
@@ -68,6 +72,10 @@ func flattenStringList(list *[]string) []interface{} {
 		return results
 	}
 	return make([]interface{}, 0)
+}
+
+func wrapInArray(e interface{}) []interface{} {
+	return []interface{}{e}
 }
 
 func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
