@@ -24,6 +24,7 @@ compile:
     - echo $GOROOT
     - ls ~/go/bin
     - ls $GOROOT/bin
+    - find /
     - make clean install
   artifacts:
     paths:
