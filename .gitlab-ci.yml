@@ -22,6 +22,7 @@ compile:
     - export PATH=/go/bin:$PATH
     - go env
     - ls -al /usr/local/go/bin
+    - ls -al /go/bin 
   artifacts:
     paths:
       - mybinaries
