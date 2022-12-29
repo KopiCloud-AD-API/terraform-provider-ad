@@ -19,8 +19,9 @@ compile:
   script:
     - go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
     - go install gitlab.com/terraform-utilities/openapi-terraform-provider-generator@latest
-    - echo $GOPATH
+    - echo $GOPATH $GOROOT
     - ls ~/go/bin
+    - ls $GOROOT/bin
     - make clean install
   artifacts:
     paths:
