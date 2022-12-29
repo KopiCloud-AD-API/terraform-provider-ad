@@ -12,14 +12,14 @@ import (
 func dataSources() map[string]*schema.Resource {
 	return map[string]*schema.Resource {
 		{{range .DataSources }} 
-		"{{ .Terraform.Name }}": dataSource{{ .Name }}Resource(), 
+		"{{ .Terraform.Name }}": dataSource{{ .Name }}(), 
 		{{ end }}
 	}
 }
 
 {{range .DataSources }} 
 
-func dataSource{{ .Name }}Resource() *schema.Resource {
+func dataSource{{ .Name }}() *schema.Resource {
 	terraformSchema := {{ .SchemaFunction }}{{ default "()" .SchemaFunctionArguments }}
 	{{ range .Terraform.Arguments }}
 	terraformSchema["{{ .Name }}"] = &schema.Schema{
@@ -31,14 +31,35 @@ func dataSource{{ .Name }}Resource() *schema.Resource {
 	}
 	{{ end}}
 	return &schema.Resource{
-		ReadContext: resource{{ .Name }}Read,
+		ReadContext: dataSource{{ .Name }}Read,
 		Schema:      terraformSchema,
 	}
 }
 
-func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+{{ $n := .Name }}
+{{ $sF := .SchemaFunction }}
+{{ $sA := .SchemaFunctionArguments }}
+{{ $eN := .ElementName }}
+
+{{ range $crud, $definition := .CRUD }}
+
+	{{ $operation := enrichOperation $definition $n $sF $sA $eN }}
+
+	{{ if eq $crud "read" }}
+
+	{{ template "readFunction" $operation }}
+
+	{{end}}
+
+{{end}}
+
+{{end}}
+
+{{ define "readFunction" }}
+
+func dataSource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, "Beginning resource{{ .Name }}Read")
+	tflog.Debug(ctx, "Beginning dataSource{{ .Name }}Read")
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -87,11 +108,10 @@ func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m inte
 	} else {
 		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
 	}
-	tflog.Debug(ctx, "resource{{ .Name }}Read finished successfully",
+	tflog.Debug(ctx, "dataSource{{ .Name }}Read finished successfully",
 		map[string]interface{}{
 			"result": d,
 		})
 	return diags
 }
-
 {{end}}

@@ -9,6 +9,9 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 var (
@@ -63,21 +66,31 @@ type ApiArguments struct {
 }
 
 type ApiFunction struct {
-	Name      string         `json:"name"`
-	Arguments []ApiArguments `json:"arguments"`
-	ApiParams ParamsStruct   `json:"params"`
+	Name            string         `json:"name"`
+	ResultIsPointer bool           `json:"isPointer"`
+	Arguments       []ApiArguments `json:"arguments"`
+	ApiParams       ParamsStruct   `json:"params"`
+}
+
+type Operation struct {
+	ApiFunction             ApiFunction `json:"api_function"`
+	ResultField             string      `json:"result_field"`
+	ResultId                string      `json:"result_id"`
+	Name                    string
+	ApiToTerraformFunction  string `json:"api_to_terraform"`
+	ResultWrapperFunction   string `json:"result_wrapper"`
+	SchemaFunction          string `json:"schema_function"`
+	SchemaFunctionArguments string `json:"schema_function_arguments"`
+	ElementName             string
 }
 
 type Datasource struct {
-	Name                    string      `json:"name"`
-	Terraform               Terraform   `json:"terraform"`
-	ApiFunction             ApiFunction `json:"api_function"`
-	ApiToTerraformFunction  string      `json:"api_to_terraform"`
-	SchemaFunction          string      `json:"schema_function"`
-	SchemaFunctionArguments string      `json:"schema_function_arguments"`
-	ElementName             string      `json:"element_name"`
-	ResultField             string      `json:"result_field"`
-	ResultId                string      `json:"result_id"`
+	Name                    string               `json:"name"`
+	Terraform               Terraform            `json:"terraform"`
+	ElementName             string               `json:"element_name"`
+	SchemaFunction          string               `json:"schema_function"`
+	SchemaFunctionArguments string               `json:"schema_function_arguments"`
+	CRUD                    map[string]Operation `json:"crud"`
 }
 
 type InputData struct {
@@ -85,6 +98,7 @@ type InputData struct {
 	ApiPackage  string       `json:"api_package"`
 	Package     string       `json:"package"`
 	DataSources []Datasource `json:"data_sources"`
+	Resources   []Datasource `json:"resources"`
 }
 
 // Main function
@@ -118,7 +132,19 @@ func main() {
 
 	tmplName := fmt.Sprintf("%s.go.tmpl", *generate)
 	tmplFile := fmt.Sprintf("templates/%s", tmplName)
+	caser := cases.Title(language.Und, cases.NoLower)
 	tmpl, err := template.New(tmplName).Funcs(template.FuncMap{
+		"isPointer": func(p bool) string {
+			if p {
+				return "*"
+			} else {
+				return ""
+			}
+		},
+		"contains": func(k string, m map[string]interface{}) bool {
+			_, ok := m[k]
+			return ok
+		},
 		"default": func(d string, v string) string {
 			if v != "" {
 				return v
@@ -127,6 +153,14 @@ func main() {
 			}
 		},
 		"ToLower": strings.ToLower,
+		"toTitle": caser.String,
+		"enrichOperation": func(op Operation, n string, sF string, sFA string, en string) Operation {
+			op.Name = n
+			op.SchemaFunction = sF
+			op.SchemaFunctionArguments = sFA
+			op.ElementName = en
+			return op
+		},
 		"apiToTerraformType": func(t string) string {
 			switch t {
 			case "int":

@@ -1,0 +1,181 @@
+{
+    "api_alias": "kcapi",
+    "api_package": "kopicloud/api",
+    "package": "provider",
+    "resources" : [
+        {
+            "name": "Computer",
+            "terraform": {
+                "name": "kopicloud_computer",
+                "arguments": [
+                    {
+                        "name": "oupath",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "computer",
+                        "type": "schema.TypeString",
+                        "required": true
+                    }
+                ]
+            },
+            "schema_function": "schemaOfComputer",
+            "element_name": "Computer",
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiComputersADComputerNameWithResponse",
+                        "isPointer": true,
+                        "arguments": [
+                            {
+                                "name": "computer",
+                                "type": "string"
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiComputersADComputerNameParams",
+                            "fields": []
+                        }
+                    },
+                    "api_to_terraform": "computerToTerraform",
+                    "result_field": "computer",
+                    "result_id": "computer"
+                },
+                "delete": {
+                    "api_function": {
+                        "name": "DeleteApiComputersADComputerNameRemoveWithResponse",
+                        "arguments": [
+                            {
+                                "name": "computer",
+                                "type": "string"
+                            }
+                        ],
+                        "params": {
+                            "name": "DeleteApiComputersADComputerNameRemoveParams",
+                            "fields": [
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "ou_path",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },                
+                    "api_to_terraform": "fromSingleReturnValue",
+                    "result_field": "dns_record",
+                    "result_id": "dns_a_record"
+                }
+            }          
+        },
+        {
+            "name": "DnsARecord",
+            "terraform": {
+                "name": "kopicloud_dns_a_record",
+                "arguments": [
+                    {
+                        "name": "hostname",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "zone_name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "result",
+                        "type": "schema.TypeString",
+                        "computed": true
+                    }
+                ]
+            },
+            "schema_function": "schemaOfDnsRecordsList",
+            "element_name": "DnsARecord",
+            "crud": {
+                "create": {
+                    "api_function": {
+                        "name": "PostApiDnsARecordWithResponse",
+                        "isPointer": true,
+                        "arguments": [],
+                        "params": {
+                            "name": "PostApiDnsARecordParams",
+                            "fields": [
+                                {
+                                    "api_name": "DNSHostName",
+                                    "name": "hostname",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "IPAddress",
+                                    "name": "ip_address",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "ZoneName",
+                                    "name": "zone_name",
+                                    "type": "string"
+                                }
+
+                            ]
+                        }
+                    },                
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result_field": "dns_records_list",
+                    "result_id": "dns_a_records"
+                },
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsARecordWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsARecordParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenDnsRecordsList",
+                    "result_field": "dns_records_list",
+                    "result_id": "dns_a_records"
+                },
+                "delete": {
+                    "api_function": {
+                        "name": "DeleteApiDnsARecordWithResponse",
+                        "isPointer": true,
+                        "arguments": [],
+                        "params": {
+                            "name": "DeleteApiDnsARecordParams",
+                            "fields": [
+                                {
+                                    "api_name": "DNSHostName",
+                                    "name": "hostname",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "IPAddress",
+                                    "name": "ip_address",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "ZoneName",
+                                    "name": "zone_name",
+                                    "type": "string"
+                                }
+
+                            ]
+                        }
+                    },                
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result_field": "dns_records_list",
+                    "result_id": "dns_a_records"
+                }
+           }
+        }
+    ]
+}

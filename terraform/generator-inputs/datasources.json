@@ -9,19 +9,23 @@
                 "name": "kopicloud_all_computers",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiComputersAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiComputersAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenComputerList",
             "schema_function": "schemaOfComputerList",
             "element_name": "Computer",
-            "result_field": "computer_list",
-            "result_id": "all_computers"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiComputersAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiComputersAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenComputerList",
+                    "result_field": "computer_list",
+                    "result_id": "all_computers"        
+                }
+            }
         },
         {
             "name": "Computers",
@@ -40,30 +44,34 @@
                     }
                 ]
             },
-            "api_function": {
-                "name": "GetApiComputersWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiComputersParams",
-                    "fields": [
-                        {
-                            "api_name": "OUPath",
-                            "name": "oupath",
-                            "type": "string"
-                        },
-                        {
-                            "api_name": "Recursive",
-                            "name": "recursive",
-                            "type": "bool"
-                        }
-                    ]
-                }
-            },
-            "api_to_terraform": "flattenComputerList",
             "schema_function": "schemaOfComputerList",
             "element_name": "Computer",
-            "result_field": "computer_list",
-            "result_id": "all_computers"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiComputersWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiComputersParams",
+                            "fields": [
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "oupath",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "Recursive",
+                                    "name": "recursive",
+                                    "type": "bool"
+                                }
+                            ]
+                        }
+                    },
+                    "api_to_terraform": "flattenComputerList",
+                    "result_field": "computer_list",
+                    "result_id": "all_computers"
+                }
+            }
         },
         {
             "name": "ADGroupMembership",
@@ -77,25 +85,29 @@
                     }
                 ]
             },
-            "api_function": {
-                "name": "GetApiADUserUsernameGroupAllWithResponse",
-                "arguments": [
-                    {
-                        "name": "username",
-                        "type": "string"
-                    }
-                ],
-                "params": {
-                    "name": "GetApiADUserUsernameGroupAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenStringList",
             "schema_function": "schemaOfStringList",
             "schema_function_arguments": "(`ad_group_list`, `name`, `Name of the AD Group`)",
             "element_name": "GroupMembership",
-            "result_field": "ad_group_list",
-            "result_id": "all_ad_groups"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiADUserUsernameGroupAllWithResponse",
+                        "arguments": [
+                            {
+                                "name": "username",
+                                "type": "string"
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiADUserUsernameGroupAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenStringList",
+                    "result_field": "ad_group_list",
+                    "result_id": "all_ad_groups"
+                }
+            }
         },
         {
             "name": "AllADGroups",
@@ -103,20 +115,24 @@
                 "name": "kopicloud_all_ad_groups",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiADGroupsAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiADGroupsAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenStringList",
             "schema_function": "schemaOfStringList",
             "schema_function_arguments": "(`ad_group_list`, `name`, `Name of the AD Group`)",
             "element_name": "ADGroups",
-            "result_field": "ad_group_list",
-            "result_id": "all_ad_groups"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiADGroupsAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiADGroupsAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenStringList",
+                    "result_field": "ad_group_list",
+                    "result_id": "all_ad_groups"
+                }
+            }
         },
         {
             "name": "AllADUsers",
@@ -124,20 +140,24 @@
                 "name": "kopicloud_all_ad_users",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiADUserListUsersAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiADUserListUsersAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenStringList",
             "schema_function": "schemaOfStringList",
             "schema_function_arguments": "(`ad_user_list`, `name`, `Name of the AD User`)",
             "element_name": "ADUsers",
-            "result_field": "ad_user_list",
-            "result_id": "all_ad_users"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiADUserListUsersAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiADUserListUsersAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenStringList",
+                    "result_field": "ad_user_list",
+                    "result_id": "all_ad_users"
+                }
+            }
         },
         {
             "name": "AllOUModel",
@@ -145,19 +165,23 @@
                 "name": "kopicloud_all_ous",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiOUAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiOUAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenOUModelList",
             "schema_function": "schemaOfOUModelList",
             "element_name": "OUModel",
-            "result_field": "oumodel_list",
-            "result_id": "all_ou"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiOUAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiOUAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenOUModelList",
+                    "result_field": "oumodel_list",
+                    "result_id": "all_ou"
+                }
+            }
         },
         {
             "name": "AllDnsARecords",
@@ -165,19 +189,23 @@
                 "name": "kopicloud_all_dns_a_records",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiDnsARecordAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiDnsARecordAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenDnsRecordsList",
             "schema_function": "schemaOfDnsRecordsList",
             "element_name": "DnsARecord",
-            "result_field": "dns_records_list",
-            "result_id": "all_dns_a_records"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsARecordAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsARecordAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenDnsRecordsList",
+                    "result_field": "dns_records_list",
+                    "result_id": "all_dns_a_records"
+                }
+            }
         },
         {
             "name": "AllDnsAAAARecords",
@@ -185,19 +213,23 @@
                 "name": "kopicloud_all_dns_aaaa_records",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiDnsAAAARecordAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiDnsAAAARecordAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenDnsRecordsList",
             "schema_function": "schemaOfDnsRecordsList",
             "element_name": "DnsAAAARecord",
-            "result_field": "dns_records_list",
-            "result_id": "all_dns_aaaa_records"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsAAAARecordAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsAAAARecordAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenDnsRecordsList",
+                    "result_field": "dns_records_list",
+                    "result_id": "all_dns_aaaa_records"
+                }
+            }
         },        
         {
             "name": "AllDnsCNameRecords",
@@ -205,19 +237,23 @@
                 "name": "kopicloud_all_dns_cname_records",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiDnsCNameRecordAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiDnsCNameRecordAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenDnsRecordsList",
             "schema_function": "schemaOfDnsRecordsList",
-            "element_name": "DnsCNameRecord",
             "result_field": "dns_records_list",
-            "result_id": "all_dns_cname_records"
+            "element_name": "DnsCNameRecord",
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsCNameRecordAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsCNameRecordAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenDnsRecordsList",
+                    "result_id": "all_dns_cname_records"
+                }
+            }
         },
         {
             "name": "AllDnsZones",
@@ -225,20 +261,24 @@
                 "name": "kopicloud_all_dns_zones",
                 "arguments": []
             },
-            "api_function": {
-                "name": "GetApiDnsZonesAllWithResponse",
-                "arguments": [],
-                "params": {
-                    "name": "GetApiDnsZonesAllParams",
-                    "fields": []
-                }
-            },                
-            "api_to_terraform": "flattenStringList",
             "schema_function": "schemaOfStringList",
             "schema_function_arguments": "(`dns_zones_list`, `name`, `Name of the DNS Zone`)",
             "element_name": "DnsZones",
-            "result_field": "dns_zones_list",
-            "result_id": "all_dns_zones"
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsZonesAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsZonesAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenStringList",
+                    "result_field": "dns_zones_list",
+                    "result_id": "all_dns_zones"
+                }
+            }
         }
 
     ]
