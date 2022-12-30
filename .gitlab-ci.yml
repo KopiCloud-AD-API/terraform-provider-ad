@@ -22,12 +22,13 @@ compile:
     - pwd
     - go env
     - ls /go/bin
-    - make clean install
-  artifacts:
-    paths:
-      - mybinaries
+    - make clean build
 
 deploy:
   stage: deploy
-  script: echo "Define your deployment script!"
-  environment: production
+  script: 
+    - make release
+  artifacts:
+    paths:
+      - terraform/bin
+
