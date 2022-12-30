@@ -3,7 +3,8 @@ HOSTNAME=gitlab.com
 NAMESPACE=kopicloud
 NAME=kopicloud-ad-tf-provider
 BINARY=terraform-provider-${NAME}
-VERSION=0.0.1
+VERSION=`git describe --tags`
+BUILD=`date +%FT%T%z`
 OS=darwin
 OS_ARCH=arm64
 
