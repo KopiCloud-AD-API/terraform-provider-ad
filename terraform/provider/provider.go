@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	kcapi "kopicloud/api"
+	kcapi "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
 )
 
 // Provider -

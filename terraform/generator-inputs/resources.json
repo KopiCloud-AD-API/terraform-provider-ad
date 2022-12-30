@@ -1,6 +1,6 @@
 {
     "api_alias": "kcapi",
-    "api_package": "kopicloud/api",
+    "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
     "package": "provider",
     "resources" : [
         {
