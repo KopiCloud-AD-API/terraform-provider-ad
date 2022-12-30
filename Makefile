@@ -24,3 +24,6 @@ install: build
 	$(MAKE) -C generator install
 	$(MAKE) -C terraform install
 
+release:
+	$(MAKE) -C terraform release
+
