@@ -39,8 +39,10 @@
                         }
                     },
                     "api_to_terraform": "computerToTerraform",
-                    "result_field": "computer",
-                    "result_id": "computer"
+                    "result": {
+                        "name": "computer",
+                        "prefix": "computer"                    
+                    }
                 },
                 "delete": {
                     "api_function": {
@@ -63,8 +65,10 @@
                         }
                     },                
                     "api_to_terraform": "fromSingleReturnValue",
-                    "result_field": "dns_record",
-                    "result_id": "dns_a_record"
+                    "result": {
+                        "name": "computer",
+                        "prefix": "computer"                    
+                    }
                 }
             }          
         },
@@ -127,8 +131,11 @@
                     },                
                     "api_to_terraform": "dns_recordsToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "result_field": "dns_records_list",
-                    "result_id": "dns_a_records"
+                    "result": {
+                        "name": "dns_a_record",
+                        "prefix": "dns_a_record",
+                        "field": "ip_address"                    
+                    }
                 },
                 "read": {
                     "api_function": {
@@ -140,8 +147,10 @@
                         }
                     },                
                     "api_to_terraform": "flattenDnsRecordsList",
-                    "result_field": "dns_records_list",
-                    "result_id": "dns_a_records"
+                    "result": {
+                        "name": "dns_a_records",
+                        "prefix": "dns_a_records"
+                    }
                 },
                 "delete": {
                     "api_function": {
@@ -172,8 +181,11 @@
                     },                
                     "api_to_terraform": "dns_recordsToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "result_field": "dns_records_list",
-                    "result_id": "dns_a_records"
+                    "result": {
+                        "name": "dns_a_record",
+                        "prefix": "dns_a_record",
+                        "field": "ip_address"                    
+                    }
                 }
            }
         }

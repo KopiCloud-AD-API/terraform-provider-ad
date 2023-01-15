@@ -72,15 +72,19 @@ type ApiFunction struct {
 	ApiParams       ParamsStruct   `json:"params"`
 }
 
+type TerraformResult struct {
+	Name   string `json:"name"`
+	Prefix string `json:"prefix"`
+	Field  string `json:"field"`
+}
 type Operation struct {
-	ApiFunction             ApiFunction `json:"api_function"`
-	ResultField             string      `json:"result_field"`
-	ResultId                string      `json:"result_id"`
+	ApiFunction             ApiFunction     `json:"api_function"`
+	Result                  TerraformResult `json:"result"`
+	ApiToTerraformFunction  string          `json:"api_to_terraform"`
+	ResultWrapperFunction   string          `json:"result_wrapper"`
+	SchemaFunction          string          `json:"schema_function"`
+	SchemaFunctionArguments string          `json:"schema_function_arguments"`
 	Name                    string
-	ApiToTerraformFunction  string `json:"api_to_terraform"`
-	ResultWrapperFunction   string `json:"result_wrapper"`
-	SchemaFunction          string `json:"schema_function"`
-	SchemaFunctionArguments string `json:"schema_function_arguments"`
 	ElementName             string
 }
 
@@ -134,6 +138,9 @@ func main() {
 	tmplFile := fmt.Sprintf("templates/%s", tmplName)
 	caser := cases.Title(language.Und, cases.NoLower)
 	tmpl, err := template.New(tmplName).Funcs(template.FuncMap{
+		"isNotEmpty": func(s string) bool {
+			return len(s) > 0
+		},
 		"isPointer": func(p bool) string {
 			if p {
 				return "*"

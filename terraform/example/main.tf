@@ -1,7 +1,8 @@
 terraform {
   required_providers {
     kopicloud = {
-      source  = "gitlab.com/kopicloud/kopicloud-ad-tf-provider"
+      source  = "gitlab.com/kopicloud/kopicloud-ad-tf-provider",
+      version = "~> 0.0.2"
     }
   }
 }
