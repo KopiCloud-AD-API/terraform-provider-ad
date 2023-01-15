@@ -1,8 +1,7 @@
 terraform {
   required_providers {
     kopicloud = {
-      source  = "gitlab.com/kopicloud/kopicloud-ad-tf-provider",
-      version = "~> 0.0.2"
+      source  = "gitlab.com/kopicloud/kopicloud-ad-tf-provider"
     }
   }
 }
@@ -100,8 +99,8 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_dns_a_record" "test" {
-  hostname = "computer15"
-  ip_address = "10.20.1.223"
+  hostname = "computer27"
+  ip_address = "10.20.1.235"
   zone_name = "kopicloud.local"
 }
 

@@ -66,7 +66,7 @@
                     },                
                     "api_to_terraform": "fromSingleReturnValue",
                     "result": {
-                        "name": "computer",
+                        "name": "result",
                         "prefix": "computer"                    
                     }
                 }
@@ -132,7 +132,7 @@
                     "api_to_terraform": "dns_recordsToTerraform",
                     "result_wrapper": "wrapInArray",
                     "result": {
-                        "name": "dns_a_record",
+                        "name": "dns_records_list",
                         "prefix": "dns_a_record",
                         "field": "ip_address"                    
                     }
@@ -148,7 +148,7 @@
                     },                
                     "api_to_terraform": "flattenDnsRecordsList",
                     "result": {
-                        "name": "dns_a_records",
+                        "name": "dns_records_list",
                         "prefix": "dns_a_records"
                     }
                 },
@@ -182,7 +182,7 @@
                     "api_to_terraform": "dns_recordsToTerraform",
                     "result_wrapper": "wrapInArray",
                     "result": {
-                        "name": "dns_a_record",
+                        "name": "dns_records_list",
                         "prefix": "dns_a_record",
                         "field": "ip_address"                    
                     }

@@ -123,7 +123,7 @@ func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m inte
 			{{ else }}
 			result := resItems
 			{{ end }}
-			for _, element := range resItems {
+			for _, element := range result {
 				tflog.Debug(ctx, "converted {{ .ElementName }}",
 					map[string]interface{}{
 						"{{ .ElementName }}": element,
@@ -201,7 +201,7 @@ func resource{{ .Name }}Create(ctx context.Context, d *schema.ResourceData, m in
 			result := resItems
 			{{ end }}
 
-			for _, element := range resItems {
+			for _, element := range result {
 				tflog.Debug(ctx, "converted {{ .ElementName }}",
 					map[string]interface{}{
 						"{{ .ElementName }}": element,
@@ -280,7 +280,7 @@ func resource{{ .Name }}Delete(ctx context.Context, d *schema.ResourceData, m in
 			{{ else }}
 			result := resItems
 			{{ end }}
-			for _, element := range resItems {
+			for _, element := range result {
 				tflog.Debug(ctx, "converted {{ .ElementName }}",
 					map[string]interface{}{
 						"{{ .ElementName }}": element,
