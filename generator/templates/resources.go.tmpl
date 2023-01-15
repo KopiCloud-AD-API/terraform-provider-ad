@@ -2,6 +2,7 @@ package {{ .Package }}
 
 import (
 	"context"
+	"fmt"
 	{{ .ApiAlias }} "{{ .ApiPackage }}"
 
 	"github.com/hashicorp/terraform-plugin-log/tflog"
@@ -77,7 +78,7 @@ func resource{{ .Name }}() *schema.Resource {
 
 func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, "Beginning resource{{ .Name }}Read")
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resource{{ .Name }}Read"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -128,10 +129,16 @@ func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m inte
 						"{{ .ElementName }}": element,
 					})
 			}
-			if err := d.Set("{{ .ResultField }}", result); err != nil {
+
+			if err := d.Set("{{ .Result.Name }}", result); err != nil {
 				return diag.FromErr(err)
 			}
-			d.SetId("{{ .ResultId }}")
+
+			{{ if isNotEmpty .Result.Field }}
+			d.SetId(getResultId(resItems, "{{ .Result.Prefix }}", "{{ .Result.Field }}"))
+			{{ else }}
+			d.SetId("{{ .Result.Prefix }}")
+			{{ end }}
 		}
 	} else {
 		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
@@ -193,16 +200,23 @@ func resource{{ .Name }}Create(ctx context.Context, d *schema.ResourceData, m in
 			{{ else }}
 			result := resItems
 			{{ end }}
+
 			for _, element := range resItems {
 				tflog.Debug(ctx, "converted {{ .ElementName }}",
 					map[string]interface{}{
 						"{{ .ElementName }}": element,
 					})
 			}
-			if err := d.Set("{{ .ResultField }}", result); err != nil {
+
+			if err := d.Set("{{ .Result.Name }}", result); err != nil {
 				return diag.FromErr(err)
 			}
-			d.SetId("{{ .ResultId }}")
+
+			{{ if isNotEmpty .Result.Field }}
+			d.SetId(getResultId(resItems, "{{ .Result.Prefix }}", "{{ .Result.Field }}"))
+			{{ else }}
+			d.SetId("{{ .Result.Prefix }}")
+			{{ end }}
 		}
 	} else {
 		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
@@ -272,10 +286,16 @@ func resource{{ .Name }}Delete(ctx context.Context, d *schema.ResourceData, m in
 						"{{ .ElementName }}": element,
 					})
 			}
-			if err := d.Set("{{ .ResultField }}", result); err != nil {
+
+			if err := d.Set("{{ .Result.Name }}", result); err != nil {
 				return diag.FromErr(err)
 			}
-			d.SetId("{{ .ResultId }}")
+			
+			{{ if isNotEmpty .Result.Field }}
+			d.SetId(getResultId(resItems, "{{ .Result.Prefix }}", "{{ .Result.Field }}"))
+			{{ else }}
+			d.SetId("{{ .Result.Prefix }}")
+			{{ end }}
 		}
 	} else {
 		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
