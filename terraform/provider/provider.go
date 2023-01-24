@@ -89,6 +89,14 @@ func getId_for_DnsARecords(obj *api.DnsRecords) string {
 	return fmt.Sprintf("DnsARecord_%s_%s", *obj.Name, *obj.Data)
 }
 
+func getId_for_DnsAAAARecords(obj *api.DnsRecords) string {
+	return fmt.Sprintf("DnsAAAARecord_%s_%s_%s", *obj.Zone, *obj.Name, *obj.Data)
+}
+
+func getId_for_DnsCNameRecords(obj *api.DnsRecords) string {
+	return fmt.Sprintf("DnsCNameRecord_%s_%s", *obj.Name, *obj.Data)
+}
+
 type ApiClient struct {
 	data   *schema.ResourceData
 	client *kcapi.ClientWithResponses
