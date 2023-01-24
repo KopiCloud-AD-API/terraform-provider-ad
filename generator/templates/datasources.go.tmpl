@@ -18,15 +18,6 @@ func dataSources() map[string]*schema.Resource {
 	}
 }
 
-func getResultId(result map[string]interface{}, prefix string, field string) string {
-	if val, ok := result[field]; ok {
-		return fmt.Sprintf("%s_%s", prefix, val)
-	} else {
-		return fmt.Sprintf("%s", prefix)
-	}
-}
-
-
 {{range .DataSources }} 
 
 func dataSource{{ .Name }}() *schema.Resource {
@@ -53,7 +44,7 @@ func dataSource{{ .Name }}() *schema.Resource {
 
 {{ range $crud, $definition := .CRUD }}
 
-	{{ $operation := enrichOperation $definition $n $sF $sA $eN }}
+	{{ $operation := enrichOperation $definition $n $crud $sF $sA $eN }}
 
 	{{ if eq $crud "read" }}
 
@@ -122,10 +113,10 @@ func dataSource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m in
 			return diag.FromErr(err)
 		}
 
-		{{ if isNotEmpty .Result.Field }}
-		d.SetId(getResultId(resItems, "{{ .Result.Prefix }}", "{{ .Result.Field }}"))
+		{{ if isNotEmpty .Result.IdFn }}
+		d.SetId({{ .Result.IdFn }}(res.JSON200))
 		{{ else }}
-		d.SetId("{{ .Result.Prefix }}")
+		d.SetId("{{ .Result.Id }}")
 		{{ end }}
 	} else {
 		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")

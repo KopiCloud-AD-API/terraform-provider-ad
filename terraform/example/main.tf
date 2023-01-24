@@ -66,13 +66,13 @@ provider "kopicloud" {
 #   value = data.kopicloud_all_ous.test
 # }
 
-# data "kopicloud_all_dns_a_records" "test" {}
+data "kopicloud_all_dns_a_records" "test" {}
 
-# # Returns all DNS A Records
-# output "all_dns_a_records" {
-#   description = "Existing DNS A Records"
-#   value = data.kopicloud_all_dns_a_records.test
-# }
+# Returns all DNS A Records
+output "all_dns_a_records" {
+  description = "Existing DNS A Records"
+  value = data.kopicloud_all_dns_a_records.test
+}
 
 # data "kopicloud_all_dns_aaaa_records" "test" {}
 
@@ -98,13 +98,13 @@ provider "kopicloud" {
 #   value = data.kopicloud_all_dns_zones.test
 # }
 
-resource "kopicloud_dns_a_record" "test" {
-  hostname = "computer27"
-  ip_address = "10.20.1.235"
-  zone_name = "kopicloud.local"
-}
+# resource "kopicloud_dns_a_record" "test" {
+#   hostname = "computer30"
+#   ip_address = "10.20.1.238"
+#   zone_name = "kopicloud.local"
+# }
 
-output "dns_record" {
-  description = "Created DNS Record"
-  value = resource.kopicloud_dns_a_record.test
-}
+# output "dns_record" {
+#   description = "Created DNS Record"
+#   value = resource.kopicloud_dns_a_record.test
+# }

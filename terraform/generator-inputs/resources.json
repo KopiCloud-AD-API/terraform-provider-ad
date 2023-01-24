@@ -41,7 +41,7 @@
                     "api_to_terraform": "computerToTerraform",
                     "result": {
                         "name": "computer",
-                        "prefix": "computer"                    
+                        "id": "computer"                    
                     }
                 },
                 "delete": {
@@ -67,7 +67,7 @@
                     "api_to_terraform": "fromSingleReturnValue",
                     "result": {
                         "name": "result",
-                        "prefix": "computer"                    
+                        "id": "computer"                    
                     }
                 }
             }          
@@ -91,11 +91,6 @@
                         "name": "zone_name",
                         "type": "schema.TypeString",
                         "optional": true
-                    },
-                    {
-                        "name": "result",
-                        "type": "schema.TypeString",
-                        "computed": true
                     }
                 ]
             },
@@ -133,8 +128,7 @@
                     "result_wrapper": "wrapInArray",
                     "result": {
                         "name": "dns_records_list",
-                        "prefix": "dns_a_record",
-                        "field": "ip_address"                    
+                        "id_function": "getId_for_DnsARecords"                    
                     }
                 },
                 "read": {
@@ -149,7 +143,7 @@
                     "api_to_terraform": "flattenDnsRecordsList",
                     "result": {
                         "name": "dns_records_list",
-                        "prefix": "dns_a_records"
+                        "id": "dns_a_records"
                     }
                 },
                 "delete": {
@@ -183,8 +177,7 @@
                     "result_wrapper": "wrapInArray",
                     "result": {
                         "name": "dns_records_list",
-                        "prefix": "dns_a_record",
-                        "field": "ip_address"                    
+                        "id_function": "getId_for_DnsARecords"                    
                     }
                 }
            }

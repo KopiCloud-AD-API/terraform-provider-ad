@@ -2,10 +2,12 @@ package provider
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
+	api "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
 	kcapi "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
 )
 
@@ -81,6 +83,10 @@ func wrapInArray(e interface{}) []interface{} {
 func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
 	return NewApiClient(d)
 
+}
+
+func getId_for_DnsARecords(obj *api.DnsRecords) string {
+	return fmt.Sprintf("DnsARecord_%s_%s", *obj.Name, *obj.Data)
 }
 
 type ApiClient struct {

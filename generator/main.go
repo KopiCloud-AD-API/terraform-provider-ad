@@ -73,9 +73,9 @@ type ApiFunction struct {
 }
 
 type TerraformResult struct {
-	Name   string `json:"name"`
-	Prefix string `json:"prefix"`
-	Field  string `json:"field"`
+	Name string `json:"name"`
+	Id   string `json:"id"`
+	IdFn string `json:"id_function"`
 }
 type Operation struct {
 	ApiFunction             ApiFunction     `json:"api_function"`
@@ -86,6 +86,7 @@ type Operation struct {
 	SchemaFunctionArguments string          `json:"schema_function_arguments"`
 	Name                    string
 	ElementName             string
+	CRUD                    string
 }
 
 type Datasource struct {
@@ -161,8 +162,9 @@ func main() {
 		},
 		"ToLower": strings.ToLower,
 		"toTitle": caser.String,
-		"enrichOperation": func(op Operation, n string, sF string, sFA string, en string) Operation {
+		"enrichOperation": func(op Operation, n string, c string, sF string, sFA string, en string) Operation {
 			op.Name = n
+			op.CRUD = c
 			op.SchemaFunction = sF
 			op.SchemaFunctionArguments = sFA
 			op.ElementName = en
