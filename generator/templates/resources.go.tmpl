@@ -49,34 +49,17 @@ func resource{{ .Name }}() *schema.Resource {
 
 {{ range $crud, $definition := .CRUD }}
 
-{{ $operation := enrichOperation $definition $n $sF $sA $eN }}
+	{{ $operation := enrichOperation $definition $n $crud $sF $sA $eN }}
 
-{{ if eq $crud "read" }}
-
-	{{ template "readFunction" $operation }}
-
-{{end}}
-
-{{ if eq $crud "create" }}
-
-	{{ template "createFunction" $operation }}
-
-{{end}}
-
-{{ if eq $crud "delete" }}
-
-	{{ template "deleteFunction" $operation }}
-
-{{end}}
-
+	{{ template "crudFunction" $operation }}
 
 {{end}}
 
 {{end}}
 
-{{ define "readFunction" }}
+{{ define "crudFunction" }}
 
-func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func resource{{ .Name }}{{ .CRUD | toTitle }}(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
 	tflog.Debug(ctx, fmt.Sprintf("Beginning resource{{ .Name }}Read"))
 	var diags diag.Diagnostics
@@ -123,6 +106,7 @@ func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m inte
 			{{ else }}
 			result := resItems
 			{{ end }}
+
 			for _, element := range result {
 				tflog.Debug(ctx, "converted {{ .ElementName }}",
 					map[string]interface{}{
@@ -134,10 +118,10 @@ func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m inte
 				return diag.FromErr(err)
 			}
 
-			{{ if isNotEmpty .Result.Field }}
-			d.SetId(getResultId(resItems, "{{ .Result.Prefix }}", "{{ .Result.Field }}"))
+			{{ if isNotEmpty .Result.IdFn }}
+			d.SetId({{ .Result.IdFn }}(res.JSON200))
 			{{ else }}
-			d.SetId("{{ .Result.Prefix }}")
+			d.SetId("{{ .Result.Id }}")
 			{{ end }}
 		}
 	} else {
@@ -151,161 +135,3 @@ func resource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m inte
 }
 {{end}}
 
-{{ define "createFunction" }}
-
-func resource{{ .Name }}Create(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, "Beginning resource{{ .Name }}Create")
-	var diags diag.Diagnostics
-	c := m.(*ApiClient)
-	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
-					"client_data": c.data,
-					"schema_data": d,
-				})
-
-	{{range .ApiFunction.ApiParams.Fields }} 
-	{{ .Name | ToLower }}:= d.Get("{{ .Name }}").({{ .Type }})
-	{{ end }}
-
-	params := kcapi.{{ .ApiFunction.ApiParams.Name }}{
-		AuthToken: c.data.Get("token").(string),
-		{{range .ApiFunction.ApiParams.Fields }} 
-		{{ .ApiName }}: &{{ .Name | ToLower }},
-		{{ end }}
-	}
-
-	{{range .ApiFunction.Arguments }} 
-	{{ .Name | ToLower }}:= d.Get("{{ .Name }}").({{ .Type }})
-	{{ end }}
-
-	res, err := c.client.{{ .ApiFunction.Name }}(
-		ctx, 
-		{{range .ApiFunction.Arguments }} 
-		{{ .Name | ToLower }},
-		{{ end }}		
-		&params)
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
-	{{ $ptr := isPointer .ApiFunction.ResultIsPointer }}
-	if res != nil {
-		if res.HTTPResponse.StatusCode != 200 {
-			return diag.Errorf(string(res.Body))
-		} else {
-			//As the return item is a []Computers, lets Unmarshal it into "computers"
-			resItems := {{ .ApiToTerraformFunction }}({{$ptr}}res.JSON200)
-			{{ if .ResultWrapperFunction }}
-			result := {{ .ResultWrapperFunction }}(resItems)
-			{{ else }}
-			result := resItems
-			{{ end }}
-
-			for _, element := range result {
-				tflog.Debug(ctx, "converted {{ .ElementName }}",
-					map[string]interface{}{
-						"{{ .ElementName }}": element,
-					})
-			}
-
-			if err := d.Set("{{ .Result.Name }}", result); err != nil {
-				return diag.FromErr(err)
-			}
-
-			{{ if isNotEmpty .Result.Field }}
-			d.SetId(getResultId(resItems, "{{ .Result.Prefix }}", "{{ .Result.Field }}"))
-			{{ else }}
-			d.SetId("{{ .Result.Prefix }}")
-			{{ end }}
-		}
-	} else {
-		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
-	}
-	tflog.Debug(ctx, "resource{{ .Name }}Create finished successfully",
-		map[string]interface{}{
-			"result": d,
-		})
-	return diags
-
-}
-
-{{end}}
-
-{{ define "deleteFunction" }}
-
-func resource{{ .Name }}Delete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, "Beginning resource{{ .Name }}Create")
-	var diags diag.Diagnostics
-	c := m.(*ApiClient)
-	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
-					"client_data": c.data,
-					"schema_data": d,
-				})
-
-	{{range .ApiFunction.ApiParams.Fields }} 
-	{{ .Name | ToLower }}:= d.Get("{{ .Name }}").({{ .Type }})
-	{{ end }}
-
-	params := kcapi.{{ .ApiFunction.ApiParams.Name }}{
-		AuthToken: c.data.Get("token").(string),
-		{{range .ApiFunction.ApiParams.Fields }} 
-		{{ .ApiName }}: &{{ .Name | ToLower }},
-		{{ end }}
-	}
-
-	{{range .ApiFunction.Arguments }} 
-	{{ .Name | ToLower }}:= d.Get("{{ .Name }}").({{ .Type }})
-	{{ end }}
-
-	res, err := c.client.{{ .ApiFunction.Name }}(
-		ctx, 
-		{{range .ApiFunction.Arguments }} 
-		{{ .Name | ToLower }},
-		{{ end }}		
-		&params)
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
-	{{ $ptr := isPointer .ApiFunction.ResultIsPointer }}
-	if res != nil {
-		if res.HTTPResponse.StatusCode != 200 {
-			diag.Errorf(string(res.Body))
-		} else {
-			//As the return item is a []Computers, lets Unmarshal it into "computers"
-			resItems := {{ .ApiToTerraformFunction }}({{$ptr}}res.JSON200)
-			{{ if .ResultWrapperFunction }}
-			result := {{ .ResultWrapperFunction }}(resItems)
-			{{ else }}
-			result := resItems
-			{{ end }}
-			for _, element := range result {
-				tflog.Debug(ctx, "converted {{ .ElementName }}",
-					map[string]interface{}{
-						"{{ .ElementName }}": element,
-					})
-			}
-
-			if err := d.Set("{{ .Result.Name }}", result); err != nil {
-				return diag.FromErr(err)
-			}
-			
-			{{ if isNotEmpty .Result.Field }}
-			d.SetId(getResultId(resItems, "{{ .Result.Prefix }}", "{{ .Result.Field }}"))
-			{{ else }}
-			d.SetId("{{ .Result.Prefix }}")
-			{{ end }}
-		}
-	} else {
-		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
-	}
-	tflog.Debug(ctx, "resource{{ .Name }}Create finished successfully",
-		map[string]interface{}{
-			"result": d,
-		})
-	return diags
-
-}
-
-{{end}}

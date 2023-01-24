@@ -24,7 +24,7 @@
                     "api_to_terraform": "flattenComputerList",
                     "result": {
                         "name": "computer_list",
-                        "prefix": "all_computers"                    
+                        "id": "all_computers"                    
                     }
                 }
             }
@@ -72,7 +72,7 @@
                     "api_to_terraform": "flattenComputerList",
                     "result": {
                         "name": "computer_list",
-                        "prefix": "all_computers"                    
+                        "id": "all_computers"                    
                     }
                 }
             }
@@ -110,7 +110,7 @@
                     "api_to_terraform": "flattenStringList",
                     "result": {
                         "name": "ad_group_list",
-                        "prefix": "all_ad_groups"                    
+                        "id": "all_ad_groups"                    
                     }
                 }
             }
@@ -137,7 +137,7 @@
                     "api_to_terraform": "flattenStringList",
                     "result": {
                         "name": "ad_group_list",
-                        "prefix": "all_ad_groups"                    
+                        "id": "all_ad_groups"                    
                     }
                 }
             }
@@ -164,7 +164,7 @@
                     "api_to_terraform": "flattenStringList",
                     "result": {
                         "name": "ad_user_list",
-                        "prefix": "all_ad_users"                    
+                        "id": "all_ad_users"                    
                     }
                 }
             }
@@ -190,7 +190,7 @@
                     "api_to_terraform": "flattenOUModelList",
                     "result": {
                         "name": "oumodel_list",
-                        "prefix": "all_ou"                    
+                        "id": "all_ou"                    
                     }
                 }
             }
@@ -215,8 +215,8 @@
                     },                
                     "api_to_terraform": "flattenDnsRecordsList",
                     "result": {
-                        "name": "dns_a_records_list",
-                        "prefix": "all_dns_a_records"                    
+                        "name": "dns_records_list",
+                        "id": "all_dns_a_records"                    
                     }
                 }
             }
@@ -241,8 +241,8 @@
                     },                
                     "api_to_terraform": "flattenDnsRecordsList",
                     "result": {
-                        "name": "dns_aaa_records_list",
-                        "prefix": "all_dns_aaaa_records"                    
+                        "name": "dns_records_list",
+                        "id": "all_dns_aaaa_records"                    
                     }
                 }
             }
@@ -268,8 +268,8 @@
                     },         
                     "api_to_terraform": "flattenDnsRecordsList",       
                     "result": {
-                        "name": "dns_cname_records_list",
-                        "prefix": "all_dns_cname_records"                    
+                        "name": "dns_records_list",
+                        "id": "all_dns_cname_records"                    
                     }
                 }
             }
@@ -296,7 +296,7 @@
                     "api_to_terraform": "flattenStringList",
                     "result": {
                         "name": "dns_zones_list",
-                        "prefix": "dns_zones_list"                    
+                        "id": "dns_zones_list"                    
                     }
                 }
             }
