@@ -401,6 +401,86 @@
                     }
                 }
            }
+        },
+        {
+            "name": "DnsLookupZone",
+            "terraform": {
+                "name": "kopicloud_dns_lookup_zone",
+                "arguments": [
+                    {
+                        "name": "name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
+            },
+            "schema_function": "schemaOfStringList",
+            "schema_function_arguments": "(`dns_lookup_zone_list`, `name`, `Name of the DNS Lookup Zone`)",
+            "element_name": "DnsLookupZone",
+            "crud": {
+                "create": {
+                    "api_function": {
+                        "name": "PostApiDnsLookupZoneZoneNameWithResponse",
+                        "isPointer": true,
+                        "arguments": [
+                            {
+                                "api_name": "ZoneName",
+                                "name": "name",
+                                "type": "string"
+                            }
+                        ],
+                        "params": {
+                            "name": "PostApiDnsLookupZoneZoneNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "stringToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result": {
+                        "name": "dns_lookup_zone_list",
+                        "id_function": "getId_for_DnsLookupZone"                    
+                    }
+                },
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsZonesAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsZonesAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "flattenStringList",
+                    "result": {
+                        "name": "dns_lookup_zone_list",
+                        "id": "all_dns_lookup_zones"
+                    }
+                },
+                "delete": {
+                    "api_function": {
+                        "name": "DeleteApiDnsZoneZoneNameWithResponse",
+                        "isPointer": true,
+                        "arguments": [
+                            {
+                                "api_name": "ZoneName",
+                                "name": "name",
+                                "type": "string"
+                            }
+                        ],
+                        "params": {
+                            "name": "DeleteApiDnsZoneZoneNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "stringToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result": {
+                        "name": "dns_lookup_zone_list",
+                        "id_function": "getId_for_DnsLookupZone"                    
+                    }
+                }
+
+           }
         }
     ]
 }

@@ -53,7 +53,7 @@ func schemaOfStringList(list_name string, field_name string, description string)
 	}
 }
 
-func stringToTerraform(field_name string, obj string) map[string]interface{} {
+func stringToTerraform(obj string) map[string]interface{} {
 	result := make(map[string]interface{})
 	result["name"] = obj
 	return result
@@ -69,7 +69,7 @@ func flattenStringList(list *[]string) []interface{} {
 	if list != nil {
 		results := make([]interface{}, len(*list))
 		for i, value := range *list {
-			results[i] = stringToTerraform("name", value)
+			results[i] = stringToTerraform(value)
 		}
 		return results
 	}
@@ -95,6 +95,10 @@ func getId_for_DnsAAAARecords(obj *api.DnsRecords) string {
 
 func getId_for_DnsCNameRecords(obj *api.DnsRecords) string {
 	return fmt.Sprintf("DnsCNameRecord_%s_%s", *obj.Name, *obj.Data)
+}
+
+func getId_for_DnsLookupZone(name *string) string {
+	return fmt.Sprintf("DnsLookupZone_%s", *name)
 }
 
 type ApiClient struct {
