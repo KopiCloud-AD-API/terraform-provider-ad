@@ -115,14 +115,29 @@ func main() {
 		os.Exit(0)
 	}
 
-	inputFile, err := ioutil.ReadFile(*input)
-	if err != nil {
-		panic(err)
-	}
 	data := InputData{}
-	err = json.Unmarshal([]byte(inputFile), &data)
-	if err != nil {
-		panic(err)
+	inputs := strings.Split(*input, ",")
+	for i, input := range inputs {
+		inputFile, err := ioutil.ReadFile(input)
+		if err != nil {
+			panic(err)
+		}
+
+		parsed := InputData{}
+		err = json.Unmarshal([]byte(inputFile), &parsed)
+		if err != nil {
+			panic(err)
+		}
+		if i == 0 {
+			data.ApiAlias = parsed.ApiAlias
+			data.ApiPackage = parsed.ApiPackage
+			data.Package = parsed.Package
+			data.DataSources = parsed.DataSources
+			data.Resources = parsed.Resources
+		} else {
+			data.DataSources = append(data.DataSources, parsed.DataSources...)
+			data.Resources = append(data.Resources, parsed.Resources...)
+		}
 	}
 
 	if *output == unset {
