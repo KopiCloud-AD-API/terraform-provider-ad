@@ -121,45 +121,45 @@ List of Methods
 
 ## DNS A Records
 
-[ ] GET /api/DnsARecord/All - List All DNS A Records in All Zones
+[x] GET /api/DnsARecord/All - List All DNS A Records in All Zones
 
-[ ] GET /api/DnsARecord - List All DNS A Records in a DNS Zone
+[x] GET /api/DnsARecord - List All DNS A Records in a DNS Zone
 
-[ ] POST /api/DnsARecord - Create a DNS A Records
+[x] POST /api/DnsARecord - Create a DNS A Records
 
-[ ] DELETE /api/DnsARecord - Delete a DNS A Record
+[x] DELETE /api/DnsARecord - Delete a DNS A Record
 
 
 ## DNS AAAA Records
 
-[ ] GET /api/DnsAAAARecord/All - List All DNS AAAA Records in All Zones
+[x] GET /api/DnsAAAARecord/All - List All DNS AAAA Records in All Zones
 
-[ ] GET /api/DnsAAAARecord - List All DNS AAAA Records in a DNS Zone
+[x] GET /api/DnsAAAARecord - List All DNS AAAA Records in a DNS Zone
 
-[ ] POST /api/DnsAAAARecord - Create a DNS AAAA Records
+[x] POST /api/DnsAAAARecord - Create a DNS AAAA Records
 
-[ ] DELETE /api/DnsAAAARecord - Delete a DNS A Record
+[x] DELETE /api/DnsAAAARecord - Delete a DNS A Record
 
 
 ## DNS CNAME Records
 
-[ ] GET /api/DnsCNameRecord/All - List All DNS CNAME Records in All Zones
+[x] GET /api/DnsCNameRecord/All - List All DNS CNAME Records in All Zones
 
-[ ] GET /api/DnsCNameRecord - List All DNS CNAME Records in a DNS Zone
+[x] GET /api/DnsCNameRecord - List All DNS CNAME Records in a DNS Zone
 
-[ ] POST /api/DnsCNameRecord - Create a DNS CNAME Records
+[x] POST /api/DnsCNameRecord - Create a DNS CNAME Records
 
-[ ] DELETE /api/DnsCNameRecord - Delete a DNS CNAME Record
+[x] DELETE /api/DnsCNameRecord - Delete a DNS CNAME Record
 
 
 ## DNS Zones
 
 [ ] GET /api/DnsZones/{ZoneName}/Exists - Check If DNS Zone Exists
 
-[ ] GET /api/DnsZones/All - List All DNS Zones
+[x] GET /api/DnsZones/All - List All DNS Zones
 
-[ ] POST /api/DnsLookupZone/{ZoneName} - Create a DNS Lookup Zone
+[x] POST /api/DnsLookupZone/{ZoneName} - Create a DNS Lookup Zone
 
 [ ] POST /api/DnsReverseLookupZone/{ZoneName} - Create a DNS Reverse Lookup Zone
 
-[ ] DELETE /api/DnsZone/{ZoneName} - Remove a DNS Zone
+[x] DELETE /api/DnsZone/{ZoneName} - Remove a DNS Zone
