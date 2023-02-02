@@ -73,20 +73,22 @@ type ApiFunction struct {
 }
 
 type TerraformResult struct {
-	Name string `json:"name"`
-	Id   string `json:"id"`
-	IdFn string `json:"id_function"`
+	Name        string `json:"name"`
+	Id          string `json:"id"`
+	ApiToIdFn   string `json:"api_to_terraform_id"`
+	InputToIdFn string `json:"input_to_terraform_id"`
 }
 type Operation struct {
-	ApiFunction             ApiFunction     `json:"api_function"`
-	Result                  TerraformResult `json:"result"`
-	ApiToTerraformFunction  string          `json:"api_to_terraform"`
-	ResultWrapperFunction   string          `json:"result_wrapper"`
-	SchemaFunction          string          `json:"schema_function"`
-	SchemaFunctionArguments string          `json:"schema_function_arguments"`
-	Name                    string
-	ElementName             string
-	CRUD                    string
+	ApiFunction              ApiFunction     `json:"api_function"`
+	Result                   TerraformResult `json:"result"`
+	ApiToTerraformFunction   string          `json:"api_to_terraform"`
+	InputToTerraformFunction string          `json:"input_to_terraform"`
+	ResultWrapperFunction    string          `json:"result_wrapper"`
+	SchemaFunction           string          `json:"schema_function"`
+	SchemaFunctionArguments  string          `json:"schema_function_arguments"`
+	Name                     string
+	ElementName              string
+	CRUD                     string
 }
 
 type Datasource struct {

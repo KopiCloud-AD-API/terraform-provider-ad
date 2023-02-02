@@ -111,8 +111,8 @@ func resource{{ .Name }}{{ .CRUD | toTitle }}(ctx context.Context, d *schema.Res
 				return diag.FromErr(err)
 			}
 
-			{{ if isNotEmpty .Result.IdFn }}
-			d.SetId({{ .Result.IdFn }}(res.JSON200))
+			{{ if isNotEmpty .Result.ApiToIdFn }}
+			d.SetId({{ .Result.ApiToIdFn }}(res.JSON200))
 			{{ else }}
 			d.SetId("{{ .Result.Id }}")
 			{{ end }}
