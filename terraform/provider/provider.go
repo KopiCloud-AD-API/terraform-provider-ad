@@ -16,7 +16,7 @@ func Provider() *schema.Provider {
 	return &schema.Provider{
 		// First some scafolding
 		DataSourcesMap: dataSources(),
-		ResourcesMap:   resources(),
+		//ResourcesMap:   resources(),
 		Schema: map[string]*schema.Schema{
 			"host": {
 				Type:        schema.TypeString,
