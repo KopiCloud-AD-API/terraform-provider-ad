@@ -21,7 +21,14 @@ func dataSources() map[string]*schema.Resource {
 {{range .DataSources }} 
 
 func dataSource{{ .Name }}() *schema.Resource {
-	terraformSchema := {{ .SchemaFunction }}{{ default "()" .SchemaFunctionArguments }}
+	terraformSchema := make(map[string]*schema.Schema)
+	
+	{{ range $name, $schema := .ResultSchemas }}
+	{{ with $schema }}
+	terraformSchema["{{ $name }}"] = {{ .SchemaFunction }}{{ default "()" .SchemaFunctionArguments }}
+	{{ end}}
+	{{ end}}
+
 	{{ range .Terraform.Arguments }}
 	terraformSchema["{{ .Name }}"] = &schema.Schema{
 		Type:        {{ .Type }},
@@ -31,6 +38,7 @@ func dataSource{{ .Name }}() *schema.Resource {
 		Description: "{{ .Description }}",
 	}
 	{{ end}}
+
 	return &schema.Resource{
 		ReadContext: dataSource{{ .Name }}Read,
 		Schema:      terraformSchema,
@@ -38,13 +46,11 @@ func dataSource{{ .Name }}() *schema.Resource {
 }
 
 {{ $n := .Name }}
-{{ $sF := .SchemaFunction }}
-{{ $sA := .SchemaFunctionArguments }}
 {{ $eN := .ElementName }}
 
 {{ range $crud, $definition := .CRUD }}
 
-	{{ $operation := enrichOperation $definition $n $crud $sF $sA $eN }}
+	{{ $operation := enrichOperation $definition $n $crud $eN }}
 
 	{{ if eq $crud "read" }}
 
@@ -93,13 +99,23 @@ func dataSource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m in
 		return diag.FromErr(err)
 	}
 
+	{{ $element := .ElementName }}
+	{{ with .Result }}
 	if res != nil {
-		//As the return item is a []Computers, lets Unmarshal it into "computers"
+		{{ if .MessageField }}
+			tflog.Info(ctx, *res.JSON200.{{ .MessageField }})
+		{{ end }}
+
+		{{ if .ResultField }}
+		resItems := {{ .ApiToTerraformFunction }}(res.JSON200.{{ .ResultField }})
+		{{ else }}
 		resItems := {{ .ApiToTerraformFunction }}(res.JSON200)
+		{{ end }}
+
 		for _, element := range resItems {
-			tflog.Debug(ctx, "converted {{ .ElementName }}",
+			tflog.Debug(ctx, "converted {{ $element }}",
 				map[string]interface{}{
-					"{{ .ElementName }}": element,
+					"{{ $element }}": element,
 				})
 		}
 	
@@ -109,18 +125,20 @@ func dataSource{{ .Name }}Read(ctx context.Context, d *schema.ResourceData, m in
 		result := resItems
 		{{ end }}
 
-		if err := d.Set("{{ .Result.Name }}", result); err != nil {
+		if err := d.Set("{{ .TerraformField }}", result); err != nil {
 			return diag.FromErr(err)
 		}
 
-		{{ if isNotEmpty .Result.ApiToIdFn }}
-		d.SetId({{ .Result.ApiToIdFn }}(res.JSON200))
+		{{ if isNotEmpty .ApiToIdFn }}
+		d.SetId({{ .ApiToIdFn }}(res.JSON200))
 		{{ else }}
-		d.SetId("{{ .Result.Id }}")
+		d.SetId("{{ .TerraformId }}")
 		{{ end }}
 	} else {
-		return diag.Errorf("No data found in db, insert one %s", "{{ .ElementName }}")
+		return diag.Errorf("No data found in db, insert one %s", "{{ $element }}")
 	}
+	{{end}}
+
 	tflog.Debug(ctx, "dataSource{{ .Name }}Read finished successfully",
 		map[string]interface{}{
 			"result": d,

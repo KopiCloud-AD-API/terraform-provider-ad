@@ -9,7 +9,12 @@
                 "name": "kopicloud_all_computers",
                 "arguments": []
             },
-            "schema_function": "schemaOfComputerListADApiResult",
+            "result_schemas": {
+                "computer_list": {
+                    "schema_function": "schemaOfComputer",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
             "element_name": "Computer",
             "crud": {
                 "read": {
@@ -21,10 +26,12 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "ComputerListADApiResultToTerraform",
                     "result": {
-                        "name": "computer_list",
-                        "id": "all_computers"                    
+                        "api_to_terraform": "ComputerListToTerraform",
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "terraform_field": "computer_list",
+                        "terraform_id": "all_computers"                    
                     }
                 }
             }
