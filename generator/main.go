@@ -73,39 +73,44 @@ type ApiFunction struct {
 }
 
 type TerraformResult struct {
-	Name        string `json:"name"`
-	Id          string `json:"id"`
-	ApiToIdFn   string `json:"api_to_terraform_id"`
-	InputToIdFn string `json:"input_to_terraform_id"`
+	ApiToTerraformFunction string `json:"api_to_terraform"`
+	MessageField           string `json:"msg_field"`
+	ResultField            string `json:"result_field"`
+	ResultWrapperFunction  string `json:"result_wrapper"`
+	TerraformField         string `json:"terraform_field"`
+	TerraformId            string `json:"terraform_id"`
+	ApiToIdFn              string `json:"api_to_terraform_id"`
+	InputToIdFn            string `json:"input_to_terraform_id"`
 }
+
 type Operation struct {
 	ApiFunction              ApiFunction     `json:"api_function"`
 	Result                   TerraformResult `json:"result"`
-	ApiToTerraformFunction   string          `json:"api_to_terraform"`
 	InputToTerraformFunction string          `json:"input_to_terraform"`
-	ResultWrapperFunction    string          `json:"result_wrapper"`
-	SchemaFunction           string          `json:"schema_function"`
-	SchemaFunctionArguments  string          `json:"schema_function_arguments"`
 	Name                     string
 	ElementName              string
 	CRUD                     string
 }
 
-type Datasource struct {
-	Name                    string               `json:"name"`
-	Terraform               Terraform            `json:"terraform"`
-	ElementName             string               `json:"element_name"`
-	SchemaFunction          string               `json:"schema_function"`
-	SchemaFunctionArguments string               `json:"schema_function_arguments"`
-	CRUD                    map[string]Operation `json:"crud"`
+type Schema struct {
+	SchemaFunction          string `json:"schema_function"`
+	SchemaFunctionArguments string `json:"schema_function_arguments"`
+}
+
+type Component struct {
+	Name          string               `json:"name"`
+	Terraform     Terraform            `json:"terraform"`
+	ElementName   string               `json:"element_name"`
+	ResultSchemas map[string]Schema    `json:"result_schemas"`
+	CRUD          map[string]Operation `json:"crud"`
 }
 
 type InputData struct {
-	ApiAlias    string       `json:"api_alias"`
-	ApiPackage  string       `json:"api_package"`
-	Package     string       `json:"package"`
-	DataSources []Datasource `json:"data_sources"`
-	Resources   []Datasource `json:"resources"`
+	ApiAlias    string      `json:"api_alias"`
+	ApiPackage  string      `json:"api_package"`
+	Package     string      `json:"package"`
+	DataSources []Component `json:"data_sources"`
+	Resources   []Component `json:"resources"`
 }
 
 // Main function
@@ -179,11 +184,9 @@ func main() {
 		},
 		"ToLower": strings.ToLower,
 		"toTitle": caser.String,
-		"enrichOperation": func(op Operation, n string, c string, sF string, sFA string, en string) Operation {
+		"enrichOperation": func(op Operation, n string, c string, en string) Operation {
 			op.Name = n
 			op.CRUD = c
-			op.SchemaFunction = sF
-			op.SchemaFunctionArguments = sFA
 			op.ElementName = en
 			return op
 		},
