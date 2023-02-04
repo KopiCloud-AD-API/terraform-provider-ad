@@ -2,9 +2,44 @@
     "api_alias": "kcapi",
     "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
     "package": "provider",
+    "data_sources" : [
+        {
+            "name": "AllDnsAAAARecords",
+            "terraform": {
+                "name": "kopicloud_all_dns_a_records",
+                "arguments": []
+            },
+            "result_schemas": {
+                "dns_a_record_list": {
+                    "schema_function": "schemaOfDnsRecords",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+            "element_name": "DnsAAAARecord",
+            "crud": {
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsAAAARecordWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsAAAARecordParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsRecordsListToTerraform",
+                        "terraform_field": "dns_records_list",
+                        "terraform_id": "dns_a_records"
+                    }
+                }
+            }
+        }
+    ],
     "resources" : [
         {
-            "name": "DnsARecord",
+            "name": "DnsAAAARecord",
             "terraform": {
                 "name": "kopicloud_dns_a_record",
                 "arguments": [
@@ -14,7 +49,7 @@
                         "optional": true
                     },
                     {
-                        "name": "ip_address",
+                        "name": "ipv6_address",
                         "type": "schema.TypeString",
                         "optional": true
                     },
@@ -36,15 +71,15 @@
                 }
             },
 
-            "element_name": "DnsARecord",
+            "element_name": "DnsAAAARecord",
             "crud": {
                 "create": {
                     "api_function": {
-                        "name": "PostApiDnsARecordWithResponse",
+                        "name": "PostApiDnsAAAARecordWithResponse",
                         "isPointer": true,
                         "arguments": [],
                         "params": {
-                            "name": "PostApiDnsARecordParams",
+                            "name": "PostApiDnsAAAARecordParams",
                             "fields": [
                                 {
                                     "api_name": "DNSHostName",
@@ -52,8 +87,8 @@
                                     "type": "string"
                                 },
                                 {
-                                    "api_name": "IPAddress",
-                                    "name": "ip_address",
+                                    "api_name": "IPv6Address",
+                                    "name": "ipv6_address",
                                     "type": "string"
                                 },
                                 {
@@ -72,15 +107,15 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsToTerraform",
                         "terraform_field": "dns_a_record",
-                        "api_to_terraform_id": "getId_for_DnsARecords"                    
+                        "api_to_terraform_id": "getId_for_DnsAAAARecords"                    
                     }
                 },
                 "read": {
                     "api_function": {
-                        "name": "GetApiDnsARecordWithResponse",
+                        "name": "GetApiDnsAAAARecordWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiDnsARecordParams",
+                            "name": "GetApiDnsAAAARecordParams",
                             "fields": []
                         }
                     },                
@@ -95,11 +130,11 @@
                 },
                 "delete": {
                     "api_function": {
-                        "name": "DeleteApiDnsARecordWithResponse",
+                        "name": "DeleteApiDnsAAAARecordWithResponse",
                         "isPointer": true,
                         "arguments": [],
                         "params": {
-                            "name": "DeleteApiDnsARecordParams",
+                            "name": "DeleteApiDnsAAAARecordParams",
                             "fields": [
                                 {
                                     "api_name": "DNSHostName",
@@ -127,7 +162,7 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsToTerraform",
                         "terraform_field": "dns_a_record",
-                        "api_to_terraform_id": "getId_for_DnsARecords"                    
+                        "api_to_terraform_id": "getId_for_DnsAAAARecords"                    
                     }
                 }
            }
