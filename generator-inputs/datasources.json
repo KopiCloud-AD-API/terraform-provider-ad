@@ -27,9 +27,9 @@
                         }
                     },                
                     "result": {
-                        "api_to_terraform": "ComputerListToTerraform",
                         "msg_field": "Output",
                         "result_field": "Result",
+                        "api_to_terraform": "ComputerListToTerraform",
                         "terraform_field": "computer_list",
                         "terraform_id": "all_computers"                    
                     }

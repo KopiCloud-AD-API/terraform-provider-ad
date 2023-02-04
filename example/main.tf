@@ -98,16 +98,16 @@ output "all_computers_list" {
 #   value = data.kopicloud_all_dns_zones.test
 # }
 
-# resource "kopicloud_dns_a_record" "test" {
-#   hostname = "computer31"
-#   ip_address = "10.20.1.239"
-#   zone_name = "kopicloud.local"
-# }
+resource "kopicloud_dns_a_record" "test" {
+  hostname = "computer31"
+  ip_address = "10.20.1.239"
+  zone_name = "kopicloud.local"
+}
 
-# output "dns_a_record" {
-#   description = "Created DNS A Record"
-#   value = resource.kopicloud_dns_a_record.test
-# }
+output "dns_a_record" {
+  description = "Created DNS A Record"
+  value = resource.kopicloud_dns_a_record.test
+}
 
 # resource "kopicloud_dns_aaaa_record" "test" {
 #   hostname = "computerAAAA3"
