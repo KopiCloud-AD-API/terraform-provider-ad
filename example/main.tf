@@ -66,29 +66,29 @@ output "all_computers_list" {
 #   value = data.kopicloud_all_ous.test
 # }
 
-# data "kopicloud_all_dns_a_records" "test" {}
+data "kopicloud_all_dns_a_records" "test" {}
 
-# Returns all DNS A Records
-# output "all_dns_a_records" {
-#   description = "Existing DNS A Records"
-#   value = data.kopicloud_all_dns_a_records.test
-# }
+Returns all DNS A Records
+output "all_dns_a_records" {
+  description = "Existing DNS A Records"
+  value = data.kopicloud_all_dns_a_records.test
+}
 
-# data "kopicloud_all_dns_aaaa_records" "test" {}
+data "kopicloud_all_dns_aaaa_records" "test" {}
 
-# Returns all DNS AAAA Records
-# output "all_dns_aaaa_records" {
-#   description = "Existing DNS AAAA Records"
-#   value = data.kopicloud_all_dns_aaaa_records.test
-# }
+Returns all DNS AAAA Records
+output "all_dns_aaaa_records" {
+  description = "Existing DNS AAAA Records"
+  value = data.kopicloud_all_dns_aaaa_records.test
+}
 
-# data "kopicloud_all_dns_cname_records" "test" {}
+data "kopicloud_all_dns_cname_records" "test" {}
 
-# Returns all DNS CNAME Records
-# output "all_dns_cname_records" {
-#   description = "Existing DNS AAAA Records"
-#   value = data.kopicloud_all_dns_cname_records.test
-# }
+Returns all DNS CNAME Records
+output "all_dns_cname_records" {
+  description = "Existing DNS AAAA Records"
+  value = data.kopicloud_all_dns_cname_records.test
+}
 
 # data "kopicloud_all_dns_zones" "test" {}
 
@@ -109,16 +109,16 @@ output "dns_a_record" {
   value = resource.kopicloud_dns_a_record.test
 }
 
-# resource "kopicloud_dns_aaaa_record" "test" {
-#   hostname = "computerAAAA3"
-#   ipv6_address = "2001:db8:3333:4444:5555:6666:7777:8889"
-#   zone_name = "kopicloud.local"
-# }
+resource "kopicloud_dns_aaaa_record" "test" {
+  hostname = "computerAAAA3"
+  ipv6_address = "2001:db8:3333:4444:5555:6666:7777:8889"
+  zone_name = "kopicloud.local"
+}
 
-# output "dns_aaaa_record" {
-#   description = "Created DNS AAAA Record"
-#   value = resource.kopicloud_dns_aaaa_record.test
-# }
+output "dns_aaaa_record" {
+  description = "Created DNS AAAA Record"
+  value = resource.kopicloud_dns_aaaa_record.test
+}
 
 resource "kopicloud_dns_cname_record" "test" {
   hostname = "computer71"
