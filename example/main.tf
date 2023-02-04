@@ -99,7 +99,7 @@ output "all_computers_list" {
 # }
 
 resource "kopicloud_dns_a_record" "test" {
-  hostname = "computer33"
+  hostname = "computer70"
   ip_address = "10.20.1.241"
   zone_name = "kopicloud.local"
 }
