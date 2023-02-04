@@ -30,8 +30,8 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsListToTerraform",
-                        "terraform_field": "dns_records_list",
-                        "terraform_id": "dns_aaaa_records"
+                        "terraform_field": "dns_aaaa_record_list",
+                        "terraform_id": "all_dns_aaaa_records"
                     }
                 }
             }
@@ -106,6 +106,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsToTerraform",
+                        "result_wrapper": "wrapInArray",
                         "terraform_field": "dns_aaaa_record",
                         "api_to_terraform_id": "getId_for_DnsAAAARecords"                    
                     }
@@ -124,7 +125,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsListToTerraform",
-                        "terraform_field": "dns_records_list",
+                        "terraform_field": "dns_aaaa_record_list",
                         "terraform_id": "dns_aaaa_records"
                     }
                 },
@@ -161,7 +162,8 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsToTerraform",
-                        "terraform_field": "dns_aaaa_record",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "dns_aaaa_record_list",
                         "api_to_terraform_id": "getId_for_DnsAAAARecords"                    
                     }
                 }
