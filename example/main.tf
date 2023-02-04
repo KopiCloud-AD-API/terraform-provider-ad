@@ -68,7 +68,7 @@ output "all_computers_list" {
 
 data "kopicloud_all_dns_a_records" "test" {}
 
-Returns all DNS A Records
+# Returns all DNS A Records
 output "all_dns_a_records" {
   description = "Existing DNS A Records"
   value = data.kopicloud_all_dns_a_records.test
@@ -76,7 +76,7 @@ output "all_dns_a_records" {
 
 data "kopicloud_all_dns_aaaa_records" "test" {}
 
-Returns all DNS AAAA Records
+# Returns all DNS AAAA Records
 output "all_dns_aaaa_records" {
   description = "Existing DNS AAAA Records"
   value = data.kopicloud_all_dns_aaaa_records.test
@@ -84,7 +84,7 @@ output "all_dns_aaaa_records" {
 
 data "kopicloud_all_dns_cname_records" "test" {}
 
-Returns all DNS CNAME Records
+# Returns all DNS CNAME Records
 output "all_dns_cname_records" {
   description = "Existing DNS AAAA Records"
   value = data.kopicloud_all_dns_cname_records.test
@@ -110,7 +110,7 @@ output "dns_a_record" {
 }
 
 resource "kopicloud_dns_aaaa_record" "test" {
-  hostname = "computerAAAA3"
+  hostname = "computer-AAAA-4"
   ipv6_address = "2001:db8:3333:4444:5555:6666:7777:8889"
   zone_name = "kopicloud.local"
 }
