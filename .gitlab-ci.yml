@@ -29,5 +29,5 @@ deploy:
     - make release
   artifacts:
     paths:
-      - terraform/bin
+      - bin
 
