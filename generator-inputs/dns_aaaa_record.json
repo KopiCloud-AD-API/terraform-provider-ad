@@ -6,11 +6,11 @@
         {
             "name": "AllDnsAAAARecords",
             "terraform": {
-                "name": "kopicloud_all_dns_a_records",
+                "name": "kopicloud_all_dns_aaaa_records",
                 "arguments": []
             },
             "result_schemas": {
-                "dns_a_record_list": {
+                "dns_aaaa_record_list": {
                     "schema_function": "schemaOfDnsRecords",
                     "schema_function_arguments": "(``)"        
                 }
@@ -31,7 +31,7 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsListToTerraform",
                         "terraform_field": "dns_records_list",
-                        "terraform_id": "dns_a_records"
+                        "terraform_id": "dns_aaaa_records"
                     }
                 }
             }
@@ -41,7 +41,7 @@
         {
             "name": "DnsAAAARecord",
             "terraform": {
-                "name": "kopicloud_dns_a_record",
+                "name": "kopicloud_dns_aaaa_record",
                 "arguments": [
                     {
                         "name": "hostname",
@@ -61,11 +61,11 @@
                 ]
             },
             "result_schemas": {
-                "dns_a_record_list": {
+                "dns_aaaa_record_list": {
                     "schema_function": "schemaOfDnsRecords",
                     "schema_function_arguments": "(``)"        
                 },
-                "dns_a_record": {
+                "dns_aaaa_record": {
                     "schema_function": "schemaOfDnsRecords",
                     "schema_function_arguments": "(``)"        
                 }
@@ -106,7 +106,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsToTerraform",
-                        "terraform_field": "dns_a_record",
+                        "terraform_field": "dns_aaaa_record",
                         "api_to_terraform_id": "getId_for_DnsAAAARecords"                    
                     }
                 },
@@ -125,7 +125,7 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsListToTerraform",
                         "terraform_field": "dns_records_list",
-                        "terraform_id": "dns_a_records"
+                        "terraform_id": "dns_aaaa_records"
                     }
                 },
                 "delete": {
@@ -161,7 +161,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordsToTerraform",
-                        "terraform_field": "dns_a_record",
+                        "terraform_field": "dns_aaaa_record",
                         "api_to_terraform_id": "getId_for_DnsAAAARecords"                    
                     }
                 }
