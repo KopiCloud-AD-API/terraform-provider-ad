@@ -2,7 +2,7 @@ TEST?=$$(go list ./... | grep -v 'vendor')
 HOSTNAME=gitlab.com
 NAMESPACE=kopicloud
 NAME=kopicloud-ad-tf-provider
-BINARY=${NAME}
+BINARY=terraform-provider-${NAME}
 VERSION=$(shell git describe --tags)
 BUILD=$(shell date +%FT%T%z)
 OS=darwin
@@ -11,20 +11,36 @@ OS_ARCH=arm64
 default: install
 
 build:
-	$(MAKE) -C generator build
-	$(MAKE) -C terraform build
+	mkdir -p api
+	go generate
+	go build -o ${BINARY}
 
 clean:
-	export PATH=$(GOPATH)/bin:$(PATH)
-	$(MAKE) -C generator clean
-	$(MAKE) -C terraform clean
+	rm -rf api
+	find . -iname "*.gen.go" -exec rm {} \;
+	rm -f ${BINARY}
+
+release: build
+	GOOS=darwin GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_darwin_amd64
+	GOOS=freebsd GOARCH=386 go build -o ./bin/${BINARY}_${VERSION}_freebsd_386
+	GOOS=freebsd GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_freebsd_amd64
+	GOOS=freebsd GOARCH=arm go build -o ./bin/${BINARY}_${VERSION}_freebsd_arm
+	GOOS=linux GOARCH=386 go build -o ./bin/${BINARY}_${VERSION}_linux_386
+	GOOS=linux GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_linux_amd64
+	GOOS=linux GOARCH=arm go build -o ./bin/${BINARY}_${VERSION}_linux_arm
+	GOOS=openbsd GOARCH=386 go build -o ./bin/${BINARY}_${VERSION}_openbsd_386
+	GOOS=openbsd GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_openbsd_amd64
+	GOOS=solaris GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_solaris_amd64
+	GOOS=windows GOARCH=386 go build -o ./bin/${BINARY}_${VERSION}_windows_386
+	GOOS=windows GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_windows_amd64
 
 install: build
-	export PATH=$(GOPATH)/bin:$(PATH)
-	$(MAKE) -C generator install
-	$(MAKE) -C terraform install
+	mkdir -p ~/.terraform.d/plugins/${HOSTNAME}/${NAMESPACE}/${NAME}/${VERSION}/${OS}_${OS_ARCH}
+	mv ${BINARY} ~/.terraform.d/plugins/${HOSTNAME}/${NAMESPACE}/${NAME}/${VERSION}/${OS}_${OS_ARCH}
 
-release:
-	$(MAKE) -C generator build
-	$(MAKE) -C terraform release
+test: 
+	go test -i $(TEST) || exit 1                                                   
+	echo $(TEST) | xargs -t -n4 go test $(TESTARGS) -timeout=30s -parallel=4                    
 
+testacc: 
+	TF_ACC=1 go test $(TEST) -v $(TESTARGS) -timeout 120m
