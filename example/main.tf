@@ -139,3 +139,12 @@ output "dns_lookup_zonr" {
   description = "Created DNS Lookup zone"
   value = resource.kopicloud_dns_lookup_zone.test
 }
+
+resource "kopicloud_dns_reverse_lookup_zone" "test" {
+  zone_name = "my_reverse_lookup_zone_2"
+}
+
+output "dns_reverse_lookup_zone" {
+  description = "Created DNS Reverse Lookup zone"
+  value = resource.kopicloud_dns_reverse_lookup_zone.test
+}
