@@ -110,7 +110,7 @@ output "dns_a_record" {
 }
 
 resource "kopicloud_dns_aaaa_record" "test" {
-  hostname = "computer-AAAA-4"
+  hostname = "computer-AAAA-5"
   ipv6_address = "2001:db8:3333:4444:5555:6666:7777:8889"
   zone_name = "kopicloud.local"
 }
