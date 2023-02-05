@@ -19,17 +19,17 @@
             "crud": {
                 "read": {
                     "api_function": {
-                        "name": "GetApiDnsLookupZoneZoneNameWithResponse",
+                        "name": "GetApiDnsZonesAllWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiDnsLookupZoneZoneNameParams",
+                            "name": "GetApiDnsZonesAllParams",
                             "fields": []
                         }
                     },                
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "DnsRecordsListToTerraform",
+                        "api_to_terraform": "stringListToTerraform(`zone_name`)",
                         "terraform_field": "dns_lookup_zone_list",
                         "terraform_id": "all_dns_lookup_zones"
                     }
@@ -82,18 +82,18 @@
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "DnsRecordsToTerraform",
+                        "api_to_terraform": "singleStringToTerraform(`zone_name`)",
                         "result_wrapper": "wrapInArray",
                         "terraform_field": "dns_lookup_zone",
-                        "api_to_terraform_id": "getId_for_DnsLookupZoneZoneNames"                    
+                        "api_to_terraform_id": "getId_for_SingleValue(`dns_lookup_zone`)"                    
                     }
                 },
                 "read": {
                     "api_function": {
-                        "name": "GetApiDnsLookupZoneZoneNameWithResponse",
+                        "name": "GetApiDnsZonesAllWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiDnsLookupZoneZoneNameParams",
+                            "name": "GetApiDnsZonesAllParams",
                             "fields": []
                         }
                     },                
@@ -101,14 +101,14 @@
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "DnsRecordsListToTerraform",
+                        "api_to_terraform": "stringListToTerraform(`zone_name`)",
                         "terraform_field": "dns_lookup_zone_list",
                         "terraform_id": "dns_lookup_zones"
                     }
                 },
                 "delete": {
                     "api_function": {
-                        "name": "DeleteApiDnsLookupZoneZoneNameWithResponse",
+                        "name": "DeleteApiDnsZoneZoneNameWithResponse",
                         "isPointer": true,
                         "arguments": [
                             {
@@ -117,7 +117,7 @@
                             }
                         ],
                         "params": {
-                            "name": "DeleteApiDnsLookupZoneZoneNameParams",
+                            "name": "DeleteApiDnsZoneZoneNameParams",
                             "fields": []
                         }
                     },                
@@ -126,10 +126,10 @@
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "DnsRecordsToTerraform",
+                        "api_to_terraform": "singleStringToTerraform(`zone_name`)",
                         "result_wrapper": "wrapInArray",
                         "terraform_field": "dns_lookup_zone",
-                        "api_to_terraform_id": "getId_for_DnsLookupZoneZoneNames"                    
+                        "api_to_terraform_id": "getId_for_SingleValue(`dns_lookup_zone`)"                    
                     }
                 }
            }
