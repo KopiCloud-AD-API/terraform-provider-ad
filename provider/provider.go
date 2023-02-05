@@ -53,29 +53,6 @@ func schemaOfStringList(list_name string, field_name string, description string)
 	}
 }
 
-func stringToTerraform(obj string) map[string]interface{} {
-	result := make(map[string]interface{})
-	result["name"] = obj
-	return result
-}
-
-func fromSingleReturnValue(v interface{}) []interface{} {
-	result := make([]interface{}, 1)
-	result[0] = v
-	return result
-}
-
-func flattenStringList(list *[]string) []interface{} {
-	if list != nil {
-		results := make([]interface{}, len(*list))
-		for i, value := range *list {
-			results[i] = stringToTerraform(value)
-		}
-		return results
-	}
-	return make([]interface{}, 0)
-}
-
 func wrapInArray(e interface{}) []interface{} {
 	return []interface{}{e}
 }
@@ -83,6 +60,12 @@ func wrapInArray(e interface{}) []interface{} {
 func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
 	return NewApiClient(d)
 
+}
+
+func getId_for_SingleValue(name string) func(*string) string {
+	return func(value *string) string {
+		return fmt.Sprintf("%s_%s", name, value)
+	}
 }
 
 func getId_for_DnsARecords(obj *api.DnsRecords) string {

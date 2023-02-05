@@ -23,13 +23,13 @@ provider "kopicloud" {
 # }
 
 
-data "kopicloud_all_computers" "test" {}
+# data "kopicloud_all_computers" "test" {}
 
 # Returns all computers
-output "all_computers_list" {
-  description = "Existing computers"
-  value = data.kopicloud_all_computers.test
-}
+# output "all_computers_list" {
+#   description = "Existing computers"
+#   value = data.kopicloud_all_computers.test
+# }
 
 # data "kopicloud_all_ad_groups" "test" {}
 
@@ -131,11 +131,11 @@ output "dns_cname_record" {
   value = resource.kopicloud_dns_cname_record.test
 }
 
-# resource "kopicloud_dns_lookup_zone" "test" {
-#   name = "my_lookup_zone"
-# }
+resource "kopicloud_dns_lookup_zone" "test" {
+  zone_name = "my_lookup_zone_2"
+}
 
-# output "dns_lookup_zonr" {
-#   description = "Created DNS Lookup zone"
-#   value = resource.kopicloud_dns_lookup_zone.test
-# }
+output "dns_lookup_zonr" {
+  description = "Created DNS Lookup zone"
+  value = resource.kopicloud_dns_lookup_zone.test
+}
