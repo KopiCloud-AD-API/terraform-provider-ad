@@ -68,6 +68,10 @@ func getId_for_SingleValue(name string) func(*string) string {
 	}
 }
 
+func getId_for_Computer(obj *api.Computer) string {
+	return fmt.Sprintf("Computer_%s_%s", *obj.ComputerName)
+}
+
 func getId_for_DnsARecords(obj *api.DnsRecords) string {
 	return fmt.Sprintf("DnsARecord_%s_%s", *obj.Name, *obj.Data)
 }
