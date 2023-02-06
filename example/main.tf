@@ -23,13 +23,13 @@ provider "kopicloud" {
 # }
 
 
-# data "kopicloud_all_computers" "test" {}
+data "kopicloud_all_computers" "test" {}
 
 # Returns all computers
-# output "all_computers_list" {
-#   description = "Existing computers"
-#   value = data.kopicloud_all_computers.test
-# }
+output "all_computers_list" {
+  description = "Existing computers"
+  value = data.kopicloud_all_computers.test
+}
 
 # data "kopicloud_all_ad_groups" "test" {}
 
@@ -97,6 +97,17 @@ output "all_dns_cname_records" {
 #   description = "Existing DNS Zones"
 #   value = data.kopicloud_all_dns_zones.test
 # }
+
+resource "kopicloud_computer" "test" {
+  ad_computer_name = "Hal-9069"
+  ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"
+}
+
+output "computer" {
+  description = "Created Computer"
+  value = resource.kopicloud_computer.test
+}
+
 
 resource "kopicloud_dns_a_record" "test" {
   hostname = "computer70"

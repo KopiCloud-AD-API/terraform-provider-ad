@@ -11,7 +11,7 @@
             },
             "result_schemas": {
                 "computer_list": {
-                    "schema_function": "schemaMapOfComputer",
+                    "schema_function": "schemaOfComputer",
                     "schema_function_arguments": "(``)"        
                 }
             },
@@ -19,17 +19,17 @@
             "crud": {
                 "read": {
                     "api_function": {
-                        "name": "GetApiComputerWithResponse",
+                        "name": "GetApiComputersAllWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiComputerParams",
+                            "name": "GetApiComputersAllParams",
                             "fields": []
                         }
                     },                
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "ComputersListToTerraform",
+                        "api_to_terraform": "ComputerListToTerraform",
                         "terraform_field": "computer_list",
                         "terraform_id": "all_computers"
                     }
@@ -95,15 +95,15 @@
                         "api_to_terraform": "ComputerToTerraform",
                         "result_wrapper": "wrapInArray",
                         "terraform_field": "computer",
-                        "api_to_terraform_id": "getId_for_Computers"                    
+                        "api_to_terraform_id": "getId_for_Computer"                    
                     }
                 },
                 "read": {
                     "api_function": {
-                        "name": "GetApiComputerWithResponse",
+                        "name": "GetApiComputersAllWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiComputerParams",
+                            "name": "GetApiComputersAllParams",
                             "fields": []
                         }
                     },                
@@ -117,7 +117,7 @@
                 },
                 "delete": {
                     "api_function": {
-                        "name": "DeleteApiComputersADComputerNameRemove",
+                        "name": "DeleteApiComputersADComputerNameRemoveWithResponse",
                         "isPointer": true,
                         "arguments": [
                             {
@@ -142,7 +142,7 @@
                         "api_to_terraform": "ComputerToTerraform",
                         "result_wrapper": "wrapInArray",
                         "terraform_field": "computer",
-                        "api_to_terraform_id": "getId_for_Computers"                    
+                        "api_to_terraform_id": "getId_for_Computer"                    
                     }
                 }
            }
