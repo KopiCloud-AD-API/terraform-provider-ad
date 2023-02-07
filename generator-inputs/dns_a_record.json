@@ -19,10 +19,10 @@
             "crud": {
                 "read": {
                     "api_function": {
-                        "name": "GetApiDnsARecordWithResponse",
+                        "name": "GetApiDnsARecordAllWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiDnsARecordParams",
+                            "name": "GetApiDnsARecordAllParams",
                             "fields": []
                         }
                     },                
@@ -61,10 +61,6 @@
                 ]
             },
             "result_schemas": {
-                "dns_a_record_list": {
-                    "schema_function": "schemaOfDnsRecordList",
-                    "schema_function_arguments": "(``)"        
-                },
                 "dns_a_record": {
                     "schema_function": "schemaOfDnsRecord",
                     "schema_function_arguments": "(``, true)"        
@@ -96,7 +92,6 @@
                                     "name": "zone_name",
                                     "type": "string"
                                 }
-
                             ]
                         }
                     },                
@@ -117,16 +112,34 @@
                         "arguments": [],
                         "params": {
                             "name": "GetApiDnsARecordParams",
-                            "fields": []
+                            "fields": [
+                                {
+                                    "api_name": "DNSHostName",
+                                    "name": "hostname",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "IPAddress",
+                                    "name": "ip_address",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "ZoneName",
+                                    "name": "zone_name",
+                                    "type": "string"
+                                }
+                            ]
                         }
                     },                
-                    "api_to_terraform": "flattenDnsRecordsList",
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "DnsRecordListToTerraform",
-                        "terraform_field": "dns_a_record_list",
-                        "terraform_id": "dns_a_records"
+                        "api_to_terraform": "DnsRecordToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "dns_a_record",
+                        "api_to_terraform_id": "getId_for_DnsARecord"                    
                     }
                 },
                 "delete": {
