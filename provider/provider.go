@@ -64,12 +64,12 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 
 func getId_for_SingleValue(name string) func(*string) string {
 	return func(value *string) string {
-		return fmt.Sprintf("%s_%s", name, value)
+		return fmt.Sprintf("%s_%s", name, *value)
 	}
 }
 
 func getId_for_Computer(obj *api.Computer) string {
-	return fmt.Sprintf("Computer_%s_%s", *obj.ComputerName)
+	return fmt.Sprintf("Computer_%s", *obj.ComputerName)
 }
 
 func getId_for_DnsARecord(obj *api.DnsRecord) string {
