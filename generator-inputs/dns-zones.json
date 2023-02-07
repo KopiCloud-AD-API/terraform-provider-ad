@@ -16,7 +16,7 @@
                 ]
             },
             "schema_function": "schemaOfStringList",
-            "schema_function_arguments": "(`dns_lookup_zone_list`, `name`, `Name of the DNS Lookup Zone`)",
+            "schema_function_arguments": "(`dns_lookup_zone_list`, `name`, `Name of the DNS Lookup Zone`, true)",
             "element_name": "DnsLookupZone",
             "crud": {
                 "create": {

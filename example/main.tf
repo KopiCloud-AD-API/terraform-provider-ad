@@ -99,8 +99,8 @@ output "all_dns_cname_records" {
 # }
 
 resource "kopicloud_computer" "test" {
-  ad_computer_name = "Hal-9069"
-  ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"
+  ad_computer_name = "Hal-9999"
+  ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"    
 }
 
 output "computer" {
@@ -109,53 +109,53 @@ output "computer" {
 }
 
 
-resource "kopicloud_dns_a_record" "test" {
-  hostname = "computer70"
-  ip_address = "10.20.1.241"
-  zone_name = "kopicloud.local"
-}
+# resource "kopicloud_dns_a_record" "test" {
+#   hostname = "computer70"
+#   ip_address = "10.20.1.241"
+#   zone_name = "kopicloud.local"
+# }
 
-output "dns_a_record" {
-  description = "Created DNS A Record"
-  value = resource.kopicloud_dns_a_record.test
-}
+# output "dns_a_record" {
+#   description = "Created DNS A Record"
+#   value = resource.kopicloud_dns_a_record.test
+# }
 
-resource "kopicloud_dns_aaaa_record" "test" {
-  hostname = "computer-AAAA-5"
-  ipv6_address = "2001:db8:3333:4444:5555:6666:7777:8889"
-  zone_name = "kopicloud.local"
-}
+# resource "kopicloud_dns_aaaa_record" "test" {
+#   hostname = "computer-AAAA-5"
+#   ipv6_address = "2001:db8:3333:4444:5555:6666:7777:8889"
+#   zone_name = "kopicloud.local"
+# }
 
-output "dns_aaaa_record" {
-  description = "Created DNS AAAA Record"
-  value = resource.kopicloud_dns_aaaa_record.test
-}
+# output "dns_aaaa_record" {
+#   description = "Created DNS AAAA Record"
+#   value = resource.kopicloud_dns_aaaa_record.test
+# }
 
-resource "kopicloud_dns_cname_record" "test" {
-  hostname = "computer71"
-  hostname_alias = "computer70_alias"
-  zone_name = "kopicloud.local"
-}
+# resource "kopicloud_dns_cname_record" "test" {
+#   hostname = "computer71"
+#   hostname_alias = "computer70_alias"
+#   zone_name = "kopicloud.local"
+# }
 
-output "dns_cname_record" {
-  description = "Created DNS CName Record"
-  value = resource.kopicloud_dns_cname_record.test
-}
+# output "dns_cname_record" {
+#   description = "Created DNS CName Record"
+#   value = resource.kopicloud_dns_cname_record.test
+# }
 
-resource "kopicloud_dns_lookup_zone" "test" {
-  zone_name = "my_lookup_zone_2"
-}
+# resource "kopicloud_dns_lookup_zone" "test" {
+#   zone_name = "my_lookup_zone_2"
+# }
 
-output "dns_lookup_zonr" {
-  description = "Created DNS Lookup zone"
-  value = resource.kopicloud_dns_lookup_zone.test
-}
+# output "dns_lookup_zone" {
+#   description = "Created DNS Lookup zone"
+#   value = resource.kopicloud_dns_lookup_zone.test
+# }
 
-resource "kopicloud_dns_reverse_lookup_zone" "test" {
-  zone_name = "my_reverse_lookup_zone_2"
-}
+# resource "kopicloud_dns_reverse_lookup_zone" "test" {
+#   zone_name = "my_reverse_lookup_zone_2"
+# }
 
-output "dns_reverse_lookup_zone" {
-  description = "Created DNS Reverse Lookup zone"
-  value = resource.kopicloud_dns_reverse_lookup_zone.test
-}
+# output "dns_reverse_lookup_zone" {
+#   description = "Created DNS Reverse Lookup zone"
+#   value = resource.kopicloud_dns_reverse_lookup_zone.test
+# }

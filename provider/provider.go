@@ -72,15 +72,15 @@ func getId_for_Computer(obj *api.Computer) string {
 	return fmt.Sprintf("Computer_%s_%s", *obj.ComputerName)
 }
 
-func getId_for_DnsARecords(obj *api.DnsRecords) string {
+func getId_for_DnsARecord(obj *api.DnsRecord) string {
 	return fmt.Sprintf("DnsARecord_%s_%s", *obj.Name, *obj.Data)
 }
 
-func getId_for_DnsAAAARecords(obj *api.DnsRecords) string {
+func getId_for_DnsAAAARecord(obj *api.DnsRecord) string {
 	return fmt.Sprintf("DnsAAAARecord_%s_%s_%s", *obj.Zone, *obj.Name, *obj.Data)
 }
 
-func getId_for_DnsCNameRecords(obj *api.DnsRecords) string {
+func getId_for_DnsCNameRecord(obj *api.DnsRecord) string {
 	return fmt.Sprintf("DnsCNameRecord_%s_%s", *obj.Name, *obj.Data)
 }
 

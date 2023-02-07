@@ -18,11 +18,11 @@
             "result_schemas": {
                 "dns_reverse_lookup_zone_list": {
                     "schema_function": "schemaOfSingleValueObject",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`)"        
+                    "schema_function_arguments": "(schema.TypeString, `zone_name`, true)"        
                 },
                 "dns_reverse_lookup_zone": {
                     "schema_function": "schemaOfSingleValueObject",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`)"        
+                    "schema_function_arguments": "(schema.TypeString, `zone_name`, true)"        
                 }
             },
             "element_name": "DnsLookupZoneZoneName",
