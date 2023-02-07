@@ -11,7 +11,7 @@
             },
             "result_schemas": {
                 "computer_list": {
-                    "schema_function": "schemaOfComputer",
+                    "schema_function": "schemaOfComputerList",
                     "schema_function_arguments": "(``)"        
                 }
             },
@@ -56,13 +56,9 @@
                 ]
             },
             "result_schemas": {
-                "computer_list": {
-                    "schema_function": "schemaOfComputer",
-                    "schema_function_arguments": "(``)"        
-                },
                 "computer": {
                     "schema_function": "schemaOfComputer",
-                    "schema_function_arguments": "(``)"        
+                    "schema_function_arguments": "(``, true)"        
                 }
             },
 
@@ -100,19 +96,25 @@
                 },
                 "read": {
                     "api_function": {
-                        "name": "GetApiComputersAllWithResponse",
-                        "arguments": [],
+                        "name": "GetApiComputersADComputerNameWithResponse",
+                        "arguments": [
+                            {
+                                "name": "ad_computer_name",
+                                "type": "string"
+                            }
+                        ],
                         "params": {
-                            "name": "GetApiComputersAllParams",
+                            "name": "GetApiComputersADComputerNameParams",
                             "fields": []
                         }
                     },                
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "ComputerListToTerraform",
-                        "terraform_field": "computer_list",
-                        "terraform_id": "computers"
+                        "api_to_terraform": "ComputerToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "computer",
+                        "api_to_terraform_id": "getId_for_Computer"                    
                     }
                 },
                 "delete": {

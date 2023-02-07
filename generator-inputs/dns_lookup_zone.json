@@ -11,8 +11,8 @@
             },
             "result_schemas": {
                 "dns_lookup_zone_list": {
-                    "schema_function": "schemaOfSingleValueObject",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`)"        
+                    "schema_function": "schemaOfSingleValueList",
+                    "schema_function_arguments": "(schema.TypeString, `zone_name`, false)"        
                 }
             },
             "element_name": "DnsLookupZoneZoneName",
@@ -53,11 +53,11 @@
             "result_schemas": {
                 "dns_lookup_zone_list": {
                     "schema_function": "schemaOfSingleValueObject",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`)"        
+                    "schema_function_arguments": "(schema.TypeString, `zone_name`, true)"        
                 },
                 "dns_lookup_zone": {
                     "schema_function": "schemaOfSingleValueObject",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`)"        
+                    "schema_function_arguments": "(schema.TypeString, `zone_name`, true)"        
                 }
             },
             "element_name": "DnsLookupZoneZoneName",
