@@ -23,13 +23,13 @@ provider "kopicloud" {
 # }
 
 
-data "kopicloud_all_computers" "test" {}
+# data "kopicloud_all_computers" "test" {}
 
 # Returns all computers
-output "all_computers_list" {
-  description = "Existing computers"
-  value = data.kopicloud_all_computers.test
-}
+# output "all_computers_list" {
+#   description = "Existing computers"
+#   value = data.kopicloud_all_computers.test
+# }
 
 # data "kopicloud_all_ad_groups" "test" {}
 
@@ -66,13 +66,56 @@ output "all_computers_list" {
 #   value = data.kopicloud_all_ous.test
 # }
 
-data "kopicloud_all_dns_a_records" "test" {}
+data "kopicloud_dns_a_records" "by_hostname" {
+  hostname = "computer1975"
+}
 
 # Returns all DNS A Records
-output "all_dns_a_records" {
+output "by_hostname_dns_a_records" {
   description = "Existing DNS A Records"
-  value = data.kopicloud_all_dns_a_records.test
+  value = data.kopicloud_dns_a_records.by_hostname
 }
+
+data "kopicloud_dns_a_records" "by_ip" {
+  ip_address = "10.20.1.241"
+}
+
+# Returns all DNS A Records
+output "by_ip_dns_a_records" {
+  description = "Existing DNS A Records"
+  value = data.kopicloud_dns_a_records.by_ip
+}
+
+data "kopicloud_dns_a_records" "by_zone" {
+  zone_name = "kopicloud.local"
+}
+
+# Returns all DNS A Records
+output "by_zone_dns_a_records" {
+  description = "Existing DNS A Records"
+  value = data.kopicloud_dns_a_records.by_zone
+}
+
+
+data "kopicloud_dns_a_records" "one" {
+  hostname = "computer1975"
+  ip_address = "10.20.1.241"
+  zone_name = "kopicloud.local"
+}
+
+# Returns all DNS A Records
+output "some_dns_a_records" {
+  description = "Existing DNS A Records"
+  value = data.kopicloud_dns_a_records.one
+}
+
+# data "kopicloud_dns_a_records" "all" {}
+
+# # Returns all DNS A Records
+# output "all_dns_a_records" {
+#   description = "Existing DNS A Records"
+#   value = data.kopicloud_dns_a_records.all
+# }
 
 # data "kopicloud_all_dns_aaaa_records" "test" {}
 
@@ -98,19 +141,19 @@ output "all_dns_a_records" {
 #   value = data.kopicloud_all_dns_zones.test
 # }
 
-resource "kopicloud_computer" "test" {
-  ad_computer_name = "Hal-9669"
-  ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"    
-}
+# resource "kopicloud_computer" "test" {
+#   ad_computer_name = "Hal-9669"
+#   ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"    
+# }
 
-output "computer" {
-  description = "Created Computer"
-  value = resource.kopicloud_computer.test
-}
+# output "computer" {
+#   description = "Created Computer"
+#   value = resource.kopicloud_computer.test
+# }
 
 
 # resource "kopicloud_dns_a_record" "test" {
-#   hostname = "computer70"
+#   hostname = "computer1975"
 #   ip_address = "10.20.1.241"
 #   zone_name = "kopicloud.local"
 # }

@@ -3,39 +3,6 @@
     "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
     "package": "provider",
     "data_sources" : [
-        {
-            "name": "AllDnsLookupZoneZoneNames",
-            "terraform": {
-                "name": "kopicloud_all_dns_lookup_zones",
-                "arguments": []
-            },
-            "result_schemas": {
-                "dns_lookup_zone_list": {
-                    "schema_function": "schemaOfSingleValueList",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`, false)"        
-                }
-            },
-            "element_name": "DnsLookupZoneZoneName",
-            "crud": {
-                "read": {
-                    "api_function": {
-                        "name": "GetApiDnsZonesAllWithResponse",
-                        "arguments": [],
-                        "params": {
-                            "name": "GetApiDnsZonesAllParams",
-                            "fields": []
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "stringListToTerraform(`zone_name`)",
-                        "terraform_field": "dns_lookup_zone_list",
-                        "terraform_id": "all_dns_lookup_zones"
-                    }
-                }
-            }
-        }
     ],
     "resources" : [
         {

@@ -3,39 +3,6 @@
     "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
     "package": "provider",
     "data_sources" : [
-        {
-            "name": "AllDnsCNameRecords",
-            "terraform": {
-                "name": "kopicloud_all_dns_cname_records",
-                "arguments": []
-            },
-            "result_schemas": {
-                "dns_cname_record_list": {
-                    "schema_function": "schemaOfDnsRecordList",
-                    "schema_function_arguments": "(``)"        
-                }
-            },
-            "element_name": "DnsCNameRecord",
-            "crud": {
-                "read": {
-                    "api_function": {
-                        "name": "GetApiDnsCNameRecordWithResponse",
-                        "arguments": [],
-                        "params": {
-                            "name": "GetApiDnsCNameRecordParams",
-                            "fields": []
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "DnsRecordListToTerraform",
-                        "terraform_field": "dns_cname_record_list",
-                        "terraform_id": "all_dns_cname_records"
-                    }
-                }
-            }
-        }
     ],
     "resources" : [
         {
