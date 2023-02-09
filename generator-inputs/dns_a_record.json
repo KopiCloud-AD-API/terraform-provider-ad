@@ -4,10 +4,26 @@
     "package": "provider",
     "data_sources" : [
         {
-            "name": "AllDnsARecords",
+            "name": "DnsARecordReader",
             "terraform": {
-                "name": "kopicloud_all_dns_a_records",
-                "arguments": []
+                "name": "kopicloud_dns_a_records",
+                "arguments": [
+                    {
+                        "name": "hostname",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "zone_name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
             },
             "result_schemas": {
                 "dns_a_record_list": {
@@ -16,8 +32,122 @@
                 }
             },
             "element_name": "DnsARecord",
-            "crud": {
-                "read": {
+            "read_apis": [
+                {
+                    "required_inputs": ["hostname", "ip_address", "zone_name"],
+                    "api_function": {
+                        "name": "GetApiDnsARecordWithResponse",
+                        "params": {
+                            "name": "GetApiDnsARecordParams",
+                            "fields": [
+                                {
+                                    "api_name": "DNSHostName",
+                                    "name": "hostname",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "IPAddress",
+                                    "name": "ip_address",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "ZoneName",
+                                    "name": "zone_name",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },                
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsRecordToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "dns_a_record_list",
+                        "terraform_id": "some_dns_a_records"
+                    }
+                },
+                {
+                    "required_inputs": ["hostname"],
+                    "api_function": {
+                        "name": "GetApiDnsARecordHostNameDNSHostNameWithResponse",
+                        "arguments": [
+                            {
+                                "name": "hostname",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiDnsARecordHostNameDNSHostNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsRecordListToTerraform",
+                        "terraform_field": "dns_a_record_list",
+                        "terraform_id": "some_dns_a_records"
+                    }
+                },
+                {
+                    "required_inputs": ["ip_address"],
+                    "api_function": {
+                        "name": "GetApiDnsARecordIPAddressIPAddressWithResponse",
+                        "arguments": [
+                            {
+                                "name": "ip_address",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiDnsARecordIPAddressIPAddressParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsRecordListToTerraform",
+                        "terraform_field": "dns_a_record_list",
+                        "terraform_id": "some_dns_a_records"
+                    }
+                },
+                {
+                    "required_inputs": ["zone_name"],
+                    "api_function": {
+                        "name": "GetApiDnsARecordZoneNameWithResponse",
+                        "arguments": [
+                            {
+                                "name": "zone_name",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiDnsARecordZoneNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsRecordListToTerraform",
+                        "terraform_field": "dns_a_record_list",
+                        "terraform_id": "some_dns_a_records"
+                    }
+                },
+                {
                     "api_function": {
                         "name": "GetApiDnsARecordAllWithResponse",
                         "arguments": [],
@@ -34,7 +164,7 @@
                         "terraform_id": "all_dns_a_records"
                     }
                 }
-            }
+            ]
         }
     ],
     "resources" : [
