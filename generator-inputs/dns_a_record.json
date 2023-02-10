@@ -26,7 +26,7 @@
                 ]
             },
             "result_schemas": {
-                "dns_a_record_list": {
+                "result": {
                     "schema_function": "schemaOfDnsRecordList",
                     "schema_function_arguments": "(``)"        
                 }
@@ -65,8 +65,7 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "dns_a_record_list",
-                        "terraform_id": "some_dns_a_records"
+                        "terraform_field": "result"
                     }
                 },
                 {
@@ -91,8 +90,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordListToTerraform",
-                        "terraform_field": "dns_a_record_list",
-                        "terraform_id": "some_dns_a_records"
+                        "terraform_field": "result"
                     }
                 },
                 {
@@ -117,8 +115,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordListToTerraform",
-                        "terraform_field": "dns_a_record_list",
-                        "terraform_id": "some_dns_a_records"
+                        "terraform_field": "result"
                     }
                 },
                 {
@@ -143,8 +140,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordListToTerraform",
-                        "terraform_field": "dns_a_record_list",
-                        "terraform_id": "some_dns_a_records"
+                        "terraform_field": "result"
                     }
                 },
                 {
@@ -160,8 +156,7 @@
                         "msg_field": "Output",
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordListToTerraform",
-                        "terraform_field": "dns_a_record_list",
-                        "terraform_id": "all_dns_a_records"
+                        "terraform_field": "result"
                     }
                 }
             ]
@@ -232,7 +227,7 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "dns_a_record",
+                        "terraform_field": "result",
                         "api_to_terraform_id": "getId_for_DnsARecord"                    
                     }
                 },
@@ -268,7 +263,7 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "dns_a_record",
+                        "terraform_field": "result",
                         "api_to_terraform_id": "getId_for_DnsARecord"                    
                     }
                 },
@@ -306,7 +301,7 @@
                         "result_field": "Result",
                         "api_to_terraform": "DnsRecordToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "dns_a_record",
+                        "terraform_field": "result",
                         "api_to_terraform_id": "getId_for_DnsARecord"                    
                     }
                 }

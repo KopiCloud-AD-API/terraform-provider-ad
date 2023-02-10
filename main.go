@@ -29,10 +29,12 @@ import (
 //go:generate openapi-terraform-provider-generator datasource-read													          --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_a_record-data.gen.go 	 -i generator-inputs/dns_a_record.json
 
 // Generate the Code for the DNS AAAA Records
-//:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_aaaa_record.gen.go   -i generator-inputs/dns_aaaa_record.json
+//go:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_aaaa_record-crud.gen.go   -i generator-inputs/dns_aaaa_record.json
+//go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_aaaa_record-read.gen.go   -i generator-inputs/dns_aaaa_record.json
 
 // Generate the Code for the DNS CName Records
-//:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_cname_record.gen.go  -i generator-inputs/dns_cname_record.json
+//go:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_cname_record-crud.gen.go  -i generator-inputs/dns_cname_record.json
+//go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_cname_record-read.gen.go  -i generator-inputs/dns_cname_record.json
 
 // Generate the Code for the DNS Lookup Zones
 //go:generate openapi-terraform-provider-generator resource-crud 														          --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_lookup_zone.gen.go   -i generator-inputs/dns_lookup_zone.json
@@ -44,8 +46,9 @@ import (
 //go:generate openapi-terraform-provider-generator resource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.resources-schemas.gen.go -i generator-inputs/computer.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json
 
 // Generate the code for the datasources (Schemas)
-//go:generate openapi-terraform-provider-generator datasource-schemas 																  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.datasources.gen.go 		 -i generator-inputs/computer.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json
+//go:generate openapi-terraform-provider-generator datasource-schemas 																  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.datasources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json
 
+//go:generate goimports -w provider
 var (
 	build_version string
 	build_date    string
