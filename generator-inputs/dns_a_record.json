@@ -6,7 +6,7 @@
         {
             "name": "DnsARecordReader",
             "terraform": {
-                "name": "kopicloud_dns_a_records",
+                "name": "kopicloud_dns_a_records_list",
                 "arguments": [
                     {
                         "name": "hostname",
