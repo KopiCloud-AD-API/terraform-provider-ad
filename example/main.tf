@@ -66,38 +66,38 @@ provider "kopicloud" {
 #   value = data.kopicloud_all_ous.test
 # }
 
-data "kopicloud_dns_a_records" "by_hostname" {
-  hostname = "computer1975"
+data "kopicloud_dns_a_records_list" "by_hostname" {
+  hostname = "yo no existo"
 }
 
 # Returns all DNS A Records
 output "by_hostname_dns_a_records" {
   description = "Existing DNS A Records"
-  value = data.kopicloud_dns_a_records.by_hostname
+  value = data.kopicloud_dns_a_records_list.by_hostname
 }
 
-data "kopicloud_dns_a_records" "by_ip" {
+data "kopicloud_dns_a_records_list" "by_ip" {
   ip_address = "10.20.1.241"
 }
 
 # Returns all DNS A Records
 output "by_ip_dns_a_records" {
   description = "Existing DNS A Records"
-  value = data.kopicloud_dns_a_records.by_ip
+  value = data.kopicloud_dns_a_records_list.by_ip
 }
 
-data "kopicloud_dns_a_records" "by_zone" {
+data "kopicloud_dns_a_records_list" "by_zone" {
   zone_name = "kopicloud.local"
 }
 
 # Returns all DNS A Records
 output "by_zone_dns_a_records" {
   description = "Existing DNS A Records"
-  value = data.kopicloud_dns_a_records.by_zone
+  value = data.kopicloud_dns_a_records_list.by_zone
 }
 
 
-data "kopicloud_dns_a_records" "one" {
+data "kopicloud_dns_a_records_list" "one" {
   hostname = "computer1975"
   ip_address = "10.20.1.241"
   zone_name = "kopicloud.local"
@@ -106,15 +106,15 @@ data "kopicloud_dns_a_records" "one" {
 # Returns all DNS A Records
 output "some_dns_a_records" {
   description = "Existing DNS A Records"
-  value = data.kopicloud_dns_a_records.one
+  value = data.kopicloud_dns_a_records_list.one
 }
 
-# data "kopicloud_dns_a_records" "all" {}
+# data "kopicloud_dns_a_records_list" "all" {}
 
 # # Returns all DNS A Records
 # output "all_dns_a_records" {
 #   description = "Existing DNS A Records"
-#   value = data.kopicloud_dns_a_records.all
+#   value = data.kopicloud_dns_a_records_list.all
 # }
 
 # data "kopicloud_all_dns_aaaa_records" "test" {}
