@@ -14,6 +14,7 @@ BUILD_CMD=go build ${LD_FLAGAS}
 default: install
 
 build:
+	go install golang.org/x/tools/cmd/goimports@latest
 	mkdir -p api
 	go generate
 	${BUILD_CMD} -o bin/${BINARY}
