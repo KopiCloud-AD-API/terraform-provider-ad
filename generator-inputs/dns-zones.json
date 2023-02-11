@@ -35,8 +35,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "stringToTerraform",
-                    "result_wrapper": "wrapInArray",
                     "result": {
                         "name": "dns_lookup_zone_list",
                         "api_to_terraform_id": "getId_for_DnsLookupZone"                    
@@ -51,7 +49,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "flattenStringList",
                     "result": {
                         "name": "dns_lookup_zone_list",
                         "id": "all_dns_lookup_zones"
@@ -73,8 +70,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "stringToTerraform",
-                    "result_wrapper": "wrapInArray",
                     "result": {
                         "name": "dns_lookup_zone_list",
                         "api_to_terraform_id": "getId_for_DnsLookupZone"                    
@@ -115,8 +110,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "stringToTerraform",
-                    "result_wrapper": "wrapInArray",
                     "result": {
                         "name": "dns_lookup_zone_list",
                         "api_to_terraform_id": "getId_for_DnsLookupZone"                    
@@ -131,7 +124,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "flattenStringList",
                     "result": {
                         "name": "dns_lookup_zone_list",
                         "id": "all_dns_lookup_zones"
@@ -153,8 +145,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "stringToTerraform",
-                    "result_wrapper": "wrapInArray",
                     "result": {
                         "name": "dns_lookup_zone_list",
                         "api_to_terraform_id": "getId_for_DnsLookupZone"                    

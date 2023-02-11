@@ -22,11 +22,12 @@ import (
 //go:generate openapi-terraform-provider-generator converters  -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.converters.gen.go  -i computer -i dnsrecord
 
 // Generate the Code for Computers
-//go:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer.gen.go 	     -i generator-inputs/computer.json
+//go:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-crud.gen.go 	     -i generator-inputs/computer.json
+//go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-read.gen.go 	     -i generator-inputs/computer.json
 
 // Generate the Code for the DNS A Records
 //go:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_a_record-crud.gen.go 	 -i generator-inputs/dns_a_record.json
-//go:generate openapi-terraform-provider-generator datasource-read													          --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_a_record-data.gen.go 	 -i generator-inputs/dns_a_record.json
+//go:generate openapi-terraform-provider-generator datasource-read													          --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_a_record-read.gen.go 	 -i generator-inputs/dns_a_record.json
 
 // Generate the Code for the DNS AAAA Records
 //go:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_aaaa_record-crud.gen.go   -i generator-inputs/dns_aaaa_record.json
