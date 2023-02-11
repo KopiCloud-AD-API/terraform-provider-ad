@@ -23,13 +23,34 @@ provider "kopicloud" {
 # }
 
 
-# data "kopicloud_all_computers" "test" {}
+data "kopicloud_computer_list" "test" {}
 
 # Returns all computers
-# output "all_computers_list" {
-#   description = "Existing computers"
-#   value = data.kopicloud_all_computers.test
-# }
+output "all_computers_list" {
+  description = "Existing computers"
+  value = data.kopicloud_computer_list.test.result
+}
+
+data "kopicloud_computer_list" "by_ou" {
+  ou_path = "OU=Domain Controllers,DC=kopicloud,DC=local"
+}
+
+# Returns all computers
+output "ou_computers_list" {
+  description = "Existing computers"
+  value = data.kopicloud_computer_list.by_ou.result
+}
+
+data "kopicloud_computer_list" "by_name" {
+  ad_computer_name = "BIG-WOPER"
+}
+
+# Returns all computers
+output "by_name_computers_list" {
+  description = "Existing computers"
+  value = data.kopicloud_computer_list.by_name.result
+}
+
 
 # data "kopicloud_all_ad_groups" "test" {}
 
@@ -132,15 +153,15 @@ output "all_dns_cname_records" {
 #   value = data.kopicloud_all_dns_zones.test
 # }
 
-# resource "kopicloud_computer" "test" {
-#   ad_computer_name = "Hal-9669"
-#   ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"    
-# }
+resource "kopicloud_computer" "test" {
+  ad_computer_name = "BIG-WOPER"
+  ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"    
+}
 
-# output "computer" {
-#   description = "Created Computer"
-#   value = resource.kopicloud_computer.test
-# }
+output "computer" {
+  description = "Created Computer"
+  value = resource.kopicloud_computer.test
+}
 
 
 # resource "kopicloud_dns_a_record" "test" {
@@ -165,40 +186,40 @@ output "all_dns_cname_records" {
 #   value = resource.kopicloud_dns_aaaa_record.test
 # }
 
-resource "kopicloud_dns_cname_record" "test" {
-  hostname = "computer999"
-  hostname_alias = "computer70_alias"
-  zone_name = "kopicloud.local"
-}
+# resource "kopicloud_dns_cname_record" "test" {
+#   hostname = "computer999"
+#   hostname_alias = "computer70_alias"
+#   zone_name = "kopicloud.local"
+# }
 
-output "dns_cname_record" {
-  description = "Created DNS CName Record"
-  value = resource.kopicloud_dns_cname_record.test.result
-}
+# output "dns_cname_record" {
+#   description = "Created DNS CName Record"
+#   value = resource.kopicloud_dns_cname_record.test.result
+# }
 
-resource "kopicloud_dns_lookup_zone" "test" {
-  zone_name = "my_lookup_zone_3"
-}
+# resource "kopicloud_dns_lookup_zone" "test" {
+#   zone_name = "my_lookup_zone_3"
+# }
 
-output "dns_lookup_zone" {
-  description = "Created DNS Lookup zone"
-  value = resource.kopicloud_dns_lookup_zone.test
-}
+# output "dns_lookup_zone" {
+#   description = "Created DNS Lookup zone"
+#   value = resource.kopicloud_dns_lookup_zone.test
+# }
 
-resource "kopicloud_dns_reverse_lookup_zone" "test" {
-  zone_name = "my_reverse_lookup_zone_3"
-}
+# resource "kopicloud_dns_reverse_lookup_zone" "test" {
+#   zone_name = "my_reverse_lookup_zone_4"
+# }
 
-output "dns_reverse_lookup_zone" {
-  description = "Created DNS Reverse Lookup zone"
-  value = resource.kopicloud_dns_reverse_lookup_zone.test
-}
+# output "dns_reverse_lookup_zone" {
+#   description = "Created DNS Reverse Lookup zone"
+#   value = resource.kopicloud_dns_reverse_lookup_zone.test
+# }
 
-data "kopicloud_dns_a_records_list" "test_hostname" { 
-  hostname = "tito2" 
-}
+# data "kopicloud_dns_a_records_list" "test_hostname" { 
+#   hostname = "tito2" 
+# }
 
-output "kopicloud_dns_a_records_list" {
-  description = "Existing DNS A Records"
-  value = data.kopicloud_dns_a_records_list.test_hostname.result
-}
+# output "kopicloud_dns_a_records_list" {
+#   description = "Existing DNS A Records"
+#   value = data.kopicloud_dns_a_records_list.test_hostname.result
+# }

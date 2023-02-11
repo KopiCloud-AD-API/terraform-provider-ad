@@ -41,8 +41,6 @@
                             "fields": [ ]
                         }
                     },                
-                    "api_to_terraform": "dns_recordsToTerraform",
-                    "result_wrapper": "wrapInArray",
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
@@ -67,8 +65,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "dns_recordsToTerraform",
-                    "result_wrapper": "wrapInArray",
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
@@ -94,8 +90,6 @@
                             "fields": []
                         }
                     },                
-                    "api_to_terraform": "dns_recordsToTerraform",
-                    "result_wrapper": "wrapInArray",
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
