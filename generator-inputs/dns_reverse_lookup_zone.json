@@ -2,9 +2,10 @@
     "api_alias": "kcapi",
     "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
     "package": "provider",
+    "data_sources" : [],
     "resources" : [
         {
-            "name": "DnsReverseLookupZoneZoneName",
+            "name": "DnsReverseLookupZone",
             "terraform": {
                 "name": "kopicloud_dns_reverse_lookup_zone",
                 "arguments": [
@@ -16,16 +17,13 @@
                 ]
             },
             "result_schemas": {
-                "dns_reverse_lookup_zone_list": {
-                    "schema_function": "schemaOfSingleValueObject",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`, true)"        
-                },
-                "dns_reverse_lookup_zone": {
-                    "schema_function": "schemaOfSingleValueObject",
-                    "schema_function_arguments": "(schema.TypeString, `zone_name`, true)"        
+                "result": {
+                    "schema_function": "schemaOfStringList",
+                    "schema_function_arguments": "(`result`, `zone_name`, `Schema for DNS Lookup Zones`)"        
                 }
             },
-            "element_name": "DnsLookupZoneZoneName",
+
+            "element_name": "DnsReverseLookupZone",
             "crud": {
                 "create": {
                     "api_function": {
@@ -34,11 +32,38 @@
                         "arguments": [
                             {
                                 "name": "zone_name",
-                                "type": "string"
+                                "type": "string",
+                                "required": true
                             }
                         ],
                         "params": {
                             "name": "PostApiDnsReverseLookupZoneZoneNameParams",
+                            "fields": [ ]
+                        }
+                    },                
+                    "api_to_terraform": "dns_recordsToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "singleStringResultToTerraform(`zone_name`)",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_DnsLookupZone"                    
+                    }
+                },
+                "read": {
+                    "api_function": {
+                        "name": "GetApiDnsZonesZoneNameExistsWithResponse",
+                        "arguments": [
+                            {
+                                "name": "zone_name",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiDnsZonesZoneNameExistsParams",
                             "fields": []
                         }
                     },                
@@ -47,28 +72,10 @@
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "singleStringToTerraform(`zone_name`)",
+                        "api_to_terraform": "singleStringResultToTerraform(`zone_name`)",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "dns_reverse_lookup_zone",
-                        "api_to_terraform_id": "getId_for_SingleValue(`dns_reverse_lookup_zone`)"                    
-                    }
-                },
-                "read": {
-                    "api_function": {
-                        "name": "GetApiDnsZonesAllWithResponse",
-                        "arguments": [],
-                        "params": {
-                            "name": "GetApiDnsZonesAllParams",
-                            "fields": []
-                        }
-                    },                
-                    "api_to_terraform": "flattenDnsRecordsList",
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "stringListToTerraform(`zone_name`)",
-                        "terraform_field": "dns_reverse_lookup_zone_list",
-                        "terraform_id": "dns_reverse_lookup_zones"
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_DnsLookupZone"                    
                     }
                 },
                 "delete": {
@@ -78,7 +85,8 @@
                         "arguments": [
                             {
                                 "name": "zone_name",
-                                "type": "string"
+                                "type": "string",
+                                "required": true
                             }
                         ],
                         "params": {
@@ -91,10 +99,10 @@
                     "result": {
                         "msg_field": "Output",
                         "result_field": "Result",
-                        "api_to_terraform": "singleStringToTerraform(`zone_name`)",
+                        "api_to_terraform": "singleStringResultToTerraform(`zone_name`)",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "dns_reverse_lookup_zone",
-                        "api_to_terraform_id": "getId_for_SingleValue(`dns_reverse_lookup_zone`)"                    
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_DnsLookupZone"                    
                     }
                 }
            }

@@ -176,23 +176,23 @@ output "dns_cname_record" {
   value = resource.kopicloud_dns_cname_record.test.result
 }
 
-# resource "kopicloud_dns_lookup_zone" "test" {
-#   zone_name = "my_lookup_zone_2"
-# }
+resource "kopicloud_dns_lookup_zone" "test" {
+  zone_name = "my_lookup_zone_3"
+}
 
-# output "dns_lookup_zone" {
-#   description = "Created DNS Lookup zone"
-#   value = resource.kopicloud_dns_lookup_zone.test
-# }
+output "dns_lookup_zone" {
+  description = "Created DNS Lookup zone"
+  value = resource.kopicloud_dns_lookup_zone.test
+}
 
-# resource "kopicloud_dns_reverse_lookup_zone" "test" {
-#   zone_name = "my_reverse_lookup_zone_2"
-# }
+resource "kopicloud_dns_reverse_lookup_zone" "test" {
+  zone_name = "my_reverse_lookup_zone_3"
+}
 
-# output "dns_reverse_lookup_zone" {
-#   description = "Created DNS Reverse Lookup zone"
-#   value = resource.kopicloud_dns_reverse_lookup_zone.test
-# }
+output "dns_reverse_lookup_zone" {
+  description = "Created DNS Reverse Lookup zone"
+  value = resource.kopicloud_dns_reverse_lookup_zone.test
+}
 
 data "kopicloud_dns_a_records_list" "test_hostname" { 
   hostname = "tito2" 
