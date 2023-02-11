@@ -165,16 +165,16 @@ output "all_dns_cname_records" {
 #   value = resource.kopicloud_dns_aaaa_record.test
 # }
 
-# resource "kopicloud_dns_cname_record" "test" {
-#   hostname = "computer71"
-#   hostname_alias = "computer70_alias"
-#   zone_name = "kopicloud.local"
-# }
+resource "kopicloud_dns_cname_record" "test" {
+  hostname = "computer999"
+  hostname_alias = "computer70_alias"
+  zone_name = "kopicloud.local"
+}
 
-# output "dns_cname_record" {
-#   description = "Created DNS CName Record"
-#   value = resource.kopicloud_dns_cname_record.test
-# }
+output "dns_cname_record" {
+  description = "Created DNS CName Record"
+  value = resource.kopicloud_dns_cname_record.test.result
+}
 
 # resource "kopicloud_dns_lookup_zone" "test" {
 #   zone_name = "my_lookup_zone_2"
