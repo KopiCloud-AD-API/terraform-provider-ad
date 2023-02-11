@@ -11,6 +11,8 @@ import (
 	kcapi "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
 )
 
+type M map[string]interface{}
+
 // Provider -
 func Provider() *schema.Provider {
 	return &schema.Provider{
@@ -35,21 +37,40 @@ func Provider() *schema.Provider {
 	}
 }
 
-func schemaOfStringList(list_name string, field_name string, description string) map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-		list_name: {
-			Type:     schema.TypeList,
-			Computed: true,
-			Elem: &schema.Resource{
-				Schema: map[string]*schema.Schema{
-					field_name: {
-						Type:        schema.TypeString,
-						Computed:    true,
-						Description: description,
-					},
+func schemaOfStringList(list_name string, field_name string, description string) *schema.Schema {
+	return &schema.Schema{
+		Type:     schema.TypeList,
+		Computed: true,
+		Elem: &schema.Resource{
+			Schema: map[string]*schema.Schema{
+				field_name: {
+					Type:        schema.TypeString,
+					Computed:    true,
+					Description: description,
 				},
 			},
 		},
+	}
+}
+
+func singleStringResultToTerraform(field_name string) func(*string) map[string]interface{} {
+	return func(value *string) map[string]interface{} {
+		obj := make(map[string]interface{}, 0)
+		obj[field_name] = value
+		return obj
+	}
+}
+
+func singleStringListResultToTerraform(field_name string) func(*[]string) []M {
+
+	return func(values *[]string) []M {
+		res := make([]M, len(*values))
+		for i, v := range *values {
+			obj := make(map[string]interface{}, 0)
+			obj[field_name] = v
+			res[i] = obj
+		}
+		return res
 	}
 }
 

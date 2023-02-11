@@ -186,7 +186,7 @@
                 ]
             },
             "result_schemas": {
-                "dns_a_record": {
+                "result": {
                     "schema_function": "schemaOfDnsRecord",
                     "schema_function_arguments": "(``, true)"        
                 }
