@@ -28,6 +28,7 @@ List of Methods
 
 [ ] DELETE /api/Computers/CleanUp - CleanUp Inactive AD Computers
 
+###########################################
 
 ## AD Group Membership
 
@@ -39,6 +40,7 @@ List of Methods
 
 [ ] DELETE / api/ADUser/{Username}/Group/{GroupName} - Remove AD User From an AD Group
 
+###########################################
 
 ## AD Groups
 
@@ -56,6 +58,7 @@ List of Methods
 
 [ ] DELETE /api/ADGroups/{GroupName}/Remove - Delete an AD Group
 
+###########################################
 
 ## AD Organization Units (OU)
 
@@ -73,6 +76,7 @@ List of Methods
 
 [ ] DELETE /api/OU/{OUName}/Remove - Delete AD OU
 
+###########################################
 
 ## AD Users
 
@@ -118,39 +122,7 @@ List of Methods
 
 [ ] DELETE /api/ADUser/{Username} - Delete AD User
 
-
-## DNS A Records
-
-[x] GET /api/DnsARecord/All - List All DNS A Records in All Zones
-
-[x] GET /api/DnsARecord - List All DNS A Records in a DNS Zone
-
-[x] POST /api/DnsARecord - Create a DNS A Records
-
-[x] DELETE /api/DnsARecord - Delete a DNS A Record
-
-
-## DNS AAAA Records
-
-[x] GET /api/DnsAAAARecord/All - List All DNS AAAA Records in All Zones
-
-[x] GET /api/DnsAAAARecord - List All DNS AAAA Records in a DNS Zone
-
-[x] POST /api/DnsAAAARecord - Create a DNS AAAA Records
-
-[x] DELETE /api/DnsAAAARecord - Delete a DNS A Record
-
-
-## DNS CNAME Records
-
-[x] GET /api/DnsCNameRecord/All - List All DNS CNAME Records in All Zones
-
-[x] GET /api/DnsCNameRecord - List All DNS CNAME Records in a DNS Zone
-
-[x] POST /api/DnsCNameRecord - Create a DNS CNAME Records
-
-[x] DELETE /api/DnsCNameRecord - Delete a DNS CNAME Record
-
+###########################################
 
 ## DNS Zones
 
@@ -163,3 +135,39 @@ List of Methods
 [ ] POST /api/DnsReverseLookupZone/{ZoneName} - Create a DNS Reverse Lookup Zone
 
 [x] DELETE /api/DnsZone/{ZoneName} - Remove a DNS Zone
+
+###########################################
+
+## DNS A Records
+
+[x] GET /api/DnsARecord/All - List All DNS A Records in All Zones
+
+[x] GET /api/DnsARecord - List All DNS A Records in a DNS Zone
+
+[x] POST /api/DnsARecord - Create a DNS A Records
+
+[x] DELETE /api/DnsARecord - Delete a DNS A Record
+
+###########################################
+
+## DNS AAAA Records
+
+[x] GET /api/DnsAAAARecord/All - List All DNS AAAA Records in All Zones
+
+[x] GET /api/DnsAAAARecord - List All DNS AAAA Records in a DNS Zone
+
+[x] POST /api/DnsAAAARecord - Create a DNS AAAA Records
+
+[x] DELETE /api/DnsAAAARecord - Delete a DNS A Record
+
+###########################################
+
+## DNS CNAME Records
+
+[x] GET /api/DnsCNameRecord/All - List All DNS CNAME Records in All Zones
+
+[x] GET /api/DnsCNameRecord - List All DNS CNAME Records in a DNS Zone
+
+[x] POST /api/DnsCNameRecord - Create a DNS CNAME Records
+
+[x] DELETE /api/DnsCNameRecord - Delete a DNS CNAME Record
