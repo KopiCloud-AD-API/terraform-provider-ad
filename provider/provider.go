@@ -93,6 +93,10 @@ func getId_for_Computer(obj *api.Computer) string {
 	return fmt.Sprintf("Computer_%s", *obj.ComputerName)
 }
 
+func getId_for_OU(obj *api.OU) string {
+	return fmt.Sprintf("OU_%s", *obj.Name)
+}
+
 func getId_for_DnsARecord(obj *api.DnsRecord) string {
 	return fmt.Sprintf("DnsARecord_%s_%s", *obj.Name, *obj.Data)
 }
