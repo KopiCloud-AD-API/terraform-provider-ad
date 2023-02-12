@@ -23,33 +23,42 @@ provider "kopicloud" {
 # }
 
 
-data "kopicloud_computer_list" "test" {}
+# data "kopicloud_computer_list" "test" {}
 
-# Returns all computers
-output "all_computers_list" {
-  description = "Existing computers"
-  value = data.kopicloud_computer_list.test.result
-}
+# # Returns all computers
+# output "all_computers_list" {
+#   description = "Existing computers"
+#   value = data.kopicloud_computer_list.test.result
+# }
 
-data "kopicloud_computer_list" "by_ou" {
-  ou_path = "OU=Domain Controllers,DC=kopicloud,DC=local"
-}
+# data "kopicloud_ou_list" "test" {}
 
-# Returns all computers
-output "ou_computers_list" {
-  description = "Existing computers"
-  value = data.kopicloud_computer_list.by_ou.result
-}
+# # Returns all computers
+# output "all_ous_list" {
+#   description = "Existing OUs"
+#   value = data.kopicloud_ou_list.test.result
+# }
 
-data "kopicloud_computer_list" "by_name" {
-  ad_computer_name = "BIG-WOPER"
-}
 
-# Returns all computers
-output "by_name_computers_list" {
-  description = "Existing computers"
-  value = data.kopicloud_computer_list.by_name.result
-}
+# data "kopicloud_computer_list" "by_ou" {
+#   ou_path = "OU=Domain Controllers,DC=kopicloud,DC=local"
+# }
+
+# # Returns all computers
+# output "ou_computers_list" {
+#   description = "Existing computers"
+#   value = data.kopicloud_computer_list.by_ou.result
+# }
+
+# data "kopicloud_computer_list" "by_name" {
+#   ad_computer_name = "BIG-WOPER"
+# }
+
+# # Returns all computers
+# output "by_name_computers_list" {
+#   description = "Existing computers"
+#   value = data.kopicloud_computer_list.by_name.result
+# }
 
 
 # data "kopicloud_all_ad_groups" "test" {}
@@ -88,15 +97,15 @@ output "by_name_computers_list" {
 # }
 
 
-data "kopicloud_dns_a_records_list" "by_ip" {
-  ip_address = "10.20.1.241"
-}
+# data "kopicloud_dns_a_records_list" "by_ip" {
+#   ip_address = "10.20.1.241"
+# }
 
-# Returns all DNS A Records
-output "by_ip_dns_a_records" {
-  description = "Existing DNS A Records"
-  value = data.kopicloud_dns_a_records_list.by_ip
-}
+# # Returns all DNS A Records
+# output "by_ip_dns_a_records" {
+#   description = "Existing DNS A Records"
+#   value = data.kopicloud_dns_a_records_list.by_ip
+# }
 
 # data "kopicloud_dns_a_records_list" "by_zone" {
 #   zone_name = "kopicloud.local"
@@ -129,21 +138,21 @@ output "by_ip_dns_a_records" {
 #   value = data.kopicloud_dns_a_records_list.all
 # }
 
-data "kopicloud_dns_aaaa_records_list" "test" {}
+# data "kopicloud_dns_aaaa_records_list" "test" {}
 
-# Returns all DNS AAAA Records
-output "all_dns_aaaa_records" {
-  description = "Existing DNS AAAA Records"
-  value = data.kopicloud_dns_aaaa_records_list.test.result
-}
+# # Returns all DNS AAAA Records
+# output "all_dns_aaaa_records" {
+#   description = "Existing DNS AAAA Records"
+#   value = data.kopicloud_dns_aaaa_records_list.test.result
+# }
 
-data "kopicloud_dns_cname_records_list" "test" {}
+# data "kopicloud_dns_cname_records_list" "test" {}
 
-# Returns all DNS CNAME Records
-output "all_dns_cname_records" {
-  description = "Existing DNS CName Records"
-  value = data.kopicloud_dns_cname_records_list.test.result
-}
+# # Returns all DNS CNAME Records
+# output "all_dns_cname_records" {
+#   description = "Existing DNS CName Records"
+#   value = data.kopicloud_dns_cname_records_list.test.result
+# }
 
 # data "kopicloud_all_dns_zones" "test" {}
 
@@ -153,16 +162,27 @@ output "all_dns_cname_records" {
 #   value = data.kopicloud_all_dns_zones.test
 # }
 
-resource "kopicloud_computer" "test" {
-  ad_computer_name = "BIG-WOPER"
-  ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"    
+# resource "kopicloud_computer" "test" {
+#   ad_computer_name = "BIG-WOPER"
+#   ou_path= "OU=Domain Controllers,DC=kopicloud,DC=local"    
+# }
+
+# output "computer" {
+#   description = "Created Computer"
+#   value = resource.kopicloud_computer.test
+# }
+
+resource "kopicloud_ou" "test" {
+  ou_name      = "kopicloud"
+  ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
+  description  = "This is a very cool organization"
+  protected    = false    
 }
 
-output "computer" {
+output "ou" {
   description = "Created Computer"
-  value = resource.kopicloud_computer.test
+  value = resource.kopicloud_ou.test
 }
-
 
 # resource "kopicloud_dns_a_record" "test" {
 #   hostname = "computer1975"
