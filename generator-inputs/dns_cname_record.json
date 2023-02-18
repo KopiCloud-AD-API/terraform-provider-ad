@@ -43,17 +43,17 @@
                                 {
                                     "api_name": "DNSHostName",
                                     "name": "hostname",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "DNSHostNameAlias",
                                     "name": "hostname_alias",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "ZoneName",
                                     "name": "zone_name",
-                                    "type": "string"
+                                    "type": "*string"
                                 }
                             ]
                         }
@@ -197,17 +197,17 @@
                                 {
                                     "api_name": "DNSHostName",
                                     "name": "hostname",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "DNSHostNameAlias",
                                     "name": "hostname_alias",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "ZoneName",
                                     "name": "zone_name",
-                                    "type": "string"
+                                    "type": "*string"
                                 }
                             ]
                         }
@@ -231,17 +231,17 @@
                                 {
                                     "api_name": "DNSHostName",
                                     "name": "hostname",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "DNSHostNameAlias",
                                     "name": "hostname_alias",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "ZoneName",
                                     "name": "zone_name",
-                                    "type": "string"
+                                    "type": "*string"
                                 }
                             ]
                         }
@@ -266,17 +266,17 @@
                                 {
                                     "api_name": "DNSHostName",
                                     "name": "hostname",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "DNSHostNameAlias",
                                     "name": "hostname_alias",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "ZoneName",
                                     "name": "zone_name",
-                                    "type": "string"
+                                    "type": "*string"
                                 }
 
                             ]
