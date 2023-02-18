@@ -31,16 +31,10 @@
                 {
                     "required_inputs": ["ou_name"],
                     "api_function": {
-                        "name": "GetOUWithResponse",
-                        "arguments": [
-                            {
-                                "name": "ou_name",
-                                "type": "string",
-                                "required": true
-                            }
-                        ],
+                        "name": "GetOUByPathWithResponse",
+                        "arguments": [],
                         "params": {
-                            "name": "GetOUParams",
+                            "name": "GetOUByPathParams",
                             "fields": [
                                 {
                                     "api_name": "OUPath",
@@ -114,19 +108,110 @@
             },
 
             "element_name": "OU",
-            "crud": {
-                "create": {
-                    "api_function": {
-                        "name": "PostApiOUOUNameWithResponse",
-                        "isPointer": true,
-                        "arguments": [
+            "create": {
+                "api_function": {
+                    "name": "PostApiOUWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "PostApiOUParams",
+                        "fields": [
                             {
+                                "api_name": "OUName",
                                 "name": "ou_name",
                                 "type": "string"
+                            },
+                            {
+                                "api_name": "OUDescription",
+                                "name": "description",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "OUDestinationPath",
+                                "name": "ou_path",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "IsProtected",
+                                "name": "protected",
+                                "type": "*bool"
                             }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "OUToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "terraform_id": "Guid"
+                }
+            },
+            "read": {
+                "api_function": {
+                    "name": "GetOUByGuidWithResponse",
+                    "arguments": [],
+                    "params": {
+                        "name": "GetOUByGuidParams",
+                        "fields": [
+                            {
+                                "api_name": "OUGuid",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "OUToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "terraform_id": "Guid"
+                }
+            },
+            "update": [
+                {
+                    "required_inputs": ["ou_name"],
+                    "api_function": {
+                        "name": "PutApiOURenameWithResponse",
+                        "arguments": [
+
                         ],
                         "params": {
-                            "name": "PostApiOUOUNameParams",
+                            "name": "PutApiOURenameParams",
+                            "fields": [
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "ou_path",
+                                    "type": "string",
+                                    "use_old_value": true
+                                },
+                                {
+                                    "api_name": "OUNewName",
+                                    "name": "ou_new_name",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "OUToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "terraform_id": "Guid"
+                    }
+                },
+                {
+                    "required_inputs": ["ou_name"],
+                    "api_function": {
+                        "name": "PutApiOUWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "PutApiOUParams",
                             "fields": [
                                 {
                                     "api_name": "OUPath",
@@ -136,14 +221,13 @@
                                 {
                                     "api_name": "OUDescription",
                                     "name": "description",
-                                    "type": "string"
+                                    "type": "*string"
                                 },
                                 {
                                     "api_name": "IsProtected",
                                     "name": "protected",
-                                    "type": "bool"
-                                }
-
+                                    "type": "*bool"
+                                }    
                             ]
                         }
                     },                
@@ -153,63 +237,40 @@
                         "api_to_terraform": "OUToTerraform",
                         "result_wrapper": "wrapInArray",
                         "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_OU"                    
-                    }
-                },
-                "read": {
-                    "api_function": {
-                        "name": "GetOUWithResponse",
-                        "arguments": [
-                            {
-                                "name": "ou_name",
-                                "type": "string"
-                            }
-                        ],
-                        "params": {
-                            "name": "GetOUParams",
-                            "fields": []
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "OUToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_OU"                    
-                    }
-                },
-                "delete": {
-                    "api_function": {
-                        "name": "DeleteApiOUOUNameRemoveWithResponse",
-                        "isPointer": true,
-                        "arguments": [
-                            {
-                                "name": "ou_name",
-                                "type": "string"
-                            }
-                        ],
-                        "params": {
-                            "name": "DeleteApiOUOUNameRemoveParams",
-                            "fields": [
-                                {
-                                    "api_name": "OUPath",
-                                    "name": "ou_path",
-                                    "type": "string"
-                                }
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "OUToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_OU"                    
+                        "terraform_id": "Guid"
                     }
                 }
-           }
+            ],
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiOUPathRemoveWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "DeleteApiOUPathRemoveParams",
+                        "fields": [
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "Force",
+                                "name": "protected",
+                                "type": "*bool"
+                            }    
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "OUToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "terraform_id": "Guid"
+                }
+            }
         }
     ]
 }
