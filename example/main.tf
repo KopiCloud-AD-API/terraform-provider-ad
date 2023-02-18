@@ -173,14 +173,14 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_ou" "test" {
-  ou_name      = "kopicloud"
+  ou_name      = "kopicloud-4"
   ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
   description  = "This is a very cool organization"
   protected    = false    
 }
 
 output "ou" {
-  description = "Created Computer"
+  description = "Created OU"
   value = resource.kopicloud_ou.test
 }
 
