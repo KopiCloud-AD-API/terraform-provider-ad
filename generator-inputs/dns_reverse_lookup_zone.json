@@ -10,7 +10,7 @@
                 "name": "kopicloud_dns_reverse_lookup_zone",
                 "arguments": [
                     {
-                        "name": "zone_name_or_network_id",
+                        "name": "network_id",
                         "type": "schema.TypeString",
                         "optional": true
                     }
@@ -18,7 +18,7 @@
             },
             "result_schemas": {
                 "result": {
-                    "schema_function": "schemaOfDnsZoneResult",
+                    "schema_function": "schemaOfDnsZone",
                     "schema_function_arguments": "(``)"        
                 }
             },
@@ -30,7 +30,7 @@
                     "isPointer": true,
                     "arguments": [
                         {
-                            "name": "zone_name_or_network_id",
+                            "name": "network_id",
                             "type": "string",
                             "required": true
                         }
@@ -54,7 +54,7 @@
                     "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse",
                     "arguments": [
                         {
-                            "name": "zone_name_or_network_id",
+                            "name": "network_id",
                             "type": "string",
                             "required": true
                         }
@@ -79,7 +79,7 @@
                     "isPointer": true,
                     "arguments": [
                         {
-                            "name": "zone_name_or_network_id",
+                            "name": "network_id",
                             "type": "string",
                             "required": true
                         }

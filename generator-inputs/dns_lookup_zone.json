@@ -17,7 +17,7 @@
             },
             "result_schemas": {
                 "result": {
-                    "schema_function": "schemaOfDnsZoneResultList",
+                    "schema_function": "schemaOfDnsZoneList",
                     "schema_function_arguments": "(``)"        
                 }
             },
@@ -82,7 +82,7 @@
             },
             "result_schemas": {
                 "result": {
-                    "schema_function": "schemaOfDnsZoneResult",
+                    "schema_function": "schemaOfDnsZone",
                     "schema_function_arguments": "(``)"        
                 }
             },
