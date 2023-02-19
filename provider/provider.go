@@ -94,7 +94,7 @@ func getId_for_Computer(obj *api.Computer) string {
 }
 
 func getId_for_OU(obj *api.OU) string {
-	return fmt.Sprintf("%v", obj.Guid.String)
+	return fmt.Sprintf("%v", obj.Guid.String())
 }
 
 func getId_for_DnsARecord(obj *api.DnsRecord) string {
