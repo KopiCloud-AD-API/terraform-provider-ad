@@ -109,8 +109,8 @@ func getId_for_DnsCNameRecord(obj *api.DnsRecord) string {
 	return fmt.Sprintf("DnsCNameRecord_%s_%s", *obj.Name, *obj.Data)
 }
 
-func getId_for_DnsLookupZone(name *string) string {
-	return fmt.Sprintf("DnsLookupZone_%s", *name)
+func getId_for_DnsLookupZone(zone *api.DnsZone) string {
+	return fmt.Sprintf("DnsLookupZone_%s", *zone.ZoneName)
 }
 
 type ApiClient struct {

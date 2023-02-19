@@ -180,118 +180,116 @@
             "result_schemas": {
                 "result": {
                     "schema_function": "schemaOfDnsRecord",
-                    "schema_function_arguments": "(``, true)"        
+                    "schema_function_arguments": "(``)"        
                 }
             },
 
             "element_name": "DnsCNameRecord",
-            "crud": {
-                "create": {
-                    "api_function": {
-                        "name": "PostApiDnsCNameRecordWithResponse",
-                        "isPointer": true,
-                        "arguments": [],
-                        "params": {
-                            "name": "PostApiDnsCNameRecordParams",
-                            "fields": [
-                                {
-                                    "api_name": "DNSHostName",
-                                    "name": "hostname",
-                                    "type": "*string"
-                                },
-                                {
-                                    "api_name": "DNSHostNameAlias",
-                                    "name": "hostname_alias",
-                                    "type": "*string"
-                                },
-                                {
-                                    "api_name": "ZoneName",
-                                    "name": "zone_name",
-                                    "type": "*string"
-                                }
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "DnsRecordToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_DnsCNameRecord"                    
+            "create": {
+                "api_function": {
+                    "name": "PostApiDnsCNameRecordWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "PostApiDnsCNameRecordParams",
+                        "fields": [
+                            {
+                                "api_name": "DNSHostName",
+                                "name": "hostname",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "DNSHostNameAlias",
+                                "name": "hostname_alias",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ZoneName",
+                                "name": "zone_name",
+                                "type": "*string"
+                            }
+                        ]
                     }
-                },
-                "read": {
-                    "api_function": {
-                        "name": "GetApiDnsCNameRecordWithResponse",
-                        "arguments": [],
-                        "params": {
-                            "name": "GetApiDnsCNameRecordParams",
-                            "fields": [
-                                {
-                                    "api_name": "DNSHostName",
-                                    "name": "hostname",
-                                    "type": "*string"
-                                },
-                                {
-                                    "api_name": "DNSHostNameAlias",
-                                    "name": "hostname_alias",
-                                    "type": "*string"
-                                },
-                                {
-                                    "api_name": "ZoneName",
-                                    "name": "zone_name",
-                                    "type": "*string"
-                                }
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "DnsRecordToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_DnsCNameRecord"                    
-                    }
-                },
-                "delete": {
-                    "api_function": {
-                        "name": "DeleteApiDnsCNameRecordWithResponse",
-                        "isPointer": true,
-                        "arguments": [],
-                        "params": {
-                            "name": "DeleteApiDnsCNameRecordParams",
-                            "fields": [
-                                {
-                                    "api_name": "DNSHostName",
-                                    "name": "hostname",
-                                    "type": "*string"
-                                },
-                                {
-                                    "api_name": "DNSHostNameAlias",
-                                    "name": "hostname_alias",
-                                    "type": "*string"
-                                },
-                                {
-                                    "api_name": "ZoneName",
-                                    "name": "zone_name",
-                                    "type": "*string"
-                                }
-
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "DnsRecordToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_DnsCNameRecord"                    
-                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsRecordToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsCNameRecord"                    
                 }
-           }
+            },
+            "read": {
+                "api_function": {
+                    "name": "GetApiDnsCNameRecordWithResponse",
+                    "arguments": [],
+                    "params": {
+                        "name": "GetApiDnsCNameRecordParams",
+                        "fields": [
+                            {
+                                "api_name": "DNSHostName",
+                                "name": "hostname",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "DNSHostNameAlias",
+                                "name": "hostname_alias",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ZoneName",
+                                "name": "zone_name",
+                                "type": "*string"
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsRecordToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsCNameRecord"                    
+                }
+            },
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiDnsCNameRecordWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "DeleteApiDnsCNameRecordParams",
+                        "fields": [
+                            {
+                                "api_name": "DNSHostName",
+                                "name": "hostname",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "DNSHostNameAlias",
+                                "name": "hostname_alias",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ZoneName",
+                                "name": "zone_name",
+                                "type": "*string"
+                            }
+
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsRecordToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsCNameRecord"                    
+                }
+            }
         }
     ]
 }

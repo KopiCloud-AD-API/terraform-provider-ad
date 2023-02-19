@@ -103,7 +103,7 @@
             "result_schemas": {
                 "result": {
                     "schema_function": "schemaOfOU",
-                    "schema_function_arguments": "(``, true)"        
+                    "schema_function_arguments": "(``)"        
                 }
             },
 
