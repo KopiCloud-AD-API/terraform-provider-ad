@@ -182,118 +182,116 @@
             "result_schemas": {
                 "result": {
                     "schema_function": "schemaOfDnsRecord",
-                    "schema_function_arguments": "(``, true)"        
+                    "schema_function_arguments": "(``)"        
                 }
             },
 
             "element_name": "DnsARecord",
-            "crud": {
-                "create": {
-                    "api_function": {
-                        "name": "PostApiDnsARecordWithResponse",
-                        "isPointer": true,
-                        "arguments": [],
-                        "params": {
-                            "name": "PostApiDnsARecordParams",
-                            "fields": [
-                                {
-                                    "api_name": "DNSHostName",
-                                    "name": "hostname",
-                                    "type": "string"
-                                },
-                                {
-                                    "api_name": "IPAddress",
-                                    "name": "ip_address",
-                                    "type": "string"
-                                },
-                                {
-                                    "api_name": "ZoneName",
-                                    "name": "zone_name",
-                                    "type": "string"
-                                }
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "DnsRecordToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_DnsARecord"                    
+            "create": {
+                "api_function": {
+                    "name": "PostApiDnsARecordWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "PostApiDnsARecordParams",
+                        "fields": [
+                            {
+                                "api_name": "DNSHostName",
+                                "name": "hostname",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "IPAddress",
+                                "name": "ip_address",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ZoneName",
+                                "name": "zone_name",
+                                "type": "*string"
+                            }
+                        ]
                     }
-                },
-                "read": {
-                    "api_function": {
-                        "name": "GetApiDnsARecordWithResponse",
-                        "arguments": [],
-                        "params": {
-                            "name": "GetApiDnsARecordParams",
-                            "fields": [
-                                {
-                                    "api_name": "DNSHostName",
-                                    "name": "hostname",
-                                    "type": "string"
-                                },
-                                {
-                                    "api_name": "IPAddress",
-                                    "name": "ip_address",
-                                    "type": "string"
-                                },
-                                {
-                                    "api_name": "ZoneName",
-                                    "name": "zone_name",
-                                    "type": "string"
-                                }
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "DnsRecordToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_DnsARecord"                    
-                    }
-                },
-                "delete": {
-                    "api_function": {
-                        "name": "DeleteApiDnsARecordWithResponse",
-                        "isPointer": true,
-                        "arguments": [],
-                        "params": {
-                            "name": "DeleteApiDnsARecordParams",
-                            "fields": [
-                                {
-                                    "api_name": "DNSHostName",
-                                    "name": "hostname",
-                                    "type": "string"
-                                },
-                                {
-                                    "api_name": "IPAddress",
-                                    "name": "ip_address",
-                                    "type": "string"
-                                },
-                                {
-                                    "api_name": "ZoneName",
-                                    "name": "zone_name",
-                                    "type": "string"
-                                }
-
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "DnsRecordToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_DnsARecord"                    
-                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsRecordToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsARecord"                    
                 }
-           }
+            },
+            "read": {
+                "api_function": {
+                    "name": "GetApiDnsARecordWithResponse",
+                    "arguments": [],
+                    "params": {
+                        "name": "GetApiDnsARecordParams",
+                        "fields": [
+                            {
+                                "api_name": "DNSHostName",
+                                "name": "hostname",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "IPAddress",
+                                "name": "ip_address",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ZoneName",
+                                "name": "zone_name",
+                                "type": "*string"
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsRecordToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsARecord"                    
+                }
+            },
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiDnsARecordWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "DeleteApiDnsARecordParams",
+                        "fields": [
+                            {
+                                "api_name": "DNSHostName",
+                                "name": "hostname",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "IPAddress",
+                                "name": "ip_address",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ZoneName",
+                                "name": "zone_name",
+                                "type": "*string"
+                            }
+
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsRecordToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsARecord"                    
+                }
+            }
         }
     ]
 }

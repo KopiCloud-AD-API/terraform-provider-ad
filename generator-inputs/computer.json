@@ -110,7 +110,7 @@
             "result_schemas": {
                 "result": {
                     "schema_function": "schemaOfComputer",
-                    "schema_function_arguments": "(``, true)"        
+                    "schema_function_arguments": "(``)"        
                 }
             },
 
