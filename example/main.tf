@@ -61,13 +61,13 @@ provider "kopicloud" {
 # }
 
 
-# data "kopicloud_all_ad_groups" "test" {}
+data "kopicloud_group_list" "test" {}
 
-# # Returns all ADGroups
-# output "kopicloud_all_ad_groups" {
-#   description = "Existing AD Groups"
-#   value = data.kopicloud_all_ad_groups.test
-# }
+# Returns all ADGroups
+output "kopicloud_all_groups" {
+  description = "Existing Groups"
+  value = data.kopicloud_group_list.test
+}
 
 # data "kopicloud_ad_group_membership" "test" {
 #   username = "guillermo"
@@ -171,6 +171,32 @@ provider "kopicloud" {
 #   description = "Created Computer"
 #   value = resource.kopicloud_computer.test
 # }
+
+resource "kopicloud_security_group" "test" {
+  name      = "my-new-group"
+  scope     = "Global"
+  description  = "This is a very cool security group"
+  email = "security@kopicloud.com"
+  ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
+}
+
+output "security_group" {
+  description = "Created Security Group"
+  value = resource.kopicloud_security_group.test
+}
+
+resource "kopicloud_distribution_group" "test" {
+  name      = "my-new-distro-group"
+  scope     = "Global"
+  description  = "This is a very cool distribution group"
+  email = "distribution@kopicloud.com"
+  ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
+}
+
+output "distribution_group" {
+  description = "Created Security Group"
+  value = resource.kopicloud_distribution_group.test
+}
 
 resource "kopicloud_ou" "test" {
   ou_name      = "kopicloud-11"

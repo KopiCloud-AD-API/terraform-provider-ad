@@ -18,12 +18,21 @@ import (
 //go:generate oapi-codegen -package=api   -generate=client  -o api/kopicloud.client.gen.go https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json
 
 // Generate the Terraform Schemas && converters from API Types to Terraform
-//go:generate openapi-terraform-provider-generator schemas     -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.schemas.gen.go     		   -i Computer -i ou -i DnsRecord -i DnsZone -i DnsZoneResult
-//go:generate openapi-terraform-provider-generator converters  -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.converters.gen.go  -e Guid -i Computer -i ou -i DnsRecord -i DnsZone -i DnsZoneResult
+//go:generate openapi-terraform-provider-generator schemas     -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.schemas.gen.go     		   -i Computer -i ou -i DnsRecord -i DnsZone -i Group
+//go:generate openapi-terraform-provider-generator converters  -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.converters.gen.go  -e Guid -i Computer -i ou -i DnsRecord -i DnsZone -i Group
 
 // Generate the Code for Computers
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-crd.gen.go 	     -i generator-inputs/computer.json
 //go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-data.gen.go 	     -i generator-inputs/computer.json
+
+// Generate the Code for Security Groups
+//go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.security-group-crd.gen.go 	 -i generator-inputs/security_group.json
+//go:generate openapi-terraform-provider-generator resource-update 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.security-group-update.gen.go -i generator-inputs/security_group.json
+//go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.security-group-data.gen.go 	 -i generator-inputs/security_group.json
+
+// Generate the Code for Distribution Groups
+//go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.distribution-group-crd.gen.go 	 -i generator-inputs/distribution_group.json
+//go:generate openapi-terraform-provider-generator resource-update 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.distribution-group-update.gen.go -i generator-inputs/distribution_group.json
 
 // Generate the Code for Organizational Units
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.ou-crd.gen.go 	     		 -i generator-inputs/organizational_unit.json
@@ -50,10 +59,10 @@ import (
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_reverse_lookup_zone-crd.gen.go   -i generator-inputs/dns_reverse_lookup_zone.json
 
 // Generate the schemas for the resources (should list all the JSON files for which resources were generated)
-//go:generate openapi-terraform-provider-generator resource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.resources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json
+//go:generate openapi-terraform-provider-generator resource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.resources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json
 
 // Generate the code for the datasources (Schemas)
-//go:generate openapi-terraform-provider-generator datasource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.datasources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json
+//go:generate openapi-terraform-provider-generator datasource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.datasources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json
 
 //go:generate goimports -w provider
 var (

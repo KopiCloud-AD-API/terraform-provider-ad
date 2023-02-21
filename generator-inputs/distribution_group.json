@@ -1,0 +1,187 @@
+{
+    "api_alias": "kcapi",
+    "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
+    "package": "provider",
+    "resources" : [
+        {
+            "name": "DistributionGroup",
+            "terraform": {
+                "name": "kopicloud_distribution_group",
+                "arguments": [
+                    {
+                        "name": "name",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "scope",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "description",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "email",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "ou_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfGroup",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+
+            "element_name": "Group",
+            "create": {
+                "api_function": {
+                    "name": "PostApiADGroupsGroupNameDistributionWithResponse",
+                    "isPointer": true,
+                    "arguments": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "required": true
+                        }    
+                    ],
+                    "params": {
+                        "name": "PostApiADGroupsGroupNameDistributionParams",
+                        "fields": [
+                            {
+                                "api_name": "GroupScope",
+                                "name": "scope",
+                                "type": "*string",
+                                "terraform_to_api": "stringToGroupScope",
+                                "optional": true
+                            },
+                            {
+                                "api_name": "GroupDescription",
+                                "name": "description",
+                                "type": "*string",
+                                "required": true
+                            },
+                            {
+                                "api_name": "GroupEmail",
+                                "name": "email",
+                                "type": "*string",
+                                "required": true
+                            },
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "type": "*string",
+                                "optional": true
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "GroupToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_Group" 
+                }
+            },
+            "read": {
+                "api_function": {
+                    "name": "GetApiADGroupsGroupNameWithResponse",
+                    "arguments": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "required": true
+                        }    
+                    ],
+                    "params": {
+                        "name": "GetApiADGroupsGroupNameParams",
+                        "fields": []
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "GroupToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_Group" 
+                }
+            },
+            "update": [
+                {
+                    "required_inputs": ["name"],
+                    "api_function": {
+                        "name": "PutApiADGroupsGroupNameRenameNewGroupNameWithResponse",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "required": true,
+                                "use_old_value": true
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "required": true
+                            }    
+                        ],
+                        "params": {
+                            "name": "PutApiADGroupsGroupNameRenameNewGroupNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "GroupToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_Group" 
+                    }
+                }
+            ],
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiADGroupsGroupNameRemoveWithResponse",
+                    "isPointer": true,
+                    "arguments": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "params": {
+                        "name": "DeleteApiADGroupsGroupNameRemoveParams",
+                        "fields": [
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "type": "*string"
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "GroupToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_Group" 
+                }
+            }
+        }
+    ]
+}
