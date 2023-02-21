@@ -83,6 +83,11 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 
 }
 
+func stringToGroupScope(s string) *api.GroupScope {
+	gs := api.GroupScope(s)
+	return &gs
+}
+
 func getId_for_SingleValue(name string) func(*string) string {
 	return func(value *string) string {
 		return fmt.Sprintf("%s_%s", name, *value)
@@ -95,6 +100,10 @@ func getId_for_Computer(obj *api.Computer) string {
 
 func getId_for_OU(obj *api.OU) string {
 	return fmt.Sprintf("%v", obj.Guid.String())
+}
+
+func getId_for_Group(obj *api.Group) string {
+	return fmt.Sprintf("%s Group: %s", *obj.Type, *obj.Name)
 }
 
 func getId_for_DnsARecord(obj *api.DnsRecord) string {
