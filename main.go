@@ -57,12 +57,13 @@ import (
 
 // Generate the Code for the DNS Reverse Lookup Zones (Not yet ready)
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_reverse_lookup_zone-crd.gen.go   -i generator-inputs/dns_reverse_lookup_zone.json
+//go:generate openapi-terraform-provider-generator datasource-read  														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.dns_reverse_lookup_zone-data.gen.go  -i generator-inputs/dns_reverse_lookup_zone.json
 
 // Generate the schemas for the resources (should list all the JSON files for which resources were generated)
 //go:generate openapi-terraform-provider-generator resource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.resources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json
 
 // Generate the code for the datasources (Schemas)
-//go:generate openapi-terraform-provider-generator datasource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.datasources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json
+//go:generate openapi-terraform-provider-generator datasource-schemas 														  --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.datasources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json
 
 //go:generate goimports -w provider
 var (

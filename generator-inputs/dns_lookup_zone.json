@@ -4,6 +4,38 @@
     "package": "provider",
     "data_sources" : [
         {
+            "name": "DnsZoneReader",
+            "terraform": {
+                "name": "kopicloud_dns_zone_list",
+                "arguments": []
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfDnsZoneList",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+            "element_name": "DnsZone",
+            "read_apis": [
+                {
+                    "api_function": {
+                        "name": "GetApiDnsZonesAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsZonesAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsZoneListToTerraform",
+                        "terraform_field": "result"
+                    }
+                }
+            ]
+        },
+        {
             "name": "DnsLookupZoneReader",
             "terraform": {
                 "name": "kopicloud_dns_lookup_zone_list",
@@ -50,10 +82,10 @@
                 },
                 {
                     "api_function": {
-                        "name": "GetApiDnsZonesAllWithResponse",
+                        "name": "GetApiDnsLookupZoneAllWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiDnsZonesAllParams",
+                            "name": "GetApiDnsLookupZoneAllParams",
                             "fields": []
                         }
                     },                

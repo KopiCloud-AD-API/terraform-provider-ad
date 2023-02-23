@@ -261,6 +261,32 @@ output "dns_reverse_lookup_zone" {
   value = resource.kopicloud_dns_reverse_lookup_zone.test
 }
 
+data "kopicloud_dns_lookup_zone_list" "test" {}
+
+# Returns all computers
+output "all_dns_looup_zones_list" {
+  description = "Existing Lookup Zones"
+  value = data.kopicloud_dns_lookup_zone_list.test.result
+}
+
+data "kopicloud_dns_reverse_lookup_zone_list" "test" {}
+
+# Returns all computers
+output "all_dns_reverse_looup_zones_list" {
+  description = "Existing Reverse Lookup Zones"
+  value = data.kopicloud_dns_reverse_lookup_zone_list.test.result
+}
+
+
+data "kopicloud_dns_zone_list" "test" {}
+
+# Returns all computers
+output "all_dns_zones_list" {
+  description = "Existing Reverse Lookup Zones"
+  value = data.kopicloud_dns_zone_list.test.result
+}
+
+
 # data "kopicloud_dns_a_records_list" "test_hostname" { 
 #   hostname = "tito2" 
 # }
