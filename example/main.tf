@@ -69,6 +69,22 @@ output "kopicloud_all_groups" {
   value = data.kopicloud_group_list.test
 }
 
+data "kopicloud_security_group_list" "test" {}
+
+# Returns all ADGroups
+output "kopicloud_all_security_groups" {
+  description = "Existing Security Groups"
+  value = data.kopicloud_security_group_list.test
+}
+
+data "kopicloud_distribution_group_list" "test" {}
+
+# Returns all ADGroups
+output "kopicloud_all_distribution_groups" {
+  description = "Existing Distribution Groups"
+  value = data.kopicloud_distribution_group_list.test
+}
+
 # data "kopicloud_ad_group_membership" "test" {
 #   username = "guillermo"
 # }

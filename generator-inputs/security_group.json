@@ -4,9 +4,42 @@
     "package": "provider",
     "data_sources" : [
         {
-            "name": "SecurityGroup",
+            "name": "Group",
             "terraform": {
                 "name": "kopicloud_group_list",
+                "arguments": []
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfGroupList",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+            "element_name": "Group",
+            "read_apis": [
+                {
+                    "api_function": {
+                        "name": "GetApiADGroupsAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiADGroupsAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "GroupListToTerraform",
+                        "terraform_field": "result"
+                    }
+                }
+            ]
+
+        },
+        {
+            "name": "SecurityGroup",
+            "terraform": {
+                "name": "kopicloud_security_group_list",
                 "arguments": [
                     {
                         "name": "name",
@@ -26,7 +59,7 @@
                     "schema_function_arguments": "(``)"        
                 }
             },
-            "element_name": "Group",
+            "element_name": "SecurityGroup",
             "read_apis": [
                 {
                     "required_inputs": ["name"],
@@ -55,10 +88,10 @@
                 },
                 {
                     "api_function": {
-                        "name": "GetApiADGroupsAllWithResponse",
+                        "name": "GetApiADGroupsSecurityAllWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "GetApiADGroupsAllParams",
+                            "name": "GetApiADGroupsSecurityAllParams",
                             "fields": []
                         }
                     },                
