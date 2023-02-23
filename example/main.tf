@@ -269,7 +269,7 @@ output "dns_lookup_zone" {
 }
 
 resource "kopicloud_dns_reverse_lookup_zone" "test" {
-  network_id = "192.168.50.0/24"
+  network_id = "192.169.50.0/24"
 }
 
 output "dns_reverse_lookup_zone" {

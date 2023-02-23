@@ -171,7 +171,7 @@
             },
             "delete": {
                 "api_function": {
-                    "name": "DeleteApiDnsZoneZoneNameWithResponse",
+                    "name": "DeleteApiDnsLookupZoneZoneNameWithResponse",
                     "isPointer": true,
                     "arguments": [
                         {
@@ -181,7 +181,7 @@
                         }
                     ],
                     "params": {
-                        "name": "DeleteApiDnsZoneZoneNameParams",
+                        "name": "DeleteApiDnsLookupZoneZoneNameParams",
                         "fields": []
                     }
                 },                
