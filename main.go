@@ -33,6 +33,7 @@ import (
 // Generate the Code for Distribution Groups
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.distribution-group-crd.gen.go 	 -i generator-inputs/distribution_group.json
 //go:generate openapi-terraform-provider-generator resource-update 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.distribution-group-update.gen.go -i generator-inputs/distribution_group.json
+//go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.distribution-group-data.gen.go 	 -i generator-inputs/distribution_group.json
 
 // Generate the Code for Organizational Units
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.ou-crd.gen.go 	     		 -i generator-inputs/organizational_unit.json
