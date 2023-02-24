@@ -19,7 +19,7 @@ import (
 
 // Generate the Terraform Schemas && converters from API Types to Terraform
 //go:generate openapi-terraform-provider-generator schemas     -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.schemas.gen.go     		   -i Computer -i ou -i DnsRecord -i DnsZone -i Group
-//go:generate openapi-terraform-provider-generator converters  -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.converters.gen.go  -e Guid -i Computer -i ou -i DnsRecord -i DnsZone -i Group
+//go:generate openapi-terraform-provider-generator converters  -u https://labapi.kopicloud-ad-api.com/swagger/v1/swagger.json --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.converters.gen.go  		   -i Computer -i ou -i DnsRecord -i DnsZone -i Group
 
 // Generate the Code for Computers
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-crd.gen.go 	     -i generator-inputs/computer.json
