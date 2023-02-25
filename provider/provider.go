@@ -7,6 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
+	"github.com/google/uuid"
 	api "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
 	kcapi "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
 )
@@ -120,6 +121,10 @@ func getId_for_DnsCNameRecord(obj *api.DnsRecord) string {
 
 func getId_for_DnsLookupZone(zone *api.DnsZone) string {
 	return fmt.Sprintf("DnsLookupZone_%s", *zone.ZoneName)
+}
+
+func UuidToTerraform(v *uuid.UUID) string {
+	return v.String()
 }
 
 type ApiClient struct {
