@@ -185,8 +185,8 @@
                                 {
                                     "api_name": "OUPath",
                                     "name": "ou_path",
-                                    "type": "string",
-                                    "use_old_value": true
+                                    "path": "result.0.path",
+                                    "type": "string"
                                 },
                                 {
                                     "api_name": "OUNewName",
@@ -252,6 +252,7 @@
                             {
                                 "api_name": "OUPath",
                                 "name": "ou_path",
+                                "path": "result.0.path",
                                 "type": "string"
                             },
                             {
