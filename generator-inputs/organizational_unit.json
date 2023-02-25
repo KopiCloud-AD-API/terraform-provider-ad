@@ -190,7 +190,7 @@
                                 },
                                 {
                                     "api_name": "OUNewName",
-                                    "name": "ou_new_name",
+                                    "name": "ou_name",
                                     "type": "string"
                                 }
                             ]

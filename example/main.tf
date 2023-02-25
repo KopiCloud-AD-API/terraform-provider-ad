@@ -215,9 +215,9 @@ output "kopicloud_all_distribution_groups" {
 # }
 
 resource "kopicloud_ou" "test" {
-  ou_name      = "kopicloud-12"
+  ou_name      = "kopicloud-13"
   ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
-  description  = "This is a very cool organization"
+  description  = "This is a very cool organization with improved description"
   protected    = false    
 }
 
