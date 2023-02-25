@@ -214,17 +214,17 @@ output "kopicloud_all_distribution_groups" {
 #   value = resource.kopicloud_distribution_group.test
 # }
 
-# resource "kopicloud_ou" "test" {
-#   ou_name      = "kopicloud-11"
-#   ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
-#   description  = "This is a very cool organization"
-#   protected    = false    
-# }
+resource "kopicloud_ou" "test" {
+  ou_name      = "kopicloud-12"
+  ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
+  description  = "This is a very cool organization"
+  protected    = false    
+}
 
-# output "ou" {
-#   description = "Created OU"
-#   value = resource.kopicloud_ou.test
-# }
+output "ou" {
+  description = "Created OU"
+  value = resource.kopicloud_ou.test
+}
 
 # resource "kopicloud_dns_a_record" "test" {
 #   hostname = "computer1978"
