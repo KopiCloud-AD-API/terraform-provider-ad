@@ -29,7 +29,7 @@
             "element_name": "OU",
             "read_apis": [
                 {
-                    "required_inputs": ["ou_name"],
+                    "required_inputs": ["ou_path"],
                     "api_function": {
                         "name": "GetOUByPathWithResponse",
                         "arguments": [],

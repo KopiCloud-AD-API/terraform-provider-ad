@@ -107,6 +107,10 @@ func getId_for_Group(obj *api.Group) string {
 	return fmt.Sprintf("%s Group: %s", *obj.Type, *obj.Name)
 }
 
+func getId_for_GroupMembership(obj *api.Group) string {
+	return fmt.Sprintf("Member of: %s", *obj.OuPath)
+}
+
 func getId_for_DnsARecord(obj *api.DnsRecord) string {
 	return fmt.Sprintf("DnsARecord_%s_%s", *obj.Name, *obj.Data)
 }
