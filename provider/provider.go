@@ -131,6 +131,11 @@ func UuidToTerraform(v *uuid.UUID) string {
 	return v.String()
 }
 
+func intToPInt32(v int) *int32 {
+	i32 := int32(v)
+	return &i32
+}
+
 type ApiClient struct {
 	data   *schema.ResourceData
 	client *kcapi.ClientWithResponses
