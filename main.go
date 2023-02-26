@@ -23,6 +23,7 @@ import (
 
 // Generate the Code for Computers
 //go:generate openapi-terraform-provider-generator resource-crd 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-crd.gen.go 	     -i generator-inputs/computer.json
+//go:generate openapi-terraform-provider-generator resource-update 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-update.gen.go 		 -i generator-inputs/computer.json
 //go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.computer-data.gen.go 	     -i generator-inputs/computer.json
 
 // Generate the Code for Groups Memberships
