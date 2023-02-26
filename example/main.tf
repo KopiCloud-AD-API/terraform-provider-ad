@@ -77,24 +77,13 @@ provider "kopicloud" {
 #   value = data.kopicloud_security_group_list.test
 # }
 
-data "kopicloud_distribution_group_list" "test" {}
+# data "kopicloud_distribution_group_list" "test" {}
 
-# Returns all ADGroups
-output "kopicloud_all_distribution_groups" {
-  description = "Existing Distribution Groups"
-  value = data.kopicloud_distribution_group_list.test
-}
-
-data "kopicloud_group_membership_list" "test" {
-  user_name = "guillermo"
-}
-
-# Returns all ADGroups for a User
-output "kopicloud_group_membership_list" {
-  description = "AD Groups for user"
-  value = data.kopicloud_group_membership_list.test
-}
-
+# # Returns all ADGroups
+# output "kopicloud_all_distribution_groups" {
+#   description = "Existing Distribution Groups"
+#   value = data.kopicloud_distribution_group_list.test
+# }
 
 # data "kopicloud_all_ad_users" "test" {}
 
@@ -188,29 +177,6 @@ output "kopicloud_group_membership_list" {
 #   value = resource.kopicloud_computer.test
 # }
 
-resource "kopicloud_security_group" "test" {
-  name      = "my-new-group-2"
-  scope     = "Global"
-  description  = "This is a very cool security group"
-  email = "security@kopicloud.com"
-  ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
-}
-
-output "security_group" {
-  description = "Created Security Group"
-  value = resource.kopicloud_security_group.test
-}
-
-resource "kopicloud_group_membership" "test" {
-  user_name       = "guillermo"
-  group_name      = "my-new-group-2"
-}
-
-output "kopicloud_group_membership" {
-  description = "Added Membership"
-  value = resource.kopicloud_group_membership.test
-}
-
 
 # resource "kopicloud_distribution_group" "test" {
 #   name      = "my-new-distro-group"
@@ -225,17 +191,17 @@ output "kopicloud_group_membership" {
 #   value = resource.kopicloud_distribution_group.test
 # }
 
-resource "kopicloud_ou" "test" {
-  ou_name      = "kopicloud-13"
-  ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
-  description  = "This is a very cool organization with improved description"
-  protected    = false    
-}
+# resource "kopicloud_ou" "test" {
+#   ou_name      = "kopicloud-13"
+#   ou_path      = "OU=Domain Controllers,DC=kopicloud,DC=local"
+#   description  = "This is a very cool organization with improved description"
+#   protected    = false    
+# }
 
-output "ou" {
-  description = "Created OU"
-  value = resource.kopicloud_ou.test
-}
+# output "ou" {
+#   description = "Created OU"
+#   value = resource.kopicloud_ou.test
+# }
 
 # resource "kopicloud_dns_a_record" "test" {
 #   hostname = "computer1978"
@@ -322,3 +288,25 @@ output "ou" {
 #   description = "Existing DNS A Records"
 #   value = data.kopicloud_dns_a_records_list.test_hostname.result
 # }
+
+data "kopicloud_group_membership_list" "test" {
+  user_name = "guillermo"
+}
+
+# Returns all ADGroups for a User
+output "kopicloud_group_membership_list" {
+  description = "AD Groups for user"
+  value = data.kopicloud_group_membership_list.test.result
+}
+
+resource "kopicloud_computer_cleanup" "test" {
+  days = 10
+  ou_path = "OU=Domain Controllers,DC=kopicloud,DC=local"    
+  recursive = true
+}
+
+output "computer_cleanup" {
+  description = "Computers To CleanUp"
+  value = resource.kopicloud_computer_cleanup.test
+}
+
