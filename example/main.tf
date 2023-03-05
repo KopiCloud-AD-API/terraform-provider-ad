@@ -300,7 +300,7 @@ output "kopicloud_group_membership_list" {
 }
 
 resource "kopicloud_computer_cleanup" "test" {
-  days = 10
+  days = 1
   ou_path = "OU=Domain Controllers,DC=kopicloud,DC=local"    
   recursive = true
 }
@@ -310,3 +310,12 @@ output "computer_cleanup" {
   value = resource.kopicloud_computer_cleanup.test
 }
 
+data "kopicloud_user_list" "test" {
+  show_fields = "firstName,lastName,displayName"
+}
+
+# Returns all ADUsers
+output "kopicloud_all_users" {
+  description = "Existing AD Users"
+  value = data.kopicloud_user_list.test
+}

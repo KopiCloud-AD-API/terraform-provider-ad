@@ -268,7 +268,7 @@
                                 "type": "*string"
                             },
                             {
-                                "api_name": "IPAddress",
+                                "api_name": "IPv6Address",
                                 "name": "ipv6_address",
                                 "type": "*string"
                             },
