@@ -90,12 +90,62 @@
         {
             "name": "User",
             "terraform": {
-                "name": "kopicloud_computer",
+                "name": "kopicloud_user",
                 "arguments": [
                     {
-                        "name": "ad_user_name",
+                        "name": "username",
                         "type": "schema.TypeString",
                         "required": true
+                    },
+                    {
+                        "name": "password",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "initials",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "display_name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "description",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "email",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "department",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "office",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "company",
+                        "type": "schema.TypeString",
+                        "optional": true
                     },
                     {
                         "name": "ou_path",
@@ -103,7 +153,37 @@
                         "optional": true
                     },
                     {
-                        "name": "description",
+                        "name": "po_box",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "street",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "zip_code",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "city",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "state",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "country",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "show_fields",
                         "type": "schema.TypeString",
                         "optional": true
                     }
@@ -117,52 +197,166 @@
             },
 
             "element_name": "User",
-            "create": {
-                "api_function": {
-                    "name": "PostApiUsersADUserNameRegisterWithResponse",
-                    "isPointer": true,
-                    "arguments": [
-                        {
-                            "name": "ad_user_name",
-                            "type": "string"
+            "creates": [
+                {
+                    "required_inputs": ["user_name", "password"],
+                    "api_function": {
+                        "name": "APIUserWithResponse",
+                        "isPointer": true,
+                        "arguments": [],
+                        "params": {
+                            "name": "APIUserParams",
+                            "fields": [
+                                {
+                                    "api_name": "Username",
+                                    "name": "username",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "Password",
+                                    "name": "password",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "FirstName",
+                                    "name": "first_name",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "Initials",
+                                    "name": "initials",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "LastName",
+                                    "name": "last_name",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "DisplayName",
+                                    "name": "display_name",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "Description",
+                                    "name": "description",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "EmailAddress",
+                                    "name": "email",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "Department",
+                                    "name": "department",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "Office",
+                                    "name": "office",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "Company",
+                                    "name": "company",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "ou_path",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "ShowFields",
+                                    "name": "show_fields",
+                                    "type": "*string"
+                                }
+                            ]
                         }
-                    ],
-                    "params": {
-                        "name": "PostApiUsersADUserNameRegisterParams",
-                        "fields": [
-                            {
-                                "api_name": "OUPath",
-                                "name": "ou_path",
-                                "type": "*string"
-                            },
-                            {
-                                "api_name": "ADUserDescription",
-                                "name": "description",
-                                "type": "*string"
-                            }
-                        ]
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "UserToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_User"                    
                     }
-                },                
-                "result": {
-                    "msg_field": "Output",
-                    "result_field": "Result",
-                    "api_to_terraform": "UserToTerraform",
-                    "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
-                    "api_to_terraform_id": "getId_for_User"                    
+                },
+                {
+                    "required_inputs": ["street", "po_box", "city", "state", "zipcode", "country"],
+                    "api_function": {
+                        "name": "PostApiADUserUsernameAddressWithResponse",
+                        "isPointer": true,
+                        "arguments": [
+                            {
+                                "name": "username",
+                                "type": "string"
+                            }    
+                        ],
+                        "params": {
+                            "name": "PostApiADUserUsernameAddressParams",
+                            "fields": [
+                                {
+                                    "api_name": "Street",
+                                    "name": "street",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "POBox",
+                                    "name": "po_box",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "City",
+                                    "name": "city",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "State",
+                                    "name": "state",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "ZipCode",
+                                    "name": "zip_code",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "Country",
+                                    "name": "country",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "ShowFields",
+                                    "name": "show_fields",
+                                    "type": "*string"
+                                }
+                            ]
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "UserToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_User"                    
+                    }
                 }
-            },
+            ],
             "read": {
                 "api_function": {
-                    "name": "GetApiUsersADUserNameWithResponse",
+                    "name": "GetApiADUserUsernameWithResponse",
                     "arguments": [
                         {
-                            "name": "ad_user_name",
+                            "name": "username",
                             "type": "string"
                         }
                     ],
                     "params": {
-                        "name": "GetApiUsersADUserNameParams",
+                        "name": "GetApiADUserUsernameParams",
                         "fields": []
                     }
                 },                
@@ -177,56 +371,25 @@
             },
             "update": [
                 {
-                    "required_inputs": ["ad_user_name"],
+                    "required_inputs": ["username"],
                     "api_function": {
-                        "name": "PutApiUsersADUserNameRenameNewADUserNameWithResponse",
+                        "name": "PutApiADUserUsernameRenameNewUsernameWithResponse",
                         "arguments": [
                             {
-                                "name": "ad_user_name",
+                                "name": "username",
                                 "type": "string",
                                 "required": true,
                                 "use_old_value": true
                             },
                             {
-                                "name": "ad_user_name",
+                                "name": "username",
                                 "type": "string",
                                 "required": true
                             }
                         ],
                         "params": {
-                            "name": "PutApiUsersADUserNameRenameNewADUserNameParams",
+                            "name": "PutApiADUserUsernameRenameNewUsernameParams",
                             "fields": []
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "UserToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_User"                    
-                    }
-                },
-                {
-                    "required_inputs": ["description"],
-                    "api_function": {
-                        "name": "PutApiUsersADUserNameUpdateWithResponse",
-                        "arguments": [
-                            {
-                                "name": "ad_user_name",
-                                "type": "string",
-                                "required": true
-                            }
-                        ],
-                        "params": {
-                            "name": "PutApiUsersADUserNameUpdateParams",
-                            "fields": [
-                                {
-                                    "api_name": "UserDescription",
-                                    "name": "description",
-                                    "type": "*string"
-                                }    
-                            ]
                         }
                     },                
                     "result": {
@@ -241,16 +404,16 @@
             ],
             "delete": {
                 "api_function": {
-                    "name": "DeleteApiUsersADUserNameRemoveWithResponse",
+                    "name": "DeleteApiADUserUsernameWithResponse",
                     "isPointer": true,
                     "arguments": [
                         {
-                            "name": "ad_user_name",
+                            "name": "username",
                             "type": "string"
                         }
                     ],
                     "params": {
-                        "name": "DeleteApiUsersADUserNameRemoveParams",
+                        "name": "DeleteApiADUserUsernameParams",
                         "fields": []
                     }
                 },                
