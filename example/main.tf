@@ -289,33 +289,47 @@ provider "kopicloud" {
 #   value = data.kopicloud_dns_a_records_list.test_hostname.result
 # }
 
-data "kopicloud_group_membership_list" "test" {
-  user_name = "guillermo"
+# data "kopicloud_group_membership_list" "test" {
+#   user_name = "guillermo"
+# }
+
+# # Returns all ADGroups for a User
+# output "kopicloud_group_membership_list" {
+#   description = "AD Groups for user"
+#   value = data.kopicloud_group_membership_list.test.result
+# }
+
+# resource "kopicloud_computer_cleanup" "test" {
+#   days = 1
+#   ou_path = "OU=Domain Controllers,DC=kopicloud,DC=local"    
+#   recursive = true
+# }
+
+# output "computer_cleanup" {
+#   description = "Computers To CleanUp"
+#   value = resource.kopicloud_computer_cleanup.test
+# }
+
+# data "kopicloud_user_list" "test" {
+#   show_fields = "firstName,lastName,displayName"
+# }
+
+# # Returns all ADUsers
+# output "kopicloud_all_users" {
+#   description = "Existing AD Users"
+#   value = data.kopicloud_user_list.test
+# }
+
+resource "kopicloud_user" "test" {
+  username     = "oforero4"
+  password     = "vMD48X6Vdyj49j8%"
+  first_name   = "Oscar"
+  last_name    = "Forero"
+  street       = "Von-KettelerStr. 44a"
+  country      = "Germany"
 }
 
-# Returns all ADGroups for a User
-output "kopicloud_group_membership_list" {
-  description = "AD Groups for user"
-  value = data.kopicloud_group_membership_list.test.result
-}
-
-resource "kopicloud_computer_cleanup" "test" {
-  days = 1
-  ou_path = "OU=Domain Controllers,DC=kopicloud,DC=local"    
-  recursive = true
-}
-
-output "computer_cleanup" {
-  description = "Computers To CleanUp"
-  value = resource.kopicloud_computer_cleanup.test
-}
-
-data "kopicloud_user_list" "test" {
-  show_fields = "firstName,lastName,displayName"
-}
-
-# Returns all ADUsers
-output "kopicloud_all_users" {
-  description = "Existing AD Users"
-  value = data.kopicloud_user_list.test
+output "user" {
+  description = "Created User"
+  value = resource.kopicloud_user.test
 }
