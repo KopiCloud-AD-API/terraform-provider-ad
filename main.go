@@ -49,7 +49,7 @@ import (
 //go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.ou-data.gen.go 	 			 -i generator-inputs/organizational_unit.json
 
 // Generate the Code for Users
-//go:generate openapi-terraform-provider-generator resource-create 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.user-create.gen.go 	     	 -i generator-inputs/user.json
+//:generate openapi-terraform-provider-generator resource-create 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.user-create.gen.go 	     	 -i generator-inputs/user.json
 //go:generate openapi-terraform-provider-generator resource-crud 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.user-crud.gen.go 	     	 -i generator-inputs/user.json
 //go:generate openapi-terraform-provider-generator resource-update 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.user-update.gen.go 		 	 -i generator-inputs/user.json
 //go:generate openapi-terraform-provider-generator datasource-read 														      --api gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api -p provider -o provider/kopicloud.user-data.gen.go 	     	 -i generator-inputs/user.json

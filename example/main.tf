@@ -325,11 +325,10 @@ resource "kopicloud_user" "test" {
   password     = "vMD48X6Vdyj49j8%"
   first_name   = "Oscar"
   last_name    = "Forero"
-  street       = "Von-KettelerStr. 44a"
-  country      = "Germany"
+  show_fields  = "Username,FirstName,LastName"
 }
 
 output "user" {
   description = "Created User"
-  value = resource.kopicloud_user.test
+  value = resource.kopicloud_user.test.result
 }
