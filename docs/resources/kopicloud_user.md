@@ -3,12 +3,12 @@
 page_title: "kopicloud_user Resource - kopicloud-ad-tf-provider"
 subcategory: ""
 description: |-
-  
+  Element to create, update, delete Users from Active Directory
 ---
 
 # kopicloud_user (Resource)
 
-
+Element to create, update, delete Users from Active Directory
 
 
 
