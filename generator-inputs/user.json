@@ -5,6 +5,7 @@
     "data_sources" : [
         {
             "name": "User",
+            "description" : "Read Users from Active Directory",
             "terraform": {
                 "name": "kopicloud_user_list",
                 "arguments": [
@@ -89,6 +90,7 @@
     "resources" : [
         {
             "name": "User",
+            "description" : "Element to create, update, delete Users from Active Directory",
             "terraform": {
                 "name": "kopicloud_user",
                 "arguments": [

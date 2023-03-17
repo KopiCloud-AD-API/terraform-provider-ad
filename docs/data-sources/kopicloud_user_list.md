@@ -3,12 +3,12 @@
 page_title: "kopicloud_user_list Data Source - kopicloud-ad-tf-provider"
 subcategory: ""
 description: |-
-  
+  Read Users from Active Directory
 ---
 
 # kopicloud_user_list (Data Source)
 
-
+Read Users from Active Directory
 
 
 
