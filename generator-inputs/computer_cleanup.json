@@ -1,0 +1,146 @@
+{
+    "api_alias": "kcapi",
+    "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
+    "package": "provider",
+    "resources" : [
+        {
+            "name": "ComputerCleanUp",
+            "terraform": {
+                "name": "kopicloud_computer_cleanup",
+                "arguments": [
+                    {
+                        "name": "days",
+                        "type": "schema.TypeInt",
+                        "required": true
+                    },
+                    {
+                        "name": "ou_path",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "recursive",
+                        "type": "schema.TypeBool",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfComputerList",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+
+            "element_name": "Computer",
+            "create": {
+                "api_function": {
+                    "name": "DeleteApiComputersCleanUpWithResponse",
+                    "arguments": [],
+                    "params": {
+                        "name": "DeleteApiComputersCleanUpParams",
+                        "fields": [
+                            {
+                                "api_name": "Days",
+                                "name": "days",
+                                "type": "int",
+                                "terraform_to_api": "intToPInt32",
+                                "required": true
+                            },
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "type": "*string",
+                                "required": true
+                            },
+                            {
+                                "api_name": "Recursive",
+                                "name": "recursive",
+                                "type": "*bool",
+                                "optional": true
+                            }        
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "ComputerListToTerraform",
+                    "terraform_field": "result"
+                }
+            },
+            "read": {
+                "api_function": {
+                    "name": "DeleteApiComputersCleanUpWithResponse",
+                    "arguments": [],
+                    "params": {
+                        "name": "DeleteApiComputersCleanUpParams",
+                        "fields": [
+                            {
+                                "api_name": "Days",
+                                "name": "days",
+                                "type": "int",
+                                "terraform_to_api": "intToPInt32",
+                                "required": true
+                            },
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "type": "*string",
+                                "required": true
+                            },
+                            {
+                                "api_name": "Recursive",
+                                "name": "recursive",
+                                "type": "*bool",
+                                "optional": true
+                            }        
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "ComputerListToTerraform",
+                    "terraform_field": "result"
+                }
+            },
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiComputersCleanUpWithResponse",
+                    "arguments": [],
+                    "params": {
+                        "name": "DeleteApiComputersCleanUpParams",
+                        "fields": [
+                            {
+                                "api_name": "Days",
+                                "name": "days",
+                                "type": "int",
+                                "terraform_to_api": "intToPInt32",
+                                "required": true
+                            },
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "type": "*string",
+                                "required": true
+                            },
+                            {
+                                "api_name": "Recursive",
+                                "name": "recursive",
+                                "type": "*bool",
+                                "optional": true
+                            }        
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "ComputerListToTerraform",
+                    "terraform_field": "result"
+                }
+            }
+       }
+    ]
+}
