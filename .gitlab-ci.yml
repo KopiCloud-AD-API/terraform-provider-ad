@@ -1,0 +1,33 @@
+# This file is a template, and might need editing before it works on your project.
+# You can copy and paste this template into a new `.gitlab-ci.yml` file.
+# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
+#
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Go.gitlab-ci.yml
+
+image: golang:latest
+
+stages:
+  - build
+  - deploy
+
+
+compile:
+  stage: build
+  script:
+    - go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
+    - go install gitlab.com/terraform-utilities/openapi-terraform-provider-generator@latest
+    - make clean build
+
+deploy:
+  stage: deploy
+  script: 
+    - go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
+    - go install gitlab.com/terraform-utilities/openapi-terraform-provider-generator@latest
+    - make release
+  artifacts:
+    paths:
+      - bin
+

@@ -1,0 +1,277 @@
+{
+    "api_alias": "kcapi",
+    "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
+    "package": "provider",
+    "data_sources" : [
+        {
+            "name": "Computer",
+            "terraform": {
+                "name": "kopicloud_computer_list",
+                "arguments": [
+                    {
+                        "name": "ad_computer_name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "ou_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfComputerList",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+            "element_name": "Computer",
+            "read_apis": [
+                {
+                    "required_inputs": ["ad_computer_name"],
+                    "api_function": {
+                        "name": "GetApiComputersADComputerNameWithResponse",
+                        "arguments": [
+                            {
+                                "name": "ad_computer_name",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiComputersADComputerNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "ComputerToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_Computer"                    
+                    }
+                },
+                {
+                    "required_inputs": ["ou_path"],
+                    "api_function": {
+                        "name": "GetApiComputersWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiComputersParams",
+                            "fields": [
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "ou_path",
+                                    "type": "*string"
+                                }
+                            ]
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "ComputerListToTerraform",
+                        "terraform_field": "result"
+                    }
+                },
+                {
+                    "api_function": {
+                        "name": "GetApiComputersAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiComputersAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "ComputerListToTerraform",
+                        "terraform_field": "result"
+                    }
+                }
+            ]
+        }
+    ],
+    "resources" : [
+        {
+            "name": "Computer",
+            "terraform": {
+                "name": "kopicloud_computer",
+                "arguments": [
+                    {
+                        "name": "ad_computer_name",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "ou_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "description",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfComputer",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+
+            "element_name": "Computer",
+            "create": {
+                "api_function": {
+                    "name": "PostApiComputersADComputerNameRegisterWithResponse",
+                    "isPointer": true,
+                    "arguments": [
+                        {
+                            "name": "ad_computer_name",
+                            "type": "string"
+                        }
+                    ],
+                    "params": {
+                        "name": "PostApiComputersADComputerNameRegisterParams",
+                        "fields": [
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ADComputerDescription",
+                                "name": "description",
+                                "type": "*string"
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "ComputerToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_Computer"                    
+                }
+            },
+            "read": {
+                "api_function": {
+                    "name": "GetApiComputersADComputerNameWithResponse",
+                    "arguments": [
+                        {
+                            "name": "ad_computer_name",
+                            "type": "string"
+                        }
+                    ],
+                    "params": {
+                        "name": "GetApiComputersADComputerNameParams",
+                        "fields": []
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "ComputerToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_Computer"                    
+                }
+            },
+            "update": [
+                {
+                    "required_inputs": ["ad_computer_name"],
+                    "api_function": {
+                        "name": "PutApiComputersADComputerNameRenameNewADComputerNameWithResponse",
+                        "arguments": [
+                            {
+                                "name": "ad_computer_name",
+                                "type": "string",
+                                "required": true,
+                                "use_old_value": true
+                            },
+                            {
+                                "name": "ad_computer_name",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "PutApiComputersADComputerNameRenameNewADComputerNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "ComputerToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_Computer"                    
+                    }
+                },
+                {
+                    "required_inputs": ["description"],
+                    "api_function": {
+                        "name": "PutApiComputersADComputerNameUpdateWithResponse",
+                        "arguments": [
+                            {
+                                "name": "ad_computer_name",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "PutApiComputersADComputerNameUpdateParams",
+                            "fields": [
+                                {
+                                    "api_name": "ComputerDescription",
+                                    "name": "description",
+                                    "type": "*string"
+                                }    
+                            ]
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "ComputerToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_Computer"                    
+                    }
+                }
+            ],
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiComputersADComputerNameRemoveWithResponse",
+                    "isPointer": true,
+                    "arguments": [
+                        {
+                            "name": "ad_computer_name",
+                            "type": "string"
+                        }
+                    ],
+                    "params": {
+                        "name": "DeleteApiComputersADComputerNameRemoveParams",
+                        "fields": []
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "ComputerToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_Computer"                    
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,166 @@
+{
+    "api_alias": "kcapi",
+    "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
+    "package": "provider",
+    "data_sources" : [
+        {
+            "name": "DnsReverseLookupZoneReader",
+            "terraform": {
+                "name": "kopicloud_dns_reverse_lookup_zone_list",
+                "arguments": [
+                    {
+                        "name": "network_id",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfDnsZoneList",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+            "element_name": "DnsLookupZone",
+            "read_apis": [
+                {
+                    "required_inputs": ["network_id"],
+                    "api_function": {
+                        "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse",
+                        "arguments": [
+                            {
+                                "name": "network_id",
+                                "type": "string",
+                                "required": true
+                            }
+                        ],
+                        "params": {
+                            "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsZoneToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_DnsLookupZone"                    
+                    }
+                },
+                {
+                    "api_function": {
+                        "name": "GetApiDnsReverseLookupZoneAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiDnsReverseLookupZoneAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "DnsZoneListToTerraform",
+                        "terraform_field": "result"
+                    }
+                }
+            ]
+        }
+    ],
+    "resources" : [
+        {
+            "name": "DnsReverseLookupZone",
+            "terraform": {
+                "name": "kopicloud_dns_reverse_lookup_zone",
+                "arguments": [
+                    {
+                        "name": "network_id",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfDnsZone",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+
+            "element_name": "DnsReverseLookupZone",
+            "create": {
+                "api_function": {
+                    "name": "PostApiDnsReverseLookupZoneNetworkIDWithResponse",
+                    "isPointer": true,
+                    "arguments": [
+                        {
+                            "name": "network_id",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "params": {
+                        "name": "PostApiDnsReverseLookupZoneNetworkIDParams",
+                        "fields": [ ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsZoneToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsLookupZone"                    
+                }
+            },
+            "read": {
+                "api_function": {
+                    "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse",
+                    "arguments": [
+                        {
+                            "name": "network_id",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "params": {
+                        "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameParams",
+                        "fields": []
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsZoneToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_DnsLookupZone"                    
+                }
+            },
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse",
+                    "isPointer": true,
+                    "arguments": [
+                        {
+                            "name": "network_id",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "params": {
+                        "name": "DeleteApiDnsReverseLookupZoneNetworkIDOrZoneNameParams",
+                        "fields": []
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "DnsZoneToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result"
+                }
+            }
+        }
+    ]
+}

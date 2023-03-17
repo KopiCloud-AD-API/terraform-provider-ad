@@ -1,0 +1,277 @@
+{
+    "api_alias": "kcapi",
+    "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
+    "package": "provider",
+    "data_sources" : [
+        {
+            "name": "OU",
+            "terraform": {
+                "name": "kopicloud_ou_list",
+                "arguments": [
+                    {
+                        "name": "ou_name",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "ou_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfOUList",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+            "element_name": "OU",
+            "read_apis": [
+                {
+                    "required_inputs": ["ou_path"],
+                    "api_function": {
+                        "name": "GetOUByPathWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetOUByPathParams",
+                            "fields": [
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "ou_path",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "OUToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_OU"                    
+                    }
+                },
+                {
+                    "api_function": {
+                        "name": "GetApiOUAllWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "GetApiOUAllParams",
+                            "fields": []
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "OUListToTerraform",
+                        "terraform_field": "result"
+                    }
+                }
+            ]
+        }
+    ],
+    "resources" : [
+        {
+            "name": "OU",
+            "terraform": {
+                "name": "kopicloud_ou",
+                "arguments": [
+                    {
+                        "name": "ou_name",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "ou_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "description",
+                        "type": "schema.TypeString",
+                        "required": true
+                    },
+                    {
+                        "name": "protected",
+                        "type": "schema.TypeBool",
+                        "optional": true
+                    }
+                ]
+            },
+            "result_schemas": {
+                "result": {
+                    "schema_function": "schemaOfOU",
+                    "schema_function_arguments": "(``)"        
+                }
+            },
+
+            "element_name": "OU",
+            "create": {
+                "api_function": {
+                    "name": "PostApiOUWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "PostApiOUParams",
+                        "fields": [
+                            {
+                                "api_name": "OUName",
+                                "name": "ou_name",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "OUDescription",
+                                "name": "description",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "OUDestinationPath",
+                                "name": "ou_path",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "IsProtected",
+                                "name": "protected",
+                                "type": "*bool"
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "OUToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_OU" 
+                }
+            },
+            "read": {
+                "api_function": {
+                    "name": "GetOUByGuidWithResponse",
+                    "arguments": [],
+                    "params": {
+                        "name": "GetOUByGuidParams",
+                        "fields": [
+                            {
+                                "api_name": "OUGuid",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "OUToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_OU" 
+                }
+            },
+            "update": [
+                {
+                    "required_inputs": ["ou_name"],
+                    "api_function": {
+                        "name": "PutApiOURenameWithResponse",
+                        "arguments": [
+
+                        ],
+                        "params": {
+                            "name": "PutApiOURenameParams",
+                            "fields": [
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "ou_path",
+                                    "path": "result.0.path",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "OUNewName",
+                                    "name": "ou_name",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "OUToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_OU" 
+                    }
+                },
+                {
+                    "required_inputs": ["ou_name"],
+                    "api_function": {
+                        "name": "PutApiOUWithResponse",
+                        "arguments": [],
+                        "params": {
+                            "name": "PutApiOUParams",
+                            "fields": [
+                                {
+                                    "api_name": "OUPath",
+                                    "name": "ou_path",
+                                    "type": "string"
+                                },
+                                {
+                                    "api_name": "OUDescription",
+                                    "name": "description",
+                                    "type": "*string"
+                                },
+                                {
+                                    "api_name": "IsProtected",
+                                    "name": "protected",
+                                    "type": "*bool"
+                                }    
+                            ]
+                        }
+                    },                
+                    "result": {
+                        "msg_field": "Output",
+                        "result_field": "Result",
+                        "api_to_terraform": "OUToTerraform",
+                        "result_wrapper": "wrapInArray",
+                        "terraform_field": "result",
+                        "api_to_terraform_id": "getId_for_OU" 
+                    }
+                }
+            ],
+            "delete": {
+                "api_function": {
+                    "name": "DeleteApiOUPathRemoveWithResponse",
+                    "isPointer": true,
+                    "arguments": [],
+                    "params": {
+                        "name": "DeleteApiOUPathRemoveParams",
+                        "fields": [
+                            {
+                                "api_name": "OUPath",
+                                "name": "ou_path",
+                                "path": "result.0.path",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "Force",
+                                "name": "protected",
+                                "type": "*bool"
+                            }    
+                        ]
+                    }
+                },                
+                "result": {
+                    "msg_field": "Output",
+                    "result_field": "Result",
+                    "api_to_terraform": "OUToTerraform",
+                    "result_wrapper": "wrapInArray",
+                    "terraform_field": "result",
+                    "api_to_terraform_id": "getId_for_OU" 
+                }
+            }
+        }
+    ]
+}
