@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -114,10 +115,16 @@ func dataSourceDistributioGroup_Read_0(ctx context.Context, d *schema.ResourceDa
 
 			resItems := GroupToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DistributioGroup }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted DistributioGroup",
 					map[string]interface{}{
-						"DistributioGroup": element,
+						"DistributioGroup": resItems,
 					})
 			}
 
@@ -190,10 +197,16 @@ func dataSourceDistributioGroup_Read_1(ctx context.Context, d *schema.ResourceDa
 
 			resItems := GroupListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DistributioGroup }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted DistributioGroup",
 					map[string]interface{}{
-						"DistributioGroup": element,
+						"DistributioGroup": resItems,
 					})
 			}
 

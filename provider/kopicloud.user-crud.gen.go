@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -112,6 +113,15 @@ func resourceUser() *schema.Resource {
 		Computed: false,
 		Optional: true,
 		Required: false,
+
+		Description: "",
+	}
+
+	terraformSchema["new_password"] = &schema.Schema{
+		Type:     schema.TypeString,
+		Computed: false,
+		Optional: false,
+		Required: true,
 
 		Description: "",
 	}
@@ -263,9 +273,17 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 			api_result := res.JSON200.Result
 
 			resItems := UserToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted User: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted User }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted User",
+					map[string]interface{}{
+						"User": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -341,9 +359,17 @@ func resourceUserRead(ctx context.Context, d *schema.ResourceData, m interface{}
 			api_result := res.JSON200.Result
 
 			resItems := UserToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted User: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted User }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted User",
+					map[string]interface{}{
+						"User": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -423,9 +449,17 @@ func resourceUserDelete(ctx context.Context, d *schema.ResourceData, m interface
 			api_result := res.JSON200.Result
 
 			resItems := UserToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted User: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted User }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted User",
+					map[string]interface{}{
+						"User": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)

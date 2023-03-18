@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -94,9 +95,17 @@ func resourceDnsLookupZoneCreate(ctx context.Context, d *schema.ResourceData, m 
 			api_result := res.JSON200.Result
 
 			resItems := DnsZoneToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted DnsLookupZone: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsLookupZone }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted DnsLookupZone",
+					map[string]interface{}{
+						"DnsLookupZone": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -172,9 +181,17 @@ func resourceDnsLookupZoneRead(ctx context.Context, d *schema.ResourceData, m in
 			api_result := res.JSON200.Result
 
 			resItems := DnsZoneToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted DnsLookupZone: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsLookupZone }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted DnsLookupZone",
+					map[string]interface{}{
+						"DnsLookupZone": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -250,9 +267,17 @@ func resourceDnsLookupZoneDelete(ctx context.Context, d *schema.ResourceData, m 
 			api_result := res.JSON200.Result
 
 			resItems := DnsZoneToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted DnsLookupZone: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsLookupZone }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted DnsLookupZone",
+					map[string]interface{}{
+						"DnsLookupZone": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
