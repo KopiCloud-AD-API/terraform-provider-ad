@@ -5,7 +5,7 @@ description: "Setup the KopiCloud AD Terraform Provider"
   
 ---
 
-# Set up the KopiCloud AD Terraform Provider
+# Set Up the KopiCloud AD Terraform Provider
 To configure the KopiCloud AD API Terraform provider, log in to your **KopiCloud AD API Management Website** and generate an Authentication Token.
 
 KopiCloud AD uses Authentication Tokens to authenticate to AD instead of usernames and passwords.
