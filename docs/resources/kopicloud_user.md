@@ -17,7 +17,6 @@ Element to create, update, delete Users from Active Directory
 
 ### Required
 
-- `new_password` (String)
 - `password` (String)
 - `username` (String)
 
@@ -32,6 +31,7 @@ Element to create, update, delete Users from Active Directory
 - `first_name` (String)
 - `initials` (String)
 - `last_name` (String)
+- `new_password` (String)
 - `office` (String)
 - `ou_path` (String)
 - `show_fields` (String)

@@ -152,7 +152,7 @@
                     {
                         "name": "new_password",
                         "type": "schema.TypeString",
-                        "required": true
+                        "optional": true
                     },
                     {
                         "name": "change_password_net_logon",
