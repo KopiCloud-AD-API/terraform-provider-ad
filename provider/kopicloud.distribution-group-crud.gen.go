@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -146,9 +147,17 @@ func resourceDistributionGroupCreate(ctx context.Context, d *schema.ResourceData
 			api_result := res.JSON200.Result
 
 			resItems := GroupToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted Group: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted Group }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted Group",
+					map[string]interface{}{
+						"Group": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -224,9 +233,17 @@ func resourceDistributionGroupRead(ctx context.Context, d *schema.ResourceData, 
 			api_result := res.JSON200.Result
 
 			resItems := GroupToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted Group: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted Group }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted Group",
+					map[string]interface{}{
+						"Group": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -306,9 +323,17 @@ func resourceDistributionGroupDelete(ctx context.Context, d *schema.ResourceData
 			api_result := res.JSON200.Result
 
 			resItems := GroupToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted Group: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted Group }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted Group",
+					map[string]interface{}{
+						"Group": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)

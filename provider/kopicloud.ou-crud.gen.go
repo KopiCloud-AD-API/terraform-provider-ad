@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -134,9 +135,17 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 			api_result := res.JSON200.Result
 
 			resItems := OUToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted OU: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted OU }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted OU",
+					map[string]interface{}{
+						"OU": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -215,9 +224,17 @@ func resourceOURead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 			api_result := res.JSON200.Result
 
 			resItems := OUToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted OU: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted OU }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted OU",
+					map[string]interface{}{
+						"OU": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -297,9 +314,17 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 			api_result := res.JSON200.Result
 
 			resItems := OUToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted OU: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted OU }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted OU",
+					map[string]interface{}{
+						"OU": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)

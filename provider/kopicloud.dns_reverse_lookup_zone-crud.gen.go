@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -94,9 +95,17 @@ func resourceDnsReverseLookupZoneCreate(ctx context.Context, d *schema.ResourceD
 			api_result := res.JSON200.Result
 
 			resItems := DnsZoneToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted DnsReverseLookupZone: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsReverseLookupZone }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted DnsReverseLookupZone",
+					map[string]interface{}{
+						"DnsReverseLookupZone": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -172,9 +181,17 @@ func resourceDnsReverseLookupZoneRead(ctx context.Context, d *schema.ResourceDat
 			api_result := res.JSON200.Result
 
 			resItems := DnsZoneToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted DnsReverseLookupZone: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsReverseLookupZone }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted DnsReverseLookupZone",
+					map[string]interface{}{
+						"DnsReverseLookupZone": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)
@@ -250,9 +267,17 @@ func resourceDnsReverseLookupZoneDelete(ctx context.Context, d *schema.ResourceD
 			api_result := res.JSON200.Result
 
 			resItems := DnsZoneToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted DnsReverseLookupZone: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsReverseLookupZone }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted DnsReverseLookupZone",
+					map[string]interface{}{
+						"DnsReverseLookupZone": resItems,
+					})
 			}
 
 			result := wrapInArray(resItems)

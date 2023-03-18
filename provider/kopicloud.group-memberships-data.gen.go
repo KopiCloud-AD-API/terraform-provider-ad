@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -118,10 +119,16 @@ func dataSourceGroupMembership_Read_0(ctx context.Context, d *schema.ResourceDat
 
 			resItems := GroupListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted GroupMembership }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted GroupMembership",
 					map[string]interface{}{
-						"GroupMembership": element,
+						"GroupMembership": resItems,
 					})
 			}
 
@@ -208,10 +215,16 @@ func dataSourceGroupMembership_Read_1(ctx context.Context, d *schema.ResourceDat
 
 			resItems := GroupToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted GroupMembership }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted GroupMembership",
 					map[string]interface{}{
-						"GroupMembership": element,
+						"GroupMembership": resItems,
 					})
 			}
 
