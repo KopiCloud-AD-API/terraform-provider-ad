@@ -1,6 +1,6 @@
 {
     "api_alias": "kcapi",
-    "api_package": "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api",
+    "api_package": "github.com/KopiCloud-AD-API/terraform-provider-ad/api",
     "package": "provider",
     "resources" : [
         {
