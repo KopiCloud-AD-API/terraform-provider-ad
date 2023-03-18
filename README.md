@@ -1,7 +1,10 @@
 # KopiCloud AD API Terraform Provider
 The API for Microsoft Active Directory and DNS
+
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html)
 [![KopiCloud-AD](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
+
+The **KopiCloud AD API Terraform Provider** allows you to manage AD Users, AD Groups, AD OUs, AD Computers, DNS Records, and DNS Zones securely.
 
 ## What is KopiCloud AD API?
 
@@ -26,3 +29,11 @@ Here are a few reasons to choose KopiCloud AD API to automate your Active Direct
 - **Automate AD with our Terraform Provider**: Create service accounts in AD, create DNS records, clean up orphan machine accounts in AD after a Terraform destroy, reset user passwords, and more.
 - **Designed for all kinds of companies**: We have plenty of pre-configured security access groups. The API provides many options if you are a small company or a large enterprise with a dedicated security team.
 - **Production or Test Environment?**: Both. If you are in production, every call is secured using a token, and everything is logged. Or you can disable the token authentication if running in a test environment.
+
+## Resources
+
+- KopiCloud AD API Official Web Site: [https://www.kopicloud-ad-api.com](https://www.kopicloud-ad-api.com)
+
+- KopiCloud AD API Documentation: [https://help.kopicloud-ad-api.com](https://help.kopicloud-ad-api.com)
+
+- KopiClod AD API Terraform Sample Code Repo: [https://github.com/KopiCloud-AD-API](https://github.com/KopiCloud-AD-API)
