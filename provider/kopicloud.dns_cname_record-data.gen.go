@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -158,10 +159,16 @@ func dataSourceDnsCNameRecordReader_Read_0(ctx context.Context, d *schema.Resour
 
 			resItems := DnsRecordToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsCNameRecord }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted DnsCNameRecord",
 					map[string]interface{}{
-						"DnsCNameRecord": element,
+						"DnsCNameRecord": resItems,
 					})
 			}
 
@@ -244,10 +251,16 @@ func dataSourceDnsCNameRecordReader_Read_1(ctx context.Context, d *schema.Resour
 
 			resItems := DnsRecordListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsCNameRecord }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted DnsCNameRecord",
 					map[string]interface{}{
-						"DnsCNameRecord": element,
+						"DnsCNameRecord": resItems,
 					})
 			}
 
@@ -330,10 +343,16 @@ func dataSourceDnsCNameRecordReader_Read_2(ctx context.Context, d *schema.Resour
 
 			resItems := DnsRecordListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsCNameRecord }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted DnsCNameRecord",
 					map[string]interface{}{
-						"DnsCNameRecord": element,
+						"DnsCNameRecord": resItems,
 					})
 			}
 
@@ -416,10 +435,16 @@ func dataSourceDnsCNameRecordReader_Read_3(ctx context.Context, d *schema.Resour
 
 			resItems := DnsRecordListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsCNameRecord }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted DnsCNameRecord",
 					map[string]interface{}{
-						"DnsCNameRecord": element,
+						"DnsCNameRecord": resItems,
 					})
 			}
 
@@ -498,10 +523,16 @@ func dataSourceDnsCNameRecordReader_Read_4(ctx context.Context, d *schema.Resour
 
 			resItems := DnsRecordListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted DnsCNameRecord }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted DnsCNameRecord",
 					map[string]interface{}{
-						"DnsCNameRecord": element,
+						"DnsCNameRecord": resItems,
 					})
 			}
 

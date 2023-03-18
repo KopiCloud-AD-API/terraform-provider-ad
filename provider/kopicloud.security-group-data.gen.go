@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -86,10 +87,16 @@ func dataSourceGroup_Read_0(ctx context.Context, d *schema.ResourceData, m inter
 
 			resItems := GroupListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted Group }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted Group",
 					map[string]interface{}{
-						"Group": element,
+						"Group": resItems,
 					})
 			}
 
@@ -220,10 +227,16 @@ func dataSourceSecurityGroup_Read_0(ctx context.Context, d *schema.ResourceData,
 
 			resItems := GroupToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted SecurityGroup }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted SecurityGroup",
 					map[string]interface{}{
-						"SecurityGroup": element,
+						"SecurityGroup": resItems,
 					})
 			}
 
@@ -296,10 +309,16 @@ func dataSourceSecurityGroup_Read_1(ctx context.Context, d *schema.ResourceData,
 
 			resItems := GroupListToTerraform(api_result)
 
-			for _, element := range resItems {
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted SecurityGroup }: %#v", element.(map[string]interface{}))
+				}
+			default:
 				tflog.Debug(ctx, "converted SecurityGroup",
 					map[string]interface{}{
-						"SecurityGroup": element,
+						"SecurityGroup": resItems,
 					})
 			}
 

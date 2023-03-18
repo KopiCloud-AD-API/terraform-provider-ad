@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
@@ -125,9 +126,17 @@ func resourceComputerCleanUpCreate(ctx context.Context, d *schema.ResourceData, 
 			api_result := res.JSON200.Result
 
 			resItems := ComputerListToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted Computer: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted Computer }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted Computer",
+					map[string]interface{}{
+						"Computer": resItems,
+					})
 			}
 
 			result := resItems
@@ -217,9 +226,17 @@ func resourceComputerCleanUpRead(ctx context.Context, d *schema.ResourceData, m 
 			api_result := res.JSON200.Result
 
 			resItems := ComputerListToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted Computer: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted Computer }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted Computer",
+					map[string]interface{}{
+						"Computer": resItems,
+					})
 			}
 
 			result := resItems
@@ -309,9 +326,17 @@ func resourceComputerCleanUpDelete(ctx context.Context, d *schema.ResourceData, 
 			api_result := res.JSON200.Result
 
 			resItems := ComputerListToTerraform(api_result)
-
-			for _, element := range resItems {
-				tflog.Debug(ctx, "converted Computer: %#v", element.(map[string]interface{}))
+			rt := reflect.TypeOf(resItems)
+			switch rt.Kind() {
+			case reflect.Slice | reflect.Array:
+				for _, element := range resItems {
+					tflog.Debug(ctx, "converted Computer }: %#v", element.(map[string]interface{}))
+				}
+			default:
+				tflog.Debug(ctx, "converted Computer",
+					map[string]interface{}{
+						"Computer": resItems,
+					})
 			}
 
 			result := resItems

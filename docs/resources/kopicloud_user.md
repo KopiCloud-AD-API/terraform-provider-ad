@@ -17,6 +17,7 @@ Element to create, update, delete Users from Active Directory
 
 ### Required
 
+- `new_password` (String)
 - `password` (String)
 - `username` (String)
 

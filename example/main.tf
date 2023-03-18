@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     kopicloud = {
-      source  = "github.com/KopiCloud-AD-API/terraform-provider-ad"
+      source  = "github.com/KopiCloud-AD-API/ad"
     }
   }
 }
@@ -321,7 +321,7 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_user" "test" {
-  username     = "oforero4"
+  username     = "oforero9"
   password     = "vMD48X6Vdyj49j8%"
   first_name   = "Oscar"
   last_name    = "Forero"
@@ -331,4 +331,19 @@ resource "kopicloud_user" "test" {
 output "user" {
   description = "Created User"
   value = resource.kopicloud_user.test.result
+}
+
+# Create a Global Distribution Group
+resource "kopicloud_distribution_group" "test_distribution_global" {
+  name        = "kopicloud-europe-distribution-group-blue-2"
+  scope       = "Global"
+  description = "This is a very cool Global distribution group"
+  email       = "europe.distribution@kopicloud.com"
+  ou_path     = "CN=Users,DC=kopicloud,DC=local"
+}
+
+# Returns Created Global Distribution Group
+output "OUTPUT_global_distribution_group" {
+  description = "Created Global Distribution Group"
+  value       = resource.kopicloud_distribution_group.test_distribution_global
 }
