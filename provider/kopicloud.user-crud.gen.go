@@ -120,8 +120,8 @@ func resourceUser() *schema.Resource {
 	terraformSchema["new_password"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
-		Optional: false,
-		Required: true,
+		Optional: true,
+		Required: false,
 
 		Description: "",
 	}
