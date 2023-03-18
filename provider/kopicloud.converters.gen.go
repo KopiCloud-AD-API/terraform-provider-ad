@@ -34,280 +34,6 @@ func isNotEmpty(f interface{}) bool {
 	}
 }
 
-func OUToTerraform(obj *api.OU) map[string]interface{} {
-	result := make(map[string]interface{})
-
-	if obj.Path != nil && isNotEmpty(obj.Path) {
-
-		result["path"] = obj.Path
-
-	}
-
-	if obj.Protected != nil && isNotEmpty(obj.Protected) {
-
-		result["protected"] = obj.Protected
-
-	}
-
-	if obj.Guid != nil && isNotEmpty(obj.Guid) {
-
-		result["guid"] = UuidToTerraform(obj.Guid)
-
-	}
-
-	if obj.Name != nil && isNotEmpty(obj.Name) {
-
-		result["name"] = obj.Name
-
-	}
-
-	if obj.Description != nil && isNotEmpty(obj.Description) {
-
-		result["description"] = obj.Description
-
-	}
-
-	return result
-}
-
-func OUListToTerraform(list *[]api.OU) []interface{} {
-	if list != nil {
-		results := make([]interface{}, len(*list))
-		for i, OU := range *list {
-			results[i] = OUToTerraform(&OU)
-		}
-		return results
-	}
-	return make([]interface{}, 0)
-}
-
-func UserToTerraform(obj *api.User) map[string]interface{} {
-	result := make(map[string]interface{})
-
-	if obj.LastName != nil && isNotEmpty(obj.LastName) {
-
-		result["last_name"] = obj.LastName
-
-	}
-
-	if obj.Office != nil && isNotEmpty(obj.Office) {
-
-		result["office"] = obj.Office
-
-	}
-
-	if obj.Initials != nil && isNotEmpty(obj.Initials) {
-
-		result["initials"] = obj.Initials
-
-	}
-
-	if obj.ChangePasswordNextLogon != nil && isNotEmpty(obj.ChangePasswordNextLogon) {
-
-		result["change_password_next_logon"] = obj.ChangePasswordNextLogon
-
-	}
-
-	if obj.OuPath != nil && isNotEmpty(obj.OuPath) {
-
-		result["ou_path"] = obj.OuPath
-
-	}
-
-	if obj.City != nil && isNotEmpty(obj.City) {
-
-		result["city"] = obj.City
-
-	}
-
-	if obj.Country != nil && isNotEmpty(obj.Country) {
-
-		result["country"] = obj.Country
-
-	}
-
-	if obj.HomeFolderPath != nil && isNotEmpty(obj.HomeFolderPath) {
-
-		result["home_folder_path"] = obj.HomeFolderPath
-
-	}
-
-	if obj.StreetPoBox != nil && isNotEmpty(obj.StreetPoBox) {
-
-		result["street_po_box"] = obj.StreetPoBox
-
-	}
-
-	if obj.MobilePhone != nil && isNotEmpty(obj.MobilePhone) {
-
-		result["mobile_phone"] = obj.MobilePhone
-
-	}
-
-	if obj.JobTitle != nil && isNotEmpty(obj.JobTitle) {
-
-		result["job_title"] = obj.JobTitle
-
-	}
-
-	if obj.Manager != nil && isNotEmpty(obj.Manager) {
-
-		result["manager"] = obj.Manager
-
-	}
-
-	if obj.State != nil && isNotEmpty(obj.State) {
-
-		result["state"] = obj.State
-
-	}
-
-	if obj.ProfilePath != nil && isNotEmpty(obj.ProfilePath) {
-
-		result["profile_path"] = obj.ProfilePath
-
-	}
-
-	if obj.RdsProfilePath != nil && isNotEmpty(obj.RdsProfilePath) {
-
-		result["rds_profile_path"] = obj.RdsProfilePath
-
-	}
-
-	if obj.FirstName != nil && isNotEmpty(obj.FirstName) {
-
-		result["first_name"] = obj.FirstName
-
-	}
-
-	if obj.SamUsername != nil && isNotEmpty(obj.SamUsername) {
-
-		result["sam_username"] = obj.SamUsername
-
-	}
-
-	if obj.PostalCode != nil && isNotEmpty(obj.PostalCode) {
-
-		result["postal_code"] = obj.PostalCode
-
-	}
-
-	if obj.HomeFolderDrive != nil && isNotEmpty(obj.HomeFolderDrive) {
-
-		result["home_folder_drive"] = obj.HomeFolderDrive
-
-	}
-
-	if obj.MiddleName != nil && isNotEmpty(obj.MiddleName) {
-
-		result["middle_name"] = obj.MiddleName
-
-	}
-
-	if obj.DisplayName != nil && isNotEmpty(obj.DisplayName) {
-
-		result["display_name"] = obj.DisplayName
-
-	}
-
-	if obj.Description != nil && isNotEmpty(obj.Description) {
-
-		result["description"] = obj.Description
-
-	}
-
-	if obj.EmailAddress != nil && isNotEmpty(obj.EmailAddress) {
-
-		result["email_address"] = obj.EmailAddress
-
-	}
-
-	if obj.StreetAddress != nil && isNotEmpty(obj.StreetAddress) {
-
-		result["street_address"] = obj.StreetAddress
-
-	}
-
-	if obj.RdsAllowLogon != nil && isNotEmpty(obj.RdsAllowLogon) {
-
-		result["rds_allow_logon"] = obj.RdsAllowLogon
-
-	}
-
-	if obj.Username != nil && isNotEmpty(obj.Username) {
-
-		result["username"] = obj.Username
-
-	}
-
-	if obj.Department != nil && isNotEmpty(obj.Department) {
-
-		result["department"] = obj.Department
-
-	}
-
-	if obj.Company != nil && isNotEmpty(obj.Company) {
-
-		result["company"] = obj.Company
-
-	}
-
-	if obj.OfficePhone != nil && isNotEmpty(obj.OfficePhone) {
-
-		result["office_phone"] = obj.OfficePhone
-
-	}
-
-	if obj.RdsConnectDrive != nil && isNotEmpty(obj.RdsConnectDrive) {
-
-		result["rds_connect_drive"] = obj.RdsConnectDrive
-
-	}
-
-	if obj.HomePhone != nil && isNotEmpty(obj.HomePhone) {
-
-		result["home_phone"] = obj.HomePhone
-
-	}
-
-	if obj.ProfileLogonScript != nil && isNotEmpty(obj.ProfileLogonScript) {
-
-		result["profile_logon_script"] = obj.ProfileLogonScript
-
-	}
-
-	if obj.HomeFolderDirectory != nil && isNotEmpty(obj.HomeFolderDirectory) {
-
-		result["home_folder_directory"] = obj.HomeFolderDirectory
-
-	}
-
-	if obj.RdsHomeFolderPath != nil && isNotEmpty(obj.RdsHomeFolderPath) {
-
-		result["rds_home_folder_path"] = obj.RdsHomeFolderPath
-
-	}
-
-	if obj.RdsHomeFolderDrive != nil && isNotEmpty(obj.RdsHomeFolderDrive) {
-
-		result["rds_home_folder_drive"] = obj.RdsHomeFolderDrive
-
-	}
-
-	return result
-}
-
-func UserListToTerraform(list *[]api.User) []interface{} {
-	if list != nil {
-		results := make([]interface{}, len(*list))
-		for i, User := range *list {
-			results[i] = UserToTerraform(&User)
-		}
-		return results
-	}
-	return make([]interface{}, 0)
-}
-
 func DnsRecordToTerraform(obj *api.DnsRecord) map[string]interface{} {
 	result := make(map[string]interface{})
 
@@ -355,49 +81,14 @@ func DnsRecordListToTerraform(list *[]api.DnsRecord) []interface{} {
 	return make([]interface{}, 0)
 }
 
-func DnsZoneToTerraform(obj *api.DnsZone) map[string]interface{} {
-	result := make(map[string]interface{})
-
-	if obj.DistinguishedName != nil && isNotEmpty(obj.DistinguishedName) {
-
-		result["distinguished_name"] = obj.DistinguishedName
-
-	}
-
-	if obj.ZoneName != nil && isNotEmpty(obj.ZoneName) {
-
-		result["zone_name"] = obj.ZoneName
-
-	}
-
-	if obj.ZoneType != nil && isNotEmpty(obj.ZoneType) {
-
-		result["zone_type"] = obj.ZoneType
-
-	}
-
-	if obj.Type != nil && isNotEmpty(obj.Type) {
-
-		result["type"] = obj.Type
-
-	}
-
-	return result
-}
-
-func DnsZoneListToTerraform(list *[]api.DnsZone) []interface{} {
-	if list != nil {
-		results := make([]interface{}, len(*list))
-		for i, DnsZone := range *list {
-			results[i] = DnsZoneToTerraform(&DnsZone)
-		}
-		return results
-	}
-	return make([]interface{}, 0)
-}
-
 func GroupToTerraform(obj *api.Group) map[string]interface{} {
 	result := make(map[string]interface{})
+
+	if obj.Scope != nil && isNotEmpty(obj.Scope) {
+
+		result["scope"] = obj.Scope
+
+	}
 
 	if obj.Description != nil && isNotEmpty(obj.Description) {
 
@@ -435,12 +126,6 @@ func GroupToTerraform(obj *api.Group) map[string]interface{} {
 
 	}
 
-	if obj.Scope != nil && isNotEmpty(obj.Scope) {
-
-		result["scope"] = obj.Scope
-
-	}
-
 	return result
 }
 
@@ -449,6 +134,321 @@ func GroupListToTerraform(list *[]api.Group) []interface{} {
 		results := make([]interface{}, len(*list))
 		for i, Group := range *list {
 			results[i] = GroupToTerraform(&Group)
+		}
+		return results
+	}
+	return make([]interface{}, 0)
+}
+
+func UserToTerraform(obj *api.User) map[string]interface{} {
+	result := make(map[string]interface{})
+
+	if obj.LastName != nil && isNotEmpty(obj.LastName) {
+
+		result["last_name"] = obj.LastName
+
+	}
+
+	if obj.DisplayName != nil && isNotEmpty(obj.DisplayName) {
+
+		result["display_name"] = obj.DisplayName
+
+	}
+
+	if obj.Office != nil && isNotEmpty(obj.Office) {
+
+		result["office"] = obj.Office
+
+	}
+
+	if obj.Manager != nil && isNotEmpty(obj.Manager) {
+
+		result["manager"] = obj.Manager
+
+	}
+
+	if obj.PostalCode != nil && isNotEmpty(obj.PostalCode) {
+
+		result["postal_code"] = obj.PostalCode
+
+	}
+
+	if obj.FirstName != nil && isNotEmpty(obj.FirstName) {
+
+		result["first_name"] = obj.FirstName
+
+	}
+
+	if obj.SamUsername != nil && isNotEmpty(obj.SamUsername) {
+
+		result["sam_username"] = obj.SamUsername
+
+	}
+
+	if obj.Initials != nil && isNotEmpty(obj.Initials) {
+
+		result["initials"] = obj.Initials
+
+	}
+
+	if obj.Country != nil && isNotEmpty(obj.Country) {
+
+		result["country"] = obj.Country
+
+	}
+
+	if obj.MobilePhone != nil && isNotEmpty(obj.MobilePhone) {
+
+		result["mobile_phone"] = obj.MobilePhone
+
+	}
+
+	if obj.HomeFolderDrive != nil && isNotEmpty(obj.HomeFolderDrive) {
+
+		result["home_folder_drive"] = obj.HomeFolderDrive
+
+	}
+
+	if obj.Username != nil && isNotEmpty(obj.Username) {
+
+		result["username"] = obj.Username
+
+	}
+
+	if obj.City != nil && isNotEmpty(obj.City) {
+
+		result["city"] = obj.City
+
+	}
+
+	if obj.ProfilePath != nil && isNotEmpty(obj.ProfilePath) {
+
+		result["profile_path"] = obj.ProfilePath
+
+	}
+
+	if obj.EmailAddress != nil && isNotEmpty(obj.EmailAddress) {
+
+		result["email_address"] = obj.EmailAddress
+
+	}
+
+	if obj.State != nil && isNotEmpty(obj.State) {
+
+		result["state"] = obj.State
+
+	}
+
+	if obj.OfficePhone != nil && isNotEmpty(obj.OfficePhone) {
+
+		result["office_phone"] = obj.OfficePhone
+
+	}
+
+	if obj.HomeFolderPath != nil && isNotEmpty(obj.HomeFolderPath) {
+
+		result["home_folder_path"] = obj.HomeFolderPath
+
+	}
+
+	if obj.MiddleName != nil && isNotEmpty(obj.MiddleName) {
+
+		result["middle_name"] = obj.MiddleName
+
+	}
+
+	if obj.Company != nil && isNotEmpty(obj.Company) {
+
+		result["company"] = obj.Company
+
+	}
+
+	if obj.OuPath != nil && isNotEmpty(obj.OuPath) {
+
+		result["ou_path"] = obj.OuPath
+
+	}
+
+	if obj.ChangePasswordNextLogon != nil && isNotEmpty(obj.ChangePasswordNextLogon) {
+
+		result["change_password_next_logon"] = obj.ChangePasswordNextLogon
+
+	}
+
+	if obj.JobTitle != nil && isNotEmpty(obj.JobTitle) {
+
+		result["job_title"] = obj.JobTitle
+
+	}
+
+	if obj.ProfileLogonScript != nil && isNotEmpty(obj.ProfileLogonScript) {
+
+		result["profile_logon_script"] = obj.ProfileLogonScript
+
+	}
+
+	if obj.RdsConnectDrive != nil && isNotEmpty(obj.RdsConnectDrive) {
+
+		result["rds_connect_drive"] = obj.RdsConnectDrive
+
+	}
+
+	if obj.Description != nil && isNotEmpty(obj.Description) {
+
+		result["description"] = obj.Description
+
+	}
+
+	if obj.Department != nil && isNotEmpty(obj.Department) {
+
+		result["department"] = obj.Department
+
+	}
+
+	if obj.StreetAddress != nil && isNotEmpty(obj.StreetAddress) {
+
+		result["street_address"] = obj.StreetAddress
+
+	}
+
+	if obj.StreetPoBox != nil && isNotEmpty(obj.StreetPoBox) {
+
+		result["street_po_box"] = obj.StreetPoBox
+
+	}
+
+	if obj.HomePhone != nil && isNotEmpty(obj.HomePhone) {
+
+		result["home_phone"] = obj.HomePhone
+
+	}
+
+	if obj.RdsHomeFolderPath != nil && isNotEmpty(obj.RdsHomeFolderPath) {
+
+		result["rds_home_folder_path"] = obj.RdsHomeFolderPath
+
+	}
+
+	if obj.RdsHomeFolderDrive != nil && isNotEmpty(obj.RdsHomeFolderDrive) {
+
+		result["rds_home_folder_drive"] = obj.RdsHomeFolderDrive
+
+	}
+
+	if obj.HomeFolderDirectory != nil && isNotEmpty(obj.HomeFolderDirectory) {
+
+		result["home_folder_directory"] = obj.HomeFolderDirectory
+
+	}
+
+	if obj.RdsProfilePath != nil && isNotEmpty(obj.RdsProfilePath) {
+
+		result["rds_profile_path"] = obj.RdsProfilePath
+
+	}
+
+	if obj.RdsAllowLogon != nil && isNotEmpty(obj.RdsAllowLogon) {
+
+		result["rds_allow_logon"] = obj.RdsAllowLogon
+
+	}
+
+	return result
+}
+
+func UserListToTerraform(list *[]api.User) []interface{} {
+	if list != nil {
+		results := make([]interface{}, len(*list))
+		for i, User := range *list {
+			results[i] = UserToTerraform(&User)
+		}
+		return results
+	}
+	return make([]interface{}, 0)
+}
+
+func DnsZoneToTerraform(obj *api.DnsZone) map[string]interface{} {
+	result := make(map[string]interface{})
+
+	if obj.ZoneType != nil && isNotEmpty(obj.ZoneType) {
+
+		result["zone_type"] = obj.ZoneType
+
+	}
+
+	if obj.Type != nil && isNotEmpty(obj.Type) {
+
+		result["type"] = obj.Type
+
+	}
+
+	if obj.DistinguishedName != nil && isNotEmpty(obj.DistinguishedName) {
+
+		result["distinguished_name"] = obj.DistinguishedName
+
+	}
+
+	if obj.ZoneName != nil && isNotEmpty(obj.ZoneName) {
+
+		result["zone_name"] = obj.ZoneName
+
+	}
+
+	return result
+}
+
+func DnsZoneListToTerraform(list *[]api.DnsZone) []interface{} {
+	if list != nil {
+		results := make([]interface{}, len(*list))
+		for i, DnsZone := range *list {
+			results[i] = DnsZoneToTerraform(&DnsZone)
+		}
+		return results
+	}
+	return make([]interface{}, 0)
+}
+
+func OUToTerraform(obj *api.OU) map[string]interface{} {
+	result := make(map[string]interface{})
+
+	if obj.Guid != nil && isNotEmpty(obj.Guid) {
+
+		result["guid"] = UuidToTerraform(obj.Guid)
+
+	}
+
+	if obj.Name != nil && isNotEmpty(obj.Name) {
+
+		result["name"] = obj.Name
+
+	}
+
+	if obj.Description != nil && isNotEmpty(obj.Description) {
+
+		result["description"] = obj.Description
+
+	}
+
+	if obj.Path != nil && isNotEmpty(obj.Path) {
+
+		result["path"] = obj.Path
+
+	}
+
+	if obj.Protected != nil && isNotEmpty(obj.Protected) {
+
+		result["protected"] = obj.Protected
+
+	}
+
+	return result
+}
+
+func OUListToTerraform(list *[]api.OU) []interface{} {
+	if list != nil {
+		results := make([]interface{}, len(*list))
+		for i, OU := range *list {
+			results[i] = OUToTerraform(&OU)
 		}
 		return results
 	}

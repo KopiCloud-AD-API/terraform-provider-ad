@@ -43,5 +43,7 @@ func resources() map[string]*schema.Resource {
 		"kopicloud_group_membership": resourceGroupMembership(),
 
 		"kopicloud_user": resourceUser(),
+
+		"kopicloud_user_password_reset": resourceUserPasswordReset(),
 	}
 }
