@@ -1,7 +1,7 @@
 TEST?=$$(go list ./... | grep -v 'vendor')
-HOSTNAME=gitlab.com
-NAMESPACE=kopicloud
-NAME=kopicloud-ad-tf-provider
+HOSTNAME=github.com
+NAMESPACE=KopiCloud-AD-API
+NAME=terraform-provider-ad
 BINARY=terraform-provider-${NAME}
 VERSION=$(shell git describe --tags)
 BUIDL_DATE=$(shell date +%Y-%m-%d)

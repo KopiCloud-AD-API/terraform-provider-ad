@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     kopicloud = {
-      source  = "gitlab.com/kopicloud/kopicloud-ad-tf-provider"
+      source  = "github.com/KopiCloud-AD-API/terraform-provider-ad"
     }
   }
 }

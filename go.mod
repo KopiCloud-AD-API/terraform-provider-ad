@@ -1,4 +1,4 @@
-module gitlab.com/KopiCloud/kopicloud-ad-tf-provider
+module github.com/KopiCloud-AD-API/terraform-provider-ad
 
 go 1.19
 

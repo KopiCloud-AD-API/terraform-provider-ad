@@ -7,9 +7,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
+	api "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
+	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 	"github.com/google/uuid"
-	api "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
-	kcapi "gitlab.com/KopiCloud/kopicloud-ad-tf-provider/api"
 )
 
 type M map[string]interface{}
