@@ -51,5 +51,7 @@ func resources() map[string]*schema.Resource {
 		"kopicloud_user_disable_account": resourceUserDisableAccount(),
 
 		"kopicloud_user_unlock_account": resourceUserUnlockAccount(),
+
+		"kopicloud_user_rename_account": resourceUserRename(),
 	}
 }
