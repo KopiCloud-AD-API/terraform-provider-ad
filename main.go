@@ -57,6 +57,15 @@ import (
 // Generate the Code for User Password Reset
 //go:generate openapi-terraform-provider-generator resource-crud 														      --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.user-password-reset-crud.gen.go -i generator-inputs/user_password_reset.json
 
+// Generate the Code for User Enabling
+//go:generate openapi-terraform-provider-generator resource-crud 														      --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.user-enable-crud.gen.go -i generator-inputs/user_enable.json
+
+// Generate the Code for User Disabling
+//go:generate openapi-terraform-provider-generator resource-crud 														      --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.user-disable-crud.gen.go -i generator-inputs/user_disable.json
+
+// Generate the Code for User Unlocking
+//go:generate openapi-terraform-provider-generator resource-crud 														      --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.user-unlock-crud.gen.go -i generator-inputs/user_unlock.json
+
 // Generate the Code for the DNS A Records
 //go:generate openapi-terraform-provider-generator resource-crud 														      --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.dns_a_record-crud.gen.go 	 -i generator-inputs/dns_a_record.json
 //go:generate openapi-terraform-provider-generator datasource-read													          --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.dns_a_record-data.gen.go 	 -i generator-inputs/dns_a_record.json
@@ -78,7 +87,7 @@ import (
 //go:generate openapi-terraform-provider-generator datasource-read  														  --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.dns_reverse_lookup_zone-data.gen.go  -i generator-inputs/dns_reverse_lookup_zone.json
 
 // Generate the schemas for the resources (should list all the JSON files for which resources were generated)
-//go:generate openapi-terraform-provider-generator resource-schemas 														  --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.resources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/computer_cleanup.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json -i generator-inputs/group_membership.json -i generator-inputs/user.json -i generator-inputs/user_password_reset.json
+//go:generate openapi-terraform-provider-generator resource-schemas 														  --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.resources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/computer_cleanup.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json -i generator-inputs/group_membership.json -i generator-inputs/user.json -i generator-inputs/user_password_reset.json -i generator-inputs/user_enable.json -i generator-inputs/user_disable.json -i generator-inputs/user_unlock.json
 
 // Generate the code for the datasources (Schemas)
 //go:generate openapi-terraform-provider-generator datasource-schemas 														  --api github.com/KopiCloud-AD-API/terraform-provider-ad/api -p provider -o provider/kopicloud.datasources-schemas.gen.go 	-i generator-inputs/computer.json -i generator-inputs/organizational_unit.json -i generator-inputs/dns_a_record.json -i generator-inputs/dns_aaaa_record.json -i generator-inputs/dns_cname_record.json -i generator-inputs/dns_lookup_zone.json -i generator-inputs/dns_reverse_lookup_zone.json -i generator-inputs/security_group.json -i generator-inputs/distribution_group.json -i generator-inputs/group_membership.json -i generator-inputs/user.json
