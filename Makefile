@@ -3,7 +3,8 @@ HOSTNAME=github.com
 NAMESPACE=KopiCloud-AD-API
 NAME=ad
 BINARY=terraform-provider-${NAME}
-VERSION=$(shell git describe --tags)
+TAG=$(shell git describe --tags)
+VERSION=$(FILE:v%=%)
 BUIDL_DATE=$(shell date +%Y-%m-%d)
 BUIDL_TIME=$(shell date +%T%Z)
 OS=darwin
