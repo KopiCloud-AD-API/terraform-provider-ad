@@ -166,7 +166,6 @@ type User struct {
 	JobTitle                *string   `json:"jobTitle"`
 	LastName                *string   `json:"lastName"`
 	Manager                 *string   `json:"manager"`
-	MiddleName              *string   `json:"middleName"`
 	MobilePhone             *string   `json:"mobilePhone"`
 	Office                  *string   `json:"office"`
 	OfficePhone             *string   `json:"officePhone"`
