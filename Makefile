@@ -4,7 +4,7 @@ NAMESPACE=KopiCloud-AD-API
 NAME=ad
 BINARY=terraform-provider-${NAME}
 TAG=$(shell git describe --tags)
-VERSION=$(FILE:v%=%)
+VERSION=$(TAG:v%=%)
 BUIDL_DATE=$(shell date +%Y-%m-%d)
 BUIDL_TIME=$(shell date +%T%Z)
 OS=darwin
@@ -18,7 +18,7 @@ build:
 	go install golang.org/x/tools/cmd/goimports@latest
 	mkdir -p api
 	go generate
-	${BUILD_CMD} -o bin/${BINARY}
+	${BUILD_CMD} -o bin/${BINARY}_${VERSION}
 
 clean:
 	rm -rf api
