@@ -130,7 +130,7 @@
                         "optional": true
                     },
                     {
-                        "name": "email",
+                        "name": "email_address",
                         "type": "schema.TypeString",
                         "optional": true
                     },
@@ -150,12 +150,7 @@
                         "optional": true
                     },
                     {
-                        "name": "new_password",
-                        "type": "schema.TypeString",
-                        "optional": true
-                    },
-                    {
-                        "name": "change_password_net_logon",
+                        "name": "change_password_next_logon",
                         "type": "schema.TypeBool",
                         "optional": true
                     },
@@ -224,7 +219,7 @@
                             },
                             {
                                 "api_name": "EmailAddress",
-                                "name": "email",
+                                "name": "email_address",
                                 "type": "*string"
                             },
                             {
@@ -249,7 +244,7 @@
                             },
                             {
                                 "api_name": "ChangePasswordNextLogon",
-                                "name": "change_password_net_logon",
+                                "name": "change_password_next_logon",
                                 "type": "*bool"
                             },
                             {
@@ -294,7 +289,6 @@
             },
             "update": [
                 {
-                    "required_inputs": ["username"],
                     "api_function": {
                         "name": "PutApiADUserWithResponse",
                         "arguments": [],
@@ -333,7 +327,7 @@
                                 },
                                 {
                                     "api_name": "EmailAddress",
-                                    "name": "email",
+                                    "name": "email_address",
                                     "type": "*string"
                                 },
                                 {
@@ -358,7 +352,7 @@
                                 },
                                 {
                                     "api_name": "ChangePasswordNextLogon",
-                                    "name": "change_password_net_logon",
+                                    "name": "change_password_next_logon",
                                     "type": "*bool"
                                 },
                                     {
@@ -399,7 +393,7 @@
                                 },
                                 {
                                     "api_name": "ChangePassword",
-                                    "name": "change_password_net_logon",
+                                    "name": "change_password_next_logon",
                                     "type": "*bool"
                                 },
                                 {

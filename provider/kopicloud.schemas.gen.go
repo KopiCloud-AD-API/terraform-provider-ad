@@ -37,57 +37,6 @@ func schemaMapOfScalarElement(t schema.ValueType, field_name string) map[string]
 	}
 }
 
-func schemaOfDnsZoneList(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("List of %s", "DnsZone"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfDnsZone(scalar_field_name),
-		},
-	}
-}
-
-func schemaOfDnsZone(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("Single Element List of %s", "DnsZone"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfDnsZone(scalar_field_name),
-		},
-	}
-}
-
-func schemaMapOfDnsZone(scalar_field_name string) map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-
-		"zone_name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"zone_type": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"type": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"distinguished_name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-	}
-}
-
 func schemaOfOUList(scalar_field_name string) *schema.Schema {
 	return &schema.Schema{
 		Type:        schema.TypeList,
@@ -113,6 +62,18 @@ func schemaOfOU(scalar_field_name string) *schema.Schema {
 func schemaMapOfOU(scalar_field_name string) map[string]*schema.Schema {
 	return map[string]*schema.Schema{
 
+		"path": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"protected": {
+			Type:        schema.TypeBool,
+			Computed:    true,
+			Description: "",
+		},
+
 		"guid": {
 			Type:        schema.TypeString,
 			Computed:    true,
@@ -126,75 +87,6 @@ func schemaMapOfOU(scalar_field_name string) map[string]*schema.Schema {
 		},
 
 		"description": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"path": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"protected": {
-			Type:        schema.TypeBool,
-			Computed:    true,
-			Description: "",
-		},
-	}
-}
-
-func schemaOfDnsRecordList(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("List of %s", "DnsRecord"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfDnsRecord(scalar_field_name),
-		},
-	}
-}
-
-func schemaOfDnsRecord(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("Single Element List of %s", "DnsRecord"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfDnsRecord(scalar_field_name),
-		},
-	}
-}
-
-func schemaMapOfDnsRecord(scalar_field_name string) map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-
-		"name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"type": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"data": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"zone": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"timestamp": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -227,20 +119,8 @@ func schemaOfUser(scalar_field_name string) *schema.Schema {
 func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 	return map[string]*schema.Schema{
 
-		"ou_path": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"job_title": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"mobile_phone": {
-			Type:        schema.TypeString,
+		"rds_connect_drive": {
+			Type:        schema.TypeBool,
 			Computed:    true,
 			Description: "",
 		},
@@ -251,13 +131,19 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"profile_path": {
+		"profile_logon_script": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"home_folder_path": {
+		"rds_home_folder_path": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"home_folder_drive": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -269,61 +155,19 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"change_password_next_logon": {
-			Type:        schema.TypeBool,
-			Computed:    true,
-			Description: "",
-		},
-
-		"street_address": {
+		"state": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"street_po_box": {
+		"job_title": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"display_name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"company": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"sam_username": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"office_phone": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"rds_connect_drive": {
-			Type:        schema.TypeBool,
-			Computed:    true,
-			Description: "",
-		},
-
-		"home_phone": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"profile_logon_script": {
+		"home_folder_path": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -353,7 +197,13 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"office": {
+		"ou_path": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"street_address": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -365,25 +215,49 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"home_folder_drive": {
+		"country": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"rds_home_folder_path": {
+		"office_phone": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"rds_home_folder_drive": {
+		"home_phone": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"last_name": {
+		"display_name": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"sam_username": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"manager": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"city": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"first_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -395,19 +269,25 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"state": {
+		"change_password_next_logon": {
+			Type:        schema.TypeBool,
+			Computed:    true,
+			Description: "",
+		},
+
+		"street_po_box": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"country": {
+		"last_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"first_name": {
+		"company": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -425,13 +305,145 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"manager": {
+		"profile_path": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"city": {
+		"rds_home_folder_drive": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"office": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"mobile_phone": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+	}
+}
+
+func schemaOfDnsZoneList(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("List of %s", "DnsZone"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfDnsZone(scalar_field_name),
+		},
+	}
+}
+
+func schemaOfDnsZone(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("Single Element List of %s", "DnsZone"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfDnsZone(scalar_field_name),
+		},
+	}
+}
+
+func schemaMapOfDnsZone(scalar_field_name string) map[string]*schema.Schema {
+	return map[string]*schema.Schema{
+
+		"distinguished_name": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"zone_name": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"zone_type": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"type": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+	}
+}
+
+func schemaOfComputerList(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("List of %s", "Computer"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfComputer(scalar_field_name),
+		},
+	}
+}
+
+func schemaOfComputer(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("Single Element List of %s", "Computer"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfComputer(scalar_field_name),
+		},
+	}
+}
+
+func schemaMapOfComputer(scalar_field_name string) map[string]*schema.Schema {
+	return map[string]*schema.Schema{
+
+		"path": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"created": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"sid": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"computer_name": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"operating_system": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"description": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"dns_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -463,6 +475,12 @@ func schemaOfGroup(scalar_field_name string) *schema.Schema {
 
 func schemaMapOfGroup(scalar_field_name string) map[string]*schema.Schema {
 	return map[string]*schema.Schema{
+
+		"scope": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
 
 		"description": {
 			Type:        schema.TypeString,
@@ -499,77 +517,59 @@ func schemaMapOfGroup(scalar_field_name string) map[string]*schema.Schema {
 			Computed:    true,
 			Description: "",
 		},
-
-		"scope": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
 	}
 }
 
-func schemaOfComputerList(scalar_field_name string) *schema.Schema {
+func schemaOfDnsRecordList(scalar_field_name string) *schema.Schema {
 	return &schema.Schema{
 		Type:        schema.TypeList,
 		Computed:    true,
-		Description: fmt.Sprintf("List of %s", "Computer"),
+		Description: fmt.Sprintf("List of %s", "DnsRecord"),
 		Elem: &schema.Resource{
-			Schema: schemaMapOfComputer(scalar_field_name),
+			Schema: schemaMapOfDnsRecord(scalar_field_name),
 		},
 	}
 }
 
-func schemaOfComputer(scalar_field_name string) *schema.Schema {
+func schemaOfDnsRecord(scalar_field_name string) *schema.Schema {
 	return &schema.Schema{
 		Type:        schema.TypeList,
 		Computed:    true,
-		Description: fmt.Sprintf("Single Element List of %s", "Computer"),
+		Description: fmt.Sprintf("Single Element List of %s", "DnsRecord"),
 		Elem: &schema.Resource{
-			Schema: schemaMapOfComputer(scalar_field_name),
+			Schema: schemaMapOfDnsRecord(scalar_field_name),
 		},
 	}
 }
 
-func schemaMapOfComputer(scalar_field_name string) map[string]*schema.Schema {
+func schemaMapOfDnsRecord(scalar_field_name string) map[string]*schema.Schema {
 	return map[string]*schema.Schema{
 
-		"sid": {
+		"timestamp": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"computer_name": {
+		"name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"operating_system": {
+		"type": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"description": {
+		"data": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"dns_name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"path": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"created": {
+		"zone": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",

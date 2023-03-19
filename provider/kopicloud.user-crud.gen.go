@@ -81,7 +81,7 @@ func resourceUser() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["email"] = &schema.Schema{
+	terraformSchema["email_address"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
 		Optional: true,
@@ -117,16 +117,7 @@ func resourceUser() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["new_password"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
-
-		Description: "",
-	}
-
-	terraformSchema["change_password_net_logon"] = &schema.Schema{
+	terraformSchema["change_password_next_logon"] = &schema.Schema{
 		Type:     schema.TypeBool,
 		Computed: false,
 		Optional: true,
@@ -193,7 +184,7 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 
 	description := d.Get("description").(string)
 
-	email := d.Get("email").(string)
+	email_address := d.Get("email_address").(string)
 
 	department := d.Get("department").(string)
 
@@ -203,7 +194,7 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 
 	ou_path := d.Get("ou_path").(string)
 
-	change_password_net_logon := d.Get("change_password_net_logon").(bool)
+	change_password_next_logon := d.Get("change_password_next_logon").(bool)
 
 	show_fields := d.Get("show_fields").(string)
 
@@ -224,7 +215,7 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 
 		Description: &description,
 
-		EmailAddress: &email,
+		EmailAddress: &email_address,
 
 		Department: &department,
 
@@ -234,7 +225,7 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 
 		OUPath: &ou_path,
 
-		ChangePasswordNextLogon: &change_password_net_logon,
+		ChangePasswordNextLogon: &change_password_next_logon,
 
 		ShowFields: &show_fields,
 	}

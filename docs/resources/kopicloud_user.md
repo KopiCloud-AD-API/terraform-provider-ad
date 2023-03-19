@@ -22,16 +22,15 @@ Element to create, update, delete Users from Active Directory
 
 ### Optional
 
-- `change_password_net_logon` (Boolean)
+- `change_password_next_logon` (Boolean)
 - `company` (String)
 - `department` (String)
 - `description` (String)
 - `display_name` (String)
-- `email` (String)
+- `email_address` (String)
 - `first_name` (String)
 - `initials` (String)
 - `last_name` (String)
-- `new_password` (String)
 - `office` (String)
 - `ou_path` (String)
 - `show_fields` (String)
