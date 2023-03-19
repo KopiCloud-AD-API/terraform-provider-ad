@@ -321,7 +321,7 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_user" "test" {
-  username     = "oforero9"
+  username     = "oforero10"
   password     = "vMD48X6Vdyj49j8%"
   first_name   = "Oscar"
   last_name    = "Forero"
@@ -335,7 +335,7 @@ output "user" {
 
 # Create a Global Distribution Group
 resource "kopicloud_distribution_group" "test_distribution_global" {
-  name        = "kopicloud-europe-distribution-group-blue-2"
+  name        = "kopicloud-europe-distribution-group-blue-3"
   scope       = "Global"
   description = "This is a very cool Global distribution group"
   email       = "europe.distribution@kopicloud.com"
@@ -346,4 +346,19 @@ resource "kopicloud_distribution_group" "test_distribution_global" {
 output "OUTPUT_global_distribution_group" {
   description = "Created Global Distribution Group"
   value       = resource.kopicloud_distribution_group.test_distribution_global
+}
+
+# Create a Global Security Group
+resource "kopicloud_security_group" "test_security_global" {
+  name        = "kopicloud-europe-security-group-red-1"
+  scope       = "Global"
+  description = "This is a very cool Global security group"
+  email       = "europe.security@kopicloud.com"
+  ou_path     = "CN=Users,DC=kopicloud,DC=local"
+}
+
+# Returns Created Global Security Group
+output "OUTPUT_global_security_group" {
+  description = "Created Global Security Group"
+  value       = resource.kopicloud_security_group.test_security_global
 }

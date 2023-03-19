@@ -17,9 +17,7 @@ func resourceUserUpdate(ctx context.Context, d *schema.ResourceData, m interface
 	var result diag.Diagnostics
 	var required_inputs []string
 
-	required_inputs = make([]string, 1)
-
-	required_inputs[0] = "username"
+	required_inputs = make([]string, 0)
 
 	if checkFieldsModified(d, required_inputs) {
 		result = resourceUser_Update_0(ctx, d, m)
@@ -58,7 +56,7 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 	description := getFieldValue("description", false, d).(string)
 
-	email := getFieldValue("email", false, d).(string)
+	email_address := getFieldValue("email_address", false, d).(string)
 
 	department := getFieldValue("department", false, d).(string)
 
@@ -68,7 +66,7 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 	ou_path := getFieldValue("ou_path", false, d).(string)
 
-	change_password_net_logon := getFieldValue("change_password_net_logon", false, d).(bool)
+	change_password_next_logon := getFieldValue("change_password_next_logon", false, d).(bool)
 
 	show_fields := getFieldValue("show_fields", false, d).(string)
 
@@ -87,7 +85,7 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 		Description: &description,
 
-		EmailAddress: &email,
+		EmailAddress: &email_address,
 
 		Department: &department,
 
@@ -97,7 +95,7 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 		OUPath: &ou_path,
 
-		ChangePasswordNextLogon: &change_password_net_logon,
+		ChangePasswordNextLogon: &change_password_next_logon,
 
 		ShowFields: &show_fields,
 	}
@@ -181,7 +179,7 @@ func resourceUser_Update_1(ctx context.Context, d *schema.ResourceData, m interf
 
 	new_password := getFieldValue("new_password", false, d).(string)
 
-	change_password_net_logon := getFieldValue("change_password_net_logon", false, d).(bool)
+	change_password_next_logon := getFieldValue("change_password_next_logon", false, d).(bool)
 
 	show_fields := getFieldValue("show_fields", false, d).(string)
 
@@ -190,7 +188,7 @@ func resourceUser_Update_1(ctx context.Context, d *schema.ResourceData, m interf
 
 		NewPassword: &new_password,
 
-		ChangePassword: &change_password_net_logon,
+		ChangePassword: &change_password_next_logon,
 
 		ShowFields: &show_fields,
 	}
