@@ -45,5 +45,11 @@ func resources() map[string]*schema.Resource {
 		"kopicloud_user": resourceUser(),
 
 		"kopicloud_user_password_reset": resourceUserPasswordReset(),
+
+		"kopicloud_user_enable_account": resourceUserEnableAccount(),
+
+		"kopicloud_user_disable_account": resourceUserDisableAccount(),
+
+		"kopicloud_user_unlock_account": resourceUserUnlockAccount(),
 	}
 }
