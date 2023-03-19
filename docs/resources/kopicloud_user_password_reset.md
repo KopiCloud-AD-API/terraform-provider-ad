@@ -22,7 +22,7 @@ Element to create, update, delete Users from Active Directory
 
 ### Optional
 
-- `change_password_net_logon` (Boolean)
+- `change_password_next_logon` (Boolean)
 - `show_fields` (String)
 
 ### Read-Only
@@ -52,7 +52,6 @@ Read-Only:
 - `job_title` (String)
 - `last_name` (String)
 - `manager` (String)
-- `middle_name` (String)
 - `mobile_phone` (String)
 - `office` (String)
 - `office_phone` (String)

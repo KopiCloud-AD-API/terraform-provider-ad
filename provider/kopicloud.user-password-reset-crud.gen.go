@@ -40,7 +40,7 @@ func resourceUserPasswordReset() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["change_password_net_logon"] = &schema.Schema{
+	terraformSchema["change_password_next_logon"] = &schema.Schema{
 		Type:     schema.TypeBool,
 		Computed: false,
 		Optional: true,
@@ -88,7 +88,7 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 
 	new_password := d.Get("new_password").(string)
 
-	change_password_net_logon := d.Get("change_password_net_logon").(bool)
+	change_password_next_logon := d.Get("change_password_next_logon").(bool)
 
 	show_fields := d.Get("show_fields").(string)
 
@@ -97,7 +97,7 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 
 		NewPassword: &new_password,
 
-		ChangePassword: &change_password_net_logon,
+		ChangePassword: &change_password_next_logon,
 
 		ShowFields: &show_fields,
 	}

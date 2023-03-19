@@ -48,7 +48,6 @@ Read-Only:
 - `job_title` (String)
 - `last_name` (String)
 - `manager` (String)
-- `middle_name` (String)
 - `mobile_phone` (String)
 - `office` (String)
 - `office_phone` (String)
