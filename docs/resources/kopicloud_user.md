@@ -23,29 +23,6 @@ Element to create, update, delete Users from Active Directory
 ### Optional
 
 - `change_password_next_logon` (Boolean)
-- `company` (String)
-- `department` (String)
-- `description` (String)
-- `display_name` (String)
-- `email_address` (String)
-- `first_name` (String)
-- `initials` (String)
-- `last_name` (String)
-- `office` (String)
-- `ou_path` (String)
-- `show_fields` (String)
-
-### Read-Only
-
-- `id` (String) The ID of this resource.
-- `result` (List of Object) Single Element List of User (see [below for nested schema](#nestedatt--result))
-
-<a id="nestedatt--result"></a>
-### Nested Schema for `result`
-
-Read-Only:
-
-- `change_password_next_logon` (Boolean)
 - `city` (String)
 - `company` (String)
 - `country` (String)
@@ -66,6 +43,53 @@ Read-Only:
 - `office` (String)
 - `office_phone` (String)
 - `ou_path` (String)
+- `password_never_expires` (Boolean)
+- `po_box` (String)
+- `profile_logon_script` (String)
+- `profile_path` (String)
+- `rds_allow_logon` (Boolean)
+- `rds_connect_drive` (Boolean)
+- `rds_home_folder_drive` (String)
+- `rds_home_folder_path` (String)
+- `rds_profile_path` (String)
+- `show_fields` (String)
+- `state` (String)
+- `street` (String)
+- `zip_code` (String)
+
+### Read-Only
+
+- `id` (String) The ID of this resource.
+- `result` (List of Object) Single Element List of User (see [below for nested schema](#nestedatt--result))
+
+<a id="nestedatt--result"></a>
+### Nested Schema for `result`
+
+Read-Only:
+
+- `change_password_next_logon` (Boolean)
+- `city` (String)
+- `company` (String)
+- `country` (String)
+- `department` (String)
+- `description` (String)
+- `display_name` (String)
+- `email_address` (String)
+- `first_name` (String)
+- `guid` (String)
+- `home_folder_directory` (String)
+- `home_folder_drive` (String)
+- `home_folder_path` (String)
+- `home_phone` (String)
+- `initials` (String)
+- `job_title` (String)
+- `last_name` (String)
+- `manager` (String)
+- `mobile_phone` (String)
+- `office` (String)
+- `office_phone` (String)
+- `ou_path` (String)
+- `password_never_expired` (Boolean)
 - `postal_code` (String)
 - `profile_logon_script` (String)
 - `profile_path` (String)

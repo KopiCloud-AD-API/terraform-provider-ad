@@ -96,7 +96,7 @@ func getId_for_SingleValue(name string) func(*string) string {
 }
 
 func getId_for_User(obj *api.User) string {
-	return fmt.Sprintf("User_%s", *obj.Username)
+	return fmt.Sprintf("%v", obj.Guid.String())
 }
 
 func getId_for_Computer(obj *api.Computer) string {

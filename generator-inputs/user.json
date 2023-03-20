@@ -155,10 +155,120 @@
                         "optional": true
                     },
                     {
+                        "name": "password_never_expires",
+                        "type": "schema.TypeBool",
+                        "optional": true
+                    },
+                    {
                         "name": "ou_path",
                         "type": "schema.TypeString",
                         "optional": true
                     },
+                    {
+                        "name": "job_title",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "manager",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "street",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "po_box",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "city",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "state",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "zip_code",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "country",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "office_phone",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "home_phone",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "mobile_phone",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "profile_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "profile_logon_script",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "home_folder_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "home_folder_drive",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "home_folder_directory",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "rds_profile_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "rds_home_folder_path",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "rds_home_folder_drive",
+                        "type": "schema.TypeString",
+                        "optional": true
+                    },
+                    {
+                        "name": "rds_connect_drive",
+                        "type": "schema.TypeBool",
+                        "optional": true
+                    },
+                    {
+                        "name": "rds_allow_logon",
+                        "type": "schema.TypeBool",
+                        "optional": true
+                    },                    
                     {
                         "name": "show_fields",
                         "type": "schema.TypeString",
@@ -185,7 +295,7 @@
                             {
                                 "api_name": "Username",
                                 "name": "username",
-                                "type": "*string"
+                                "type": "string"
                             },
                             {
                                 "api_name": "Password",
@@ -243,8 +353,119 @@
                                 "type": "*string"
                             },
                             {
+                                "api_name": "JobTitle",
+                                "name": "job_title",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "Manager",
+                                "name": "manager",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "Street",
+                                "name": "street",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "POBox",
+                                "name": "po_box",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "City",
+                                "name": "city",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "State",
+                                "name": "state",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ZipCode",
+                                "name": "zip_code",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "Country",
+                                "name": "country",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "OfficePhone",
+                                "name": "office_phone",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "HomePhone",
+                                "name": "home_phone",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "MobilePhone",
+                                "name": "mobile_phone",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ProfilePath",
+                                "name": "profile_path",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "ProfileLogonScript",
+                                "name": "profile_logon_script",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "HomeFolderPath",
+                                "name": "home_folder_path",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "HomeFolderDrive",
+                                "name": "home_folder_drive",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "HomeFolderDirectory",
+                                "name": "home_folder_directory",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "RdsProfilePath",
+                                "name": "rds_profile_path",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "RdsHomeFolderPath",
+                                "name": "rds_home_folder_path",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "RdsHomeFolderDrive",
+                                "name": "rds_home_folder_drive",
+                                "type": "*string"
+                            },
+                            {
+                                "api_name": "RdsConnectDrive",
+                                "name": "rds_connect_drive",
+                                "type": "*bool"
+                            },
+                            {
+                                "api_name": "RdsAllowLogon",
+                                "name": "rds_allow_logon",
+                                "type": "*bool"
+                            },                        
+
+                            {
                                 "api_name": "ChangePasswordNextLogon",
                                 "name": "change_password_next_logon",
+                                "type": "*bool"
+                            },
+                            {
+                                "api_name": "PasswordNeverExpired",
+                                "name": "password_never_expires",
                                 "type": "*bool"
                             },
                             {
@@ -266,16 +487,21 @@
             },
             "read": {
                 "api_function": {
-                    "name": "GetApiADUserUsernameWithResponse",
-                    "arguments": [
-                        {
-                            "name": "username",
-                            "type": "string"
-                        }
-                    ],
+                    "name": "GetApiADUserGuidDetailsWithResponse",
+                    "arguments": [],
                     "params": {
-                        "name": "GetApiADUserUsernameParams",
-                        "fields": []
+                        "name": "GetApiADUserGuidDetailsParams",
+                        "fields": [
+                            {
+                                "api_name": "UserGuid",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "ShowFields",
+                                "name": "show_fields",
+                                "type": "*string"
+                            }
+                        ]
                     }
                 },                
                 "result": {
@@ -298,7 +524,7 @@
                                 {
                                     "api_name": "Username",
                                     "name": "username",
-                                    "type": "*string"
+                                    "type": "string"
                                 },
                                 {
                                     "api_name": "FirstName",

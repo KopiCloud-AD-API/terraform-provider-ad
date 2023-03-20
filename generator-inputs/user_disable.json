@@ -63,16 +63,21 @@
             },
             "read": {
                 "api_function": {
-                    "name": "GetApiADUserUsernameWithResponse",
-                    "arguments": [
-                        {
-                            "name": "username",
-                            "type": "string"
-                        }
-                    ],
+                    "name": "GetApiADUserGuidDetailsWithResponse",
+                    "arguments": [],
                     "params": {
-                        "name": "GetApiADUserUsernameParams",
-                        "fields": []
+                        "name": "GetApiADUserGuidDetailsParams",
+                        "fields": [
+                            {
+                                "api_name": "UserGuid",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "ShowFields",
+                                "name": "show_fields",
+                                "type": "*string"
+                            }
+                        ]
                     }
                 },                
                 "result": {
@@ -86,16 +91,21 @@
             },
             "delete": {
                 "api_function": {
-                    "name": "GetApiADUserUsernameWithResponse",
-                    "arguments": [
-                        {
-                            "name": "username",
-                            "type": "string"
-                        }
-                    ],
+                    "name": "GetApiADUserGuidDetailsWithResponse",
+                    "arguments": [],
                     "params": {
-                        "name": "GetApiADUserUsernameParams",
-                        "fields": []
+                        "name": "GetApiADUserGuidDetailsParams",
+                        "fields": [
+                            {
+                                "api_name": "UserGuid",
+                                "type": "string"
+                            },
+                            {
+                                "api_name": "ShowFields",
+                                "name": "show_fields",
+                                "type": "*string"
+                            }
+                        ]
                     }
                 },                
                 "result": {
