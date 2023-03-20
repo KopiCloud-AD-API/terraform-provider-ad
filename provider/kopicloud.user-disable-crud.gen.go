@@ -8,6 +8,7 @@ import (
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
+	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -154,16 +155,23 @@ func resourceUserDisableAccountRead(ctx context.Context, d *schema.ResourceData,
 		"schema_data":  d,
 	})
 
-	params := kcapi.GetApiADUserUsernameParams{
-		AuthToken: c.data.Get("token").(string),
+	guid, err := uuid.Parse(d.Id())
+	if err != nil {
+		return diag.FromErr(err)
 	}
 
-	username := d.Get("username").(string)
+	show_fields := d.Get("show_fields").(string)
 
-	res, err := c.client.GetApiADUserUsernameWithResponse(
+	params := kcapi.GetApiADUserGuidDetailsParams{
+		AuthToken: c.data.Get("token").(string),
+
+		UserGuid: guid,
+
+		ShowFields: &show_fields,
+	}
+
+	res, err := c.client.GetApiADUserGuidDetailsWithResponse(
 		ctx,
-
-		username,
 
 		&params)
 	if err != nil {
@@ -240,16 +248,23 @@ func resourceUserDisableAccountDelete(ctx context.Context, d *schema.ResourceDat
 		"schema_data":  d,
 	})
 
-	params := kcapi.GetApiADUserUsernameParams{
-		AuthToken: c.data.Get("token").(string),
+	guid, err := uuid.Parse(d.Id())
+	if err != nil {
+		return diag.FromErr(err)
 	}
 
-	username := d.Get("username").(string)
+	show_fields := d.Get("show_fields").(string)
 
-	res, err := c.client.GetApiADUserUsernameWithResponse(
+	params := kcapi.GetApiADUserGuidDetailsParams{
+		AuthToken: c.data.Get("token").(string),
+
+		UserGuid: guid,
+
+		ShowFields: &show_fields,
+	}
+
+	res, err := c.client.GetApiADUserGuidDetailsWithResponse(
 		ctx,
-
-		username,
 
 		&params)
 	if err != nil {

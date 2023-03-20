@@ -73,7 +73,7 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 	params := kcapi.PutApiADUserParams{
 		AuthToken: c.data.Get("token").(string),
 
-		Username: &username,
+		Username: username,
 
 		FirstName: &first_name,
 
