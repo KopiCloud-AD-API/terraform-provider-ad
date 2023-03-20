@@ -66,7 +66,51 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 	ou_path := getFieldValue("ou_path", false, d).(string)
 
+	job_title := getFieldValue("job_title", false, d).(string)
+
+	manager := getFieldValue("manager", false, d).(string)
+
+	street := getFieldValue("street", false, d).(string)
+
+	po_box := getFieldValue("po_box", false, d).(string)
+
+	city := getFieldValue("city", false, d).(string)
+
+	state := getFieldValue("state", false, d).(string)
+
+	zip_code := getFieldValue("zip_code", false, d).(string)
+
+	country := getFieldValue("country", false, d).(string)
+
+	office_phone := getFieldValue("office_phone", false, d).(string)
+
+	home_phone := getFieldValue("home_phone", false, d).(string)
+
+	mobile_phone := getFieldValue("mobile_phone", false, d).(string)
+
+	profile_path := getFieldValue("profile_path", false, d).(string)
+
+	profile_logon_script := getFieldValue("profile_logon_script", false, d).(string)
+
+	home_folder_path := getFieldValue("home_folder_path", false, d).(string)
+
+	home_folder_drive := getFieldValue("home_folder_drive", false, d).(string)
+
+	home_folder_directory := getFieldValue("home_folder_directory", false, d).(string)
+
+	rds_profile_path := getFieldValue("rds_profile_path", false, d).(string)
+
+	rds_home_folder_path := getFieldValue("rds_home_folder_path", false, d).(string)
+
+	rds_home_folder_drive := getFieldValue("rds_home_folder_drive", false, d).(string)
+
+	rds_connect_drive := getFieldValue("rds_connect_drive", false, d).(bool)
+
+	rds_allow_logon := getFieldValue("rds_allow_logon", false, d).(bool)
+
 	change_password_next_logon := getFieldValue("change_password_next_logon", false, d).(bool)
+
+	password_never_expires := getFieldValue("password_never_expires", false, d).(bool)
 
 	show_fields := getFieldValue("show_fields", false, d).(string)
 
@@ -95,7 +139,51 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 		OUPath: &ou_path,
 
+		JobTitle: &job_title,
+
+		Manager: &manager,
+
+		Street: &street,
+
+		POBox: &po_box,
+
+		City: &city,
+
+		State: &state,
+
+		ZipCode: &zip_code,
+
+		Country: &country,
+
+		OfficePhone: &office_phone,
+
+		HomePhone: &home_phone,
+
+		MobilePhone: &mobile_phone,
+
+		ProfilePath: &profile_path,
+
+		ProfileLogonScript: &profile_logon_script,
+
+		HomeFolderPath: &home_folder_path,
+
+		HomeFolderDrive: &home_folder_drive,
+
+		HomeFolderDirectory: &home_folder_directory,
+
+		RdsProfilePath: &rds_profile_path,
+
+		RdsHomeFolderPath: &rds_home_folder_path,
+
+		RdsHomeFolderDrive: &rds_home_folder_drive,
+
+		RdsConnectDrive: &rds_connect_drive,
+
+		RdsAllowLogon: &rds_allow_logon,
+
 		ChangePasswordNextLogon: &change_password_next_logon,
+
+		PasswordNeverExpired: &password_never_expires,
 
 		ShowFields: &show_fields,
 	}
