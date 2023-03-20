@@ -5,7 +5,7 @@ import (
 )
 
 func checkFieldsModified(d *schema.ResourceData, args []string) bool {
-	return d.HasChanges(args...)
+	return len(args) == 0 || d.HasChanges(args...)
 }
 
 func getFieldValue(field string, useOld bool, d *schema.ResourceData) interface{} {
