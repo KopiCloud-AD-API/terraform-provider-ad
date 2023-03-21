@@ -8,6 +8,7 @@ import (
 
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 
+	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -23,14 +24,6 @@ func resourceUserUpdate(ctx context.Context, d *schema.ResourceData, m interface
 		result = resourceUser_Update_0(ctx, d, m)
 	}
 
-	required_inputs = make([]string, 1)
-
-	required_inputs[0] = "new_password"
-
-	if checkFieldsModified(d, required_inputs) {
-		result = resourceUser_Update_1(ctx, d, m)
-	}
-
 	return result
 }
 
@@ -44,7 +37,10 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 		"schema_data": d,
 	})
 
-	username := getFieldValue("username", false, d).(string)
+	guid, err := uuid.Parse(d.Id())
+	if err != nil {
+		return diag.FromErr(err)
+	}
 
 	first_name := getFieldValue("first_name", false, d).(string)
 
@@ -114,10 +110,10 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 	show_fields := getFieldValue("show_fields", false, d).(string)
 
-	params := kcapi.PutApiADUserParams{
+	params := kcapi.PutApiADUserGuidParams{
 		AuthToken: c.data.Get("token").(string),
 
-		Username: username,
+		UserGuid: guid,
 
 		FirstName: &first_name,
 
@@ -188,105 +184,8 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 		ShowFields: &show_fields,
 	}
 
-	res, err := c.client.PutApiADUserWithResponse(
+	res, err := c.client.PutApiADUserGuidWithResponse(
 		ctx,
-
-		&params)
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
-	if res != nil {
-		if res.HTTPResponse.StatusCode != 200 {
-			if res.JSON200 == nil {
-				if json.Valid(res.Body) {
-					var result map[string]interface{}
-					json.Unmarshal(res.Body, &result)
-					if output, ok := result["output"]; ok {
-						tflog.Error(ctx, fmt.Sprintf("%s", output))
-						return diag.Errorf(fmt.Sprintf("%s", output))
-					}
-				}
-				tflog.Error(ctx, string(res.Body))
-				return diag.Errorf(string(res.Body))
-			} else {
-
-				tflog.Error(ctx, *res.JSON200.Output)
-				return diag.Errorf(string(*res.JSON200.Output))
-
-			}
-		} else {
-
-			tflog.Info(ctx, *res.JSON200.Output)
-
-			api_result := res.JSON200.Result
-
-			resItems := UserToTerraform(api_result)
-			rt := reflect.TypeOf(resItems)
-			switch rt.Kind() {
-			case reflect.Slice | reflect.Array:
-				for _, element := range resItems {
-					tflog.Debug(ctx, "converted User }: %#v", element.(map[string]interface{}))
-				}
-			default:
-				tflog.Debug(ctx, "converted User",
-					map[string]interface{}{
-						"User": resItems,
-					})
-			}
-
-			result := wrapInArray(resItems)
-
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
-
-			d.SetId(getId_for_User(api_result))
-
-		}
-	} else {
-		return diag.Errorf("No data found in db, insert one %s", "User")
-	}
-
-	tflog.Debug(ctx, "dataSourceUserRead finished successfully",
-		map[string]interface{}{
-			"result": d,
-		})
-	return diags
-}
-
-func resourceUser_Update_1(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning dataSourceUser_Read_1"))
-	var diags diag.Diagnostics
-	c := m.(*ApiClient)
-	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
-		"client_data": c.data,
-		"schema_data": d,
-	})
-
-	new_password := getFieldValue("new_password", false, d).(string)
-
-	change_password_next_logon := getFieldValue("change_password_next_logon", false, d).(bool)
-
-	show_fields := getFieldValue("show_fields", false, d).(string)
-
-	params := kcapi.PostApiADUserUsernameResetPasswordParams{
-		AuthToken: c.data.Get("token").(string),
-
-		NewPassword: &new_password,
-
-		ChangePassword: &change_password_next_logon,
-
-		ShowFields: &show_fields,
-	}
-
-	username := getFieldValue("username", false, d).(string)
-
-	res, err := c.client.PostApiADUserUsernameResetPasswordWithResponse(
-		ctx,
-
-		username,
 
 		&params)
 	if err != nil {

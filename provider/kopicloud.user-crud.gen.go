@@ -369,8 +369,6 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 		"schema_data":  d,
 	})
 
-	username := d.Get("username").(string)
-
 	password := d.Get("password").(string)
 
 	first_name := d.Get("first_name").(string)
@@ -444,8 +442,6 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 	params := kcapi.APIUserParams{
 		AuthToken: c.data.Get("token").(string),
 
-		Username: username,
-
 		Password: &password,
 
 		FirstName: &first_name,
@@ -517,8 +513,12 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 		ShowFields: &show_fields,
 	}
 
+	username := d.Get("username").(string)
+
 	res, err := c.client.APIUserWithResponse(
 		ctx,
+
+		username,
 
 		&params)
 	if err != nil {
