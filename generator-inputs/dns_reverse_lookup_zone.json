@@ -26,7 +26,7 @@
                 {
                     "required_inputs": ["network_id"],
                     "api_function": {
-                        "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse",
+                        "name": "GetApiDnsReverseLookupZoneNetworkIDWithResponse",
                         "arguments": [
                             {
                                 "name": "network_id",
@@ -35,7 +35,7 @@
                             }
                         ],
                         "params": {
-                            "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameParams",
+                            "name": "GetApiDnsReverseLookupZoneNetworkIDParams",
                             "fields": []
                         }
                     },                
@@ -115,7 +115,7 @@
             },
             "read": {
                 "api_function": {
-                    "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse",
+                    "name": "GetApiDnsReverseLookupZoneNetworkIDWithResponse",
                     "arguments": [
                         {
                             "name": "network_id",
@@ -124,7 +124,7 @@
                         }
                     ],
                     "params": {
-                        "name": "GetApiDnsReverseLookupZoneNetworkIDOrZoneNameParams",
+                        "name": "GetApiDnsReverseLookupZoneNetworkIDParams",
                         "fields": []
                     }
                 },                
@@ -139,7 +139,7 @@
             },
             "delete": {
                 "api_function": {
-                    "name": "DeleteApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse",
+                    "name": "DeleteApiDnsReverseLookupZoneNetworkIDWithResponse",
                     "isPointer": true,
                     "arguments": [
                         {
@@ -149,7 +149,7 @@
                         }
                     ],
                     "params": {
-                        "name": "DeleteApiDnsReverseLookupZoneNetworkIDOrZoneNameParams",
+                        "name": "DeleteApiDnsReverseLookupZoneNetworkIDParams",
                         "fields": []
                     }
                 },                

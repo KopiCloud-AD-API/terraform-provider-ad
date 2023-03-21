@@ -288,15 +288,15 @@
                 "api_function": {
                     "name": "APIUserWithResponse",
                     "isPointer": true,
-                    "arguments": [],
+                    "arguments": [
+                        {
+                            "name": "username",
+                            "type": "string"
+                        }
+                    ],
                     "params": {
                         "name": "APIUserParams",
                         "fields": [
-                            {
-                                "api_name": "Username",
-                                "name": "username",
-                                "type": "string"
-                            },
                             {
                                 "api_name": "Password",
                                 "name": "password",
@@ -516,14 +516,13 @@
             "update": [
                 {
                     "api_function": {
-                        "name": "PutApiADUserWithResponse",
+                        "name": "PutApiADUserGuidWithResponse",
                         "arguments": [],
                         "params": {
-                            "name": "PutApiADUserParams",
+                            "name": "PutApiADUserGuidParams",
                             "fields": [
                                 {
-                                    "api_name": "Username",
-                                    "name": "username",
+                                    "api_name": "UserGuid",
                                     "type": "string"
                                 },
                                 {
@@ -690,47 +689,6 @@
                                 {
                                     "api_name": "PasswordNeverExpired",
                                     "name": "password_never_expires",
-                                    "type": "*bool"
-                                },
-                                {
-                                    "api_name": "ShowFields",
-                                    "name": "show_fields",
-                                    "type": "*string"
-                                }
-                            ]
-                        }
-                    },                
-                    "result": {
-                        "msg_field": "Output",
-                        "result_field": "Result",
-                        "api_to_terraform": "UserToTerraform",
-                        "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
-                        "api_to_terraform_id": "getId_for_User"                    
-                    }
-                },
-                {
-                    "required_inputs": ["new_password"],
-                    "api_function": {
-                        "name": "PostApiADUserUsernameResetPasswordWithResponse",
-                        "isPointer": true,
-                        "arguments": [
-                            {
-                                "name": "username",
-                                "type": "string"
-                            }
-                        ],
-                        "params": {
-                            "name": "PostApiADUserUsernameResetPasswordParams",
-                            "fields": [
-                                {
-                                    "api_name": "NewPassword",
-                                    "name": "new_password",
-                                    "type": "*string"
-                                },
-                                {
-                                    "api_name": "ChangePassword",
-                                    "name": "change_password_next_logon",
                                     "type": "*bool"
                                 },
                                 {

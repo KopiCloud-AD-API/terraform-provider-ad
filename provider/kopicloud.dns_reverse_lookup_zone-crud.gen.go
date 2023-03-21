@@ -139,13 +139,13 @@ func resourceDnsReverseLookupZoneRead(ctx context.Context, d *schema.ResourceDat
 		"schema_data":  d,
 	})
 
-	params := kcapi.GetApiDnsReverseLookupZoneNetworkIDOrZoneNameParams{
+	params := kcapi.GetApiDnsReverseLookupZoneNetworkIDParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
 	network_id := d.Get("network_id").(string)
 
-	res, err := c.client.GetApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse(
+	res, err := c.client.GetApiDnsReverseLookupZoneNetworkIDWithResponse(
 		ctx,
 
 		network_id,
@@ -225,13 +225,13 @@ func resourceDnsReverseLookupZoneDelete(ctx context.Context, d *schema.ResourceD
 		"schema_data":  d,
 	})
 
-	params := kcapi.DeleteApiDnsReverseLookupZoneNetworkIDOrZoneNameParams{
+	params := kcapi.DeleteApiDnsReverseLookupZoneNetworkIDParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
 	network_id := d.Get("network_id").(string)
 
-	res, err := c.client.DeleteApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse(
+	res, err := c.client.DeleteApiDnsReverseLookupZoneNetworkIDWithResponse(
 		ctx,
 
 		network_id,

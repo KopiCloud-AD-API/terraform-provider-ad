@@ -93,7 +93,7 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 
 	show_fields := d.Get("show_fields").(string)
 
-	params := kcapi.PostApiADUserUsernameResetPasswordParams{
+	params := kcapi.PutApiADUserUsernameResetPasswordParams{
 		AuthToken: c.data.Get("token").(string),
 
 		NewPassword: &new_password,
@@ -105,7 +105,7 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 
 	username := d.Get("username").(string)
 
-	res, err := c.client.PostApiADUserUsernameResetPasswordWithResponse(
+	res, err := c.client.PutApiADUserUsernameResetPasswordWithResponse(
 		ctx,
 
 		username,

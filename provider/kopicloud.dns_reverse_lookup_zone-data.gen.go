@@ -64,13 +64,13 @@ func dataSourceDnsReverseLookupZoneReader_Read_0(ctx context.Context, d *schema.
 		"schema_data": d,
 	})
 
-	params := kcapi.GetApiDnsReverseLookupZoneNetworkIDOrZoneNameParams{
+	params := kcapi.GetApiDnsReverseLookupZoneNetworkIDParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
 	network_id := d.Get("network_id").(string)
 
-	res, err := c.client.GetApiDnsReverseLookupZoneNetworkIDOrZoneNameWithResponse(
+	res, err := c.client.GetApiDnsReverseLookupZoneNetworkIDWithResponse(
 		ctx,
 
 		network_id,
