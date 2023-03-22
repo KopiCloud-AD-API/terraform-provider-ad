@@ -78,7 +78,7 @@ func resourceUserRename() *schema.Resource {
 
 func resourceUserRenameCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserRenameRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserRenameCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -265,7 +265,7 @@ func resourceUserRenameRead(ctx context.Context, d *schema.ResourceData, m inter
 
 func resourceUserRenameDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserRenameRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserRenameDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

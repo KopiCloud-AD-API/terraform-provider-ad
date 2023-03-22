@@ -67,7 +67,7 @@ func resourceComputerCleanUp() *schema.Resource {
 
 func resourceComputerCleanUpCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerCleanUpRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerCleanUpCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -267,7 +267,7 @@ func resourceComputerCleanUpRead(ctx context.Context, d *schema.ResourceData, m 
 
 func resourceComputerCleanUpDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerCleanUpRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerCleanUpDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

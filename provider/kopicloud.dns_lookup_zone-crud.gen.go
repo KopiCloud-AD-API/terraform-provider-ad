@@ -44,7 +44,7 @@ func resourceDnsLookupZone() *schema.Resource {
 
 func resourceDnsLookupZoneCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsLookupZoneRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsLookupZoneCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -216,7 +216,7 @@ func resourceDnsLookupZoneRead(ctx context.Context, d *schema.ResourceData, m in
 
 func resourceDnsLookupZoneDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsLookupZoneRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsLookupZoneDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

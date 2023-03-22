@@ -80,7 +80,7 @@ func resourceDistributionGroup() *schema.Resource {
 
 func resourceDistributionGroupCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDistributionGroupRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDistributionGroupCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -268,7 +268,7 @@ func resourceDistributionGroupRead(ctx context.Context, d *schema.ResourceData, 
 
 func resourceDistributionGroupDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDistributionGroupRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDistributionGroupDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

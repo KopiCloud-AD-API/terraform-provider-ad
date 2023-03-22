@@ -55,7 +55,7 @@ func resourceGroupMembership() *schema.Resource {
 
 func resourceGroupMembershipCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceGroupMembershipRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceGroupMembershipCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -235,7 +235,7 @@ func resourceGroupMembershipRead(ctx context.Context, d *schema.ResourceData, m 
 
 func resourceGroupMembershipDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceGroupMembershipRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceGroupMembershipDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
