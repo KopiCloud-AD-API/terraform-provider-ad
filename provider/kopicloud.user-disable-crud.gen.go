@@ -56,7 +56,7 @@ func resourceUserDisableAccount() *schema.Resource {
 
 func resourceUserDisableAccountCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserDisableAccountRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserDisableAccountCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -239,7 +239,7 @@ func resourceUserDisableAccountRead(ctx context.Context, d *schema.ResourceData,
 
 func resourceUserDisableAccountDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserDisableAccountRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserDisableAccountDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

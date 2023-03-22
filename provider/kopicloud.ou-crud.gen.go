@@ -72,7 +72,7 @@ func resourceOU() *schema.Resource {
 
 func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceOURead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceOUCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -259,7 +259,7 @@ func resourceOURead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 
 func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceOURead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceOUDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

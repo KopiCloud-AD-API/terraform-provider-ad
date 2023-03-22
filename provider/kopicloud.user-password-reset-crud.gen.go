@@ -78,7 +78,7 @@ func resourceUserPasswordReset() *schema.Resource {
 
 func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserPasswordResetRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserPasswordResetCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -269,7 +269,7 @@ func resourceUserPasswordResetRead(ctx context.Context, d *schema.ResourceData, 
 
 func resourceUserPasswordResetDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserPasswordResetRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserPasswordResetDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

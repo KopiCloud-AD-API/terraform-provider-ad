@@ -56,7 +56,7 @@ func resourceUserUnlockAccount() *schema.Resource {
 
 func resourceUserUnlockAccountCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserUnlockAccountRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserUnlockAccountCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -239,7 +239,7 @@ func resourceUserUnlockAccountRead(ctx context.Context, d *schema.ResourceData, 
 
 func resourceUserUnlockAccountDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserUnlockAccountRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceUserUnlockAccountDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

@@ -62,7 +62,7 @@ func resourceComputer() *schema.Resource {
 
 func resourceComputerCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -242,7 +242,7 @@ func resourceComputerRead(ctx context.Context, d *schema.ResourceData, m interfa
 
 func resourceComputerDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceComputerDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

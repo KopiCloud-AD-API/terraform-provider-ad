@@ -44,7 +44,7 @@ func resourceDnsReverseLookupZone() *schema.Resource {
 
 func resourceDnsReverseLookupZoneCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsReverseLookupZoneRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsReverseLookupZoneCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -216,7 +216,7 @@ func resourceDnsReverseLookupZoneRead(ctx context.Context, d *schema.ResourceDat
 
 func resourceDnsReverseLookupZoneDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsReverseLookupZoneRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsReverseLookupZoneDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

@@ -66,7 +66,7 @@ func resourceDnsARecord() *schema.Resource {
 
 func resourceDnsARecordCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsARecordRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsARecordCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -254,7 +254,7 @@ func resourceDnsARecordRead(ctx context.Context, d *schema.ResourceData, m inter
 
 func resourceDnsARecordDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsARecordRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsARecordDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{

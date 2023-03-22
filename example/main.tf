@@ -321,11 +321,12 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_user" "test" {
-  username     = "oforero13"
+  username     = "oforero14"
   password     = var.oforero11_password
   first_name   = "Oscar"
   last_name    = "Forero"
-  show_fields  = "Username,FirstName,LastName"
+  initials     = "OMFC"
+  company = "Kopicloud Inc."
 }
 
 output "user" {

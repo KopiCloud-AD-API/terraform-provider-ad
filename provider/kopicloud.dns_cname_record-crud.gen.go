@@ -66,7 +66,7 @@ func resourceDnsCNameRecord() *schema.Resource {
 
 func resourceDnsCNameRecordCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsCNameRecordRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsCNameRecordCreate"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
@@ -254,7 +254,7 @@ func resourceDnsCNameRecordRead(ctx context.Context, d *schema.ResourceData, m i
 
 func resourceDnsCNameRecordDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	// Warning or errors can be collected in a slice type
-	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsCNameRecordRead"))
+	tflog.Debug(ctx, fmt.Sprintf("Beginning resourceDnsCNameRecordDelete"))
 	var diags diag.Diagnostics
 	c := m.(*ApiClient)
 	tflog.Debug(ctx, "Terraform data", map[string]interface{}{
