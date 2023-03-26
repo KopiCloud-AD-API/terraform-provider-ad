@@ -75,12 +75,19 @@ func resourceDnsCNameRecordCreate(ctx context.Context, d *schema.ResourceData, m
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname"))
+
 	hostname := d.Get("hostname").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname_alias"))
 
 	hostname_alias := d.Get("hostname_alias").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute zone_name"))
+
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiDnsCNameRecordParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -91,6 +98,7 @@ func resourceDnsCNameRecordCreate(ctx context.Context, d *schema.ResourceData, m
 		ZoneName: &zone_name,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiDnsCNameRecordWithResponse"))
 	res, err := c.client.PostApiDnsCNameRecordWithResponse(
 		ctx,
 
@@ -98,6 +106,7 @@ func resourceDnsCNameRecordCreate(ctx context.Context, d *schema.ResourceData, m
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiDnsCNameRecordWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -169,12 +178,19 @@ func resourceDnsCNameRecordRead(ctx context.Context, d *schema.ResourceData, m i
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname"))
+
 	hostname := d.Get("hostname").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname_alias"))
 
 	hostname_alias := d.Get("hostname_alias").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute zone_name"))
+
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetApiDnsCNameRecordParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -185,6 +201,7 @@ func resourceDnsCNameRecordRead(ctx context.Context, d *schema.ResourceData, m i
 		ZoneName: &zone_name,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiDnsCNameRecordWithResponse"))
 	res, err := c.client.GetApiDnsCNameRecordWithResponse(
 		ctx,
 
@@ -192,6 +209,7 @@ func resourceDnsCNameRecordRead(ctx context.Context, d *schema.ResourceData, m i
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiDnsCNameRecordWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -263,12 +281,19 @@ func resourceDnsCNameRecordDelete(ctx context.Context, d *schema.ResourceData, m
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname"))
+
 	hostname := d.Get("hostname").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname_alias"))
 
 	hostname_alias := d.Get("hostname_alias").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute zone_name"))
+
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiDnsCNameRecordParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -279,6 +304,7 @@ func resourceDnsCNameRecordDelete(ctx context.Context, d *schema.ResourceData, m
 		ZoneName: &zone_name,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiDnsCNameRecordWithResponse"))
 	res, err := c.client.DeleteApiDnsCNameRecordWithResponse(
 		ctx,
 
@@ -286,6 +312,7 @@ func resourceDnsCNameRecordDelete(ctx context.Context, d *schema.ResourceData, m
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiDnsCNameRecordWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

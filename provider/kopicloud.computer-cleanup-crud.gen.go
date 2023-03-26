@@ -76,12 +76,19 @@ func resourceComputerCleanUpCreate(ctx context.Context, d *schema.ResourceData, 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute days"))
+
 	days := d.Get("days").(int)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
 
 	ou_path := d.Get("ou_path").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute recursive"))
+
 	recursive := d.Get("recursive").(bool)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiComputersCleanUpParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -92,6 +99,7 @@ func resourceComputerCleanUpCreate(ctx context.Context, d *schema.ResourceData, 
 		Recursive: &recursive,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiComputersCleanUpWithResponse"))
 	res, err := c.client.DeleteApiComputersCleanUpWithResponse(
 		ctx,
 
@@ -99,6 +107,7 @@ func resourceComputerCleanUpCreate(ctx context.Context, d *schema.ResourceData, 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiComputersCleanUpWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -176,12 +185,19 @@ func resourceComputerCleanUpRead(ctx context.Context, d *schema.ResourceData, m 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute days"))
+
 	days := d.Get("days").(int)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
 
 	ou_path := d.Get("ou_path").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute recursive"))
+
 	recursive := d.Get("recursive").(bool)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiComputersCleanUpParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -192,6 +208,7 @@ func resourceComputerCleanUpRead(ctx context.Context, d *schema.ResourceData, m 
 		Recursive: &recursive,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiComputersCleanUpWithResponse"))
 	res, err := c.client.DeleteApiComputersCleanUpWithResponse(
 		ctx,
 
@@ -199,6 +216,7 @@ func resourceComputerCleanUpRead(ctx context.Context, d *schema.ResourceData, m 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiComputersCleanUpWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -276,12 +294,19 @@ func resourceComputerCleanUpDelete(ctx context.Context, d *schema.ResourceData, 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute days"))
+
 	days := d.Get("days").(int)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
 
 	ou_path := d.Get("ou_path").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute recursive"))
+
 	recursive := d.Get("recursive").(bool)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiComputersCleanUpParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -292,6 +317,7 @@ func resourceComputerCleanUpDelete(ctx context.Context, d *schema.ResourceData, 
 		Recursive: &recursive,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiComputersCleanUpWithResponse"))
 	res, err := c.client.DeleteApiComputersCleanUpWithResponse(
 		ctx,
 
@@ -299,6 +325,7 @@ func resourceComputerCleanUpDelete(ctx context.Context, d *schema.ResourceData, 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiComputersCleanUpWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

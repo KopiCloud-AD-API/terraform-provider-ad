@@ -89,14 +89,23 @@ func resourceGroupCreate(ctx context.Context, d *schema.ResourceData, m interfac
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute scope"))
+
 	scope := d.Get("scope").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute description"))
 
 	description := d.Get("description").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute email"))
+
 	email := d.Get("email").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
 
 	ou_path := d.Get("ou_path").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiADGroupsGroupNameSecurityParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -109,8 +118,10 @@ func resourceGroupCreate(ctx context.Context, d *schema.ResourceData, m interfac
 		OUPath: &ou_path,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument name"))
 	name := d.Get("name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiADGroupsGroupNameSecurityWithResponse"))
 	res, err := c.client.PostApiADGroupsGroupNameSecurityWithResponse(
 		ctx,
 
@@ -120,6 +131,7 @@ func resourceGroupCreate(ctx context.Context, d *schema.ResourceData, m interfac
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiADGroupsGroupNameSecurityWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -191,12 +203,15 @@ func resourceGroupRead(ctx context.Context, d *schema.ResourceData, m interface{
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetApiADGroupsGroupNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument name"))
 	name := d.Get("name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiADGroupsGroupNameWithResponse"))
 	res, err := c.client.GetApiADGroupsGroupNameWithResponse(
 		ctx,
 
@@ -206,6 +221,7 @@ func resourceGroupRead(ctx context.Context, d *schema.ResourceData, m interface{
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiADGroupsGroupNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -277,16 +293,21 @@ func resourceGroupDelete(ctx context.Context, d *schema.ResourceData, m interfac
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
+
 	ou_path := d.Get("ou_path").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiADGroupsGroupNameRemoveParams{
 		AuthToken: c.data.Get("token").(string),
 
 		OUPath: &ou_path,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument name"))
 	name := d.Get("name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiADGroupsGroupNameRemoveWithResponse"))
 	res, err := c.client.DeleteApiADGroupsGroupNameRemoveWithResponse(
 		ctx,
 
@@ -296,6 +317,7 @@ func resourceGroupDelete(ctx context.Context, d *schema.ResourceData, m interfac
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiADGroupsGroupNameRemoveWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

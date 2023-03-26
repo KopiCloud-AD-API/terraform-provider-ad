@@ -71,10 +71,15 @@ func resourceComputerCreate(ctx context.Context, d *schema.ResourceData, m inter
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
+
 	ou_path := d.Get("ou_path").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute description"))
 
 	description := d.Get("description").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiComputersADComputerNameRegisterParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -83,8 +88,10 @@ func resourceComputerCreate(ctx context.Context, d *schema.ResourceData, m inter
 		ADComputerDescription: &description,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument ad_computer_name"))
 	ad_computer_name := d.Get("ad_computer_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiComputersADComputerNameRegisterWithResponse"))
 	res, err := c.client.PostApiComputersADComputerNameRegisterWithResponse(
 		ctx,
 
@@ -94,6 +101,7 @@ func resourceComputerCreate(ctx context.Context, d *schema.ResourceData, m inter
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiComputersADComputerNameRegisterWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -165,12 +173,15 @@ func resourceComputerRead(ctx context.Context, d *schema.ResourceData, m interfa
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetApiComputersADComputerNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument ad_computer_name"))
 	ad_computer_name := d.Get("ad_computer_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiComputersADComputerNameWithResponse"))
 	res, err := c.client.GetApiComputersADComputerNameWithResponse(
 		ctx,
 
@@ -180,6 +191,7 @@ func resourceComputerRead(ctx context.Context, d *schema.ResourceData, m interfa
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiComputersADComputerNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -251,12 +263,15 @@ func resourceComputerDelete(ctx context.Context, d *schema.ResourceData, m inter
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiComputersADComputerNameRemoveParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument ad_computer_name"))
 	ad_computer_name := d.Get("ad_computer_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiComputersADComputerNameRemoveWithResponse"))
 	res, err := c.client.DeleteApiComputersADComputerNameRemoveWithResponse(
 		ctx,
 
@@ -266,6 +281,7 @@ func resourceComputerDelete(ctx context.Context, d *schema.ResourceData, m inter
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiComputersADComputerNameRemoveWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

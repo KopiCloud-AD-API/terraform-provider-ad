@@ -87,12 +87,19 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute new_password"))
+
 	new_password := d.Get("new_password").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute change_password_next_logon"))
 
 	change_password_next_logon := d.Get("change_password_next_logon").(bool)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute show_fields"))
+
 	show_fields := d.Get("show_fields").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PutApiADUserUsernameResetPasswordParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -103,8 +110,10 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 		ShowFields: &show_fields,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument username"))
 	username := d.Get("username").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PutApiADUserUsernameResetPasswordWithResponse"))
 	res, err := c.client.PutApiADUserUsernameResetPasswordWithResponse(
 		ctx,
 
@@ -114,6 +123,7 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PutApiADUserUsernameResetPasswordWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -185,14 +195,18 @@ func resourceUserPasswordResetRead(ctx context.Context, d *schema.ResourceData, 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for GUID"))
 	guid, err := uuid.Parse(d.Id())
 	if err != nil {
 		return diag.FromErr(err)
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute show_fields"))
+
 	show_fields := d.Get("show_fields").(string)
 
-	params := kcapi.GetApiADUserGuidDetailsParams{
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
+	params := kcapi.GetApiADUserGuidParams{
 		AuthToken: c.data.Get("token").(string),
 
 		UserGuid: guid,
@@ -200,13 +214,15 @@ func resourceUserPasswordResetRead(ctx context.Context, d *schema.ResourceData, 
 		ShowFields: &show_fields,
 	}
 
-	res, err := c.client.GetApiADUserGuidDetailsWithResponse(
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiADUserGuidWithResponse"))
+	res, err := c.client.GetApiADUserGuidWithResponse(
 		ctx,
 
 		&params)
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiADUserGuidWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -278,14 +294,18 @@ func resourceUserPasswordResetDelete(ctx context.Context, d *schema.ResourceData
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for GUID"))
 	guid, err := uuid.Parse(d.Id())
 	if err != nil {
 		return diag.FromErr(err)
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute show_fields"))
+
 	show_fields := d.Get("show_fields").(string)
 
-	params := kcapi.GetApiADUserGuidDetailsParams{
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
+	params := kcapi.GetApiADUserGuidParams{
 		AuthToken: c.data.Get("token").(string),
 
 		UserGuid: guid,
@@ -293,13 +313,15 @@ func resourceUserPasswordResetDelete(ctx context.Context, d *schema.ResourceData
 		ShowFields: &show_fields,
 	}
 
-	res, err := c.client.GetApiADUserGuidDetailsWithResponse(
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiADUserGuidWithResponse"))
+	res, err := c.client.GetApiADUserGuidWithResponse(
 		ctx,
 
 		&params)
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiADUserGuidWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

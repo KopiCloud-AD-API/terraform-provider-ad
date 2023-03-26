@@ -77,10 +77,10 @@
             },
             "read": {
                 "api_function": {
-                    "name": "GetApiADUserGuidDetailsWithResponse",
+                    "name": "GetApiADUserGuidWithResponse",
                     "arguments": [],
                     "params": {
-                        "name": "GetApiADUserGuidDetailsParams",
+                        "name": "GetApiADUserGuidParams",
                         "fields": [
                             {
                                 "api_name": "UserGuid",
@@ -105,10 +105,10 @@
             },
             "delete": {
                 "api_function": {
-                    "name": "GetApiADUserGuidDetailsWithResponse",
+                    "name": "GetApiADUserGuidWithResponse",
                     "arguments": [],
                     "params": {
-                        "name": "GetApiADUserGuidDetailsParams",
+                        "name": "GetApiADUserGuidParams",
                         "fields": [
                             {
                                 "api_name": "UserGuid",

@@ -53,12 +53,15 @@ func resourceDnsLookupZoneCreate(ctx context.Context, d *schema.ResourceData, m 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiDnsLookupZoneZoneNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument zone_name"))
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiDnsLookupZoneZoneNameWithResponse"))
 	res, err := c.client.PostApiDnsLookupZoneZoneNameWithResponse(
 		ctx,
 
@@ -68,6 +71,7 @@ func resourceDnsLookupZoneCreate(ctx context.Context, d *schema.ResourceData, m 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiDnsLookupZoneZoneNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -139,12 +143,15 @@ func resourceDnsLookupZoneRead(ctx context.Context, d *schema.ResourceData, m in
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetApiDnsZonesZoneNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument zone_name"))
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiDnsZonesZoneNameWithResponse"))
 	res, err := c.client.GetApiDnsZonesZoneNameWithResponse(
 		ctx,
 
@@ -154,6 +161,7 @@ func resourceDnsLookupZoneRead(ctx context.Context, d *schema.ResourceData, m in
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiDnsZonesZoneNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -225,12 +233,15 @@ func resourceDnsLookupZoneDelete(ctx context.Context, d *schema.ResourceData, m 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiDnsLookupZoneZoneNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument zone_name"))
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiDnsLookupZoneZoneNameWithResponse"))
 	res, err := c.client.DeleteApiDnsLookupZoneZoneNameWithResponse(
 		ctx,
 
@@ -240,6 +251,7 @@ func resourceDnsLookupZoneDelete(ctx context.Context, d *schema.ResourceData, m 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiDnsLookupZoneZoneNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
