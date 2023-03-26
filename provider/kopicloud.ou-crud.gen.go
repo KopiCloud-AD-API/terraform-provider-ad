@@ -17,8 +17,6 @@ import (
 func resourceOU() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfOU(``)
-
 	terraformSchema["ou_name"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
@@ -54,6 +52,8 @@ func resourceOU() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfOU(``)
 
 	return &schema.Resource{
 

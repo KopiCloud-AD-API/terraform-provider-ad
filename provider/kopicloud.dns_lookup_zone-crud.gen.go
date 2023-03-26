@@ -16,8 +16,6 @@ import (
 func resourceDnsLookupZone() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfDnsZone(``)
-
 	terraformSchema["zone_name"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
@@ -28,6 +26,8 @@ func resourceDnsLookupZone() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfDnsZone(``)
 
 	return &schema.Resource{
 

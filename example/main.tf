@@ -1,14 +1,15 @@
 terraform {
   required_providers {
     kopicloud = {
-      source  = "github.com/KopiCloud-AD-API/ad"
+      source = "kopicloud-ad-api/ad"
+      # source  = "github.com/KopiCloud-AD-API/ad"
     }
   }
 }
 
 provider "kopicloud" {
   host = "https://labapi.kopicloud-ad-api.com"
-  token   = var.token
+  token   = "Basic b3NjYXI6UzFsdjNyQnVsbDN0"
 }
 
 # data "kopicloud_computers" "test" {
@@ -320,29 +321,30 @@ provider "kopicloud" {
 #   value = data.kopicloud_user_list.test
 # }
 
-# resource "kopicloud_user" "test" {
-#   username     = "oforero14"
-#   password     = "vMD48X6Vdyj49j8%"
-#   first_name   = "Oscar"
-#   last_name    = "Forero"
-#   initials     = "OMFC"
-#   company = "Kopicloud Inc."
-# }
-
-# output "user" {
-#   description = "Created User"
-#   value = resource.kopicloud_user.test.result
-# }
-
-resource "kopicloud_user_password_reset" "test" {
-  username     = "oforero10"
-  new_password = "vMD48X6Vdyj69j8999%"
+resource "kopicloud_user" "test" {
+  username     = "oforero15"
+  password     = "vMD48X6Vdyj49j8%"
+  first_name   = "Oscar"
+  last_name    = "Forero"
+  initials     = "OMFC"
+  company = "Kopicloud Inc."
+  street = "Archiduke"
 }
 
-output "user_password_reset" {
-  description = "Password Resetted for User"
-  value = resource.kopicloud_user_password_reset.test.result
+output "user" {
+  description = "Created User"
+  value = resource.kopicloud_user.test.result
 }
+
+# resource "kopicloud_user_password_reset" "test" {
+#   username     = "oforero11"
+#   new_password = "vMD48X6Vdyj69j8999%"
+# }
+
+# output "user_password_reset" {
+#   description = "Password Resetted for User"
+#   value = resource.kopicloud_user_password_reset.test.result
+# }
 
 # # Create a Global Distribution Group
 # resource "kopicloud_distribution_group" "test_distribution_global" {

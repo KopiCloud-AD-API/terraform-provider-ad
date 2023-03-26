@@ -17,8 +17,6 @@ import (
 func resourceComputerCleanUp() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfComputerList(``)
-
 	terraformSchema["days"] = &schema.Schema{
 		Type:     schema.TypeInt,
 		Computed: false,
@@ -51,6 +49,8 @@ func resourceComputerCleanUp() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfComputerList(``)
 
 	return &schema.Resource{
 

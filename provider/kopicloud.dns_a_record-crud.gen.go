@@ -16,8 +16,6 @@ import (
 func resourceDnsARecord() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfDnsRecord(``)
-
 	terraformSchema["hostname"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
@@ -50,6 +48,8 @@ func resourceDnsARecord() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfDnsRecord(``)
 
 	return &schema.Resource{
 
