@@ -21,6 +21,7 @@
 *.tfstate.*
 
 # Generated Code
-*.gen.go
 bin
+dist
+*.gen.go
 *.log
