@@ -487,16 +487,15 @@
             },
             "read": {
                 "api_function": {
-                    "name": "GetApiADUserUsernameDetailsWithResponse",
-                    "arguments": [
-                        {
-                            "name": "username",
-                            "type": "string"
-                        }
-                    ],
+                    "name": "GetApiADUserGuidWithResponse",
+                    "arguments": [],
                     "params": {
-                        "name": "GetApiADUserUsernameDetailsParams",
+                        "name": "GetApiADUserGuidParams",
                         "fields": [
+                            {
+                                "api_name": "UserGuid",
+                                "type": "string"
+                            },
                             {
                                 "api_name": "ShowFields",
                                 "name": "show_fields",

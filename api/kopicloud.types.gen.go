@@ -303,139 +303,6 @@ type PostApiADGroupsGroupNameSecurityParams struct {
 	AuthToken string `json:"Auth-Token"`
 }
 
-// DeleteApiADUserGuidParams defines parameters for DeleteApiADUserGuid.
-type DeleteApiADUserGuidParams struct {
-	// UserGuid AD User Guid
-	UserGuid *openapi_types.UUID `form:"UserGuid,omitempty" json:"UserGuid,omitempty"`
-
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
-	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
-
-	// AuthToken Bearer or Basic Authentication Token
-	AuthToken string `json:"Auth-Token"`
-}
-
-// PutApiADUserGuidParams defines parameters for PutApiADUserGuid.
-type PutApiADUserGuidParams struct {
-	// UserGuid AD User Guid
-	UserGuid openapi_types.UUID `form:"UserGuid" json:"UserGuid"`
-
-	// FirstName AD User First Name
-	FirstName *string `form:"FirstName,omitempty" json:"FirstName,omitempty"`
-
-	// Initials AD User Initials
-	Initials *string `form:"Initials,omitempty" json:"Initials,omitempty"`
-
-	// LastName AD User LastName
-	LastName *string `form:"LastName,omitempty" json:"LastName,omitempty"`
-
-	// DisplayName AD User  DisplayName
-	DisplayName *string `form:"DisplayName,omitempty" json:"DisplayName,omitempty"`
-
-	// Description AD User  Description
-	Description *string `form:"Description,omitempty" json:"Description,omitempty"`
-
-	// EmailAddress AD User  Email Address
-	EmailAddress *string `form:"EmailAddress,omitempty" json:"EmailAddress,omitempty"`
-
-	// Department AD User  Department
-	Department *string `form:"Department,omitempty" json:"Department,omitempty"`
-
-	// Office AD User  Office
-	Office *string `form:"Office,omitempty" json:"Office,omitempty"`
-
-	// Company AD User  Company
-	Company *string `form:"Company,omitempty" json:"Company,omitempty"`
-
-	// OUPath Organization Unit DN Path
-	OUPath *string `form:"OUPath,omitempty" json:"OUPath,omitempty"`
-
-	// ChangePasswordNextLogon User Must Change Password at Next Logon
-	ChangePasswordNextLogon *bool `form:"ChangePasswordNextLogon,omitempty" json:"ChangePasswordNextLogon,omitempty"`
-
-	// PasswordNeverExpired Password never expire.
-	PasswordNeverExpired *bool `form:"PasswordNeverExpired,omitempty" json:"PasswordNeverExpired,omitempty"`
-
-	// JobTitle AD User Job Title
-	JobTitle *string `form:"JobTitle,omitempty" json:"JobTitle,omitempty"`
-
-	// Manager AD User Manager
-	Manager *string `form:"Manager,omitempty" json:"Manager,omitempty"`
-
-	// Street AD User Street
-	Street *string `form:"Street,omitempty" json:"Street,omitempty"`
-
-	// POBox AD User Po Box
-	POBox *string `form:"POBox,omitempty" json:"POBox,omitempty"`
-
-	// City AD User City
-	City *string `form:"City,omitempty" json:"City,omitempty"`
-
-	// State AD User State
-	State *string `form:"State,omitempty" json:"State,omitempty"`
-
-	// ZipCode AD User Zip Code
-	ZipCode *string `form:"ZipCode,omitempty" json:"ZipCode,omitempty"`
-
-	// Country AD User Country
-	Country *string `form:"Country,omitempty" json:"Country,omitempty"`
-
-	// OfficePhone AD User Office Phone
-	OfficePhone *string `form:"OfficePhone,omitempty" json:"OfficePhone,omitempty"`
-
-	// HomePhone AD User Home Phone
-	HomePhone *string `form:"HomePhone,omitempty" json:"HomePhone,omitempty"`
-
-	// MobilePhone AD User Mobile Phone
-	MobilePhone *string `form:"MobilePhone,omitempty" json:"MobilePhone,omitempty"`
-
-	// ProfilePath AD User Profile Path
-	ProfilePath *string `form:"ProfilePath,omitempty" json:"ProfilePath,omitempty"`
-
-	// ProfileLogonScript AD User Profile Logon Script
-	ProfileLogonScript *string `form:"ProfileLogonScript,omitempty" json:"ProfileLogonScript,omitempty"`
-
-	// HomeFolderPath AD User Home Folder Path
-	HomeFolderPath *string `form:"HomeFolderPath,omitempty" json:"HomeFolderPath,omitempty"`
-
-	// HomeFolderDrive AD User Home Folde rDrive
-	HomeFolderDrive *string `form:"HomeFolderDrive,omitempty" json:"HomeFolderDrive,omitempty"`
-
-	// HomeFolderDirectory AD User Home Folder Directory
-	HomeFolderDirectory *string `form:"HomeFolderDirectory,omitempty" json:"HomeFolderDirectory,omitempty"`
-
-	// RdsProfilePath AD User Rds Profile Path
-	RdsProfilePath *string `form:"RdsProfilePath,omitempty" json:"RdsProfilePath,omitempty"`
-
-	// RdsHomeFolderPath AD User Rds Home Folder Path
-	RdsHomeFolderPath *string `form:"RdsHomeFolderPath,omitempty" json:"RdsHomeFolderPath,omitempty"`
-
-	// RdsHomeFolderDrive AD User Rds Home Folder Drive
-	RdsHomeFolderDrive *string `form:"RdsHomeFolderDrive,omitempty" json:"RdsHomeFolderDrive,omitempty"`
-
-	// RdsConnectDrive AD User Rds Connect Drive
-	RdsConnectDrive *bool `form:"RdsConnectDrive,omitempty" json:"RdsConnectDrive,omitempty"`
-
-	// RdsAllowLogon AD User Allow RDS Logon
-	RdsAllowLogon *bool `form:"RdsAllowLogon,omitempty" json:"RdsAllowLogon,omitempty"`
-
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
-	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
-
-	// AuthToken Bearer or Basic Authentication Token
-	AuthToken string `json:"Auth-Token"`
-}
-
-// GetApiADUserGuidDetailsParams defines parameters for GetApiADUserGuidDetails.
-type GetApiADUserGuidDetailsParams struct {
-	// UserGuid AD User Guid
-	UserGuid   openapi_types.UUID `form:"UserGuid" json:"UserGuid"`
-	ShowFields *string            `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
-
-	// AuthToken Bearer or Basic Authentication Token
-	AuthToken string `json:"Auth-Token"`
-}
-
 // GetApiADUserListUsersParams defines parameters for GetApiADUserListUsers.
 type GetApiADUserListUsersParams struct {
 	// OUPath Organization Unit DN Path
@@ -782,6 +649,139 @@ type PutApiADUserUsernameResetPasswordParams struct {
 
 // PutApiADUserUsernameUnlockParams defines parameters for PutApiADUserUsernameUnlock.
 type PutApiADUserUsernameUnlockParams struct {
+	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
+
+	// AuthToken Bearer or Basic Authentication Token
+	AuthToken string `json:"Auth-Token"`
+}
+
+// DeleteApiADUserGuidParams defines parameters for DeleteApiADUserGuid.
+type DeleteApiADUserGuidParams struct {
+	// UserGuid AD User Guid
+	UserGuid *openapi_types.UUID `form:"UserGuid,omitempty" json:"UserGuid,omitempty"`
+
+	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
+
+	// AuthToken Bearer or Basic Authentication Token
+	AuthToken string `json:"Auth-Token"`
+}
+
+// GetApiADUserGuidParams defines parameters for GetApiADUserGuid.
+type GetApiADUserGuidParams struct {
+	// UserGuid AD User Guid
+	UserGuid   openapi_types.UUID `form:"UserGuid" json:"UserGuid"`
+	ShowFields *string            `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
+
+	// AuthToken Bearer or Basic Authentication Token
+	AuthToken string `json:"Auth-Token"`
+}
+
+// PutApiADUserGuidParams defines parameters for PutApiADUserGuid.
+type PutApiADUserGuidParams struct {
+	// UserGuid AD User Guid
+	UserGuid openapi_types.UUID `form:"UserGuid" json:"UserGuid"`
+
+	// FirstName AD User First Name
+	FirstName *string `form:"FirstName,omitempty" json:"FirstName,omitempty"`
+
+	// Initials AD User Initials
+	Initials *string `form:"Initials,omitempty" json:"Initials,omitempty"`
+
+	// LastName AD User LastName
+	LastName *string `form:"LastName,omitempty" json:"LastName,omitempty"`
+
+	// DisplayName AD User  DisplayName
+	DisplayName *string `form:"DisplayName,omitempty" json:"DisplayName,omitempty"`
+
+	// Description AD User  Description
+	Description *string `form:"Description,omitempty" json:"Description,omitempty"`
+
+	// EmailAddress AD User  Email Address
+	EmailAddress *string `form:"EmailAddress,omitempty" json:"EmailAddress,omitempty"`
+
+	// Department AD User  Department
+	Department *string `form:"Department,omitempty" json:"Department,omitempty"`
+
+	// Office AD User  Office
+	Office *string `form:"Office,omitempty" json:"Office,omitempty"`
+
+	// Company AD User  Company
+	Company *string `form:"Company,omitempty" json:"Company,omitempty"`
+
+	// OUPath Organization Unit DN Path
+	OUPath *string `form:"OUPath,omitempty" json:"OUPath,omitempty"`
+
+	// ChangePasswordNextLogon User Must Change Password at Next Logon
+	ChangePasswordNextLogon *bool `form:"ChangePasswordNextLogon,omitempty" json:"ChangePasswordNextLogon,omitempty"`
+
+	// PasswordNeverExpired Password never expire.
+	PasswordNeverExpired *bool `form:"PasswordNeverExpired,omitempty" json:"PasswordNeverExpired,omitempty"`
+
+	// JobTitle AD User Job Title
+	JobTitle *string `form:"JobTitle,omitempty" json:"JobTitle,omitempty"`
+
+	// Manager AD User Manager
+	Manager *string `form:"Manager,omitempty" json:"Manager,omitempty"`
+
+	// Street AD User Street
+	Street *string `form:"Street,omitempty" json:"Street,omitempty"`
+
+	// POBox AD User Po Box
+	POBox *string `form:"POBox,omitempty" json:"POBox,omitempty"`
+
+	// City AD User City
+	City *string `form:"City,omitempty" json:"City,omitempty"`
+
+	// State AD User State
+	State *string `form:"State,omitempty" json:"State,omitempty"`
+
+	// ZipCode AD User Zip Code
+	ZipCode *string `form:"ZipCode,omitempty" json:"ZipCode,omitempty"`
+
+	// Country AD User Country
+	Country *string `form:"Country,omitempty" json:"Country,omitempty"`
+
+	// OfficePhone AD User Office Phone
+	OfficePhone *string `form:"OfficePhone,omitempty" json:"OfficePhone,omitempty"`
+
+	// HomePhone AD User Home Phone
+	HomePhone *string `form:"HomePhone,omitempty" json:"HomePhone,omitempty"`
+
+	// MobilePhone AD User Mobile Phone
+	MobilePhone *string `form:"MobilePhone,omitempty" json:"MobilePhone,omitempty"`
+
+	// ProfilePath AD User Profile Path
+	ProfilePath *string `form:"ProfilePath,omitempty" json:"ProfilePath,omitempty"`
+
+	// ProfileLogonScript AD User Profile Logon Script
+	ProfileLogonScript *string `form:"ProfileLogonScript,omitempty" json:"ProfileLogonScript,omitempty"`
+
+	// HomeFolderPath AD User Home Folder Path
+	HomeFolderPath *string `form:"HomeFolderPath,omitempty" json:"HomeFolderPath,omitempty"`
+
+	// HomeFolderDrive AD User Home Folde rDrive
+	HomeFolderDrive *string `form:"HomeFolderDrive,omitempty" json:"HomeFolderDrive,omitempty"`
+
+	// HomeFolderDirectory AD User Home Folder Directory
+	HomeFolderDirectory *string `form:"HomeFolderDirectory,omitempty" json:"HomeFolderDirectory,omitempty"`
+
+	// RdsProfilePath AD User Rds Profile Path
+	RdsProfilePath *string `form:"RdsProfilePath,omitempty" json:"RdsProfilePath,omitempty"`
+
+	// RdsHomeFolderPath AD User Rds Home Folder Path
+	RdsHomeFolderPath *string `form:"RdsHomeFolderPath,omitempty" json:"RdsHomeFolderPath,omitempty"`
+
+	// RdsHomeFolderDrive AD User Rds Home Folder Drive
+	RdsHomeFolderDrive *string `form:"RdsHomeFolderDrive,omitempty" json:"RdsHomeFolderDrive,omitempty"`
+
+	// RdsConnectDrive AD User Rds Connect Drive
+	RdsConnectDrive *bool `form:"RdsConnectDrive,omitempty" json:"RdsConnectDrive,omitempty"`
+
+	// RdsAllowLogon AD User Allow RDS Logon
+	RdsAllowLogon *bool `form:"RdsAllowLogon,omitempty" json:"RdsAllowLogon,omitempty"`
+
 	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 

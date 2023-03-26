@@ -118,15 +118,6 @@ type ClientInterface interface {
 	// PostApiADGroupsGroupNameSecurity request
 	PostApiADGroupsGroupNameSecurity(ctx context.Context, groupName string, params *PostApiADGroupsGroupNameSecurityParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// DeleteApiADUserGuid request
-	DeleteApiADUserGuid(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiADUserGuid request
-	PutApiADUserGuid(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiADUserGuidDetails request
-	GetApiADUserGuidDetails(ctx context.Context, params *GetApiADUserGuidDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiADUserListUsers request
 	GetApiADUserListUsers(ctx context.Context, params *GetApiADUserListUsersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -180,6 +171,15 @@ type ClientInterface interface {
 
 	// PutApiADUserUsernameUnlock request
 	PutApiADUserUsernameUnlock(ctx context.Context, username string, params *PutApiADUserUsernameUnlockParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteApiADUserGuid request
+	DeleteApiADUserGuid(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetApiADUserGuid request
+	GetApiADUserGuid(ctx context.Context, params *GetApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PutApiADUserGuid request
+	PutApiADUserGuid(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiComputers request
 	GetApiComputers(ctx context.Context, params *GetApiComputersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -455,42 +455,6 @@ func (c *Client) PostApiADGroupsGroupNameSecurity(ctx context.Context, groupName
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteApiADUserGuid(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteApiADUserGuidRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) PutApiADUserGuid(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewPutApiADUserGuidRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) GetApiADUserGuidDetails(ctx context.Context, params *GetApiADUserGuidDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiADUserGuidDetailsRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 func (c *Client) GetApiADUserListUsers(ctx context.Context, params *GetApiADUserListUsersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiADUserListUsersRequest(c.Server, params)
 	if err != nil {
@@ -697,6 +661,42 @@ func (c *Client) PutApiADUserUsernameResetPassword(ctx context.Context, username
 
 func (c *Client) PutApiADUserUsernameUnlock(ctx context.Context, username string, params *PutApiADUserUsernameUnlockParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutApiADUserUsernameUnlockRequest(c.Server, username, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteApiADUserGuid(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteApiADUserGuidRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetApiADUserGuid(ctx context.Context, params *GetApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiADUserGuidRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PutApiADUserGuid(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiADUserGuidRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -1976,742 +1976,6 @@ func NewPostApiADGroupsGroupNameSecurityRequest(server string, groupName string,
 	queryURL.RawQuery = queryValues.Encode()
 
 	req, err := http.NewRequest("POST", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	var headerParam0 string
-
-	headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Auth-Token", runtime.ParamLocationHeader, params.AuthToken)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Set("Auth-Token", headerParam0)
-
-	return req, nil
-}
-
-// NewDeleteApiADUserGuidRequest generates requests for DeleteApiADUserGuid
-func NewDeleteApiADUserGuidRequest(server string, params *DeleteApiADUserGuidParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/ADUser/Guid")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	queryValues := queryURL.Query()
-
-	if params.UserGuid != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "UserGuid", runtime.ParamLocationQuery, *params.UserGuid); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.ShowFields != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ShowFields", runtime.ParamLocationQuery, *params.ShowFields); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	queryURL.RawQuery = queryValues.Encode()
-
-	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	var headerParam0 string
-
-	headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Auth-Token", runtime.ParamLocationHeader, params.AuthToken)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Set("Auth-Token", headerParam0)
-
-	return req, nil
-}
-
-// NewPutApiADUserGuidRequest generates requests for PutApiADUserGuid
-func NewPutApiADUserGuidRequest(server string, params *PutApiADUserGuidParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/ADUser/Guid")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	queryValues := queryURL.Query()
-
-	if queryFrag, err := runtime.StyleParamWithLocation("form", true, "UserGuid", runtime.ParamLocationQuery, params.UserGuid); err != nil {
-		return nil, err
-	} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-		return nil, err
-	} else {
-		for k, v := range parsed {
-			for _, v2 := range v {
-				queryValues.Add(k, v2)
-			}
-		}
-	}
-
-	if params.FirstName != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "FirstName", runtime.ParamLocationQuery, *params.FirstName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Initials != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Initials", runtime.ParamLocationQuery, *params.Initials); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.LastName != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "LastName", runtime.ParamLocationQuery, *params.LastName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.DisplayName != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "DisplayName", runtime.ParamLocationQuery, *params.DisplayName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Description != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Description", runtime.ParamLocationQuery, *params.Description); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.EmailAddress != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "EmailAddress", runtime.ParamLocationQuery, *params.EmailAddress); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Department != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Department", runtime.ParamLocationQuery, *params.Department); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Office != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Office", runtime.ParamLocationQuery, *params.Office); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Company != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Company", runtime.ParamLocationQuery, *params.Company); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.OUPath != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "OUPath", runtime.ParamLocationQuery, *params.OUPath); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.ChangePasswordNextLogon != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ChangePasswordNextLogon", runtime.ParamLocationQuery, *params.ChangePasswordNextLogon); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.PasswordNeverExpired != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "PasswordNeverExpired", runtime.ParamLocationQuery, *params.PasswordNeverExpired); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.JobTitle != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "JobTitle", runtime.ParamLocationQuery, *params.JobTitle); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Manager != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Manager", runtime.ParamLocationQuery, *params.Manager); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Street != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Street", runtime.ParamLocationQuery, *params.Street); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.POBox != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "POBox", runtime.ParamLocationQuery, *params.POBox); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.City != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "City", runtime.ParamLocationQuery, *params.City); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.State != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "State", runtime.ParamLocationQuery, *params.State); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.ZipCode != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ZipCode", runtime.ParamLocationQuery, *params.ZipCode); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Country != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Country", runtime.ParamLocationQuery, *params.Country); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.OfficePhone != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "OfficePhone", runtime.ParamLocationQuery, *params.OfficePhone); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.HomePhone != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomePhone", runtime.ParamLocationQuery, *params.HomePhone); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.MobilePhone != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "MobilePhone", runtime.ParamLocationQuery, *params.MobilePhone); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.ProfilePath != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ProfilePath", runtime.ParamLocationQuery, *params.ProfilePath); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.ProfileLogonScript != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ProfileLogonScript", runtime.ParamLocationQuery, *params.ProfileLogonScript); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.HomeFolderPath != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomeFolderPath", runtime.ParamLocationQuery, *params.HomeFolderPath); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.HomeFolderDrive != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomeFolderDrive", runtime.ParamLocationQuery, *params.HomeFolderDrive); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.HomeFolderDirectory != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomeFolderDirectory", runtime.ParamLocationQuery, *params.HomeFolderDirectory); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.RdsProfilePath != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsProfilePath", runtime.ParamLocationQuery, *params.RdsProfilePath); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.RdsHomeFolderPath != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsHomeFolderPath", runtime.ParamLocationQuery, *params.RdsHomeFolderPath); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.RdsHomeFolderDrive != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsHomeFolderDrive", runtime.ParamLocationQuery, *params.RdsHomeFolderDrive); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.RdsConnectDrive != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsConnectDrive", runtime.ParamLocationQuery, *params.RdsConnectDrive); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.RdsAllowLogon != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsAllowLogon", runtime.ParamLocationQuery, *params.RdsAllowLogon); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.ShowFields != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ShowFields", runtime.ParamLocationQuery, *params.ShowFields); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	queryURL.RawQuery = queryValues.Encode()
-
-	req, err := http.NewRequest("PUT", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	var headerParam0 string
-
-	headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Auth-Token", runtime.ParamLocationHeader, params.AuthToken)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Set("Auth-Token", headerParam0)
-
-	return req, nil
-}
-
-// NewGetApiADUserGuidDetailsRequest generates requests for GetApiADUserGuidDetails
-func NewGetApiADUserGuidDetailsRequest(server string, params *GetApiADUserGuidDetailsParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/ADUser/Guid/Details")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	queryValues := queryURL.Query()
-
-	if queryFrag, err := runtime.StyleParamWithLocation("form", true, "UserGuid", runtime.ParamLocationQuery, params.UserGuid); err != nil {
-		return nil, err
-	} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-		return nil, err
-	} else {
-		for k, v := range parsed {
-			for _, v2 := range v {
-				queryValues.Add(k, v2)
-			}
-		}
-	}
-
-	if params.ShowFields != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ShowFields", runtime.ParamLocationQuery, *params.ShowFields); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	queryURL.RawQuery = queryValues.Encode()
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -4843,6 +4107,742 @@ func NewPutApiADUserUsernameUnlockRequest(server string, username string, params
 	}
 
 	queryValues := queryURL.Query()
+
+	if params.ShowFields != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ShowFields", runtime.ParamLocationQuery, *params.ShowFields); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	queryURL.RawQuery = queryValues.Encode()
+
+	req, err := http.NewRequest("PUT", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var headerParam0 string
+
+	headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Auth-Token", runtime.ParamLocationHeader, params.AuthToken)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Auth-Token", headerParam0)
+
+	return req, nil
+}
+
+// NewDeleteApiADUserGuidRequest generates requests for DeleteApiADUserGuid
+func NewDeleteApiADUserGuidRequest(server string, params *DeleteApiADUserGuidParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/ADUserGuid")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	queryValues := queryURL.Query()
+
+	if params.UserGuid != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "UserGuid", runtime.ParamLocationQuery, *params.UserGuid); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.ShowFields != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ShowFields", runtime.ParamLocationQuery, *params.ShowFields); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	queryURL.RawQuery = queryValues.Encode()
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var headerParam0 string
+
+	headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Auth-Token", runtime.ParamLocationHeader, params.AuthToken)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Auth-Token", headerParam0)
+
+	return req, nil
+}
+
+// NewGetApiADUserGuidRequest generates requests for GetApiADUserGuid
+func NewGetApiADUserGuidRequest(server string, params *GetApiADUserGuidParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/ADUserGuid")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	queryValues := queryURL.Query()
+
+	if queryFrag, err := runtime.StyleParamWithLocation("form", true, "UserGuid", runtime.ParamLocationQuery, params.UserGuid); err != nil {
+		return nil, err
+	} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+		return nil, err
+	} else {
+		for k, v := range parsed {
+			for _, v2 := range v {
+				queryValues.Add(k, v2)
+			}
+		}
+	}
+
+	if params.ShowFields != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ShowFields", runtime.ParamLocationQuery, *params.ShowFields); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	queryURL.RawQuery = queryValues.Encode()
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var headerParam0 string
+
+	headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Auth-Token", runtime.ParamLocationHeader, params.AuthToken)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Auth-Token", headerParam0)
+
+	return req, nil
+}
+
+// NewPutApiADUserGuidRequest generates requests for PutApiADUserGuid
+func NewPutApiADUserGuidRequest(server string, params *PutApiADUserGuidParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/ADUserGuid")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	queryValues := queryURL.Query()
+
+	if queryFrag, err := runtime.StyleParamWithLocation("form", true, "UserGuid", runtime.ParamLocationQuery, params.UserGuid); err != nil {
+		return nil, err
+	} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+		return nil, err
+	} else {
+		for k, v := range parsed {
+			for _, v2 := range v {
+				queryValues.Add(k, v2)
+			}
+		}
+	}
+
+	if params.FirstName != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "FirstName", runtime.ParamLocationQuery, *params.FirstName); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Initials != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Initials", runtime.ParamLocationQuery, *params.Initials); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.LastName != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "LastName", runtime.ParamLocationQuery, *params.LastName); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.DisplayName != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "DisplayName", runtime.ParamLocationQuery, *params.DisplayName); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Description != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Description", runtime.ParamLocationQuery, *params.Description); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.EmailAddress != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "EmailAddress", runtime.ParamLocationQuery, *params.EmailAddress); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Department != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Department", runtime.ParamLocationQuery, *params.Department); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Office != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Office", runtime.ParamLocationQuery, *params.Office); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Company != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Company", runtime.ParamLocationQuery, *params.Company); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.OUPath != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "OUPath", runtime.ParamLocationQuery, *params.OUPath); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.ChangePasswordNextLogon != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ChangePasswordNextLogon", runtime.ParamLocationQuery, *params.ChangePasswordNextLogon); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.PasswordNeverExpired != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "PasswordNeverExpired", runtime.ParamLocationQuery, *params.PasswordNeverExpired); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.JobTitle != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "JobTitle", runtime.ParamLocationQuery, *params.JobTitle); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Manager != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Manager", runtime.ParamLocationQuery, *params.Manager); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Street != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Street", runtime.ParamLocationQuery, *params.Street); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.POBox != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "POBox", runtime.ParamLocationQuery, *params.POBox); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.City != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "City", runtime.ParamLocationQuery, *params.City); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.State != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "State", runtime.ParamLocationQuery, *params.State); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.ZipCode != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ZipCode", runtime.ParamLocationQuery, *params.ZipCode); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.Country != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Country", runtime.ParamLocationQuery, *params.Country); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.OfficePhone != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "OfficePhone", runtime.ParamLocationQuery, *params.OfficePhone); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.HomePhone != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomePhone", runtime.ParamLocationQuery, *params.HomePhone); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.MobilePhone != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "MobilePhone", runtime.ParamLocationQuery, *params.MobilePhone); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.ProfilePath != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ProfilePath", runtime.ParamLocationQuery, *params.ProfilePath); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.ProfileLogonScript != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "ProfileLogonScript", runtime.ParamLocationQuery, *params.ProfileLogonScript); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.HomeFolderPath != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomeFolderPath", runtime.ParamLocationQuery, *params.HomeFolderPath); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.HomeFolderDrive != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomeFolderDrive", runtime.ParamLocationQuery, *params.HomeFolderDrive); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.HomeFolderDirectory != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "HomeFolderDirectory", runtime.ParamLocationQuery, *params.HomeFolderDirectory); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.RdsProfilePath != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsProfilePath", runtime.ParamLocationQuery, *params.RdsProfilePath); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.RdsHomeFolderPath != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsHomeFolderPath", runtime.ParamLocationQuery, *params.RdsHomeFolderPath); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.RdsHomeFolderDrive != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsHomeFolderDrive", runtime.ParamLocationQuery, *params.RdsHomeFolderDrive); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.RdsConnectDrive != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsConnectDrive", runtime.ParamLocationQuery, *params.RdsConnectDrive); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
+
+	if params.RdsAllowLogon != nil {
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "RdsAllowLogon", runtime.ParamLocationQuery, *params.RdsAllowLogon); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+	}
 
 	if params.ShowFields != nil {
 
@@ -8004,15 +8004,6 @@ type ClientWithResponsesInterface interface {
 	// PostApiADGroupsGroupNameSecurity request
 	PostApiADGroupsGroupNameSecurityWithResponse(ctx context.Context, groupName string, params *PostApiADGroupsGroupNameSecurityParams, reqEditors ...RequestEditorFn) (*PostApiADGroupsGroupNameSecurityResponse, error)
 
-	// DeleteApiADUserGuid request
-	DeleteApiADUserGuidWithResponse(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*DeleteApiADUserGuidResponse, error)
-
-	// PutApiADUserGuid request
-	PutApiADUserGuidWithResponse(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*PutApiADUserGuidResponse, error)
-
-	// GetApiADUserGuidDetails request
-	GetApiADUserGuidDetailsWithResponse(ctx context.Context, params *GetApiADUserGuidDetailsParams, reqEditors ...RequestEditorFn) (*GetApiADUserGuidDetailsResponse, error)
-
 	// GetApiADUserListUsers request
 	GetApiADUserListUsersWithResponse(ctx context.Context, params *GetApiADUserListUsersParams, reqEditors ...RequestEditorFn) (*GetApiADUserListUsersResponse, error)
 
@@ -8066,6 +8057,15 @@ type ClientWithResponsesInterface interface {
 
 	// PutApiADUserUsernameUnlock request
 	PutApiADUserUsernameUnlockWithResponse(ctx context.Context, username string, params *PutApiADUserUsernameUnlockParams, reqEditors ...RequestEditorFn) (*PutApiADUserUsernameUnlockResponse, error)
+
+	// DeleteApiADUserGuid request
+	DeleteApiADUserGuidWithResponse(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*DeleteApiADUserGuidResponse, error)
+
+	// GetApiADUserGuid request
+	GetApiADUserGuidWithResponse(ctx context.Context, params *GetApiADUserGuidParams, reqEditors ...RequestEditorFn) (*GetApiADUserGuidResponse, error)
+
+	// PutApiADUserGuid request
+	PutApiADUserGuidWithResponse(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*PutApiADUserGuidResponse, error)
 
 	// GetApiComputers request
 	GetApiComputersWithResponse(ctx context.Context, params *GetApiComputersParams, reqEditors ...RequestEditorFn) (*GetApiComputersResponse, error)
@@ -8435,72 +8435,6 @@ func (r PostApiADGroupsGroupNameSecurityResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r PostApiADGroupsGroupNameSecurityResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-type DeleteApiADUserGuidResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *UserResult
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteApiADUserGuidResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteApiADUserGuidResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-type PutApiADUserGuidResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *UserResult
-}
-
-// Status returns HTTPResponse.Status
-func (r PutApiADUserGuidResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r PutApiADUserGuidResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-type GetApiADUserGuidDetailsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *UserResult
-}
-
-// Status returns HTTPResponse.Status
-func (r GetApiADUserGuidDetailsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetApiADUserGuidDetailsResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -8897,6 +8831,72 @@ func (r PutApiADUserUsernameUnlockResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r PutApiADUserUsernameUnlockResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type DeleteApiADUserGuidResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *UserResult
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteApiADUserGuidResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteApiADUserGuidResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetApiADUserGuidResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *UserResult
+}
+
+// Status returns HTTPResponse.Status
+func (r GetApiADUserGuidResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetApiADUserGuidResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type PutApiADUserGuidResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *UserResult
+}
+
+// Status returns HTTPResponse.Status
+func (r PutApiADUserGuidResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PutApiADUserGuidResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -10115,33 +10115,6 @@ func (c *ClientWithResponses) PostApiADGroupsGroupNameSecurityWithResponse(ctx c
 	return ParsePostApiADGroupsGroupNameSecurityResponse(rsp)
 }
 
-// DeleteApiADUserGuidWithResponse request returning *DeleteApiADUserGuidResponse
-func (c *ClientWithResponses) DeleteApiADUserGuidWithResponse(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*DeleteApiADUserGuidResponse, error) {
-	rsp, err := c.DeleteApiADUserGuid(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteApiADUserGuidResponse(rsp)
-}
-
-// PutApiADUserGuidWithResponse request returning *PutApiADUserGuidResponse
-func (c *ClientWithResponses) PutApiADUserGuidWithResponse(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*PutApiADUserGuidResponse, error) {
-	rsp, err := c.PutApiADUserGuid(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParsePutApiADUserGuidResponse(rsp)
-}
-
-// GetApiADUserGuidDetailsWithResponse request returning *GetApiADUserGuidDetailsResponse
-func (c *ClientWithResponses) GetApiADUserGuidDetailsWithResponse(ctx context.Context, params *GetApiADUserGuidDetailsParams, reqEditors ...RequestEditorFn) (*GetApiADUserGuidDetailsResponse, error) {
-	rsp, err := c.GetApiADUserGuidDetails(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiADUserGuidDetailsResponse(rsp)
-}
-
 // GetApiADUserListUsersWithResponse request returning *GetApiADUserListUsersResponse
 func (c *ClientWithResponses) GetApiADUserListUsersWithResponse(ctx context.Context, params *GetApiADUserListUsersParams, reqEditors ...RequestEditorFn) (*GetApiADUserListUsersResponse, error) {
 	rsp, err := c.GetApiADUserListUsers(ctx, params, reqEditors...)
@@ -10302,6 +10275,33 @@ func (c *ClientWithResponses) PutApiADUserUsernameUnlockWithResponse(ctx context
 		return nil, err
 	}
 	return ParsePutApiADUserUsernameUnlockResponse(rsp)
+}
+
+// DeleteApiADUserGuidWithResponse request returning *DeleteApiADUserGuidResponse
+func (c *ClientWithResponses) DeleteApiADUserGuidWithResponse(ctx context.Context, params *DeleteApiADUserGuidParams, reqEditors ...RequestEditorFn) (*DeleteApiADUserGuidResponse, error) {
+	rsp, err := c.DeleteApiADUserGuid(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteApiADUserGuidResponse(rsp)
+}
+
+// GetApiADUserGuidWithResponse request returning *GetApiADUserGuidResponse
+func (c *ClientWithResponses) GetApiADUserGuidWithResponse(ctx context.Context, params *GetApiADUserGuidParams, reqEditors ...RequestEditorFn) (*GetApiADUserGuidResponse, error) {
+	rsp, err := c.GetApiADUserGuid(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiADUserGuidResponse(rsp)
+}
+
+// PutApiADUserGuidWithResponse request returning *PutApiADUserGuidResponse
+func (c *ClientWithResponses) PutApiADUserGuidWithResponse(ctx context.Context, params *PutApiADUserGuidParams, reqEditors ...RequestEditorFn) (*PutApiADUserGuidResponse, error) {
+	rsp, err := c.PutApiADUserGuid(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiADUserGuidResponse(rsp)
 }
 
 // GetApiComputersWithResponse request returning *GetApiComputersResponse
@@ -11053,93 +11053,6 @@ func ParsePostApiADGroupsGroupNameSecurityResponse(rsp *http.Response) (*PostApi
 	return response, nil
 }
 
-// ParseDeleteApiADUserGuidResponse parses an HTTP response from a DeleteApiADUserGuidWithResponse call
-func ParseDeleteApiADUserGuidResponse(rsp *http.Response) (*DeleteApiADUserGuidResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteApiADUserGuidResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest UserResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 200:
-		// Content-type (text/plain) unsupported
-
-	}
-
-	return response, nil
-}
-
-// ParsePutApiADUserGuidResponse parses an HTTP response from a PutApiADUserGuidWithResponse call
-func ParsePutApiADUserGuidResponse(rsp *http.Response) (*PutApiADUserGuidResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &PutApiADUserGuidResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest UserResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 200:
-		// Content-type (text/plain) unsupported
-
-	}
-
-	return response, nil
-}
-
-// ParseGetApiADUserGuidDetailsResponse parses an HTTP response from a GetApiADUserGuidDetailsWithResponse call
-func ParseGetApiADUserGuidDetailsResponse(rsp *http.Response) (*GetApiADUserGuidDetailsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiADUserGuidDetailsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest UserResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 200:
-		// Content-type (text/plain) unsupported
-
-	}
-
-	return response, nil
-}
-
 // ParseGetApiADUserListUsersResponse parses an HTTP response from a GetApiADUserListUsersWithResponse call
 func ParseGetApiADUserListUsersResponse(rsp *http.Response) (*GetApiADUserListUsersResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -11642,6 +11555,93 @@ func ParsePutApiADUserUsernameUnlockResponse(rsp *http.Response) (*PutApiADUserU
 	}
 
 	response := &PutApiADUserUsernameUnlockResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserResult
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case rsp.StatusCode == 200:
+		// Content-type (text/plain) unsupported
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteApiADUserGuidResponse parses an HTTP response from a DeleteApiADUserGuidWithResponse call
+func ParseDeleteApiADUserGuidResponse(rsp *http.Response) (*DeleteApiADUserGuidResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteApiADUserGuidResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserResult
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case rsp.StatusCode == 200:
+		// Content-type (text/plain) unsupported
+
+	}
+
+	return response, nil
+}
+
+// ParseGetApiADUserGuidResponse parses an HTTP response from a GetApiADUserGuidWithResponse call
+func ParseGetApiADUserGuidResponse(rsp *http.Response) (*GetApiADUserGuidResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiADUserGuidResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserResult
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case rsp.StatusCode == 200:
+		// Content-type (text/plain) unsupported
+
+	}
+
+	return response, nil
+}
+
+// ParsePutApiADUserGuidResponse parses an HTTP response from a PutApiADUserGuidWithResponse call
+func ParsePutApiADUserGuidResponse(rsp *http.Response) (*PutApiADUserGuidResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutApiADUserGuidResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}

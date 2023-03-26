@@ -64,14 +64,18 @@ func resourceGroupMembershipCreate(ctx context.Context, d *schema.ResourceData, 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiADUserUsernameGroupGroupNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument user_name"))
 	user_name := d.Get("user_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument group_name"))
 	group_name := d.Get("group_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiADUserUsernameGroupGroupNameWithResponse"))
 	res, err := c.client.PostApiADUserUsernameGroupGroupNameWithResponse(
 		ctx,
 
@@ -83,6 +87,7 @@ func resourceGroupMembershipCreate(ctx context.Context, d *schema.ResourceData, 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiADUserUsernameGroupGroupNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -154,14 +159,18 @@ func resourceGroupMembershipRead(ctx context.Context, d *schema.ResourceData, m 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetApiADUserUsernameGroupGroupNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument user_name"))
 	user_name := d.Get("user_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument group_name"))
 	group_name := d.Get("group_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiADUserUsernameGroupGroupNameWithResponse"))
 	res, err := c.client.GetApiADUserUsernameGroupGroupNameWithResponse(
 		ctx,
 
@@ -173,6 +182,7 @@ func resourceGroupMembershipRead(ctx context.Context, d *schema.ResourceData, m 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiADUserUsernameGroupGroupNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -244,14 +254,18 @@ func resourceGroupMembershipDelete(ctx context.Context, d *schema.ResourceData, 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiADUserUsernameGroupGroupNameParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument user_name"))
 	user_name := d.Get("user_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument group_name"))
 	group_name := d.Get("group_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiADUserUsernameGroupGroupNameWithResponse"))
 	res, err := c.client.DeleteApiADUserUsernameGroupGroupNameWithResponse(
 		ctx,
 
@@ -263,6 +277,7 @@ func resourceGroupMembershipDelete(ctx context.Context, d *schema.ResourceData, 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiADUserUsernameGroupGroupNameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

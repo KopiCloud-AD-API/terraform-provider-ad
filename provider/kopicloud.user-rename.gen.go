@@ -87,18 +87,24 @@ func resourceUserRenameCreate(ctx context.Context, d *schema.ResourceData, m int
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute show_fields"))
+
 	show_fields := d.Get("show_fields").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PutApiADUserUsernameRenameNewUsernameParams{
 		AuthToken: c.data.Get("token").(string),
 
 		ShowFields: &show_fields,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument username"))
 	username := d.Get("username").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument new_username"))
 	new_username := d.Get("new_username").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PutApiADUserUsernameRenameNewUsernameWithResponse"))
 	res, err := c.client.PutApiADUserUsernameRenameNewUsernameWithResponse(
 		ctx,
 
@@ -110,6 +116,7 @@ func resourceUserRenameCreate(ctx context.Context, d *schema.ResourceData, m int
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PutApiADUserUsernameRenameNewUsernameWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -181,14 +188,18 @@ func resourceUserRenameRead(ctx context.Context, d *schema.ResourceData, m inter
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for GUID"))
 	guid, err := uuid.Parse(d.Id())
 	if err != nil {
 		return diag.FromErr(err)
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute show_fields"))
+
 	show_fields := d.Get("show_fields").(string)
 
-	params := kcapi.GetApiADUserGuidDetailsParams{
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
+	params := kcapi.GetApiADUserGuidParams{
 		AuthToken: c.data.Get("token").(string),
 
 		UserGuid: guid,
@@ -196,13 +207,15 @@ func resourceUserRenameRead(ctx context.Context, d *schema.ResourceData, m inter
 		ShowFields: &show_fields,
 	}
 
-	res, err := c.client.GetApiADUserGuidDetailsWithResponse(
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiADUserGuidWithResponse"))
+	res, err := c.client.GetApiADUserGuidWithResponse(
 		ctx,
 
 		&params)
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiADUserGuidWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -274,14 +287,18 @@ func resourceUserRenameDelete(ctx context.Context, d *schema.ResourceData, m int
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for GUID"))
 	guid, err := uuid.Parse(d.Id())
 	if err != nil {
 		return diag.FromErr(err)
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute show_fields"))
+
 	show_fields := d.Get("show_fields").(string)
 
-	params := kcapi.GetApiADUserGuidDetailsParams{
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
+	params := kcapi.GetApiADUserGuidParams{
 		AuthToken: c.data.Get("token").(string),
 
 		UserGuid: guid,
@@ -289,13 +306,15 @@ func resourceUserRenameDelete(ctx context.Context, d *schema.ResourceData, m int
 		ShowFields: &show_fields,
 	}
 
-	res, err := c.client.GetApiADUserGuidDetailsWithResponse(
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiADUserGuidWithResponse"))
+	res, err := c.client.GetApiADUserGuidWithResponse(
 		ctx,
 
 		&params)
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiADUserGuidWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

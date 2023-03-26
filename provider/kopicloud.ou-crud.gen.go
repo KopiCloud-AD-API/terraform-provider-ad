@@ -81,14 +81,23 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_name"))
+
 	ou_name := d.Get("ou_name").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute description"))
 
 	description := d.Get("description").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
+
 	ou_path := d.Get("ou_path").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute protected"))
 
 	protected := d.Get("protected").(bool)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiOUParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -101,6 +110,7 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 		IsProtected: &protected,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiOUWithResponse"))
 	res, err := c.client.PostApiOUWithResponse(
 		ctx,
 
@@ -108,6 +118,7 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiOUWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -179,17 +190,20 @@ func resourceOURead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for GUID"))
 	guid, err := uuid.Parse(d.Id())
 	if err != nil {
 		return diag.FromErr(err)
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetOUByGuidParams{
 		AuthToken: c.data.Get("token").(string),
 
 		OUGuid: guid,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetOUByGuidWithResponse"))
 	res, err := c.client.GetOUByGuidWithResponse(
 		ctx,
 
@@ -197,6 +211,7 @@ func resourceOURead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetOUByGuidWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -268,10 +283,15 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
+
 	ou_path := d.Get("result.0.path").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute protected"))
 
 	protected := d.Get("protected").(bool)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiOUPathRemoveParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -280,6 +300,7 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 		Force: &protected,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiOUPathRemoveWithResponse"))
 	res, err := c.client.DeleteApiOUPathRemoveWithResponse(
 		ctx,
 
@@ -287,6 +308,7 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiOUPathRemoveWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

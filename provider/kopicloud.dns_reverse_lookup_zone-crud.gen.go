@@ -53,12 +53,15 @@ func resourceDnsReverseLookupZoneCreate(ctx context.Context, d *schema.ResourceD
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiDnsReverseLookupZoneNetworkIDParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument network_id"))
 	network_id := d.Get("network_id").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiDnsReverseLookupZoneNetworkIDWithResponse"))
 	res, err := c.client.PostApiDnsReverseLookupZoneNetworkIDWithResponse(
 		ctx,
 
@@ -68,6 +71,7 @@ func resourceDnsReverseLookupZoneCreate(ctx context.Context, d *schema.ResourceD
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiDnsReverseLookupZoneNetworkIDWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -139,12 +143,15 @@ func resourceDnsReverseLookupZoneRead(ctx context.Context, d *schema.ResourceDat
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetApiDnsReverseLookupZoneNetworkIDParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument network_id"))
 	network_id := d.Get("network_id").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiDnsReverseLookupZoneNetworkIDWithResponse"))
 	res, err := c.client.GetApiDnsReverseLookupZoneNetworkIDWithResponse(
 		ctx,
 
@@ -154,6 +161,7 @@ func resourceDnsReverseLookupZoneRead(ctx context.Context, d *schema.ResourceDat
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiDnsReverseLookupZoneNetworkIDWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -225,12 +233,15 @@ func resourceDnsReverseLookupZoneDelete(ctx context.Context, d *schema.ResourceD
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiDnsReverseLookupZoneNetworkIDParams{
 		AuthToken: c.data.Get("token").(string),
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for function argument network_id"))
 	network_id := d.Get("network_id").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiDnsReverseLookupZoneNetworkIDWithResponse"))
 	res, err := c.client.DeleteApiDnsReverseLookupZoneNetworkIDWithResponse(
 		ctx,
 
@@ -240,6 +251,7 @@ func resourceDnsReverseLookupZoneDelete(ctx context.Context, d *schema.ResourceD
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiDnsReverseLookupZoneNetworkIDWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {

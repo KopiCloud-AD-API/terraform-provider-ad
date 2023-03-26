@@ -75,12 +75,19 @@ func resourceDnsAAAARecordCreate(ctx context.Context, d *schema.ResourceData, m 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname"))
+
 	hostname := d.Get("hostname").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ipv6_address"))
 
 	ipv6_address := d.Get("ipv6_address").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute zone_name"))
+
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.PostApiDnsAAAARecordParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -91,6 +98,7 @@ func resourceDnsAAAARecordCreate(ctx context.Context, d *schema.ResourceData, m 
 		ZoneName: &zone_name,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API PostApiDnsAAAARecordWithResponse"))
 	res, err := c.client.PostApiDnsAAAARecordWithResponse(
 		ctx,
 
@@ -98,6 +106,7 @@ func resourceDnsAAAARecordCreate(ctx context.Context, d *schema.ResourceData, m 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API PostApiDnsAAAARecordWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -169,12 +178,19 @@ func resourceDnsAAAARecordRead(ctx context.Context, d *schema.ResourceData, m in
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname"))
+
 	hostname := d.Get("hostname").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ipv6_address"))
 
 	ipv6_address := d.Get("ipv6_address").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute zone_name"))
+
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.GetApiDnsAAAARecordParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -185,6 +201,7 @@ func resourceDnsAAAARecordRead(ctx context.Context, d *schema.ResourceData, m in
 		ZoneName: &zone_name,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API GetApiDnsAAAARecordWithResponse"))
 	res, err := c.client.GetApiDnsAAAARecordWithResponse(
 		ctx,
 
@@ -192,6 +209,7 @@ func resourceDnsAAAARecordRead(ctx context.Context, d *schema.ResourceData, m in
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API GetApiDnsAAAARecordWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
@@ -263,12 +281,19 @@ func resourceDnsAAAARecordDelete(ctx context.Context, d *schema.ResourceData, m 
 		"schema_data":  d,
 	})
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute hostname"))
+
 	hostname := d.Get("hostname").(string)
+
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ipv6_address"))
 
 	ipv6_address := d.Get("ipv6_address").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute zone_name"))
+
 	zone_name := d.Get("zone_name").(string)
 
+	tflog.Debug(ctx, fmt.Sprintf("Creating params structure"))
 	params := kcapi.DeleteApiDnsAAAARecordParams{
 		AuthToken: c.data.Get("token").(string),
 
@@ -279,6 +304,7 @@ func resourceDnsAAAARecordDelete(ctx context.Context, d *schema.ResourceData, m 
 		ZoneName: &zone_name,
 	}
 
+	tflog.Debug(ctx, fmt.Sprintf("Calling API DeleteApiDnsAAAARecordWithResponse"))
 	res, err := c.client.DeleteApiDnsAAAARecordWithResponse(
 		ctx,
 
@@ -286,6 +312,7 @@ func resourceDnsAAAARecordDelete(ctx context.Context, d *schema.ResourceData, m 
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	tflog.Debug(ctx, fmt.Sprintf("API DeleteApiDnsAAAARecordWithResponse returned successfully"))
 
 	if res != nil {
 		if res.HTTPResponse.StatusCode != 200 {
