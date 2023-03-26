@@ -16,8 +16,6 @@ import (
 func resourceDistributionGroup() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfGroup(``)
-
 	terraformSchema["name"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
@@ -62,6 +60,8 @@ func resourceDistributionGroup() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfGroup(``)
 
 	return &schema.Resource{
 

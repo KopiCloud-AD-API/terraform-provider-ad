@@ -16,8 +16,6 @@ import (
 func resourceDnsReverseLookupZone() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfDnsZone(``)
-
 	terraformSchema["network_id"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
@@ -28,6 +26,8 @@ func resourceDnsReverseLookupZone() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfDnsZone(``)
 
 	return &schema.Resource{
 
