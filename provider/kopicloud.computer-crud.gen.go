@@ -16,8 +16,6 @@ import (
 func resourceComputer() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfComputer(``)
-
 	terraformSchema["ad_computer_name"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
@@ -44,6 +42,8 @@ func resourceComputer() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfComputer(``)
 
 	return &schema.Resource{
 

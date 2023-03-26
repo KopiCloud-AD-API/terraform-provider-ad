@@ -17,8 +17,6 @@ import (
 func resourceUserEnableAccount() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
-	terraformSchema["result"] = schemaOfUser(``)
-
 	terraformSchema["username"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: false,
@@ -40,6 +38,8 @@ func resourceUserEnableAccount() *schema.Resource {
 
 		Description: "",
 	}
+
+	terraformSchema["result"] = schemaOfUser(``)
 
 	return &schema.Resource{
 
