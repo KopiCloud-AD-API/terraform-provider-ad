@@ -329,8 +329,8 @@ resource "kopicloud_user" "test" {
   initials     = "OMFC"
   company = "Kopicloud Inc."
   country = "Germany"
-  home_folder_drive = "Z:"
-  home_folder_directory = "\\\\MyServer\\my_folder"
+  home_folder_drive = "Y:"
+  home_folder_directory = "\\\\MyServer\\my_folder2"
 }
 
 output "user" {
