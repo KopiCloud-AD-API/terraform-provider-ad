@@ -11,7 +11,7 @@ description: KopiCloud AD API Terraform Provider
 
 To set up the **KopiCloud AD Terraform Provider**, log in to the KopiCloud AD API Management Portal and generate a token.
 
-In your provider.tf file, configure the KopiCloud AD Terraform Provider with the hostname of your API server and the authentication token.
+In your Terraform provider file (for example, provider.tf), configure the KopiCloud AD Terraform Provider with the hostname of your API server and the authentication token.
 
 ```
 terraform {
