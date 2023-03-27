@@ -7,6 +7,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
+	"strings"
+
 	api "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 	kcapi "github.com/KopiCloud-AD-API/terraform-provider-ad/api"
 	"github.com/google/uuid"
@@ -73,6 +75,14 @@ func singleStringListResultToTerraform(field_name string) func(*[]string) []M {
 		}
 		return res
 	}
+}
+
+func hiddeData(val any) string {
+	return strings.Repeat("*", 16)
+}
+
+func ignoreChange(k, old, new string, d *schema.ResourceData) bool {
+	return true
 }
 
 func wrapInArray(e interface{}) []interface{} {

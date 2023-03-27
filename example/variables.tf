@@ -6,5 +6,4 @@ variable "token" {
 variable "oforero11_password" {
     type        = string
     description = "The password for the user"
-    sensitive   = true
 }

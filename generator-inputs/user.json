@@ -103,7 +103,8 @@
                         "name": "password",
                         "type": "schema.TypeString",
                         "required": true,
-                        "sensitive": true
+                        "state_func": "hiddeData",
+                        "diff_func": "ignoreChange"
                     },
                     {
                         "name": "first_name",

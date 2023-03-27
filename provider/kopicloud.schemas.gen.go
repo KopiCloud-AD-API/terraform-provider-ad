@@ -62,6 +62,12 @@ func schemaOfOU(scalar_field_name string) *schema.Schema {
 func schemaMapOfOU(scalar_field_name string) map[string]*schema.Schema {
 	return map[string]*schema.Schema{
 
+		"guid": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
 		"name": {
 			Type:        schema.TypeString,
 			Computed:    true,
@@ -85,98 +91,173 @@ func schemaMapOfOU(scalar_field_name string) map[string]*schema.Schema {
 			Computed:    true,
 			Description: "",
 		},
-
-		"guid": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
 	}
 }
 
-func schemaOfDnsZoneList(scalar_field_name string) *schema.Schema {
+func schemaOfUserList(scalar_field_name string) *schema.Schema {
 	return &schema.Schema{
 		Type:        schema.TypeList,
 		Computed:    true,
-		Description: fmt.Sprintf("List of %s", "DnsZone"),
+		Description: fmt.Sprintf("List of %s", "User"),
 		Elem: &schema.Resource{
-			Schema: schemaMapOfDnsZone(scalar_field_name),
+			Schema: schemaMapOfUser(scalar_field_name),
 		},
 	}
 }
 
-func schemaOfDnsZone(scalar_field_name string) *schema.Schema {
+func schemaOfUser(scalar_field_name string) *schema.Schema {
 	return &schema.Schema{
 		Type:        schema.TypeList,
 		Computed:    true,
-		Description: fmt.Sprintf("Single Element List of %s", "DnsZone"),
+		Description: fmt.Sprintf("Single Element List of %s", "User"),
 		Elem: &schema.Resource{
-			Schema: schemaMapOfDnsZone(scalar_field_name),
+			Schema: schemaMapOfUser(scalar_field_name),
 		},
 	}
 }
 
-func schemaMapOfDnsZone(scalar_field_name string) map[string]*schema.Schema {
+func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 	return map[string]*schema.Schema{
 
-		"distinguished_name": {
+		"city": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"zone_name": {
+		"profile_logon_script": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"zone_type": {
+		"home_folder_directory": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"type": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-	}
-}
-
-func schemaOfGroupList(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("List of %s", "Group"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfGroup(scalar_field_name),
-		},
-	}
-}
-
-func schemaOfGroup(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("Single Element List of %s", "Group"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfGroup(scalar_field_name),
-		},
-	}
-}
-
-func schemaMapOfGroup(scalar_field_name string) map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-
-		"name": {
+		"rds_home_folder_drive": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"scope": {
+		"first_name": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"email_address": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"street_po_box": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"postal_code": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"mobile_phone": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"rds_profile_path": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"rds_allow_logon": {
+			Type:        schema.TypeBool,
+			Computed:    true,
+			Description: "",
+		},
+
+		"sam_username": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"password_never_expired": {
+			Type:        schema.TypeBool,
+			Computed:    true,
+			Description: "",
+		},
+
+		"home_phone": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"country": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"office_phone": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"manager": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"home_folder_path": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"change_password_next_logon": {
+			Type:        schema.TypeBool,
+			Computed:    true,
+			Description: "",
+		},
+
+		"job_title": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"street_address": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"state": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"profile_path": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"rds_home_folder_path": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -188,94 +269,67 @@ func schemaMapOfGroup(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"email": {
+		"department": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"initials": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"display_name": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"office": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"company": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"home_folder_drive": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"rds_connect_drive": {
+			Type:        schema.TypeBool,
+			Computed:    true,
+			Description: "",
+		},
+
+		"guid": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"username": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+
+		"last_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
 		"ou_path": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"type": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"guid": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-	}
-}
-
-func schemaOfComputerList(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("List of %s", "Computer"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfComputer(scalar_field_name),
-		},
-	}
-}
-
-func schemaOfComputer(scalar_field_name string) *schema.Schema {
-	return &schema.Schema{
-		Type:        schema.TypeList,
-		Computed:    true,
-		Description: fmt.Sprintf("Single Element List of %s", "Computer"),
-		Elem: &schema.Resource{
-			Schema: schemaMapOfComputer(scalar_field_name),
-		},
-	}
-}
-
-func schemaMapOfComputer(scalar_field_name string) map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-
-		"description": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"dns_name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"path": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"created": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"sid": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"computer_name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"operating_system": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -340,98 +394,89 @@ func schemaMapOfDnsRecord(scalar_field_name string) map[string]*schema.Schema {
 	}
 }
 
-func schemaOfUserList(scalar_field_name string) *schema.Schema {
+func schemaOfDnsZoneList(scalar_field_name string) *schema.Schema {
 	return &schema.Schema{
 		Type:        schema.TypeList,
 		Computed:    true,
-		Description: fmt.Sprintf("List of %s", "User"),
+		Description: fmt.Sprintf("List of %s", "DnsZone"),
 		Elem: &schema.Resource{
-			Schema: schemaMapOfUser(scalar_field_name),
+			Schema: schemaMapOfDnsZone(scalar_field_name),
 		},
 	}
 }
 
-func schemaOfUser(scalar_field_name string) *schema.Schema {
+func schemaOfDnsZone(scalar_field_name string) *schema.Schema {
 	return &schema.Schema{
 		Type:        schema.TypeList,
 		Computed:    true,
-		Description: fmt.Sprintf("Single Element List of %s", "User"),
+		Description: fmt.Sprintf("Single Element List of %s", "DnsZone"),
 		Elem: &schema.Resource{
-			Schema: schemaMapOfUser(scalar_field_name),
+			Schema: schemaMapOfDnsZone(scalar_field_name),
 		},
 	}
 }
 
-func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
+func schemaMapOfDnsZone(scalar_field_name string) map[string]*schema.Schema {
 	return map[string]*schema.Schema{
 
-		"postal_code": {
+		"distinguished_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"profile_logon_script": {
+		"zone_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"home_folder_drive": {
+		"zone_type": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"rds_profile_path": {
+		"type": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+	}
+}
+
+func schemaOfComputerList(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("List of %s", "Computer"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfComputer(scalar_field_name),
+		},
+	}
+}
+
+func schemaOfComputer(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("Single Element List of %s", "Computer"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfComputer(scalar_field_name),
+		},
+	}
+}
+
+func schemaMapOfComputer(scalar_field_name string) map[string]*schema.Schema {
+	return map[string]*schema.Schema{
+
+		"computer_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"rds_allow_logon": {
-			Type:        schema.TypeBool,
-			Computed:    true,
-			Description: "",
-		},
-
-		"password_never_expired": {
-			Type:        schema.TypeBool,
-			Computed:    true,
-			Description: "",
-		},
-
-		"city": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"home_folder_path": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"email_address": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"mobile_phone": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"street_address": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"home_phone": {
+		"operating_system": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -443,79 +488,70 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"company": {
+		"dns_name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"change_password_next_logon": {
-			Type:        schema.TypeBool,
-			Computed:    true,
-			Description: "",
-		},
-
-		"country": {
+		"path": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"last_name": {
+		"created": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"department": {
+		"sid": {
+			Type:        schema.TypeString,
+			Computed:    true,
+			Description: "",
+		},
+	}
+}
+
+func schemaOfGroupList(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("List of %s", "Group"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfGroup(scalar_field_name),
+		},
+	}
+}
+
+func schemaOfGroup(scalar_field_name string) *schema.Schema {
+	return &schema.Schema{
+		Type:        schema.TypeList,
+		Computed:    true,
+		Description: fmt.Sprintf("Single Element List of %s", "Group"),
+		Elem: &schema.Resource{
+			Schema: schemaMapOfGroup(scalar_field_name),
+		},
+	}
+}
+
+func schemaMapOfGroup(scalar_field_name string) map[string]*schema.Schema {
+	return map[string]*schema.Schema{
+
+		"email": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"first_name": {
+		"ou_path": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"rds_home_folder_drive": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"display_name": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"initials": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"manager": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"street_po_box": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"office_phone": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"profile_path": {
+		"type": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
@@ -527,55 +563,19 @@ func schemaMapOfUser(scalar_field_name string) map[string]*schema.Schema {
 			Description: "",
 		},
 
-		"username": {
+		"name": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"rds_home_folder_path": {
+		"scope": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",
 		},
 
-		"office": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"state": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"job_title": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"home_folder_directory": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"rds_connect_drive": {
-			Type:        schema.TypeBool,
-			Computed:    true,
-			Description: "",
-		},
-
-		"sam_username": {
-			Type:        schema.TypeString,
-			Computed:    true,
-			Description: "",
-		},
-
-		"ou_path": {
+		"description": {
 			Type:        schema.TypeString,
 			Computed:    true,
 			Description: "",

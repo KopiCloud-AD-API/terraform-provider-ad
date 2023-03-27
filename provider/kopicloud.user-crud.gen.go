@@ -32,7 +32,11 @@ func resourceUser() *schema.Resource {
 		Computed:  false,
 		Optional:  false,
 		Required:  true,
-		Sensitive: true,
+		Sensitive: false,
+
+		StateFunc: hiddeData,
+
+		DiffSuppressFunc: ignoreChange,
 
 		Description: "",
 	}

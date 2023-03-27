@@ -322,7 +322,7 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_user" "test" {
-  username     = "oforero16"
+  username     = "oforero19"
   password     = var.oforero11_password
   first_name   = "Oscar"
   last_name    = "Forero"
