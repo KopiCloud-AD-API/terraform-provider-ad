@@ -17,10 +17,11 @@ func resourceDnsLookupZone() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
 	terraformSchema["zone_name"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 

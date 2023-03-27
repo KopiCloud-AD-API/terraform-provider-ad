@@ -18,10 +18,11 @@ func resourceUserDisableAccount() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
 	terraformSchema["username"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -29,10 +30,11 @@ func resourceUserDisableAccount() *schema.Resource {
 	}
 
 	terraformSchema["show_fields"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 

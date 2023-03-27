@@ -102,7 +102,8 @@
                     {
                         "name": "password",
                         "type": "schema.TypeString",
-                        "required": true
+                        "required": true,
+                        "sensitive": true
                     },
                     {
                         "name": "first_name",
@@ -276,12 +277,7 @@
                     }
                 ]
             },
-            "result_schemas": {
-                "result": {
-                    "schema_function": "schemaOfUser",
-                    "schema_function_arguments": "(``)"        
-                }
-            },
+            "result_schemas": {},
 
             "element_name": "User",
             "create": {
@@ -481,7 +477,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "UserToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_User"                    
                 }
             },
@@ -509,7 +504,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "UserToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_User"                    
                 }
             },
@@ -704,7 +698,6 @@
                         "result_field": "Result",
                         "api_to_terraform": "UserToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
                         "api_to_terraform_id": "getId_for_User"                    
                     }
                 }
@@ -735,7 +728,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "UserToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_User"                    
                 }
             }

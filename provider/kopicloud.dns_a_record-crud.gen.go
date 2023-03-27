@@ -17,10 +17,11 @@ func resourceDnsARecord() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
 	terraformSchema["hostname"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -28,10 +29,11 @@ func resourceDnsARecord() *schema.Resource {
 	}
 
 	terraformSchema["ip_address"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -39,10 +41,11 @@ func resourceDnsARecord() *schema.Resource {
 	}
 
 	terraformSchema["zone_name"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 

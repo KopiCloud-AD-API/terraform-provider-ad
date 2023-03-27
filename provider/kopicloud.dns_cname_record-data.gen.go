@@ -24,6 +24,7 @@ func dataSourceDnsCNameRecordReader() *schema.Resource {
 		Computed:    false,
 		Optional:    true,
 		Required:    false,
+		Sensitive:   false,
 		Description: "",
 	}
 
@@ -32,6 +33,7 @@ func dataSourceDnsCNameRecordReader() *schema.Resource {
 		Computed:    false,
 		Optional:    true,
 		Required:    false,
+		Sensitive:   false,
 		Description: "",
 	}
 
@@ -40,6 +42,7 @@ func dataSourceDnsCNameRecordReader() *schema.Resource {
 		Computed:    false,
 		Optional:    true,
 		Required:    false,
+		Sensitive:   false,
 		Description: "",
 	}
 

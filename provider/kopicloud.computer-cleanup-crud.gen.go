@@ -18,10 +18,11 @@ func resourceComputerCleanUp() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
 	terraformSchema["days"] = &schema.Schema{
-		Type:     schema.TypeInt,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeInt,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -29,10 +30,11 @@ func resourceComputerCleanUp() *schema.Resource {
 	}
 
 	terraformSchema["ou_path"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -40,10 +42,11 @@ func resourceComputerCleanUp() *schema.Resource {
 	}
 
 	terraformSchema["recursive"] = &schema.Schema{
-		Type:     schema.TypeBool,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeBool,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 

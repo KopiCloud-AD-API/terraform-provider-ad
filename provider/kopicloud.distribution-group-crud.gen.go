@@ -17,46 +17,51 @@ func resourceDistributionGroup() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
 	terraformSchema["name"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		Description: "",
 	}
 
 	terraformSchema["scope"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		Description: "",
 	}
 
 	terraformSchema["description"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		Description: "",
 	}
 
 	terraformSchema["email"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		Description: "",
 	}
 
 	terraformSchema["ou_path"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		Description: "",
 	}

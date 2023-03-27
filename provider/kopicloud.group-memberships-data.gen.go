@@ -24,6 +24,7 @@ func dataSourceGroupMembership() *schema.Resource {
 		Computed:    false,
 		Optional:    false,
 		Required:    true,
+		Sensitive:   false,
 		Description: "",
 	}
 
@@ -32,6 +33,7 @@ func dataSourceGroupMembership() *schema.Resource {
 		Computed:    false,
 		Optional:    true,
 		Required:    false,
+		Sensitive:   false,
 		Description: "",
 	}
 

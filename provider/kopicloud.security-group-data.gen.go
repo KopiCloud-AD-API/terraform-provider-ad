@@ -136,6 +136,7 @@ func dataSourceSecurityGroup() *schema.Resource {
 		Computed:    false,
 		Optional:    true,
 		Required:    false,
+		Sensitive:   false,
 		Description: "",
 	}
 
@@ -144,6 +145,7 @@ func dataSourceSecurityGroup() *schema.Resource {
 		Computed:    false,
 		Optional:    true,
 		Required:    false,
+		Sensitive:   false,
 		Description: "",
 	}
 

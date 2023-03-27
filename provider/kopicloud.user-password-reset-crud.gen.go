@@ -18,10 +18,11 @@ func resourceUserPasswordReset() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
 	terraformSchema["username"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -29,10 +30,11 @@ func resourceUserPasswordReset() *schema.Resource {
 	}
 
 	terraformSchema["new_password"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -40,10 +42,11 @@ func resourceUserPasswordReset() *schema.Resource {
 	}
 
 	terraformSchema["change_password_next_logon"] = &schema.Schema{
-		Type:     schema.TypeBool,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeBool,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -51,10 +54,11 @@ func resourceUserPasswordReset() *schema.Resource {
 	}
 
 	terraformSchema["show_fields"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 

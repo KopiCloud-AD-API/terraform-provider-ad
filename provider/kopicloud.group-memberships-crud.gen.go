@@ -17,10 +17,11 @@ func resourceGroupMembership() *schema.Resource {
 	terraformSchema := make(map[string]*schema.Schema)
 
 	terraformSchema["user_name"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: false,
-		Required: true,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  false,
+		Required:  true,
+		Sensitive: false,
 
 		ForceNew: true,
 
@@ -28,10 +29,11 @@ func resourceGroupMembership() *schema.Resource {
 	}
 
 	terraformSchema["group_name"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Computed: false,
-		Optional: true,
-		Required: false,
+		Type:      schema.TypeString,
+		Computed:  false,
+		Optional:  true,
+		Required:  false,
+		Sensitive: false,
 
 		ForceNew: true,
 

@@ -136,6 +136,7 @@ func dataSourceDnsLookupZoneReader() *schema.Resource {
 		Computed:    false,
 		Optional:    true,
 		Required:    false,
+		Sensitive:   false,
 		Description: "",
 	}
 

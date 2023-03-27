@@ -233,7 +233,7 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
+			if err := d.Set("", result); err != nil {
 				return diag.FromErr(err)
 			}
 
