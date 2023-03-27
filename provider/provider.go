@@ -79,6 +79,7 @@ func singleStringListResultToTerraform(field_name string) func(*[]string) []M {
 }
 
 func hiddeData(val any) string {
+	fmt.Println("Hidding data for field")
 	return strings.Repeat("*", 16)
 }
 
