@@ -322,8 +322,8 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_user" "test" {
-  username     = "oforero15"
-  password     = "vMD48X6Vdyj49j8%"
+  username     = "oforero16"
+  password     = var.oforero11_password
   first_name   = "Oscar"
   last_name    = "Forero"
   initials     = "OMFC"
@@ -332,7 +332,7 @@ resource "kopicloud_user" "test" {
 
 output "user" {
   description = "Created User"
-  value = resource.kopicloud_user.test.result
+  value = {for k,v in resource.kopicloud_user.test : k => v if k != "password" && v != null}
 }
 
 # resource "kopicloud_user_password_reset" "test" {
