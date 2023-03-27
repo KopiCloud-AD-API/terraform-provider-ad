@@ -318,6 +318,8 @@ func resourceUser() *schema.Resource {
 		Required:  false,
 		Sensitive: false,
 
+		StateFunc: unquoteData,
+
 		Description: "",
 	}
 

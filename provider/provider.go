@@ -3,6 +3,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -83,6 +84,14 @@ func hiddeData(val any) string {
 
 func ignoreChange(k, old, new string, d *schema.ResourceData) bool {
 	return true
+}
+
+func unquoteData(val any) string {
+	if s, err := strconv.Unquote(val.(string)); err != nil {
+		return s
+	} else {
+		return val.(string)
+	}
 }
 
 func wrapInArray(e interface{}) []interface{} {

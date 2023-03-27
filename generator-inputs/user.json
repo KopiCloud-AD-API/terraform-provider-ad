@@ -244,7 +244,8 @@
                     {
                         "name": "home_folder_directory",
                         "type": "schema.TypeString",
-                        "optional": true
+                        "optional": true,
+                        "state_func": "unquoteData"
                     },
                     {
                         "name": "rds_profile_path",
