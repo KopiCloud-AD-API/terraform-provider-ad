@@ -332,7 +332,7 @@ resource "kopicloud_user" "test" {
 
 output "user" {
   description = "Created User"
-  value = {for k,v in resource.kopicloud_user.test : k => v if k != "password" && v != null}
+  value = resource.kopicloud_user.test
 }
 
 # resource "kopicloud_user_password_reset" "test" {
