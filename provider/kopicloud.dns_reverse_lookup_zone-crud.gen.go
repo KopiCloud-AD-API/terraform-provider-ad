@@ -115,9 +115,7 @@ func resourceDnsReverseLookupZoneCreate(ctx context.Context, d *schema.ResourceD
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_DnsLookupZone(api_result))
 
@@ -205,9 +203,7 @@ func resourceDnsReverseLookupZoneRead(ctx context.Context, d *schema.ResourceDat
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_DnsLookupZone(api_result))
 
@@ -295,9 +291,7 @@ func resourceDnsReverseLookupZoneDelete(ctx context.Context, d *schema.ResourceD
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

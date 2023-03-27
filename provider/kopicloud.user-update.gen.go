@@ -233,9 +233,7 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))
 

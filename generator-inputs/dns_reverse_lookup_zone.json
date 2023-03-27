@@ -109,7 +109,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "DnsZoneToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_DnsLookupZone"                    
                 }
             },
@@ -133,7 +132,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "DnsZoneToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_DnsLookupZone"                    
                 }
             },
@@ -158,7 +156,7 @@
                     "result_field": "Result",
                     "api_to_terraform": "DnsZoneToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result"
+                    "api_to_terraform_id": "getId_for_DnsLookupZone"                    
                 }
             }
         }

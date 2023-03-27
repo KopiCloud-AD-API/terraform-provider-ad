@@ -57,8 +57,6 @@ func resourceOU() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["result"] = schemaOfOU(``)
-
 	return &schema.Resource{
 
 		CreateContext: resourceOUCreate,
@@ -165,9 +163,7 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_OU(api_result))
 
@@ -258,9 +254,7 @@ func resourceOURead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_OU(api_result))
 
@@ -355,9 +349,7 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

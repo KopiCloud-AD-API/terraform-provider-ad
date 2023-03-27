@@ -328,6 +328,7 @@ resource "kopicloud_user" "test" {
   last_name    = "Forero"
   initials     = "OMFC"
   company = "Kopicloud Inc."
+  country = "Germany"
 }
 
 output "user" {

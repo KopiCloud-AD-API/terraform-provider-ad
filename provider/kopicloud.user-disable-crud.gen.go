@@ -41,8 +41,6 @@ func resourceUserDisableAccount() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["result"] = schemaOfUser(``)
-
 	return &schema.Resource{
 
 		CreateContext: resourceUserDisableAccountCreate,
@@ -134,9 +132,7 @@ func resourceUserDisableAccountCreate(ctx context.Context, d *schema.ResourceDat
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))
 
@@ -233,9 +229,7 @@ func resourceUserDisableAccountRead(ctx context.Context, d *schema.ResourceData,
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))
 
@@ -332,9 +326,7 @@ func resourceUserDisableAccountDelete(ctx context.Context, d *schema.ResourceDat
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

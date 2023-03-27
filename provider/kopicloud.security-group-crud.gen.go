@@ -66,8 +66,6 @@ func resourceGroup() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["result"] = schemaOfGroup(``)
-
 	return &schema.Resource{
 
 		CreateContext: resourceGroupCreate,
@@ -179,9 +177,7 @@ func resourceGroupCreate(ctx context.Context, d *schema.ResourceData, m interfac
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_Group(api_result))
 
@@ -269,9 +265,7 @@ func resourceGroupRead(ctx context.Context, d *schema.ResourceData, m interface{
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_Group(api_result))
 
@@ -365,9 +359,7 @@ func resourceGroupDelete(ctx context.Context, d *schema.ResourceData, m interfac
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

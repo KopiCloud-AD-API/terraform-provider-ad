@@ -41,8 +41,6 @@ func resourceUserEnableAccount() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["result"] = schemaOfUser(``)
-
 	return &schema.Resource{
 
 		CreateContext: resourceUserEnableAccountCreate,
@@ -134,9 +132,7 @@ func resourceUserEnableAccountCreate(ctx context.Context, d *schema.ResourceData
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))
 
@@ -233,9 +229,7 @@ func resourceUserEnableAccountRead(ctx context.Context, d *schema.ResourceData, 
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))
 
@@ -332,9 +326,7 @@ func resourceUserEnableAccountDelete(ctx context.Context, d *schema.ResourceData
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

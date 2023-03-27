@@ -46,8 +46,6 @@ func resourceComputer() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["result"] = schemaOfComputer(``)
-
 	return &schema.Resource{
 
 		CreateContext: resourceComputerCreate,
@@ -147,9 +145,7 @@ func resourceComputerCreate(ctx context.Context, d *schema.ResourceData, m inter
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_Computer(api_result))
 
@@ -237,9 +233,7 @@ func resourceComputerRead(ctx context.Context, d *schema.ResourceData, m interfa
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_Computer(api_result))
 
@@ -327,9 +321,7 @@ func resourceComputerDelete(ctx context.Context, d *schema.ResourceData, m inter
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

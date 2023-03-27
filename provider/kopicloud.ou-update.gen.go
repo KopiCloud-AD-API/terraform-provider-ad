@@ -107,9 +107,7 @@ func resourceOU_Update_0(ctx context.Context, d *schema.ResourceData, m interfac
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_OU(api_result))
 
@@ -200,9 +198,7 @@ func resourceOU_Update_1(ctx context.Context, d *schema.ResourceData, m interfac
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_OU(api_result))
 

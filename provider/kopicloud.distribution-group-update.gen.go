@@ -99,9 +99,7 @@ func resourceDistributionGroup_Update_0(ctx context.Context, d *schema.ResourceD
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_Group(api_result))
 

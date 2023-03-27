@@ -102,12 +102,7 @@
                     }
                 ]
             },
-            "result_schemas": {
-                "result": {
-                    "schema_function": "schemaOfGroup",
-                    "schema_function_arguments": "(``)"        
-                }
-            },
+            "result_schemas": {},
 
             "element_name": "Group",
             "create": {
@@ -136,7 +131,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "GroupToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_GroupMembership" 
                 }
             },
@@ -165,7 +159,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "GroupToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_GroupMembership" 
                 }
             },
@@ -195,7 +188,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "GroupToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_GroupMembership" 
                 }
             }

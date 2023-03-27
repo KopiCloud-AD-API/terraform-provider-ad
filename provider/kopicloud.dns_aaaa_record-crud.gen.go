@@ -52,8 +52,6 @@ func resourceDnsAAAARecord() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["result"] = schemaOfDnsRecord(``)
-
 	return &schema.Resource{
 
 		CreateContext: resourceDnsAAAARecordCreate,
@@ -152,9 +150,7 @@ func resourceDnsAAAARecordCreate(ctx context.Context, d *schema.ResourceData, m 
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_DnsAAAARecord(api_result))
 
@@ -255,9 +251,7 @@ func resourceDnsAAAARecordRead(ctx context.Context, d *schema.ResourceData, m in
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_DnsAAAARecord(api_result))
 
@@ -358,9 +352,7 @@ func resourceDnsAAAARecordDelete(ctx context.Context, d *schema.ResourceData, m 
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

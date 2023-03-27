@@ -36,6 +36,10 @@ func resourceUserPasswordReset() *schema.Resource {
 		Required:  true,
 		Sensitive: false,
 
+		StateFunc: hiddeData,
+
+		DiffSuppressFunc: ignoreChange,
+
 		ForceNew: true,
 
 		Description: "",
@@ -64,8 +68,6 @@ func resourceUserPasswordReset() *schema.Resource {
 
 		Description: "",
 	}
-
-	terraformSchema["result"] = schemaOfUser(``)
 
 	return &schema.Resource{
 
@@ -170,9 +172,7 @@ func resourceUserPasswordResetCreate(ctx context.Context, d *schema.ResourceData
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))
 
@@ -269,9 +269,7 @@ func resourceUserPasswordResetRead(ctx context.Context, d *schema.ResourceData, 
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))
 
@@ -368,9 +366,7 @@ func resourceUserPasswordResetDelete(ctx context.Context, d *schema.ResourceData
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
-				return diag.FromErr(err)
-			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId("")
 

@@ -118,12 +118,7 @@
                     }
                 ]
             },
-            "result_schemas": {
-                "result": {
-                    "schema_function": "schemaOfComputer",
-                    "schema_function_arguments": "(``)"        
-                }
-            },
+            "result_schemas": {},
 
             "element_name": "Computer",
             "create": {
@@ -157,7 +152,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "ComputerToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_Computer"                    
                 }
             },
@@ -180,7 +174,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "ComputerToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_Computer"                    
                 }
             },
@@ -243,7 +236,6 @@
                         "result_field": "Result",
                         "api_to_terraform": "ComputerToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
                         "api_to_terraform_id": "getId_for_Computer"                    
                     }
                 }
@@ -268,7 +260,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "ComputerToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_Computer"                    
                 }
             }

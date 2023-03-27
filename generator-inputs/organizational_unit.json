@@ -100,12 +100,7 @@
                     }
                 ]
             },
-            "result_schemas": {
-                "result": {
-                    "schema_function": "schemaOfOU",
-                    "schema_function_arguments": "(``)"        
-                }
-            },
+            "result_schemas": {},
 
             "element_name": "OU",
             "create": {
@@ -144,7 +139,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "OUToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_OU" 
                 }
             },
@@ -167,7 +161,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "OUToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_OU" 
                 }
             },
@@ -201,7 +194,6 @@
                         "result_field": "Result",
                         "api_to_terraform": "OUToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
                         "api_to_terraform_id": "getId_for_OU" 
                     }
                 },
@@ -236,7 +228,6 @@
                         "result_field": "Result",
                         "api_to_terraform": "OUToTerraform",
                         "result_wrapper": "wrapInArray",
-                        "terraform_field": "result",
                         "api_to_terraform_id": "getId_for_OU" 
                     }
                 }
@@ -268,7 +259,6 @@
                     "result_field": "Result",
                     "api_to_terraform": "OUToTerraform",
                     "result_wrapper": "wrapInArray",
-                    "terraform_field": "result",
                     "api_to_terraform_id": "getId_for_OU" 
                 }
             }
