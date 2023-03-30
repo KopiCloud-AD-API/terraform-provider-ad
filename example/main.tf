@@ -381,7 +381,7 @@ output "user" {
 
 # Create a OU 
 resource "kopicloud_ou" "test" { 
-  ou_path = "DC=kopicloud,DC=local" 
+  ou_destination_path = "DC=kopicloud,DC=local" 
   ou_name = "kopicloud-labtest-OU-ABC" 
   protected = false 
   description = "OU for KopiCloud Lab Test" 
