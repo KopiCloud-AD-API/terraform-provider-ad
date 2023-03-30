@@ -322,7 +322,7 @@ provider "kopicloud" {
 # }
 
 resource "kopicloud_user" "test" {
-  username     = "oforero19"
+  username     = "oforero20"
   password     = var.oforero11_password
   first_name   = "Oscar"
   last_name    = "Forero"
@@ -330,7 +330,7 @@ resource "kopicloud_user" "test" {
   company = "Kopicloud Inc."
   country = "Germany"
   home_folder_drive = "Y:"
-  home_folder_directory = "\\\\MyServer\\my_folder2"
+  home_folder_directory = "\\\\MyServer\\my_folder_2"
 }
 
 output "user" {
@@ -377,3 +377,17 @@ output "user" {
 #   description = "Created Global Security Group"
 #   value       = resource.kopicloud_security_group.test_security_global
 # }
+
+
+# Create a OU 
+resource "kopicloud_ou" "test" { 
+  ou_path = "DC=kopicloud,DC=local" 
+  ou_name = "kopicloud-labtest-OU-ABC" 
+  protected = false 
+  description = "OU for KopiCloud Lab Test" 
+}  
+# Returns Created OU 
+output "OUTPUT_created_ou" { 
+  description = "Created OU" 
+  value = resource.kopicloud_ou.test 
+}

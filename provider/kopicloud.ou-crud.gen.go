@@ -27,10 +27,20 @@ func resourceOU() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["ou_path"] = &schema.Schema{
+	terraformSchema["ou_destination_path"] = &schema.Schema{
 		Type:      schema.TypeString,
 		Computed:  false,
 		Optional:  true,
+		Required:  false,
+		Sensitive: false,
+
+		Description: "",
+	}
+
+	terraformSchema["ou_path"] = &schema.Schema{
+		Type:      schema.TypeString,
+		Computed:  true,
+		Optional:  false,
 		Required:  false,
 		Sensitive: false,
 
@@ -91,9 +101,9 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 
 	description := d.Get("description").(string)
 
-	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
+	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_destination_path"))
 
-	ou_path := d.Get("ou_path").(string)
+	ou_destination_path := d.Get("ou_destination_path").(string)
 
 	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute protected"))
 
@@ -107,7 +117,7 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 
 		OUDescription: &description,
 
-		OUDestinationPath: ou_path,
+		OUDestinationPath: ou_destination_path,
 
 		IsProtected: &protected,
 	}
@@ -162,6 +172,10 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 			}
 
 			result := wrapInArray(resItems)
+
+			if err := d.Set("ou_path", api_result.Path); err != nil {
+				return diag.FromErr(err)
+			}
 
 			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
@@ -254,6 +268,10 @@ func resourceOURead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 
 			result := wrapInArray(resItems)
 
+			if err := d.Set("ou_path", api_result.Path); err != nil {
+				return diag.FromErr(err)
+			}
+
 			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_OU(api_result))
@@ -283,7 +301,7 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 
 	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute ou_path"))
 
-	ou_path := d.Get("result.0.path").(string)
+	ou_path := d.Get("ou_path").(string)
 
 	tflog.Debug(ctx, fmt.Sprintf("Creating variable for attribute protected"))
 
@@ -348,6 +366,10 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 			}
 
 			result := wrapInArray(resItems)
+
+			if err := d.Set("ou_path", api_result.Path); err != nil {
+				return diag.FromErr(err)
+			}
 
 			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 

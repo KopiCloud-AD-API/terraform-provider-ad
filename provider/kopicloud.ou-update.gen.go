@@ -46,7 +46,7 @@ func resourceOU_Update_0(ctx context.Context, d *schema.ResourceData, m interfac
 		"schema_data": d,
 	})
 
-	ou_path := getFieldValue("result.0.path", false, d).(string)
+	ou_path := getFieldValue("ou_path", false, d).(string)
 
 	ou_name := getFieldValue("ou_name", false, d).(string)
 
@@ -106,6 +106,10 @@ func resourceOU_Update_0(ctx context.Context, d *schema.ResourceData, m interfac
 			}
 
 			result := wrapInArray(resItems)
+
+			if err := d.Set("ou_path", api_result.Path); err != nil {
+				return diag.FromErr(err)
+			}
 
 			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
@@ -197,6 +201,10 @@ func resourceOU_Update_1(ctx context.Context, d *schema.ResourceData, m interfac
 			}
 
 			result := wrapInArray(resItems)
+
+			if err := d.Set("ou_path", api_result.Path); err != nil {
+				return diag.FromErr(err)
+			}
 
 			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
