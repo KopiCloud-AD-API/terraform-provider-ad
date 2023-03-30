@@ -22,8 +22,6 @@ func resources() map[string]*schema.Resource {
 
 		"kopicloud_computer": resourceComputer(),
 
-		"kopicloud_computer_cleanup": resourceComputerCleanUp(),
-
 		"kopicloud_ou": resourceOU(),
 
 		"kopicloud_dns_a_record": resourceDnsARecord(),
