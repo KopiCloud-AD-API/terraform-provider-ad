@@ -9,24 +9,20 @@ description: "KopiCloud AD API - kopicloud_distribution_group_list (Data Source)
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html) 
 [![KopiCloud_AD_API](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
 
-List Group Membership of an Active Directory User.
+List Active Directory Distribution Groups
 
 ## Example Usage
 
-List AD User Group Membership:
-
+Get the List of Distribution Groups
 ```
-data "kopicloud_group_membership_list" "test" {
-  user_name  = "guillermo"
-}
+data "kopicloud_distribution_group_list" "test_distribution" { }
 ```
 
-Show Group Membership:
-
+Returns the List of Distribution Groups
 ```
-output "OUTPUT_active_directory_user_list_all" {
-  description = "Return all AD User Group Membership"
-  value       = data.kopicloud_group_membership_list.test
+output "OUTPUT_kopicloud_distribution_groups_list" {
+  description = "All Existing Distribution Groups"
+  value       = data.kopicloud_distribution_group_list.test_distribution
 }
 ```
 
@@ -35,7 +31,8 @@ output "OUTPUT_active_directory_user_list_all" {
 
 ### Optional
 
-- `user_name` (String) = AD user name
+- `name` (String) = AD Group name
+- `ou_path` (String) = AD Group OU Path
 
 ### Read-Only
 
