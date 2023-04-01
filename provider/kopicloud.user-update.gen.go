@@ -233,6 +233,138 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 			result := wrapInArray(resItems)
 
+			if err := d.Set("first_name", api_result.FirstName); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("initials", api_result.Initials); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("last_name", api_result.LastName); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("display_name", api_result.DisplayName); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("description", api_result.Description); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("email_address", api_result.EmailAddress); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("department", api_result.Department); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("office", api_result.Office); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("company", api_result.Company); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("change_password_next_logon", api_result.ChangePasswordNextLogon); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("password_never_expires", api_result.PasswordNeverExpired); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("ou_path", api_result.OuPath); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("job_title", api_result.JobTitle); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("manager", api_result.Manager); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("street", api_result.StreetAddress); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("po_box", api_result.StreetPoBox); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("city", api_result.City); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("state", api_result.State); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("zip_code", api_result.PostalCode); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("country", api_result.Country); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("office_phone", api_result.OfficePhone); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("home_phone", api_result.HomePhone); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("mobile_phone", api_result.MobilePhone); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("profile_path", api_result.ProfilePath); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("profile_logon_script", api_result.ProfileLogonScript); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("home_folder_path", api_result.HomeFolderPath); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("home_folder_drive", api_result.HomeFolderDrive); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("home_folder_directory", api_result.HomeFolderDirectory); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("rds_profile_path", api_result.RdsProfilePath); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("rds_home_folder_path", api_result.RdsHomeFolderPath); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("rds_home_folder_drive", api_result.RdsHomeFolderDrive); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("rds_connect_drive", api_result.RdsConnectDrive); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("rds_allow_logon", api_result.RdsAllowLogon); err != nil {
+				return diag.FromErr(err)
+			}
+
 			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
 
 			d.SetId(getId_for_User(api_result))

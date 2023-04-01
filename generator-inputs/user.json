@@ -103,171 +103,203 @@
                         "name": "password",
                         "type": "schema.TypeString",
                         "required": true,
-                        "state_func": "hiddeData",
-                        "diff_func": "ignoreChange"
+                        "state_func": "hiddeData"
                     },
                     {
                         "name": "first_name",
+                        "result_field": "FirstName",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "initials",
+                        "result_field": "Initials",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "last_name",
+                        "result_field": "LastName",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "display_name",
+                        "result_field": "DisplayName",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "description",
+                        "result_field": "Description",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "email_address",
+                        "result_field": "EmailAddress",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "department",
+                        "result_field": "Department",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "office",
+                        "result_field": "Office",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "company",
+                        "result_field": "Company",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "change_password_next_logon",
+                        "result_field": "ChangePasswordNextLogon",
                         "type": "schema.TypeBool",
                         "optional": true
                     },
                     {
                         "name": "password_never_expires",
+                        "result_field": "PasswordNeverExpired",
                         "type": "schema.TypeBool",
                         "optional": true
                     },
                     {
                         "name": "ou_path",
+                        "result_field": "OuPath",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "job_title",
+                        "result_field": "JobTitle",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "manager",
+                        "result_field": "Manager",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "street",
+                        "result_field": "StreetAddress",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "po_box",
+                        "result_field": "StreetPoBox",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "city",
+                        "result_field": "City",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "state",
+                        "result_field": "State",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "zip_code",
+                        "result_field": "PostalCode",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "country",
+                        "result_field": "Country",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "office_phone",
+                        "result_field": "OfficePhone",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "home_phone",
+                        "result_field": "HomePhone",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "mobile_phone",
+                        "result_field": "MobilePhone",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "profile_path",
+                        "result_field": "ProfilePath",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "profile_logon_script",
+                        "result_field": "ProfileLogonScript",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "home_folder_path",
+                        "result_field": "HomeFolderPath",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "home_folder_drive",
+                        "result_field": "HomeFolderDrive",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "home_folder_directory",
+                        "result_field": "HomeFolderDirectory",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "rds_profile_path",
+                        "result_field": "RdsProfilePath",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "rds_home_folder_path",
+                        "result_field": "RdsHomeFolderPath",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "rds_home_folder_drive",
+                        "result_field": "RdsHomeFolderDrive",
                         "type": "schema.TypeString",
                         "optional": true
                     },
                     {
                         "name": "rds_connect_drive",
+                        "result_field": "RdsConnectDrive",
                         "type": "schema.TypeBool",
                         "optional": true
                     },
                     {
                         "name": "rds_allow_logon",
+                        "result_field": "RdsAllowLogon",
                         "type": "schema.TypeBool",
                         "optional": true
                     },                    
