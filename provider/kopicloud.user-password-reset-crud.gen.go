@@ -38,8 +38,6 @@ func resourceUserPasswordReset() *schema.Resource {
 
 		StateFunc: hiddeData,
 
-		DiffSuppressFunc: ignoreChange,
-
 		ForceNew: true,
 
 		Description: "",
