@@ -93,23 +93,22 @@ output "OUTPUT_dns_a_records_list_hostname_record_1_ip_address" {
 
 ### Optional
 
-- `hostname` (String)
-- `ip_address` (String)
-- `zone_name` (String)
+- `hostname` (String) = Machine hostname
+- `ip_address` (String) = IP Address
+- `zone_name` (String) = DNS Zone Name
 
 ### Read-Only
 
-- `id` (String) The ID of this resource.
-- `result` (List of Object) List of DnsRecord (see [below for nested schema](#nestedatt--result))
+- `id` (String) = The ID of this resource.
+- `result` (List of Object) = List of DNS Records (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
 
 Read-Only:
 
-- `data` (String)
-- `name` (String)
-- `timestamp` (String)
-- `type` (String)
-- `zone` (String)
-- 
+- `data` (String) = IP Address
+- `name` (String) = hostname
+- `timestamp` (String) = timestamp of the record
+- `type` (String) = type: Host (A)
+- `zone` (String) = DNS Zone
