@@ -187,9 +187,6 @@ type ClientInterface interface {
 	// GetApiComputersAll request
 	GetApiComputersAll(ctx context.Context, params *GetApiComputersAllParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// DeleteApiComputersCleanUp request
-	DeleteApiComputersCleanUp(ctx context.Context, params *DeleteApiComputersCleanUpParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// DeleteApiComputersRemove request
 	DeleteApiComputersRemove(ctx context.Context, params *DeleteApiComputersRemoveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -721,18 +718,6 @@ func (c *Client) GetApiComputers(ctx context.Context, params *GetApiComputersPar
 
 func (c *Client) GetApiComputersAll(ctx context.Context, params *GetApiComputersAllParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiComputersAllRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) DeleteApiComputersCleanUp(ctx context.Context, params *DeleteApiComputersCleanUpParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteApiComputersCleanUpRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -4987,94 +4972,6 @@ func NewGetApiComputersAllRequest(server string, params *GetApiComputersAllParam
 	return req, nil
 }
 
-// NewDeleteApiComputersCleanUpRequest generates requests for DeleteApiComputersCleanUp
-func NewDeleteApiComputersCleanUpRequest(server string, params *DeleteApiComputersCleanUpParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/Computers/CleanUp")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	queryValues := queryURL.Query()
-
-	if params.Days != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Days", runtime.ParamLocationQuery, *params.Days); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.OUPath != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "OUPath", runtime.ParamLocationQuery, *params.OUPath); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	if params.Recursive != nil {
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "Recursive", runtime.ParamLocationQuery, *params.Recursive); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-	}
-
-	queryURL.RawQuery = queryValues.Encode()
-
-	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	var headerParam0 string
-
-	headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Auth-Token", runtime.ParamLocationHeader, params.AuthToken)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Set("Auth-Token", headerParam0)
-
-	return req, nil
-}
-
 // NewDeleteApiComputersRemoveRequest generates requests for DeleteApiComputersRemove
 func NewDeleteApiComputersRemoveRequest(server string, params *DeleteApiComputersRemoveParams) (*http.Request, error) {
 	var err error
@@ -8073,9 +7970,6 @@ type ClientWithResponsesInterface interface {
 	// GetApiComputersAll request
 	GetApiComputersAllWithResponse(ctx context.Context, params *GetApiComputersAllParams, reqEditors ...RequestEditorFn) (*GetApiComputersAllResponse, error)
 
-	// DeleteApiComputersCleanUp request
-	DeleteApiComputersCleanUpWithResponse(ctx context.Context, params *DeleteApiComputersCleanUpParams, reqEditors ...RequestEditorFn) (*DeleteApiComputersCleanUpResponse, error)
-
 	// DeleteApiComputersRemove request
 	DeleteApiComputersRemoveWithResponse(ctx context.Context, params *DeleteApiComputersRemoveParams, reqEditors ...RequestEditorFn) (*DeleteApiComputersRemoveResponse, error)
 
@@ -8941,28 +8835,6 @@ func (r GetApiComputersAllResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r GetApiComputersAllResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-type DeleteApiComputersCleanUpResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *ComputerListResult
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteApiComputersCleanUpResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteApiComputersCleanUpResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -10320,15 +10192,6 @@ func (c *ClientWithResponses) GetApiComputersAllWithResponse(ctx context.Context
 		return nil, err
 	}
 	return ParseGetApiComputersAllResponse(rsp)
-}
-
-// DeleteApiComputersCleanUpWithResponse request returning *DeleteApiComputersCleanUpResponse
-func (c *ClientWithResponses) DeleteApiComputersCleanUpWithResponse(ctx context.Context, params *DeleteApiComputersCleanUpParams, reqEditors ...RequestEditorFn) (*DeleteApiComputersCleanUpResponse, error) {
-	rsp, err := c.DeleteApiComputersCleanUp(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteApiComputersCleanUpResponse(rsp)
 }
 
 // DeleteApiComputersRemoveWithResponse request returning *DeleteApiComputersRemoveResponse
@@ -11700,35 +11563,6 @@ func ParseGetApiComputersAllResponse(rsp *http.Response) (*GetApiComputersAllRes
 	}
 
 	response := &GetApiComputersAllResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ComputerListResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case rsp.StatusCode == 200:
-		// Content-type (text/plain) unsupported
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteApiComputersCleanUpResponse parses an HTTP response from a DeleteApiComputersCleanUpWithResponse call
-func ParseDeleteApiComputersCleanUpResponse(rsp *http.Response) (*DeleteApiComputersCleanUpResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteApiComputersCleanUpResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}

@@ -65,6 +65,8 @@ func resourceUserRename() *schema.Resource {
 		Description: "",
 	}
 
+	terraformSchema["result"] = schemaOfUser(``)
+
 	return &schema.Resource{
 
 		CreateContext: resourceUserRenameCreate,
@@ -161,7 +163,9 @@ func resourceUserRenameCreate(ctx context.Context, d *schema.ResourceData, m int
 
 			result := wrapInArray(resItems)
 
-			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
+			if err := d.Set("result", result); err != nil {
+				return diag.FromErr(err)
+			}
 
 			d.SetId(getId_for_User(api_result))
 
@@ -258,7 +262,9 @@ func resourceUserRenameRead(ctx context.Context, d *schema.ResourceData, m inter
 
 			result := wrapInArray(resItems)
 
-			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
+			if err := d.Set("result", result); err != nil {
+				return diag.FromErr(err)
+			}
 
 			d.SetId(getId_for_User(api_result))
 
@@ -355,7 +361,9 @@ func resourceUserRenameDelete(ctx context.Context, d *schema.ResourceData, m int
 
 			result := wrapInArray(resItems)
 
-			tflog.Debug(ctx, fmt.Sprintf("Ignoring result: %#v", result))
+			if err := d.Set("result", result); err != nil {
+				return diag.FromErr(err)
+			}
 
 			d.SetId("")
 

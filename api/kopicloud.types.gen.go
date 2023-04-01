@@ -807,21 +807,6 @@ type GetApiComputersAllParams struct {
 	AuthToken string `json:"Auth-Token"`
 }
 
-// DeleteApiComputersCleanUpParams defines parameters for DeleteApiComputersCleanUp.
-type DeleteApiComputersCleanUpParams struct {
-	// Days Number of Inactive Days
-	Days *int32 `form:"Days,omitempty" json:"Days,omitempty"`
-
-	// OUPath Organization Unit DN Path
-	OUPath *string `form:"OUPath,omitempty" json:"OUPath,omitempty"`
-
-	// Recursive Recursive Search
-	Recursive *bool `form:"Recursive,omitempty" json:"Recursive,omitempty"`
-
-	// AuthToken Bearer or Basic Authentication Token
-	AuthToken string `json:"Auth-Token"`
-}
-
 // DeleteApiComputersRemoveParams defines parameters for DeleteApiComputersRemove.
 type DeleteApiComputersRemoveParams struct {
 	// WildCard Wild Card for AD Computer Name
