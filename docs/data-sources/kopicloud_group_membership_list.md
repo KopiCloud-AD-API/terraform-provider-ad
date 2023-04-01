@@ -41,4 +41,3 @@ Read-Only:
 - `ou_path` (String) = AD Group OU Path
 - `scope` (String) = AD Group scope
 - `type` (String) = AD Group type 
-
