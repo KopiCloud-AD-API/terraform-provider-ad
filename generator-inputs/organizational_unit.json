@@ -90,7 +90,7 @@
                     },
                     {
                         "name": "ou_path",
-                        "result_field": "Path",
+                        "result_field": "Result.Path",
                         "type": "schema.TypeString",
                         "computed": true
                     },

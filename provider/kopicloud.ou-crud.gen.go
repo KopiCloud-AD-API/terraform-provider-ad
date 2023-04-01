@@ -173,7 +173,7 @@ func resourceOUCreate(ctx context.Context, d *schema.ResourceData, m interface{}
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("ou_path", api_result.Path); err != nil {
+			if err := d.Set("ou_path", res.JSON200.Result.Path); err != nil {
 				return diag.FromErr(err)
 			}
 
@@ -268,7 +268,7 @@ func resourceOURead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("ou_path", api_result.Path); err != nil {
+			if err := d.Set("ou_path", res.JSON200.Result.Path); err != nil {
 				return diag.FromErr(err)
 			}
 
@@ -367,7 +367,7 @@ func resourceOUDelete(ctx context.Context, d *schema.ResourceData, m interface{}
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("ou_path", api_result.Path); err != nil {
+			if err := d.Set("ou_path", res.JSON200.Result.Path); err != nil {
 				return diag.FromErr(err)
 			}
 

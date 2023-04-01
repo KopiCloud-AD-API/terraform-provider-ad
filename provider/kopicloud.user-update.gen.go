@@ -233,135 +233,135 @@ func resourceUser_Update_0(ctx context.Context, d *schema.ResourceData, m interf
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("first_name", api_result.FirstName); err != nil {
+			if err := d.Set("first_name", res.JSON200.Result.FirstName); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("initials", api_result.Initials); err != nil {
+			if err := d.Set("initials", res.JSON200.Result.Initials); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("last_name", api_result.LastName); err != nil {
+			if err := d.Set("last_name", res.JSON200.Result.LastName); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("display_name", api_result.DisplayName); err != nil {
+			if err := d.Set("display_name", res.JSON200.Result.DisplayName); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("description", api_result.Description); err != nil {
+			if err := d.Set("description", res.JSON200.Result.Description); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("email_address", api_result.EmailAddress); err != nil {
+			if err := d.Set("email_address", res.JSON200.Result.EmailAddress); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("department", api_result.Department); err != nil {
+			if err := d.Set("department", res.JSON200.Result.Department); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("office", api_result.Office); err != nil {
+			if err := d.Set("office", res.JSON200.Result.Office); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("company", api_result.Company); err != nil {
+			if err := d.Set("company", res.JSON200.Result.Company); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("change_password_next_logon", api_result.ChangePasswordNextLogon); err != nil {
+			if err := d.Set("change_password_next_logon", res.JSON200.Result.ChangePasswordNextLogon); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("password_never_expires", api_result.PasswordNeverExpired); err != nil {
+			if err := d.Set("password_never_expires", res.JSON200.Result.PasswordNeverExpired); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("ou_path", api_result.OuPath); err != nil {
+			if err := d.Set("ou_path", res.JSON200.Result.OuPath); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("job_title", api_result.JobTitle); err != nil {
+			if err := d.Set("job_title", res.JSON200.Result.JobTitle); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("manager", api_result.Manager); err != nil {
+			if err := d.Set("manager", res.JSON200.Result.Manager); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("street", api_result.StreetAddress); err != nil {
+			if err := d.Set("street", res.JSON200.Result.StreetAddress); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("po_box", api_result.StreetPoBox); err != nil {
+			if err := d.Set("po_box", res.JSON200.Result.StreetPoBox); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("city", api_result.City); err != nil {
+			if err := d.Set("city", res.JSON200.Result.City); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("state", api_result.State); err != nil {
+			if err := d.Set("state", res.JSON200.Result.State); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("zip_code", api_result.PostalCode); err != nil {
+			if err := d.Set("zip_code", res.JSON200.Result.PostalCode); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("country", api_result.Country); err != nil {
+			if err := d.Set("country", res.JSON200.Result.Country); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("office_phone", api_result.OfficePhone); err != nil {
+			if err := d.Set("office_phone", res.JSON200.Result.OfficePhone); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("home_phone", api_result.HomePhone); err != nil {
+			if err := d.Set("home_phone", res.JSON200.Result.HomePhone); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("mobile_phone", api_result.MobilePhone); err != nil {
+			if err := d.Set("mobile_phone", res.JSON200.Result.MobilePhone); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("profile_path", api_result.ProfilePath); err != nil {
+			if err := d.Set("profile_path", res.JSON200.Result.ProfilePath); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("profile_logon_script", api_result.ProfileLogonScript); err != nil {
+			if err := d.Set("profile_logon_script", res.JSON200.Result.ProfileLogonScript); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("home_folder_path", api_result.HomeFolderPath); err != nil {
+			if err := d.Set("home_folder_path", res.JSON200.Result.HomeFolderPath); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("home_folder_drive", api_result.HomeFolderDrive); err != nil {
+			if err := d.Set("home_folder_drive", res.JSON200.Result.HomeFolderDrive); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("home_folder_directory", api_result.HomeFolderDirectory); err != nil {
+			if err := d.Set("home_folder_directory", res.JSON200.Result.HomeFolderDirectory); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("rds_profile_path", api_result.RdsProfilePath); err != nil {
+			if err := d.Set("rds_profile_path", res.JSON200.Result.RdsProfilePath); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("rds_home_folder_path", api_result.RdsHomeFolderPath); err != nil {
+			if err := d.Set("rds_home_folder_path", res.JSON200.Result.RdsHomeFolderPath); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("rds_home_folder_drive", api_result.RdsHomeFolderDrive); err != nil {
+			if err := d.Set("rds_home_folder_drive", res.JSON200.Result.RdsHomeFolderDrive); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("rds_connect_drive", api_result.RdsConnectDrive); err != nil {
+			if err := d.Set("rds_connect_drive", res.JSON200.Result.RdsConnectDrive); err != nil {
 				return diag.FromErr(err)
 			}
 
-			if err := d.Set("rds_allow_logon", api_result.RdsAllowLogon); err != nil {
+			if err := d.Set("rds_allow_logon", res.JSON200.Result.RdsAllowLogon); err != nil {
 				return diag.FromErr(err)
 			}
 

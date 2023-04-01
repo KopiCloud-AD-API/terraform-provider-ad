@@ -53,6 +53,18 @@ func resourceUserRename() *schema.Resource {
 		Description: "",
 	}
 
+	terraformSchema["result"] = &schema.Schema{
+		Type:      schema.TypeString,
+		Computed:  true,
+		Optional:  false,
+		Required:  false,
+		Sensitive: false,
+
+		ForceNew: true,
+
+		Description: "",
+	}
+
 	terraformSchema["show_fields"] = &schema.Schema{
 		Type:      schema.TypeString,
 		Computed:  false,
@@ -65,7 +77,7 @@ func resourceUserRename() *schema.Resource {
 		Description: "",
 	}
 
-	terraformSchema["result"] = schemaOfUser(``)
+	terraformSchema["user"] = schemaOfUser(``)
 
 	return &schema.Resource{
 
@@ -163,7 +175,11 @@ func resourceUserRenameCreate(ctx context.Context, d *schema.ResourceData, m int
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
+			if err := d.Set("result", res.JSON200.Output); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("user", result); err != nil {
 				return diag.FromErr(err)
 			}
 
@@ -262,7 +278,11 @@ func resourceUserRenameRead(ctx context.Context, d *schema.ResourceData, m inter
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
+			if err := d.Set("result", res.JSON200.Output); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("user", result); err != nil {
 				return diag.FromErr(err)
 			}
 
@@ -361,7 +381,11 @@ func resourceUserRenameDelete(ctx context.Context, d *schema.ResourceData, m int
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("result", result); err != nil {
+			if err := d.Set("result", res.JSON200.Output); err != nil {
+				return diag.FromErr(err)
+			}
+
+			if err := d.Set("user", result); err != nil {
 				return diag.FromErr(err)
 			}
 

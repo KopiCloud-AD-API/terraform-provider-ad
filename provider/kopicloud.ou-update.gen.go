@@ -107,7 +107,7 @@ func resourceOU_Update_0(ctx context.Context, d *schema.ResourceData, m interfac
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("ou_path", api_result.Path); err != nil {
+			if err := d.Set("ou_path", res.JSON200.Result.Path); err != nil {
 				return diag.FromErr(err)
 			}
 
@@ -202,7 +202,7 @@ func resourceOU_Update_1(ctx context.Context, d *schema.ResourceData, m interfac
 
 			result := wrapInArray(resItems)
 
-			if err := d.Set("ou_path", api_result.Path); err != nil {
+			if err := d.Set("ou_path", res.JSON200.Result.Path); err != nil {
 				return diag.FromErr(err)
 			}
 
