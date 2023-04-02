@@ -52,12 +52,12 @@ output "OUTPUT_all_computers_list_inside_ou" {
 
 ### Optional
 
-- `ou_path` (String) OU Path
+- `ou_path` (String) OU Path (Distinguished name)
 
 ### Read-Only
 
-- `id` (String) The ID of this resource.
-- `result` (List of Object) List of Computers (see [below for nested schema](#nestedatt--result))
+- `id` (String) The ID of this resource
+- `result` (List of Object) List of AD Computers (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
@@ -69,5 +69,5 @@ Read-Only:
 - `description` (String) Computer Description
 - `dns_name` (String) DNS Name
 - `operating_system` (String) Operating System
-- `path` (String) OU Path
+- `path` (String) OU Path (Distinguished name) 
 - `sid` (String) Computer SID
