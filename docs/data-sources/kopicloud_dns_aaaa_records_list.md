@@ -89,7 +89,7 @@ output "OUTPUT_dns_aaaa_records_list_hostname" {
 
 ### Read-Only
 
-- `id` (String) The ID of this resource.
+- `id` (String) The ID of this resource
 - `result` (List of Object) List of DNS Records (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
