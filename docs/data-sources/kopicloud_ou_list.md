@@ -33,21 +33,21 @@ output "OUTPUT_list_ou" {
 
 ### Optional
 
-- `ou_name` (String) = Name of the OU
-- `ou_path` (String) = Path of the OU
+- `ou_name` (String) Name of the OU
+- `ou_path` (String) Path of the OU
 
 ### Read-Only
 
-- `id` (String) = The ID of this resource.
-- `result` (List of Object) = List of AD OU (see [below for nested schema](#nestedatt--result))
+- `id` (String) The ID of this resource.
+- `result` (List of Object) List of AD OUs (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
 
 Read-Only:
 
-- `description` (String) = The description of the OU
-- `guid` (String) = The GUID of the OU
-- `name` (String) = Name of the OU
-- `path` (String) = Path of the OU
-- `protected` (Boolean) = Protect the OU from accidental deletion
+- `description` (String) The description of the OU
+- `guid` (String) The GUID of the OU
+- `name` (String) Name of the OU
+- `path` (String) Path of the OU
+- `protected` (Boolean) Protect the OU from accidental deletion
