@@ -13,12 +13,12 @@ List DNS Reverse Lookup Zones
 
 ## Example Usage
 
-List All DNS Reverse Lookup Zones
+List All DNS Reverse Lookup Zones:
 ```
 data "kopicloud_dns_reverse_lookup_zone_list" "test_reverse_all" { }
 ```
 
-Returns List of DNS Reverse Lookup Zones
+Returns List of DNS Reverse Lookup Zones:
 ```
 output "OUTPUT_dns_reverse_lookup_zone_list" {
   description = "List of DNS Reverse Lookup Zones"
