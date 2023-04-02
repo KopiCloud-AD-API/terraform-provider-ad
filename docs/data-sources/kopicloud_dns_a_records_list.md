@@ -13,13 +13,13 @@ List DNS A Records
 
 ## Example Usage
 
-List All DNS A Records
+List All DNS A Records:
 
 ```
 data "kopicloud_dns_a_records_list" "test_a_all" { }
 ```
 
-Returns All DNS A Records
+Returns All DNS A Records:
 
 ```
 output "OUTPUT_dns_a_records_list_all" {
@@ -30,7 +30,7 @@ output "OUTPUT_dns_a_records_list_all" {
 
 ----
 
-Filter DNS A Records with the Zone Name
+Filter DNS A Records with the Zone Name:
 
 ```
 data "kopicloud_dns_a_records_list" "test_a_zone_name" {
@@ -38,7 +38,7 @@ data "kopicloud_dns_a_records_list" "test_a_zone_name" {
 }
 ```
 
-Returns all DNS A Records that matches the Zone Name
+Returns all DNS A Records that matches the Zone Name:
 
 ```
 output "OUTPUT_dns_a_records_list_zone_name" {
@@ -49,7 +49,7 @@ output "OUTPUT_dns_a_records_list_zone_name" {
 
 ----
 
-Filter DNS A Records with an IP Address
+Filter DNS A Records with an IP Address:
 
 ```
 data "kopicloud_dns_a_records_list" "test_a_ip" {
@@ -57,7 +57,7 @@ data "kopicloud_dns_a_records_list" "test_a_ip" {
 }
 ```
 
-Returns all DNS A Records that matches the IP Address
+Returns all DNS A Records that matches the IP Address:
 
 ```
 output "OUTPUT_dns_a_records_list_ip_address" {
@@ -68,7 +68,7 @@ output "OUTPUT_dns_a_records_list_ip_address" {
 
 ----
 
-Filter DNS A Records with a Hostname
+Filter DNS A Records with a Hostname:
 
 ```
 data "kopicloud_dns_a_records_list" "test_a_hostname" {
@@ -76,7 +76,7 @@ data "kopicloud_dns_a_records_list" "test_a_hostname" {
 }
 ```
 
-Returns all DNS A Records that matches the Hostname
+Returns all DNS A Records that matches the Hostname:
 
 ```
 output "OUTPUT_dns_a_records_list_hostname" {
@@ -85,7 +85,7 @@ output "OUTPUT_dns_a_records_list_hostname" {
 }
 ```
 
-Returns the IP Address of the 1st DNS A Record
+Returns the IP Address of the 1st DNS A Record:
 
 ```
 output "OUTPUT_dns_a_records_list_hostname_record_1_ip_address" {
