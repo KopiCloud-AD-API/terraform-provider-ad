@@ -40,6 +40,6 @@ output "OUTPUT_dns_all_zone_list" {
 Read-Only:
 
 - `distinguished_name` (String) DNS Distinguished Name
-- `type` (String) DNS type = "ForwardDNSZone
+- `type` (String) DNS type, possible values are `ForwardDNSZone` or `ReverseDNSZone`
 - `zone_name` (String) DNS Zone name
-- `zone_type` (String) DNS Zone type = Primary, Secondary or Stub Zone
+- `zone_type` (String) DNS Zone type, possible values are `Primary`, `Secondary` or `Stub Zone`
