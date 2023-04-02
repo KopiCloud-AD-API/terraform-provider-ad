@@ -13,12 +13,12 @@ List Active Directory Distribution Groups
 
 ## Example Usage
 
-Get the List of Distribution Groups
+Get the List of AD Distribution Groups
 ```
 data "kopicloud_distribution_group_list" "test_distribution" { }
 ```
 
-Returns the List of Distribution Groups
+Returns the List of AD Distribution Groups
 ```
 output "OUTPUT_kopicloud_distribution_groups_list" {
   description = "All Existing Distribution Groups"
