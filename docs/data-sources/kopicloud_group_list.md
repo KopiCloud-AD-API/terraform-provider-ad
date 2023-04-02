@@ -13,13 +13,13 @@ List all AD Groups
 
 ## Example Usage
 
-Get All Security Groups
+Get All AD Groups
 
 ```
 data "kopicloud_group_list" "test_all" { }
 ```
 
-Returns All Security Groups
+Returns All AD Groups
 
 ```
 output "OUTPUT_kopicloud_all_groups" {
