@@ -45,6 +45,6 @@ Read-Only:
 - `email` (String) AD Group email address
 - `guid` (String) AD Group GUID
 - `name` (String) AD Group name
-- `ou_path` (String) = AD Group OU Path
+- `ou_path` (String) = AD Group OU Path (Distinguished name)
 - `scope` (String) AD Group scope
 - `type` (String) AD Group type 
