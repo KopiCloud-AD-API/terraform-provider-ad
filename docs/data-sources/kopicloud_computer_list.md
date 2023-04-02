@@ -57,7 +57,7 @@ output "OUTPUT_all_computers_list_inside_ou" {
 ### Read-Only
 
 - `id` (String) The ID of this resource.
-- `result` (List of Object) List of Computer object (see [below for nested schema](#nestedatt--result))
+- `result` (List of Object) List of Computers (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
