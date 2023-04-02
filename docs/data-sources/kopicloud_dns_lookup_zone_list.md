@@ -13,12 +13,12 @@ List DNS Lookup Zones
 
 ## Example Usage
 
-List All DNS Lookup Zones
+List All DNS Lookup Zones:
 ```
 data "kopicloud_dns_lookup_zone_list" "test_lookup_all" { }
 ```
 
-Returns List of DNS Lookup Zones
+Returns List of DNS Lookup Zones:
 ```
 output "OUTPUT_dns_lookup_zone_list" {
   description = "List of DNS Lookup Zones"
