@@ -13,13 +13,13 @@ List Active Directory computers, and their details.
 
 ## Example Usage
 
-List All Computers:
+List All AD Computers:
 
 ```
-data "kopicloud_computer_list" "test_all" {}
+data "kopicloud_computer_list" "test_all" { }
 ```
 
-Returns All Computers:
+Returns All AD Computers:
 
 ```
 output "OUTPUT_all_computers_list" {
@@ -30,7 +30,7 @@ output "OUTPUT_all_computers_list" {
 
 ----
 
-List All Computers Inside an OU:
+List All AD Computers Inside an OU:
 
 ```
 data "kopicloud_computer_list" "test" {
@@ -38,7 +38,7 @@ data "kopicloud_computer_list" "test" {
 }
 ```
 
-Returns All Computers Inside an OU:
+Returns All AD Computers Inside an OU:
 
 ```
 output "OUTPUT_all_computers_list_inside_ou" {
