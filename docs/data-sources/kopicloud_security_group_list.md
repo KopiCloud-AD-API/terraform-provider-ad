@@ -13,14 +13,12 @@ List Active Directory Security Groups
 
 ## Example Usage
 
-Get the List of AD Security Groups
-
+Get the List of AD Security Groups:
 ```
 data "kopicloud_security_group_list" "test_security" { }
 ```
 
-Returns the List of AD Security Groups
-
+Returns the List of AD Security Groups:
 ```
 output "OUTPUT_kopicloud_security_groups_list" {
   description = "All Existing Security Groups"
@@ -34,11 +32,11 @@ output "OUTPUT_kopicloud_security_groups_list" {
 ### Optional
 
 - `name` (String) AD Group name
-- `ou_path` (String) AD Group OU Path
+- `ou_path` (String) OU Path (Distinguished name)
 
 ### Read-Only
 
-- `id` (String) The ID of this resource.
+- `id` (String) The ID of this resource
 - `result` (List of Object) List of AD Groups (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -50,6 +48,6 @@ Read-Only:
 - `email` (String) AD Group email address
 - `guid` (String) AD Group GUID
 - `name` (String) AD Group name
-- `ou_path` (String) AD Group OU Path
+- `ou_path` (String) AD Group OU Path (Distinguished name)
 - `scope` (String) AD Group scope
 - `type` (String) AD Group type 
