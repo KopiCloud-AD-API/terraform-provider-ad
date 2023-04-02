@@ -35,26 +35,26 @@ output "OUTPUT_kopicloud_group_membership_list" {
 
 ### Required
 
-- `user_name` (String) = AD User name
+- `user_name` (String) AD User name
 
 ### Optional
 
-- `group_name` (String) = AD Group name
+- `group_name` (String) AD Group name
 
 ### Read-Only
 
-- `id` (String) = The ID of this resource.
-- `result` (List of Object) = List of AD Groups (see [below for nested schema](#nestedatt--result))
+- `id` (String) The ID of this resource.
+- `result` (List of Object) List of AD Groups (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
 
 Read-Only:
 
-- `description` (String) = AD Group description
-- `email` (String) = AD Group email address
-- `guid` (String) = AD Group GUID
-- `name` (String) = AD Group name
-- `ou_path` (String) = AD Group OU Path
-- `scope` (String) = AD Group scope
-- `type` (String) = AD Group type 
+- `description` (String) AD Group description
+- `email` (String) AD Group email address
+- `guid` (String) AD Group GUID
+- `name` (String) AD Group name
+- `ou_path` (String) AD Group OU Path
+- `scope` (String) AD Group scope
+- `type` (String) AD Group type 
