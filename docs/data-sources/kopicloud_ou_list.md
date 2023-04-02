@@ -13,13 +13,13 @@ List Active Directory Organization Units (OUs)
 
 ## Example Usage
 
-List AD OUs
+List AD OUs:
 
 ```
 data "kopicloud_ou_list" "test" { }
 ```
 
-Returns List of AD OUs
+Returns List of AD OUs:
 
 ```
 output "OUTPUT_list_ou" {
@@ -34,7 +34,7 @@ output "OUTPUT_list_ou" {
 ### Optional
 
 - `ou_name` (String) Name of the OU
-- `ou_path` (String) Path of the OU
+- `ou_path` (String) Path of the OU (Distinguished name)
 
 ### Read-Only
 
@@ -49,5 +49,5 @@ Read-Only:
 - `description` (String) The description of the OU
 - `guid` (String) The GUID of the OU
 - `name` (String) Name of the OU
-- `path` (String) Path of the OU
+- `path` (String) Path of the OU (Distinguished name)
 - `protected` (Boolean) Protect the OU from accidental deletion
