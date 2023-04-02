@@ -13,12 +13,14 @@ List Active Directory Security Groups
 
 ## Example Usage
 
-Get the List of Security Groups
+Get the List of AD Security Groups
+
 ```
 data "kopicloud_security_group_list" "test_security" { }
 ```
 
-Returns the List of Security Groups
+Returns the List of AD Security Groups
+
 ```
 output "OUTPUT_kopicloud_security_groups_list" {
   description = "All Existing Security Groups"
