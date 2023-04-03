@@ -65,13 +65,13 @@ output "kopicloud_all_users_filter" {
 
 ### Optional
 
-- `ou_path` (String) OU path (Distinguished name) to search for users
-- `recursive` (Boolean) recursive search inside the OU
-- `show_fields` (String) filter and show specific fields
+- `ou_path` (String) OU Path (Distinguished Name)
+- `recursive` (Boolean) Recursive Search Inside the OU
+- `show_fields` (String) Filter Specific Fields in the Output
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) List of AD Users (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -79,39 +79,39 @@ output "kopicloud_all_users_filter" {
 
 Read-Only:
 
-- `change_password_next_logon` (Boolean) Status of change password next logon setting
+- `change_password_next_logon` (Boolean) Status of Change Password Next Logon Setting
 - `city` (String) City
-- `company` (String) Company name
-- `country` (String) Country (use the English name of the country)
-- `department` (String) Company department
-- `description` (String) User description
-- `display_name` (String) User diisplay name
-- `email_address` (String) User email address
-- `first_name` (String) User first name
+- `company` (String) Company Name
+- `country` (String) Country (use the English Name of the Country)
+- `department` (String) Company Department
+- `description` (String) User Description
+- `display_name` (String) User Display Name
+- `email_address` (String) User Email Address
+- `first_name` (String) User First Name
 - `guid` (String) User GUID
-- `home_folder_directory` (String) Home folder directory
-- `home_folder_drive` (String) Home folder drive
-- `home_folder_path` (String) Home folder path
-- `home_phone` (String) Home phone
-- `initials` (String) User middle name initials
-- `job_title` (String) Job title
-- `last_name` (String) User last name
-- `manager` (String) - Manager name
-- `mobile_phone` (String) Mobile phone
-- `office` (String) Office information
-- `office_phone` (String) Office phone
-- `ou_path` (String) OU path (Distinguished name) of the user
-- `password_never_expired` (Boolean) Status of the password never expired setting
-- `postal_code` (String) Postal/ZIP code
-- `profile_logon_script` (String) Profile logon script
-- `profile_path` (String) Profile path
-- `rds_allow_logon` (Boolean) Remote Desktop allow logon
-- `rds_connect_drive` (Boolean) Remote Desktop connect drive
-- `rds_home_folder_drive` (String) Remote Desktop home folder
-- `rds_home_folder_path` (String) Remote Desktop folder path
-- `rds_profile_path` (String) Remote Desktop profile path
-- `sam_username` (String) SAM account name (used by previous versions of Windows)
+- `home_folder_directory` (String) Home Folder Directory
+- `home_folder_drive` (String) Home Folder Drive
+- `home_folder_path` (String) Home Folder Path
+- `home_phone` (String) Home Phone
+- `initials` (String) User Middle Name Initial
+- `job_title` (String) Job Title
+- `last_name` (String) User Last Name
+- `manager` (String) - Manager Name
+- `mobile_phone` (String) Mobile Phone
+- `office` (String) Office Information
+- `office_phone` (String) Office Phone
+- `ou_path` (String) OU Path (Distinguished Name) of the User
+- `password_never_expired` (Boolean) Status of the Password Never Expired Setting
+- `postal_code` (String) Postal/ZIP Code
+- `profile_logon_script` (String) Profile Logon Script
+- `profile_path` (String) Profile Path
+- `rds_allow_logon` (Boolean) Remote Desktop Allow Logon
+- `rds_connect_drive` (Boolean) Remote Desktop Connect Drive
+- `rds_home_folder_drive` (String) Remote Desktop Home Folder
+- `rds_home_folder_path` (String) Remote Desktop Folder Path
+- `rds_profile_path` (String) Remote Desktop Profile Path
+- `sam_username` (String) SAM Account Name (Used by Previous Versions of Windows)
 - `state` (String) State or Province
-- `street_address` (String) Street address
-- `street_po_box` (String) PO Box address
+- `street_address` (String) Street Address
+- `street_po_box` (String) PO Box Address
 - `username` (String) Username
