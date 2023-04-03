@@ -28,8 +28,8 @@ resource "kopicloud_distribution_group" "test_distribution_global" {
 
 Returns Created AD Distribution Group:
 ```
-output "OUTPUT_global_distribution_group" {
-  description = "Created Global Distribution Group"
+output "OUTPUT_distribution_group" {
+  description = "Created AD Distribution Group"
   value       = resource.kopicloud_distribution_group.test_distribution_global
 }
 ```
