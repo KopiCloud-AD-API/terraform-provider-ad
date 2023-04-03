@@ -46,8 +46,9 @@ output "OUTPUT_list_ou" {
 
 Read-Only:
 
-- `description` (String) The description of the OU
-- `guid` (String) The GUID of the OU
-- `name` (String) Name of the OU
-- `path` (String) Path of the OU (Distinguished name)
-- `protected` (Boolean) Protect the OU from accidental deletion
+- `description` (String) The description of the AD OU
+- `guid` (String) The GUID of the AD OU
+- `name` (String) Name of the AD OU
+- `path` (String) Path of the AD OU (Distinguished name)
+- `protected` (Boolean) Protect the AD OU from accidental deletion
+
