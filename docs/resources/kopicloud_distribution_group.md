@@ -15,7 +15,7 @@ Create, update or delete an Active Directory Distribution Group
 
 ## Example Usage
 
-Create an AD Global Distribution Group:
+Create an AD Distribution Group:
 ```
 resource "kopicloud_distribution_group" "test_distribution_global" {
   name        = "kopicloud-europe-distribution-group"
@@ -26,7 +26,7 @@ resource "kopicloud_distribution_group" "test_distribution_global" {
 }
 ```
 
-Returns Created AD Global Distribution Group:
+Returns Created AD Distribution Group:
 ```
 output "OUTPUT_global_distribution_group" {
   description = "Created Global Distribution Group"
