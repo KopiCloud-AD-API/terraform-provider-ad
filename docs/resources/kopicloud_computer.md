@@ -37,16 +37,16 @@ output "OUTPUT_new_computer" {
 
 ### Required
 
-- `ad_computer_name` (String) Computer name
+- `ad_computer_name` (String) Computer Name
 
 ### Optional
 
-- `description` (String) Computer description
-- `ou_path` (String) OU Path (Distinguished name) 
+- `description` (String) Computer Description
+- `ou_path` (String) OU Path (Distinguished Name) 
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) Single AD Computer (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -59,5 +59,5 @@ Read-Only:
 - `description` (String) Computer Description
 - `dns_name` (String) DNS Name
 - `operating_system` (String) Operating System
-- `path` (String) OU Path (Distinguished name) 
+- `path` (String) AD OU Path (Distinguished Name) 
 - `sid` (String) Computer SID
