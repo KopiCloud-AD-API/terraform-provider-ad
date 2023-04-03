@@ -24,7 +24,7 @@ resource "kopicloud_dns_cname_record" "test_cname" {
 }
 ```
 
-# Returns Created DNS CNAME Record 
+Returns Created DNS CNAME Record:
 ```
 output "OUTPUT_dns_cname_record" {
   description = "Created DNS CNAME Record"
@@ -37,13 +37,13 @@ output "OUTPUT_dns_cname_record" {
 
 ### Optional
 
-- `hostname` (String) Computer hostname
-- `hostname_alias` (String) Computer hostname alias
-- `zone_name` (String) DNS Zone name
+- `hostname` (String) Computer Hostname
+- `hostname_alias` (String) Computer Hostname Alias
+- `zone_name` (String) DNS Zone Name
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) Single DNS CNAME Record (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -51,8 +51,8 @@ output "OUTPUT_dns_cname_record" {
 
 Read-Only:
 
-- `data` (String) DNS hostname alias
-- `name` (String) DNS name
-- `timestamp` (String) Timestamp of the record
-- `type` (String) DNS type
-- `zone` (String) DNS Zone name
+- `data` (String) DNS Hostname Alias
+- `name` (String) DNS Name
+- `timestamp` (String) Timestamp of the Record
+- `type` (String) DNS Type
+- `zone` (String) DNS Zone Name
