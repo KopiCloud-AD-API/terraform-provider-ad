@@ -9,7 +9,7 @@ description: "KopiCloud AD Provider - kopicloud_ou (Resource)"
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html) 
 [![KopiCloud_AD_API](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
 
-Create, update or delete an Active Directory Organization Unit (OU)
+Create, Update or Delete an Active Directory Organization Unit (OU)
 
 **Note:** Running this resource with `terraform apply` will create or update the AD OU, and running `terraform destroy` will remove this AD OU from Active Directory
 
@@ -38,17 +38,17 @@ output "OUTPUT_created_ou" {
 
 ### Required
 
-- `description` (String) The description of the AD OU
+- `description` (String) The Description of the AD OU
 - `ou_name` (String) Name of the AD OU
 
 ### Optional
 
-- `ou_path` (String) Path of the AD OU (Distinguished name)
-- `protected` (Boolean) Protect the AD OU from accidental deletion
+- `ou_path` (String) Path of the AD OU (Distinguished Name)
+- `protected` (Boolean) Protect the AD OU from Accidental Deletion
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) Single AD OU (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -56,8 +56,8 @@ output "OUTPUT_created_ou" {
 
 Read-Only:
 
-- `description` (String) The description of the AD OU
+- `description` (String) The Description of the AD OU
 - `guid` (String) The GUID of the AD OU
 - `name` (String) Name of the AD OU
-- `path` (String) Path of the AD OU (Distinguished name)
-- `protected` (Boolean) Protect the AD OU from accidental deletion
+- `path` (String) Path of the AD OU (Distinguished Name)
+- `protected` (Boolean) Protect the AD OU from Accidental Deletion
