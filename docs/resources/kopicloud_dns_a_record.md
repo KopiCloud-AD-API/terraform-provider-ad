@@ -42,13 +42,13 @@ output "OUTPUT_dns_a_record_hostname" {
 
 ### Optional
 
-- `hostname` (String) Computer hostname
+- `hostname` (String) Computer Hostname
 - `ip_address` (String) IPv4 Address
-- `zone_name` (String) DNS Zone name
+- `zone_name` (String) DNS Zone Name
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) Single DNS A Record (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -57,7 +57,7 @@ output "OUTPUT_dns_a_record_hostname" {
 Read-Only:
 
 - `data` (String) IPv4 Address
-- `name` (String) Computer hostname
-- `timestamp` (String) Timestamp of the record
-- `type` (String) Type: Host (A)
-- `zone` (String) DNS Zone
+- `name` (String) Computer Hostname
+- `timestamp` (String) Timestamp of the Record
+- `type` (String) DNS Type
+- `zone` (String) DNS Zone Name
