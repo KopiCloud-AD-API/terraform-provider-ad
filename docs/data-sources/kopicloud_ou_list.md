@@ -33,12 +33,12 @@ output "OUTPUT_list_ou" {
 
 ### Optional
 
-- `ou_name` (String) Name of the OU
-- `ou_path` (String) Path of the OU (Distinguished name)
+- `ou_name` (String) Name of the AD OU
+- `ou_path` (String) Path of the AD OU (Distinguished Name)
 
 ### Read-Only
 
-- `id` (String) The ID of this resource.
+- `id` (String) The ID of this Resource
 - `result` (List of Object) List of AD OUs (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -46,9 +46,8 @@ output "OUTPUT_list_ou" {
 
 Read-Only:
 
-- `description` (String) The description of the AD OU
+- `description` (String) The Description of the AD OU
 - `guid` (String) The GUID of the AD OU
 - `name` (String) Name of the AD OU
-- `path` (String) Path of the AD OU (Distinguished name)
-- `protected` (Boolean) Protect the AD OU from accidental deletion
-
+- `path` (String) Path of the AD OU (Distinguished Name)
+- `protected` (Boolean) Protect the AD OU from Accidental Deletion
