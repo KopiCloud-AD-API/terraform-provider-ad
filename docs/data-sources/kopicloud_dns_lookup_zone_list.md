@@ -47,3 +47,4 @@ Read-Only:
 - `type` (String) DNS Type, possible values are `ForwardDNSZone` or `ReverseDNSZone`
 - `zone_name` (String) DNS Zone Name
 - `zone_type` (String) DNS Zone Type, possible values are `Primary`, `Secondary` or `Stub Zone`
+
