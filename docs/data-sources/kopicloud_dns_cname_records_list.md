@@ -62,7 +62,7 @@ output "OUTPUT_dns_cname_records_list_ip_address" {
 
 ----
 
-Filter DNS CNAME Records with a Hostname:
+Filter DNS CNAME Records with a Computer Hostname:
 ```
 data "kopicloud_dns_cname_records_list" "test_cname_hostname" {
   hostname = "computer33"
@@ -82,14 +82,14 @@ output "OUTPUT_dns_cname_records_list_hostname" {
 
 ### Optional
 
-- `hostname` (String) Machine hostname
-- `hostname_alias` (String) Machine hostname alias
+- `hostname` (String) Computer hostname
+- `hostname_alias` (String) Computer hostname alias
 - `zone_name` (String) DNS Zone name
 
 ### Read-Only
 
 - `id` (String) The ID of this resource
-- `result` (List of Object) List of DNS Records (see [below for nested schema](#nestedatt--result))
+- `result` (List of Object) List of DNS CNAME Records (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
