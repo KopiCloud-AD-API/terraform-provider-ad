@@ -9,6 +9,10 @@ description: "KopiCloud AD Provider - kopicloud_dns_lookup_zone (Resource)"
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html) 
 [![KopiCloud_AD_API](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
 
+Create or Delete a DNS Lookup Zone in the Microsoft DNS
+
+**Note:** Running this resource with `terraform apply` will create a DNS Lookup Zone in the Microsoft DNS, and running `terraform destroy` will remove the DNS Lookup Zone from the DNS
+
 ## Example Usage
 
 Create a DNS Lookup Zone:
@@ -36,7 +40,7 @@ output "OUTPUT_dns_lookup_zone" {
 ### Read-Only
 
 - `id` (String) The ID of this resource
-- `result` (List of Object) Single Element List of DNS Zone (see [below for nested schema](#nestedatt--result))
+- `result` (List of Object) Single DNS Zone (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
