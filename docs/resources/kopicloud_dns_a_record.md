@@ -15,7 +15,7 @@ Create or Delete a DNS A Record in the Microsoft DNS
 
 ## Example Usage
 
-Create a DNS A Record for a computer:
+Create a DNS A Record for a Computer:
 ```
 resource "kopicloud_dns_a_record" "test_a" {
   hostname   = "labtest01"
@@ -24,7 +24,7 @@ resource "kopicloud_dns_a_record" "test_a" {
 }
 ```
 
-# Created DNS A Record Result
+Returns Created DNS A Record:
 ```
 output "OUTPUT_dns_a_record" {
   description = "Created DNS A Record"
@@ -44,7 +44,7 @@ output "OUTPUT_dns_a_record_hostname" {
 
 - `hostname` (String) Computer hostname
 - `ip_address` (String) IPv4 Address
-- `zone_name` (String) DNS Zone
+- `zone_name` (String) DNS Zone name
 
 ### Read-Only
 
