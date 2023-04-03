@@ -60,7 +60,7 @@ resource "kopicloud_user" "test" {
 
 Return the New AD User:
 ```
-output "OUTPUT_new_user_1" {
+output "OUTPUT_new_user" {
   description = "Created AD User"
   value       = resource.kopicloud_user.test
 }
@@ -68,7 +68,7 @@ output "OUTPUT_new_user_1" {
 
 ## Notes
 
-**Note #1** you cannot set both `change_password_next_logon = true` and `password_never_expires = true` as is not suported by Active Directory.
+**Note #1** you cannot set both `change_password_next_logon = true` and `password_never_expires = true` as is not suported by Active Directory
 
 **Note #2** for Universal Naming Convention (UNC) path of servers in the Profile and the RDS variables, use twice backslashes as usual. For example, instead of using `\\`, use `\\\\` and use `\\` instead of `\`
 
