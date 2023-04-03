@@ -9,11 +9,12 @@ description: "KopiCloud AD Provider - kopicloud_user_enable_account (Resource)"
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html) 
 [![KopiCloud_AD_API](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
 
-Enable Active Directory User
+Enable Active Directory Username
 
 ## Example Usage
-```
+
 Enable AD User Account:
+```
 resource "kopicloud_user_enable_account" "test" {
   username = "guillermo"
 }
@@ -32,7 +33,7 @@ output "user_enable_account" {
 
 ### Required
 
-- `username` (String)
+- `username` (String) The AD username to enable
 
 ### Optional
 
@@ -84,4 +85,3 @@ Read-Only:
 - `street_address` (String) Street address
 - `street_po_box` (String) PO Box address
 - `username` (String) Username
-
