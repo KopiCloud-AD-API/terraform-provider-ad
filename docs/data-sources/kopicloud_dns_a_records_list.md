@@ -116,5 +116,5 @@ Read-Only:
 - `data` (String) IP Address
 - `name` (String) Computer hostname
 - `timestamp` (String) Timestamp of the record
-- `type` (String) Type: Host (A)
+- `type` (String) DNS Type
 - `zone` (String) DNS Zone
