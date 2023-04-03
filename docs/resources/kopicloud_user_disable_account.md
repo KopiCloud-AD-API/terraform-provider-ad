@@ -33,15 +33,15 @@ output "OUTPUT_user_disable_account" {
 
 ### Required
 
-- `username` (String) The AD username to disable
+- `username` (String) The AD Username to Disable
 
 ### Optional
 
-- `show_fields` (String) Filter specific fields in the output
+- `show_fields` (String) Filter Specific Fields in the Output
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) Single AD User (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -49,39 +49,39 @@ output "OUTPUT_user_disable_account" {
 
 Read-Only:
 
-- `change_password_next_logon` (Boolean)
-- `city` (String)
-- `company` (String)
-- `country` (String)
-- `department` (String)
-- `description` (String)
-- `display_name` (String)
-- `email_address` (String)
-- `first_name` (String)
-- `guid` (String)
-- `home_folder_directory` (String)
-- `home_folder_drive` (String)
-- `home_folder_path` (String)
-- `home_phone` (String)
-- `initials` (String)
-- `job_title` (String)
-- `last_name` (String)
-- `manager` (String)
-- `mobile_phone` (String)
-- `office` (String)
-- `office_phone` (String)
-- `ou_path` (String)
-- `password_never_expired` (Boolean)
-- `postal_code` (String)
-- `profile_logon_script` (String)
-- `profile_path` (String)
-- `rds_allow_logon` (Boolean)
-- `rds_connect_drive` (Boolean)
-- `rds_home_folder_drive` (String)
-- `rds_home_folder_path` (String)
-- `rds_profile_path` (String)
-- `sam_username` (String)
-- `state` (String)
-- `street_address` (String)
-- `street_po_box` (String)
-- `username` (String)
+- `change_password_next_logon` (Boolean) Status of Change Password Next Logon Setting
+- `city` (String) City
+- `company` (String) Company Name
+- `country` (String) Country (use the English Name of the Country)
+- `department` (String) Company Department
+- `description` (String) User Description
+- `display_name` (String) User Display Name
+- `email_address` (String) User Email Address
+- `first_name` (String) User First Name
+- `guid` (String) User GUID
+- `home_folder_directory` (String) Home Folder Directory
+- `home_folder_drive` (String) Home Folder Drive
+- `home_folder_path` (String) Home Folder Path
+- `home_phone` (String) Home Phone
+- `initials` (String) User Middle Name Initial
+- `job_title` (String) Job Title
+- `last_name` (String) User Last Name
+- `manager` (String) - Manager Name
+- `mobile_phone` (String) Mobile Phone
+- `office` (String) Office Information
+- `office_phone` (String) Office Phone
+- `ou_path` (String) OU Path (Distinguished Name) of the User
+- `password_never_expired` (Boolean) Status of the Password Never Expired Setting
+- `postal_code` (String) Postal/ZIP Code
+- `profile_logon_script` (String) Profile Logon Script
+- `profile_path` (String) Profile Path
+- `rds_allow_logon` (Boolean) Remote Desktop Allow Logon
+- `rds_connect_drive` (Boolean) Remote Desktop Connect Drive
+- `rds_home_folder_drive` (String) Remote Desktop Home Folder
+- `rds_home_folder_path` (String) Remote Desktop Folder Path
+- `rds_profile_path` (String) Remote Desktop Profile Path
+- `sam_username` (String) SAM Account Name (Used by Previous Versions of Windows)
+- `state` (String) State or Province
+- `street_address` (String) Street Address
+- `street_po_box` (String) PO Box Address
+- `username` (String) Username
