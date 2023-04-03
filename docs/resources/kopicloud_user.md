@@ -16,6 +16,7 @@ Create, Update or Delete an Active Directory User
 ## Example Usage
 
 Create an AD User:
+```
 resource "kopicloud_user" "test" {
   username     = "cgomez"
   password     = "P@ssword"
@@ -55,6 +56,7 @@ resource "kopicloud_user" "test" {
   rds_home_folder_drive = "R:"
   rds_home_folder_path  = "\\\\rdsserver\\homefolder2"
 }
+```
 
 Return the New AD User:
 ```
