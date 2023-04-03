@@ -106,7 +106,7 @@ output "OUTPUT_dns_a_records_list_hostname_record_1_ip_address" {
 ### Read-Only
 
 - `id` (String) The ID of this resource
-- `result` (List of Object) List of DNS Records (see [below for nested schema](#nestedatt--result))
+- `result` (List of Object) List of DNS A Records (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
