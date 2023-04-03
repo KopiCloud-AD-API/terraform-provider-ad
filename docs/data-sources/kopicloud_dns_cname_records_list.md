@@ -82,9 +82,9 @@ output "OUTPUT_dns_cname_records_list_hostname" {
 
 ### Optional
 
-- `hostname` (String) Computer hostname
-- `hostname_alias` (String) Computer hostname alias
-- `zone_name` (String) DNS Zone name
+- `hostname` (String) Computer Hostname
+- `hostname_alias` (String) Computer Hostname Alias
+- `zone_name` (String) DNS Zone Name
 
 ### Read-Only
 
@@ -96,8 +96,8 @@ output "OUTPUT_dns_cname_records_list_hostname" {
 
 Read-Only:
 
-- `data` (String) DNS hostname alias
-- `name` (String) DNS name
-- `timestamp` (String) Timestamp of the record
-- `type` (String) DNS type
-- `zone` (String) DNS Zone name
+- `data` (String) DNS Hostname Alias
+- `name` (String) DNS Name
+- `timestamp` (String) Timestamp of the Record
+- `type` (String) DNS Type
+- `zone` (String) DNS Zone Name
