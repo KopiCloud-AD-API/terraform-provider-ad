@@ -85,12 +85,12 @@ output "OUTPUT_dns_aaaa_records_list_hostname" {
 
 - `hostname` (String) Computer hostname
 - `ipv6_address` (String) IPv6 Address
-- `zone_name` (String) DNS Zone
+- `zone_name` (String) DNS Zone name
 
 ### Read-Only
 
 - `id` (String) The ID of this resource
-- `result` (List of Object) List of DNS Records (see [below for nested schema](#nestedatt--result))
+- `result` (List of Object) List of DNS AAAA Records (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
