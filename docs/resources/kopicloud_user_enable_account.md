@@ -22,7 +22,7 @@ resource "kopicloud_user_enable_account" "test" {
 
 Enabled AD User Account Result:
 ```
-output "user_enable_account" {
+output "OUTPUT_user_enable_account" {
   description = "AD User Enabled"
   value = resource.kopicloud_user_enable_account.test
 }
