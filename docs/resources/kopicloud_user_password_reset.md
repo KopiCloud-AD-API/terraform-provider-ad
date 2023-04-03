@@ -25,7 +25,7 @@ resource "kopicloud_user_password_reset" "test" {
 
 AD User Password Reset Result:
 ```
-output "user_password_reset" {
+output "OUTPUT_user_password_reset" {
   description = "Password Reset for User"
   value = resource.kopicloud_user_password_reset.test
 }
