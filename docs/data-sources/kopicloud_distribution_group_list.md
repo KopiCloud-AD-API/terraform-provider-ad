@@ -31,12 +31,12 @@ output "OUTPUT_kopicloud_distribution_groups_list" {
 
 ### Optional
 
-- `name` (String) AD Group name
-- `ou_path` (String) AD Group OU Path (Distinguished name)
+- `name` (String) AD Group Name
+- `ou_path` (String) AD Group OU Path (Distinguished Name)
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) List of AD Groups (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -44,10 +44,10 @@ output "OUTPUT_kopicloud_distribution_groups_list" {
 
 Read-Only:
 
-- `description` (String) AD Group description
-- `email` (String) AD Group email address
+- `description` (String) AD Group Description
+- `email` (String) AD Group Email Address
 - `guid` (String) AD Group GUID
-- `name` (String) AD Group name
-- `ou_path` (String) AD Group OU Path (Distinguished name)
-- `scope` (String) AD Group scope
-- `type` (String) AD Group type 
+- `name` (String) AD Group Name
+- `ou_path` (String) AD Group OU Path (Distinguished Name)
+- `scope` (String) AD Group Scope
+- `type` (String) AD Group Type 
