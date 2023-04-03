@@ -83,9 +83,9 @@ output "OUTPUT_dns_aaaa_records_list_hostname" {
 
 ### Optional
 
-- `hostname` (String) Computer hostname
+- `hostname` (String) Computer Hostname
 - `ipv6_address` (String) IPv6 Address
-- `zone_name` (String) DNS Zone name
+- `zone_name` (String) DNS Zone Name
 
 ### Read-Only
 
@@ -98,7 +98,7 @@ output "OUTPUT_dns_aaaa_records_list_hostname" {
 Read-Only:
 
 - `data` (String) IPv6 Address
-- `name` (String) Computer hostname
-- `timestamp` (String) Timestamp of the record
+- `name` (String) Computer Hostname
+- `timestamp` (String) Timestamp of the Record
 - `type` (String) DNS Type
 - `zone` (String) DNS Zone
