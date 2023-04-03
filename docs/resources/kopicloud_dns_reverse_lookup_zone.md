@@ -39,7 +39,7 @@ output "OUTPUT_dns_reverse_zone" {
 
 ### Read-Only
 
-- `id` (String) The ID of this resource
+- `id` (String) The ID of this Resource
 - `result` (List of Object) Single DNS Zone (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
@@ -48,6 +48,6 @@ output "OUTPUT_dns_reverse_zone" {
 Read-Only:
 
 - `distinguished_name` (String) DNS Distinguished Name
-- `type` (String) DNS type, possible values are `ForwardDNSZone` or `ReverseDNSZone`
-- `zone_name` (String) DNS Zone name
-- `zone_type` (String) DNS Zone type, possible values are `Primary`, `Secondary` or `Stub Zone`
+- `type` (String) DNS Type, possible values are `ForwardDNSZone` or `ReverseDNSZone`
+- `zone_name` (String) DNS Zone Name
+- `zone_type` (String) DNS Zone Type, possible values are `Primary`, `Secondary` or `Stub Zone`
