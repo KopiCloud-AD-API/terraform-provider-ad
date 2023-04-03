@@ -11,7 +11,7 @@ description: "KopiCloud AD Provider - kopicloud_security_group (Resource)"
 
 Create, update or delete an Active Directory Security Group
 
-**Note:** Running this resource with `terraform apply` will create or update the AD group, and running `terraform destroy` will remove this AD Group from Active Directory.
+**Note:** Running this resource with `terraform apply` will create or update the AD group, and running `terraform destroy` will remove this AD Group from Active Directory
 
 ## Example Usage
 
