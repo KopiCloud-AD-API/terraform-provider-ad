@@ -72,7 +72,7 @@ Filter DNS A Records with a Hostname:
 
 ```
 data "kopicloud_dns_a_records_list" "test_a_hostname" {
-  hostname = "computer75"
+  hostname = "labtest75"
 }
 ```
 
@@ -101,7 +101,7 @@ output "OUTPUT_dns_a_records_list_hostname_record_1_ip_address" {
 
 - `hostname` (String) Computer hostname
 - `ip_address` (String) IP Address
-- `zone_name` (String) DNS Zone Name
+- `zone_name` (String) DNS Zone name
 
 ### Read-Only
 
