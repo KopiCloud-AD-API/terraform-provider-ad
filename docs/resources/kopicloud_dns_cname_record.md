@@ -30,7 +30,7 @@ output "OUTPUT_dns_cname_record" {
 }
 ```
 
-## Note:
+## Notes
 
 Running this resource with `terraform apply` will create a DNS CNAME Record in the Microsoft DNS and running `terraform destroy` will remove the DNS CNAME Record from the DNS
 
