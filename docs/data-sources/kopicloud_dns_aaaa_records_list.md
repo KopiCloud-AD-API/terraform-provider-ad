@@ -1,5 +1,4 @@
 ---
-
 page_title: "kopicloud_dns_aaaa_records_list Data Source - KopiCloud AD Provider"
 subcategory: ""
 description: "KopiCloud AD API - kopicloud_dns_aaaa_records_list (Data Source)"
