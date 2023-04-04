@@ -9,9 +9,9 @@ description: "KopiCloud AD Provider - kopicloud_computer (Resource)"
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html) 
 [![KopiCloud_AD_API](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
 
-Create, Update or Destroy an Active Directory Computer
+Create, Update, or Destroy an Active Directory Computer
 
-**Note:** Running this resource with `terraform apply` will create or update an AD computer, and running `terraform destroy` will remove this machine from Active Directory.
+**Note:** Running this resource with `terraform apply` will create or update an AD computer and running `terraform destroy` will remove this machine from Active Directory.
 
 ## Example Usage
 
@@ -20,7 +20,7 @@ Create New AD Computer:
 resource "kopicloud_computer" "test" {
   ad_computer_name = "labtest01"
   description      = "This is the computer description"
-  ou_path          = "OU=Domain Controllers,DC=kopicloud,DC=local"
+  ou_path          = "OU=Servers,DC=kopicloud,DC=local"
 }
 ```
 
@@ -47,7 +47,7 @@ output "OUTPUT_new_computer" {
 ### Read-Only
 
 - `id` (String) The ID of this Resource
-- `result` (List of Object) Single AD Computer (see [below for nested schema](#nestedatt--result))
+- `result` (List of Objects) Single AD Computer (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
