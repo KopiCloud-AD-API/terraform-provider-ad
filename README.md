@@ -1,4 +1,4 @@
-# KopiCloud AD API Terraform Provider (Beta)
+# KopiCloud AD API Terraform Provider
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html)
 [![KopiCloud-AD](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
 
@@ -37,8 +37,6 @@ Here are a few reasons to choose KopiCloud AD API to automate your Active Direct
 - **Designed for all kinds of companies**: We have plenty of pre-configured security access groups. The API provides many options if you are a small company or a large enterprise with a dedicated security team.
 
 - **Production or Test Environment?**: Both. If you are in production, every call is secured using a token, and everything is logged. Or you can disable the token authentication if running in a test environment.
-
-
 
 ## Resources
 
