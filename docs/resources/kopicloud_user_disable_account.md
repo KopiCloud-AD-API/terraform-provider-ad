@@ -42,7 +42,7 @@ output "OUTPUT_user_disable_account" {
 ### Read-Only
 
 - `id` (String) The ID of this Resource
-- `result` (List of Object) Single AD User (see [below for nested schema](#nestedatt--result))
+- `result` (List of Objects) Single AD User (see [below for nested schema](#nestedatt--result))
 
 <a id="nestedatt--result"></a>
 ### Nested Schema for `result`
