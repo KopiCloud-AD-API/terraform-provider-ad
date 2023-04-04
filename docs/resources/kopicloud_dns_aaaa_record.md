@@ -34,7 +34,7 @@ output "OUTPUT_dns_aaaa_record_hostname" {
 }
 ```
 
-## Note
+## Notes
 
 Running this resource with `terraform apply` will create a DNS AAAA Record in the Microsoft DNS and running `terraform destroy` will remove the DNS AAAA Record from the DNS
 
