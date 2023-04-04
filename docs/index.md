@@ -6,6 +6,14 @@ description: KopiCloud AD API Terraform Provider
 ---
 
 # KopiCloud AD API Terraform Provider
+
+**KopiCloud AD API** is a production-ready REST API designed to securely manage **Microsoft Active Directory (AD)** and **Microsoft DNS** from custom applications, automation tools, DevOps pipelines, and Terraform.
+
+Instead of using usernames and passwords with WinRM to access Active Directory or DNS, we use an API with authentication tokens. WinRM is not required. These tokens can be used for a limited time or forever.
+
+Every task or action executed is written in a log, so you know who and when they call any Terraform action.
+
+## Terraform Provider Authentication
 [![Terraform](https://img.shields.io/badge/terraform-v1.3+-blue.svg)](https://www.terraform.io/downloads.html) 
 [![KopiCloud_AD_API](https://img.shields.io/badge/kopiCloud_ad-v1.0+-blueviolet.svg)](https://www.kopicloud-ad-api.com)
 
