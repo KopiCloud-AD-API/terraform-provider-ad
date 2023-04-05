@@ -59,6 +59,13 @@ output "kopicloud_all_users_filter" {
 }
 ```
 
+## Notes
+
+Use the parameter **ShowFields** to select user fields to show. This optional argument is a comma-separated string with the name of the fields you want to be returned
+- Example: ShowFields=All or ShowFields=* : Return all User Fields
+- Example: ShowFields=Username,Firstname : Return Only Username and Firstname Fields
+- Example: ShowFields=Null or Empty : Return Default Fields (Username, Firstname, Lastname, Display_Name, Description, Company, Office, Department, Email_Address)
+
 ## Schema
 
 ### Optional
