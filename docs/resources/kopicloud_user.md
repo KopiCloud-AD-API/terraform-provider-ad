@@ -68,9 +68,14 @@ output "OUTPUT_new_user" {
 
 **Note #1** Running this resource with `terraform apply` will create or update the AD User and running `terraform destroy` will remove this AD User from the Active Directory
 
-**Note #2** you cannot set both `change_password_next_logon = true` and `password_never_expires = true` as is not supported by Active Directory
+**Note #2** Use the parameter **ShowFields** to select user fields to show. This optional argument is a comma-separated string with the name of the fields you want to be returned
+- Example: ShowFields=All or ShowFields=* : Return all User Fields
+- Example: ShowFields=Username,Firstname : Return Only Username and Firstname Fields
+- Example: ShowFields=Null or Empty : Return Default Fields (Username, Firstname, Lastname, Display_Name, Description, Company, Office, Department, Email_Address)
 
-**Note #3** for the Universal Naming Convention (UNC) path of servers in the Profile and the RDS variables use twice backslashes as usual. For example, instead of using `\\`, use `\\\\` and use `\\` instead of `\`
+**Note #3** you cannot set both `change_password_next_logon = true` and `password_never_expires = true` as is not supported by Active Directory
+
+**Note #4** for the Universal Naming Convention (UNC) path of servers in the Profile and the RDS variables use twice backslashes as usual. For example, instead of using `\\`, use `\\\\` and use `\\` instead of `\`
 
 ## Schema
 
