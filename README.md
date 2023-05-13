@@ -47,3 +47,5 @@ Here are a few reasons to choose KopiCloud AD API to automate your Active Direct
 - KopiClod AD API Terraform Sample Code Repo: https://github.com/KopiCloud-AD-API
 
 - KopiClod AD API Terraform Provider Registry: https://registry.terraform.io/providers/KopiCloud-AD-API/ad/latest
+
+- Open API Terraform Provider Generator: https://gitlab.com/terraform-utilities/openapi-terraform-provider-generator 
