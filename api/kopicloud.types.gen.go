@@ -305,10 +305,10 @@ type PostApiADGroupsGroupNameSecurityParams struct {
 
 // GetApiADUserListUsersParams defines parameters for GetApiADUserListUsers.
 type GetApiADUserListUsersParams struct {
-	// OUPath Organization Unit DN Path
+	// OUPath AD Organization Unit DN Path
 	OUPath *string `form:"OUPath,omitempty" json:"OUPath,omitempty"`
 
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// Recursive Recursive Search
@@ -320,7 +320,7 @@ type GetApiADUserListUsersParams struct {
 
 // GetApiADUserListUsersAllParams defines parameters for GetApiADUserListUsersAll.
 type GetApiADUserListUsersAllParams struct {
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -329,7 +329,7 @@ type GetApiADUserListUsersAllParams struct {
 
 // DeleteApiADUserUsernameParams defines parameters for DeleteApiADUserUsername.
 type DeleteApiADUserUsernameParams struct {
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -338,34 +338,34 @@ type DeleteApiADUserUsernameParams struct {
 
 // APIUserParams defines parameters for APIUser.
 type APIUserParams struct {
-	// Password User Password
+	// Password AD User Password
 	Password *string `form:"Password,omitempty" json:"Password,omitempty"`
 
 	// FirstName AD User First Name
 	FirstName *string `form:"FirstName,omitempty" json:"FirstName,omitempty"`
 
-	// Initials AD User Initials
+	// Initials AD User Initial
 	Initials *string `form:"Initials,omitempty" json:"Initials,omitempty"`
 
-	// LastName AD User LastName
+	// LastName AD User Last Name
 	LastName *string `form:"LastName,omitempty" json:"LastName,omitempty"`
 
-	// DisplayName User DisplayName
+	// DisplayName AD User Display Name
 	DisplayName *string `form:"DisplayName,omitempty" json:"DisplayName,omitempty"`
 
-	// Description User Description
+	// Description AD User Description
 	Description *string `form:"Description,omitempty" json:"Description,omitempty"`
 
-	// EmailAddress User Email Address
+	// EmailAddress AD User Email Address
 	EmailAddress *string `form:"EmailAddress,omitempty" json:"EmailAddress,omitempty"`
 
-	// Department User Department
+	// Department AD User Department
 	Department *string `form:"Department,omitempty" json:"Department,omitempty"`
 
-	// Office User Office
+	// Office AD User Office
 	Office *string `form:"Office,omitempty" json:"Office,omitempty"`
 
-	// Company User Company
+	// Company AD User Company
 	Company *string `form:"Company,omitempty" json:"Company,omitempty"`
 
 	// OUPath Organization Unit DN Path
@@ -383,19 +383,19 @@ type APIUserParams struct {
 	// Manager AD User Manager
 	Manager *string `form:"Manager,omitempty" json:"Manager,omitempty"`
 
-	// Street AD User Street
+	// Street AD User Street/Address
 	Street *string `form:"Street,omitempty" json:"Street,omitempty"`
 
-	// POBox AD User Po Box
+	// POBox AD User PO Box
 	POBox *string `form:"POBox,omitempty" json:"POBox,omitempty"`
 
 	// City AD User City
 	City *string `form:"City,omitempty" json:"City,omitempty"`
 
-	// State AD User State
+	// State AD User State/Province
 	State *string `form:"State,omitempty" json:"State,omitempty"`
 
-	// ZipCode AD User Zip Code
+	// ZipCode AD User Zip/Postal Code
 	ZipCode *string `form:"ZipCode,omitempty" json:"ZipCode,omitempty"`
 
 	// Country AD User Country
@@ -419,28 +419,28 @@ type APIUserParams struct {
 	// HomeFolderPath AD User Home Folder Path
 	HomeFolderPath *string `form:"HomeFolderPath,omitempty" json:"HomeFolderPath,omitempty"`
 
-	// HomeFolderDrive AD User Home Folde rDrive
+	// HomeFolderDrive AD User Home Folder Drive
 	HomeFolderDrive *string `form:"HomeFolderDrive,omitempty" json:"HomeFolderDrive,omitempty"`
 
 	// HomeFolderDirectory AD User Home Folder Directory
 	HomeFolderDirectory *string `form:"HomeFolderDirectory,omitempty" json:"HomeFolderDirectory,omitempty"`
 
-	// RdsProfilePath AD User Rds Profile Path
+	// RdsProfilePath AD User RDS Profile Path
 	RdsProfilePath *string `form:"RdsProfilePath,omitempty" json:"RdsProfilePath,omitempty"`
 
-	// RdsHomeFolderPath AD User Rds Home Folder Path
+	// RdsHomeFolderPath AD User RDS Home Folder Path
 	RdsHomeFolderPath *string `form:"RdsHomeFolderPath,omitempty" json:"RdsHomeFolderPath,omitempty"`
 
-	// RdsHomeFolderDrive AD User Rds Home Folder Drive
+	// RdsHomeFolderDrive AD User RDS Home Folder Drive
 	RdsHomeFolderDrive *string `form:"RdsHomeFolderDrive,omitempty" json:"RdsHomeFolderDrive,omitempty"`
 
-	// RdsConnectDrive AD User Rds Connect Drive
+	// RdsConnectDrive AD User RDS Connect Drive
 	RdsConnectDrive *bool `form:"RdsConnectDrive,omitempty" json:"RdsConnectDrive,omitempty"`
 
 	// RdsAllowLogon AD User Allow RDS Logon
 	RdsAllowLogon *bool `form:"RdsAllowLogon,omitempty" json:"RdsAllowLogon,omitempty"`
 
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -452,28 +452,28 @@ type PutApiADUserUsernameParams struct {
 	// FirstName AD User First Name
 	FirstName *string `form:"FirstName,omitempty" json:"FirstName,omitempty"`
 
-	// Initials AD User Initials
+	// Initials AD User Initial
 	Initials *string `form:"Initials,omitempty" json:"Initials,omitempty"`
 
-	// LastName AD User LastName
+	// LastName AD User Last Name
 	LastName *string `form:"LastName,omitempty" json:"LastName,omitempty"`
 
-	// DisplayName AD User  DisplayName
+	// DisplayName AD User Display Name
 	DisplayName *string `form:"DisplayName,omitempty" json:"DisplayName,omitempty"`
 
-	// Description AD User  Description
+	// Description AD User Description
 	Description *string `form:"Description,omitempty" json:"Description,omitempty"`
 
-	// EmailAddress AD User  Email Address
+	// EmailAddress AD User Email Address
 	EmailAddress *string `form:"EmailAddress,omitempty" json:"EmailAddress,omitempty"`
 
-	// Department AD User  Department
+	// Department AD User Department
 	Department *string `form:"Department,omitempty" json:"Department,omitempty"`
 
-	// Office AD User  Office
+	// Office AD User Office
 	Office *string `form:"Office,omitempty" json:"Office,omitempty"`
 
-	// Company AD User  Company
+	// Company AD User Company
 	Company *string `form:"Company,omitempty" json:"Company,omitempty"`
 
 	// OUPath Organization Unit DN Path
@@ -491,19 +491,19 @@ type PutApiADUserUsernameParams struct {
 	// Manager AD User Manager
 	Manager *string `form:"Manager,omitempty" json:"Manager,omitempty"`
 
-	// Street AD User Street
+	// Street AD User Street/Address
 	Street *string `form:"Street,omitempty" json:"Street,omitempty"`
 
-	// POBox AD User Po Box
+	// POBox AD User PO Box
 	POBox *string `form:"POBox,omitempty" json:"POBox,omitempty"`
 
 	// City AD User City
 	City *string `form:"City,omitempty" json:"City,omitempty"`
 
-	// State AD User State
+	// State AD User State/Province
 	State *string `form:"State,omitempty" json:"State,omitempty"`
 
-	// ZipCode AD User Zip Code
+	// ZipCode AD User Zip/Postal Code
 	ZipCode *string `form:"ZipCode,omitempty" json:"ZipCode,omitempty"`
 
 	// Country AD User Country
@@ -527,28 +527,28 @@ type PutApiADUserUsernameParams struct {
 	// HomeFolderPath AD User Home Folder Path
 	HomeFolderPath *string `form:"HomeFolderPath,omitempty" json:"HomeFolderPath,omitempty"`
 
-	// HomeFolderDrive AD User Home Folde rDrive
+	// HomeFolderDrive AD User Home Folder Drive
 	HomeFolderDrive *string `form:"HomeFolderDrive,omitempty" json:"HomeFolderDrive,omitempty"`
 
 	// HomeFolderDirectory AD User Home Folder Directory
 	HomeFolderDirectory *string `form:"HomeFolderDirectory,omitempty" json:"HomeFolderDirectory,omitempty"`
 
-	// RdsProfilePath AD User Rds Profile Path
+	// RdsProfilePath AD User RDS Profile Path
 	RdsProfilePath *string `form:"RdsProfilePath,omitempty" json:"RdsProfilePath,omitempty"`
 
-	// RdsHomeFolderPath AD User Rds Home Folder Path
+	// RdsHomeFolderPath AD User RDS Home Folder Path
 	RdsHomeFolderPath *string `form:"RdsHomeFolderPath,omitempty" json:"RdsHomeFolderPath,omitempty"`
 
-	// RdsHomeFolderDrive AD User Rds Home Folder Drive
+	// RdsHomeFolderDrive AD User RDS Home Folder Drive
 	RdsHomeFolderDrive *string `form:"RdsHomeFolderDrive,omitempty" json:"RdsHomeFolderDrive,omitempty"`
 
-	// RdsConnectDrive AD User Rds Connect Drive
+	// RdsConnectDrive AD User RDS Connect Drive
 	RdsConnectDrive *bool `form:"RdsConnectDrive,omitempty" json:"RdsConnectDrive,omitempty"`
 
 	// RdsAllowLogon AD User Allow RDS Logon
 	RdsAllowLogon *bool `form:"RdsAllowLogon,omitempty" json:"RdsAllowLogon,omitempty"`
 
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -565,7 +565,7 @@ type GetApiADUserUsernameDetailsParams struct {
 
 // PutApiADUserUsernameDisableParams defines parameters for PutApiADUserUsernameDisable.
 type PutApiADUserUsernameDisableParams struct {
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -574,7 +574,7 @@ type PutApiADUserUsernameDisableParams struct {
 
 // PutApiADUserUsernameEnableParams defines parameters for PutApiADUserUsernameEnable.
 type PutApiADUserUsernameEnableParams struct {
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -625,7 +625,7 @@ type GetApiADUserUsernameLastLogonParams struct {
 
 // PutApiADUserUsernameRenameNewUsernameParams defines parameters for PutApiADUserUsernameRenameNewUsername.
 type PutApiADUserUsernameRenameNewUsernameParams struct {
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -637,10 +637,10 @@ type PutApiADUserUsernameResetPasswordParams struct {
 	// NewPassword New User Password
 	NewPassword *string `form:"newPassword,omitempty" json:"newPassword,omitempty"`
 
-	// ChangePassword Force User to Change Password on Next Login
+	// ChangePassword Force User to Change Password at Next Logon
 	ChangePassword *bool `form:"ChangePassword,omitempty" json:"ChangePassword,omitempty"`
 
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -649,7 +649,7 @@ type PutApiADUserUsernameResetPasswordParams struct {
 
 // PutApiADUserUsernameUnlockParams defines parameters for PutApiADUserUsernameUnlock.
 type PutApiADUserUsernameUnlockParams struct {
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -658,10 +658,10 @@ type PutApiADUserUsernameUnlockParams struct {
 
 // DeleteApiADUserGuidParams defines parameters for DeleteApiADUserGuid.
 type DeleteApiADUserGuidParams struct {
-	// UserGuid AD User Guid
+	// UserGuid AD User GUID
 	UserGuid *openapi_types.UUID `form:"UserGuid,omitempty" json:"UserGuid,omitempty"`
 
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token
@@ -670,7 +670,7 @@ type DeleteApiADUserGuidParams struct {
 
 // GetApiADUserGuidParams defines parameters for GetApiADUserGuid.
 type GetApiADUserGuidParams struct {
-	// UserGuid AD User Guid
+	// UserGuid AD User GUID
 	UserGuid   openapi_types.UUID `form:"UserGuid" json:"UserGuid"`
 	ShowFields *string            `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
@@ -680,34 +680,34 @@ type GetApiADUserGuidParams struct {
 
 // PutApiADUserGuidParams defines parameters for PutApiADUserGuid.
 type PutApiADUserGuidParams struct {
-	// UserGuid AD User Guid
+	// UserGuid AD User GUID
 	UserGuid openapi_types.UUID `form:"UserGuid" json:"UserGuid"`
 
 	// FirstName AD User First Name
 	FirstName *string `form:"FirstName,omitempty" json:"FirstName,omitempty"`
 
-	// Initials AD User Initials
+	// Initials AD User Initial
 	Initials *string `form:"Initials,omitempty" json:"Initials,omitempty"`
 
-	// LastName AD User LastName
+	// LastName AD User Last Name
 	LastName *string `form:"LastName,omitempty" json:"LastName,omitempty"`
 
-	// DisplayName AD User  DisplayName
+	// DisplayName AD User Display Name
 	DisplayName *string `form:"DisplayName,omitempty" json:"DisplayName,omitempty"`
 
-	// Description AD User  Description
+	// Description AD User Description
 	Description *string `form:"Description,omitempty" json:"Description,omitempty"`
 
-	// EmailAddress AD User  Email Address
+	// EmailAddress AD User Email Address
 	EmailAddress *string `form:"EmailAddress,omitempty" json:"EmailAddress,omitempty"`
 
-	// Department AD User  Department
+	// Department AD User Department
 	Department *string `form:"Department,omitempty" json:"Department,omitempty"`
 
-	// Office AD User  Office
+	// Office AD User Office
 	Office *string `form:"Office,omitempty" json:"Office,omitempty"`
 
-	// Company AD User  Company
+	// Company AD User Company
 	Company *string `form:"Company,omitempty" json:"Company,omitempty"`
 
 	// OUPath Organization Unit DN Path
@@ -725,19 +725,19 @@ type PutApiADUserGuidParams struct {
 	// Manager AD User Manager
 	Manager *string `form:"Manager,omitempty" json:"Manager,omitempty"`
 
-	// Street AD User Street
+	// Street AD User Street/Address
 	Street *string `form:"Street,omitempty" json:"Street,omitempty"`
 
-	// POBox AD User Po Box
+	// POBox AD User PO Box
 	POBox *string `form:"POBox,omitempty" json:"POBox,omitempty"`
 
 	// City AD User City
 	City *string `form:"City,omitempty" json:"City,omitempty"`
 
-	// State AD User State
+	// State AD User State/Province
 	State *string `form:"State,omitempty" json:"State,omitempty"`
 
-	// ZipCode AD User Zip Code
+	// ZipCode AD User Zip/Postal Code
 	ZipCode *string `form:"ZipCode,omitempty" json:"ZipCode,omitempty"`
 
 	// Country AD User Country
@@ -761,28 +761,28 @@ type PutApiADUserGuidParams struct {
 	// HomeFolderPath AD User Home Folder Path
 	HomeFolderPath *string `form:"HomeFolderPath,omitempty" json:"HomeFolderPath,omitempty"`
 
-	// HomeFolderDrive AD User Home Folde rDrive
+	// HomeFolderDrive AD User Home Folder Drive
 	HomeFolderDrive *string `form:"HomeFolderDrive,omitempty" json:"HomeFolderDrive,omitempty"`
 
 	// HomeFolderDirectory AD User Home Folder Directory
 	HomeFolderDirectory *string `form:"HomeFolderDirectory,omitempty" json:"HomeFolderDirectory,omitempty"`
 
-	// RdsProfilePath AD User Rds Profile Path
+	// RdsProfilePath AD User RDS Profile Path
 	RdsProfilePath *string `form:"RdsProfilePath,omitempty" json:"RdsProfilePath,omitempty"`
 
-	// RdsHomeFolderPath AD User Rds Home Folder Path
+	// RdsHomeFolderPath AD User RDS Home Folder Path
 	RdsHomeFolderPath *string `form:"RdsHomeFolderPath,omitempty" json:"RdsHomeFolderPath,omitempty"`
 
-	// RdsHomeFolderDrive AD User Rds Home Folder Drive
+	// RdsHomeFolderDrive AD User RDS Home Folder Drive
 	RdsHomeFolderDrive *string `form:"RdsHomeFolderDrive,omitempty" json:"RdsHomeFolderDrive,omitempty"`
 
-	// RdsConnectDrive AD User Rds Connect Drive
+	// RdsConnectDrive AD User RDS Connect Drive
 	RdsConnectDrive *bool `form:"RdsConnectDrive,omitempty" json:"RdsConnectDrive,omitempty"`
 
 	// RdsAllowLogon AD User Allow RDS Logon
 	RdsAllowLogon *bool `form:"RdsAllowLogon,omitempty" json:"RdsAllowLogon,omitempty"`
 
-	// ShowFields User Fields to show. Optional argument, a comma-separated string, with the name of the fields you want returned.
+	// ShowFields User Fields to show. The optional argument is a comma-separated string with the name of the fields you want to be returned
 	ShowFields *string `form:"ShowFields,omitempty" json:"ShowFields,omitempty"`
 
 	// AuthToken Bearer or Basic Authentication Token

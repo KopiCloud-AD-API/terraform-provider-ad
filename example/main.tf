@@ -2,7 +2,7 @@ terraform {
   required_providers {
     kopicloud = {
       source = "kopicloud-ad-api/ad"
-      # source  = "github.com/KopiCloud-AD-API/ad"
+      #source  = "github.com/KopiCloud-AD-API/ad"
     }
   }
 }
@@ -321,22 +321,22 @@ provider "kopicloud" {
 #   value = data.kopicloud_user_list.test
 # }
 
-resource "kopicloud_user" "test" {
-  username     = "oforero20"
-  password     = var.oforero11_password
-  first_name   = "Oscar"
-  last_name    = "Forero"
-  initials     = "OMFC"
-  company = "Kopicloud Inc."
-  country = "Germany"
-  home_folder_drive = "Y:"
-  home_folder_directory = "\\\\MyServer\\my_folder_2"
-}
+# resource "kopicloud_user" "test" {
+#   username     = "oforero20"
+#   password     = var.oforero11_password
+#   first_name   = "Oscar"
+#   last_name    = "Forero"
+#   initials     = "OMFC"
+#   company = "Kopicloud Inc."
+#   country = "Germany"
+#   home_folder_drive = "Y:"
+#   home_folder_directory = "\\\\MyServer\\my_folder_2"
+# }
 
-output "user" {
-  description = "Created User"
-  value = resource.kopicloud_user.test
-}
+# output "user" {
+#   description = "Created User"
+#   value = resource.kopicloud_user.test
+# }
 
 # resource "kopicloud_user_password_reset" "test" {
 #   username     = "oforero11"
@@ -380,51 +380,57 @@ output "user" {
 
 
 # Create a OU 
-resource "kopicloud_ou" "test" { 
-  ou_destination_path = "DC=kopicloud,DC=local" 
-  ou_name = "kopicloud-labtest-OU-ABC" 
-  protected = false 
-  description = "OU for KopiCloud Lab Test" 
-}  
-# Returns Created OU 
-output "OUTPUT_created_ou" { 
-  description = "Created OU" 
-  value = resource.kopicloud_ou.test 
-}
+# resource "kopicloud_ou" "test" { 
+#   ou_destination_path = "DC=kopicloud,DC=local" 
+#   ou_name = "kopicloud-labtest-OU-ABC" 
+#   protected = false 
+#   description = "OU for KopiCloud Lab Test" 
+# }  
 
-resource "random_string" "random" {
-  length  = 3
-  special = false
-  upper   = false
-}
+# Returns Created OU 
+# output "OUTPUT_created_ou" { 
+#   description = "Created OU" 
+#   value = resource.kopicloud_ou.test 
+# }
+
+# resource "random_string" "random" {
+#   length  = 3
+#   special = false
+#   upper   = false
+# }
 
 // Create Basic User
-resource "kopicloud_user" "test_1" {
-  username     = "labtestuser-${random_string.random.result}"
-  password     = "P@ssword"
-  first_name   = "Lab Test"
-  initials     = "X"
-  last_name    = "User ${random_string.random.result}"
-  display_name = "Lab Test X User ${random_string.random.result}"
-  description  = "Lab Test X User ${random_string.random.result}"
+# resource "kopicloud_user" "test_1" {
+#   username     = "labtestuser-${random_string.random.result}"
+#   password     = "P@ssword"
+#   first_name   = "Lab Test"
+#   initials     = "X"
+#   last_name    = "User ${random_string.random.result}"
+#   display_name = "Lab Test X User ${random_string.random.result}"
+#   description  = "Lab Test X User ${random_string.random.result}"
 
-  change_password_next_logon = true
-}
+#   change_password_next_logon = true
+# }
 
-output "OUTPUT_new_user_1" {
-  description = "Created User 1"
-  value       = resource.kopicloud_user.test_1
-}
+# output "OUTPUT_new_user_1" {
+#   description = "Created User 1"
+#   value       = resource.kopicloud_user.test_1
+# }
 
-resource "kopicloud_user_password_reset" "test" {
-  username     = "carlos"
-  new_password = "Sw3d1shH0us3"
+# resource "kopicloud_user_password_reset" "test" {
+#   username     = "carlos"
+#   new_password = "Sw3d1shH0us3"
 
-  change_password_next_logon = false
-}
+#   change_password_next_logon = false
+# }
 
 // Password Reset for AD User Result
-output "user_password_reset" {
-  description = "Password Reset for User"
-  value = resource.kopicloud_user_password_reset.test
+# output "user_password_reset" {
+#   description = "Password Reset for User"
+#   value = resource.kopicloud_user_password_reset.test
+# }
+
+// Unlock AD User 
+resource "kopicloud_user_unlock_account" "test" { 
+  username = "guillermo" 
 }
