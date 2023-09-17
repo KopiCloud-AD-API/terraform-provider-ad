@@ -43,8 +43,8 @@ provider "kopicloud" {
 
 ## Resources
 
-- KopiCloud AD API Official Web Site: https://www.kopicloud-ad-api.com
+- KopiCloud AD API Official Web Site: https://adapi.kopicloud.com
 
-- KopiCloud AD API Documentation: https://help.kopicloud-ad-api.com
+- KopiCloud AD API Documentation: https://adapihelp.kopicloud.com
 
 - KopiClod AD API Terraform Sample Code Repo: https://github.com/KopiCloud-AD-API
